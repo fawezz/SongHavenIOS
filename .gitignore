@@ -88,3 +88,6 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+SongHavenUITests/SongHavenUITests.swift
+SongHavenTests/SongHavenTests.swift
+SongHavenUITests/SongHavenUITestsLaunchTests.swift
