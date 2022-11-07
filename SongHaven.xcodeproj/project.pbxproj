@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CEACFA4B29196DA5003A64EE /* SongHavenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEACFA4A29196DA5003A64EE /* SongHavenApp.swift */; };
-		CEACFA4D29196DA5003A64EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEACFA4C29196DA5003A64EE /* ContentView.swift */; };
+		CEACFA4D29196DA5003A64EE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEACFA4C29196DA5003A64EE /* LoginView.swift */; };
 		CEACFA4F29196DA6003A64EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEACFA4E29196DA6003A64EE /* Assets.xcassets */; };
 		CEACFA5229196DA6003A64EE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEACFA5129196DA6003A64EE /* Preview Assets.xcassets */; };
 		CEACFA5429196DA6003A64EE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEACFA5329196DA6003A64EE /* Persistence.swift */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		CEACFA4729196DA5003A64EE /* SongHaven.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SongHaven.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEACFA4A29196DA5003A64EE /* SongHavenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongHavenApp.swift; sourceTree = "<group>"; };
-		CEACFA4C29196DA5003A64EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CEACFA4C29196DA5003A64EE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CEACFA4E29196DA6003A64EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEACFA5129196DA6003A64EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CEACFA5329196DA6003A64EE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				CEACFA4A29196DA5003A64EE /* SongHavenApp.swift */,
-				CEACFA4C29196DA5003A64EE /* ContentView.swift */,
+				CEACFA4C29196DA5003A64EE /* LoginView.swift */,
 				CEACFA4E29196DA6003A64EE /* Assets.xcassets */,
 				CEACFA5329196DA6003A64EE /* Persistence.swift */,
 				CEACFA5529196DA6003A64EE /* SongHaven.xcdatamodeld */,
@@ -264,7 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEACFA5429196DA6003A64EE /* Persistence.swift in Sources */,
-				CEACFA4D29196DA5003A64EE /* ContentView.swift in Sources */,
+				CEACFA4D29196DA5003A64EE /* LoginView.swift in Sources */,
 				CEACFA4B29196DA5003A64EE /* SongHavenApp.swift in Sources */,
 				CEACFA5729196DA6003A64EE /* SongHaven.xcdatamodeld in Sources */,
 			);
