@@ -87,7 +87,7 @@ struct RegisterView: View {
     }
     
     
-    struct LogIn_Previews: PreviewProvider {
+    struct Register_Previews: PreviewProvider {
         static var previews: some View {
             Group {
                 RegisterView()
