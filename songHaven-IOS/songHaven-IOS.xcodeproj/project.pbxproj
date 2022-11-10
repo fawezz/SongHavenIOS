@@ -16,10 +16,10 @@
 		081B29352919209900981671 /* songHaven_IOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081B29342919209900981671 /* songHaven_IOSTests.swift */; };
 		081B293F2919209900981671 /* songHaven_IOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081B293E2919209900981671 /* songHaven_IOSUITests.swift */; };
 		081B29412919209900981671 /* songHaven_IOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081B29402919209900981671 /* songHaven_IOSUITestsLaunchTests.swift */; };
-		081B294E291923C600981671 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081B294D291923C600981671 /* Register.swift */; };
-		2B0A4800291981D200AF179A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A47FF291981D200AF179A /* Profile.swift */; };
-		2B0A48062919910B00AF179A /* NewPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* NewPassword.swift */; };
-		2B0A48082919929C00AF179A /* Verification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48072919929C00AF179A /* Verification.swift */; };
+		081B294E291923C600981671 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081B294D291923C600981671 /* RegisterView.swift */; };
+		2B0A4800291981D200AF179A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A47FF291981D200AF179A /* ProfileView.swift */; };
+		2B0A48062919910B00AF179A /* resetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* resetPasswordView.swift */; };
+		2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48072919929C00AF179A /* VerificationCodeView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,10 +53,10 @@
 		081B293A2919209900981671 /* songHaven-IOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "songHaven-IOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		081B293E2919209900981671 /* songHaven_IOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songHaven_IOSUITests.swift; sourceTree = "<group>"; };
 		081B29402919209900981671 /* songHaven_IOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songHaven_IOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		081B294D291923C600981671 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
-		2B0A47FF291981D200AF179A /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		2B0A48052919910B00AF179A /* NewPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPassword.swift; sourceTree = "<group>"; };
-		2B0A48072919929C00AF179A /* Verification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verification.swift; sourceTree = "<group>"; };
+		081B294D291923C600981671 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		2B0A47FF291981D200AF179A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2B0A48052919910B00AF179A /* resetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetPasswordView.swift; sourceTree = "<group>"; };
+		2B0A48072919929C00AF179A /* VerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,11 +88,6 @@
 		081B29122919209700981671 = {
 			isa = PBXGroup;
 			children = (
-				2B0A480D2919ADD700AF179A /* SplashScreen.swift */,
-				2B0A48072919929C00AF179A /* Verification.swift */,
-				2B0A48052919910B00AF179A /* NewPassword.swift */,
-				2B0A47FF291981D200AF179A /* Profile.swift */,
-				081B294D291923C600981671 /* Register.swift */,
 				081B291D2919209700981671 /* songHaven-IOS */,
 				081B29332919209900981671 /* songHaven-IOSTests */,
 				081B293D2919209900981671 /* songHaven-IOSUITests */,
@@ -113,6 +108,11 @@
 		081B291D2919209700981671 /* songHaven-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				2B0A480D2919ADD700AF179A /* SplashScreen.swift */,
+				2B0A48072919929C00AF179A /* VerificationCodeView.swift */,
+				2B0A48052919910B00AF179A /* resetPasswordView.swift */,
+				2B0A47FF291981D200AF179A /* ProfileView.swift */,
+				081B294D291923C600981671 /* RegisterView.swift */,
 				081B291E2919209700981671 /* songHaven_IOSApp.swift */,
 				081B29202919209700981671 /* ContentView.swift */,
 				081B29222919209900981671 /* Assets.xcassets */,
@@ -279,13 +279,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */,
-				2B0A48082919929C00AF179A /* Verification.swift in Sources */,
-				081B294E291923C600981671 /* Register.swift in Sources */,
+				2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */,
+				081B294E291923C600981671 /* RegisterView.swift in Sources */,
 				081B29282919209900981671 /* Persistence.swift in Sources */,
 				081B292B2919209900981671 /* songHaven_IOS.xcdatamodeld in Sources */,
-				2B0A4800291981D200AF179A /* Profile.swift in Sources */,
+				2B0A4800291981D200AF179A /* ProfileView.swift in Sources */,
 				081B29212919209700981671 /* ContentView.swift in Sources */,
-				2B0A48062919910B00AF179A /* NewPassword.swift in Sources */,
+				2B0A48062919910B00AF179A /* resetPasswordView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

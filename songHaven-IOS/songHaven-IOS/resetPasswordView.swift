@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct NewPassword: View {
+struct resetPasswordView: View {
     @State private var username = ""
     @State private var password = ""
     
     var body: some View {     NavigationView{
-         ZStack{  LinearGradient(gradient: .init(colors: [.pink , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+         ZStack{  LinearGradient(gradient: .init(colors: [.purple , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             VStack {
                
                   
@@ -56,6 +56,6 @@ struct NewPassword: View {
 
 struct NewPassword_Previews: PreviewProvider {
     static var previews: some View {
-        NewPassword()
+        resetPasswordView()
     }
 }

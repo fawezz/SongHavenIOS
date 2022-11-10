@@ -10,7 +10,7 @@ import SwiftUI
 struct SplashScreen: View {
     var body: some View {
         ZStack{
-            LinearGradient(gradient: .init(colors: [.black, .pink]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: .init(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             Image("logo")
                 .resizable()
                 .aspectRatio(contentMode: .fit)

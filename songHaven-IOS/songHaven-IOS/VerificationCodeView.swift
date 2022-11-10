@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct Verification: View {
+struct VerificationCodeView: View {
     var body: some View {
         ZStack{
-            LinearGradient(gradient: .init(colors: [.black, .pink]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: .init(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             
             VStack{
             Text("Confirmation code")
@@ -33,7 +33,7 @@ struct Verification: View {
 
 struct Verification_Previews: PreviewProvider {
     static var previews: some View {
-        Verification()
+        VerificationCodeView()
     }
 }
 }
