@@ -49,7 +49,7 @@ struct VerificationCodeView: View {
                     }
                     .foregroundColor(.white)
                     .frame(width: 300, height: 50)
-                    .background(Color.pink)
+                    .background(Color.green)
                     .cornerRadius(10)
                     
                     NavigationLink (destination :Text(" You are logged in")){
