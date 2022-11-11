@@ -13,7 +13,7 @@ struct songHaven_IOSApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SplashScreen()
+            VerificationCodeView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
