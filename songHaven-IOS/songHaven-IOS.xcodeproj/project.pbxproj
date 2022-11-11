@@ -21,6 +21,7 @@
 		2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* ResetPasswordView.swift */; };
 		2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48072919929C00AF179A /* VerificationCodeView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
+		B0D2419E291EA67600148FC3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D2419D291EA67600148FC3 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		2B0A48052919910B00AF179A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2B0A48072919929C00AF179A /* VerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		B0D2419D291EA67600148FC3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				2B0A48052919910B00AF179A /* ResetPasswordView.swift */,
 				2B0A47FF291981D200AF179A /* ProfileView.swift */,
 				081B294D291923C600981671 /* RegisterView.swift */,
+				B0D2419D291EA67600148FC3 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				2B0A4800291981D200AF179A /* ProfileView.swift in Sources */,
 				081B29212919209700981671 /* ContentView.swift in Sources */,
 				2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */,
+				B0D2419E291EA67600148FC3 /* LoginView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
