@@ -51,7 +51,6 @@ struct VerificationCodeView: View {
                     .frame(width: 300, height: 50)
                     .background(Color.pink)
                     .cornerRadius(10)
-                    .navigationTitle("OTP-Verification")
                     
                     NavigationLink (destination :Text(" You are logged in")){
                         EmptyView()

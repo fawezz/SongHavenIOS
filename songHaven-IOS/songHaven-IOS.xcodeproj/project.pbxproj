@@ -21,6 +21,7 @@
 		2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* ResetPasswordView.swift */; };
 		2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48072919929C00AF179A /* VerificationCodeView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
+		B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B009E7EE291EAD8C0068A57C /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +190,9 @@
 			dependencies = (
 			);
 			name = "songHaven-IOS";
+			packageProductDependencies = (
+				B009E7EE291EAD8C0068A57C /* Alamofire */,
+			);
 			productName = "songHaven-IOS";
 			productReference = 081B291B2919209700981671 /* songHaven-IOS.app */;
 			productType = "com.apple.product-type.application";
@@ -260,6 +265,9 @@
 				Base,
 			);
 			mainGroup = 081B29122919209700981671;
+			packageReferences = (
+				B009E7ED291EAD8C0068A57C /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 081B291C2919209700981671 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -653,6 +661,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B009E7ED291EAD8C0068A57C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B009E7EE291EAD8C0068A57C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B009E7ED291EAD8C0068A57C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		081B29292919209900981671 /* songHaven_IOS.xcdatamodeld */ = {
