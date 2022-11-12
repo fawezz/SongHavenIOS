@@ -74,6 +74,7 @@ struct Header: View {
                 .shadow(radius: 10)
                 .frame(width: 150,height: 150)
             
+<<<<<<< Updated upstream
         }
             VStack{
                 HStack{
@@ -199,6 +200,11 @@ struct Header: View {
                     
                 }
             }
+=======
+>>>>>>> Stashed changes
         }
+        
+        
+        
     }
 
