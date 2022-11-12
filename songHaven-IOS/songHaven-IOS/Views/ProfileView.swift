@@ -15,13 +15,30 @@ struct ProfileView: View {
             VStack {
                 Header()
                 ProfileText()
+                
+                VStack{
+                    HStack{
+                        ProfileSectionItem(title: "Likes", nbr: "1111")
+                        Spacer()
+                        ProfileSectionItem(title: "Albums", nbr: "10")
+                        Spacer()
+                        ProfileSectionItem(title: "Songs", nbr: "57")
+                        
+                    }
+                    SongRowItem()
+                    SongRowItem()
+                    SongRowItem()
+                    SongRowItem()
+                }
             }
             Spacer()
             Button (
-                action: { self.isPresented = true },
+                action: { self.isPresented = true
+                    //NavigationLink ("", destination: EditProfileView() )
+                },
                 label: {
-                    Label("Edit", systemImage: "pencil")
-            })
+                    Label("Edit Profile", systemImage: "pencil")
+      })
         }.background(LinearGradient(gradient: .init(colors: [.black , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
         
     }
@@ -30,7 +47,6 @@ struct ProfileView: View {
 
 struct ProfileText: View {
     var name = "Foulen Ben Foulen"
-    var subtitle = "subtitle"
     var  songName = ""
     
     var description = "description"
@@ -41,15 +57,10 @@ struct ProfileText: View {
                 Text(name)
                     .bold()
                     .font(.title)
-                Text(subtitle)
-                    .font(.body)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.white)
             }.padding()
-            Text(description)
-                .multilineTextAlignment(.center)
-                .padding()
-            Spacer()
         }
+        
     }
 }
 struct Header: View {
@@ -73,138 +84,62 @@ struct Header: View {
                 .overlay(Circle().stroke(Color.white, lineWidth: 4))
                 .shadow(radius: 10)
                 .frame(width: 150,height: 150)
-            
-<<<<<<< Updated upstream
         }
-            VStack{
-                HStack{
-                    VStack{
-                        Text("1505")
-                            .font(.largeTitle)
-                            .bold()
-                            .foregroundColor(.white)
-                            .padding()
-                        
-                        Text("Likes")
-                            .bold()
-                            .foregroundColor(.white)
-                            .padding()
-                    }
-                    Spacer()
-                    VStack{
-                        Text("10")
-                            .font(.largeTitle)
-                            .bold()
-                            .foregroundColor(.white)
-                            .padding()
-                        Text("Albums")
-                            .bold()
-                            .foregroundColor(.white)
-                            .padding()
-                        
-                    }
-                    Spacer()
-                    VStack{
-                        Text("56")
-                            .font(.largeTitle)
-                            .bold()
-                            .foregroundColor(.white)
-                            .padding()
-                        Text("Songs")
-                            .bold()
-                            .foregroundColor(.white)
-                            .padding()
-                    }
-                    
-                }
-                Spacer()
-                HStack{
-                    
-                  
-                    Image("logo")
-                        .resizable()
-                        .clipShape(Circle())
-                        .scaledToFit()
-                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                        .shadow(radius: 10)
-                    .frame(width: 50,height: 50)
-                    
-                    Spacer()
-                    Text("EarthSong")
-                       
-                        .bold()
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                    
-                }
-                HStack{
-                    
-                  
-                    Image("logo")
-                        .resizable()
-                        .clipShape(Circle())
-                        .scaledToFit()
-                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                        .shadow(radius: 10)
-                    .frame(width: 50,height: 50)
-                    
-                    Spacer()
-                    Text("EarthSong")
-                       
-                        .bold()
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                    
-                }
-                
-                HStack{
-                    
-                  
-                    Image("logo")
-                        .resizable()
-                        .clipShape(Circle())
-                        .scaledToFit()
-                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                        .shadow(radius: 10)
-                    .frame(width: 50,height: 50)
-                    
-                    Spacer()
-                    Text("EarthSong")
-                       
-                        .bold()
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                    
-                }
-                HStack{
-                    
-                  
-                    Image("logo")
-                        .resizable()
-                        .clipShape(Circle())
-                        .scaledToFit()
-                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                        .shadow(radius: 10)
-                    .frame(width: 50,height: 50)
-                    
-                    Spacer()
-                    Text("EarthSong")
-                       
-                        .bold()
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                    
-                }
+        
+
+        }
+        
+        
+    struct ProfileView_Previews: PreviewProvider {
+        static var previews: some View {
+            Group {
+                ProfileView()
             }
-=======
->>>>>>> Stashed changes
         }
-        
-        
-        
+    }
     }
 
+
+struct SongRowItem: View {
+    var body: some View {
+        HStack{
+            
+            
+            Image("logo")
+                .resizable()
+                .clipShape(Circle())
+                .scaledToFit()
+                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 10)
+                .frame(width: 50,height: 50)
+            
+            Spacer()
+            Text("EarthSong")
+            
+                .bold()
+                .foregroundColor(.white)
+                .padding()
+            
+            
+        }
+    }
+}
+
+struct ProfileSectionItem: View {
+    var title : String
+    var nbr : String
+    var body: some View {
+        VStack{
+            Text(nbr)
+                .font(.largeTitle)
+                .bold()
+                .foregroundColor(.white)
+                .padding()
+            Text(title)
+                .bold()
+                .foregroundColor(.white)
+                .padding()
+            
+        }
+    }
+}

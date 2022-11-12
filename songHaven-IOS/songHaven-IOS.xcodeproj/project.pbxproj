@@ -22,6 +22,8 @@
 		2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48072919929C00AF179A /* VerificationCodeView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
 		B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B009E7EE291EAD8C0068A57C /* Alamofire */; };
+		B068A280291FF991006EDF9E /* Song_HavenLogoTiny.png in Resources */ = {isa = PBXBuildFile; fileRef = B068A27F291FF991006EDF9E /* Song_HavenLogoTiny.png */; };
+		B068A282291FFE7C006EDF9E /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B068A281291FFE7C006EDF9E /* EditProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		2B0A48052919910B00AF179A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2B0A48072919929C00AF179A /* VerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		B068A27F291FF991006EDF9E /* Song_HavenLogoTiny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Song_HavenLogoTiny.png; path = ../../../../../Downloads/Song_HavenLogoTiny.png; sourceTree = "<group>"; };
+		B068A281291FFE7C006EDF9E /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 				081B291E2919209700981671 /* songHaven_IOSApp.swift */,
 				081B29202919209700981671 /* ContentView.swift */,
 				081B29222919209900981671 /* Assets.xcassets */,
+				B068A27F291FF991006EDF9E /* Song_HavenLogoTiny.png */,
 				081B29272919209900981671 /* Persistence.swift */,
 				081B29292919209900981671 /* songHaven_IOS.xcdatamodeld */,
 				081B29242919209900981671 /* Preview Content */,
@@ -156,6 +161,7 @@
 				2B0A48052919910B00AF179A /* ResetPasswordView.swift */,
 				2B0A47FF291981D200AF179A /* ProfileView.swift */,
 				081B294D291923C600981671 /* RegisterView.swift */,
+				B068A281291FFE7C006EDF9E /* EditProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B068A280291FF991006EDF9E /* Song_HavenLogoTiny.png in Resources */,
 				081B29262919209900981671 /* Preview Assets.xcassets in Resources */,
 				081B29232919209900981671 /* Assets.xcassets in Resources */,
 			);
@@ -310,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B068A282291FFE7C006EDF9E /* EditProfileView.swift in Sources */,
 				2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */,
 				2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */,
 				081B294E291923C600981671 /* RegisterView.swift in Sources */,

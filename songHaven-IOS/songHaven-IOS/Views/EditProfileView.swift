@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct RegisterView: View {
+struct EditProfileView: View {
     @State private var name = ""
     @State private var lastname = ""
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
     @State  private var ShowingLoginscrean = false
+    @State var isPresented = false
     
     
     
@@ -23,14 +24,29 @@ struct RegisterView: View {
                 LinearGradient(gradient: .init(colors: [.purple , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack(spacing:20) {
                     
-                    Text("REGISTER")
+                    Text("Edit your Profile ")
                         .font(.largeTitle)
                         .bold()
                         .foregroundColor(.white)
-                    Image("logo")
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                        .scaledToFit()
+                    HStack{
+                        Image("userIcon")
+                            .resizable()
+                            .clipShape(Circle())
+                            .scaledToFit()
+                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                            .shadow(radius: 10)
+                        .frame(width: 150,height: 150)
+                      
+                        Button (
+                            action: { self.isPresented = true },
+                            label: {
+                                Label("", systemImage: "camera")
+                        })
+
+                        
+                        
+                        
+                    }
                     /*
                     
                     Button("Login in to your existant account"){
@@ -93,15 +109,14 @@ struct RegisterView: View {
                     
                    
                     VStack(spacing: 40){
+                        Button (
+                            action: { self.isPresented = true },
+                            label: {
+                                Label("Edit Profile", systemImage: "pencil")
+                             
+                        })
                         
-                        Button("Submit"){
-                            
-                        }
-                        .padding(.all)
-                        .foregroundColor(.white)
-                        .frame(width: 300, height: 50)
-                        .background(Color.green)
-                        .cornerRadius(20)}
+                       }
                     
                     NavigationLink (destination :Text(" You are logged in @\(email)"),isActive: $ShowingLoginscrean){
                         EmptyView()
@@ -118,7 +133,7 @@ struct RegisterView: View {
     struct Register_Previews: PreviewProvider {
         static var previews: some View {
             Group {
-                RegisterView()
+                EditProfileView()
             }
         }
     }
