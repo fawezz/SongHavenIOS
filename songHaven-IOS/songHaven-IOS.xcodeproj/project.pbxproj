@@ -24,6 +24,7 @@
 		B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B009E7EE291EAD8C0068A57C /* Alamofire */; };
 		B068A280291FF991006EDF9E /* Song_HavenLogoTiny.png in Resources */ = {isa = PBXBuildFile; fileRef = B068A27F291FF991006EDF9E /* Song_HavenLogoTiny.png */; };
 		B068A282291FFE7C006EDF9E /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B068A281291FFE7C006EDF9E /* EditProfileView.swift */; };
+		B068A28829200943006EDF9E /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B068A28729200943006EDF9E /* EmailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		B068A27F291FF991006EDF9E /* Song_HavenLogoTiny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Song_HavenLogoTiny.png; path = ../../../../../Downloads/Song_HavenLogoTiny.png; sourceTree = "<group>"; };
 		B068A281291FFE7C006EDF9E /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		B068A28729200943006EDF9E /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				2B0A47FF291981D200AF179A /* ProfileView.swift */,
 				081B294D291923C600981671 /* RegisterView.swift */,
 				B068A281291FFE7C006EDF9E /* EditProfileView.swift */,
+				B068A28729200943006EDF9E /* EmailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				B068A282291FFE7C006EDF9E /* EditProfileView.swift in Sources */,
 				2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */,
 				2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */,
+				B068A28829200943006EDF9E /* EmailView.swift in Sources */,
 				081B294E291923C600981671 /* RegisterView.swift in Sources */,
 				081B29282919209900981671 /* Persistence.swift in Sources */,
 				081B292B2919209900981671 /* songHaven_IOS.xcdatamodeld in Sources */,

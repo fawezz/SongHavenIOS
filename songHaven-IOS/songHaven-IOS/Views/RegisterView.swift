@@ -103,8 +103,8 @@ struct RegisterView: View {
                         .background(Color.green)
                         .cornerRadius(20)}
                     
-                    NavigationLink (destination :Text(" You are logged in @\(email)"),isActive: $ShowingLoginscrean){
-                        EmptyView()
+                    NavigationLink (destination :VerificationCodeView()){
+                   
                     }
                     
                 }

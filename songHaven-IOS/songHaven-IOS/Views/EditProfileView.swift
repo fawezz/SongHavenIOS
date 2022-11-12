@@ -28,7 +28,7 @@ struct EditProfileView: View {
                         .font(.largeTitle)
                         .bold()
                         .foregroundColor(.white)
-                    HStack{
+                    VStack{
                         Image("userIcon")
                             .resizable()
                             .clipShape(Circle())
@@ -41,7 +41,8 @@ struct EditProfileView: View {
                             action: { self.isPresented = true },
                             label: {
                                 Label("", systemImage: "camera")
-                        })
+                            }).background(Color(.white))
+                            .cornerRadius(50)
 
                         
                         
