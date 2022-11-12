@@ -23,6 +23,8 @@
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
 		B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B009E7EE291EAD8C0068A57C /* Alamofire */; };
 		B025A95F291EE2D2007FF6FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025A95E291EE2D2007FF6FF /* User.swift */; };
+		B0C5114F291FFF6D00A3A0D0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5114E291FFF6D00A3A0D0 /* SignUpViewModel.swift */; };
+		B0C51152291FFFF600A3A0D0 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C51151291FFFF600A3A0D0 /* UserService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		2B0A48072919929C00AF179A /* VerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		B025A95E291EE2D2007FF6FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B0C5114E291FFF6D00A3A0D0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = SOURCE_ROOT; };
+		B0C51151291FFFF600A3A0D0 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 		081B291D2919209700981671 /* songHaven-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				B0C51150291FFFDE00A3A0D0 /* Services */,
 				B025A958291EE26E007FF6FF /* Models */,
 				B0B99630291D987D00F75997 /* ViewModels */,
 				B0B9962F291D987300F75997 /* Models */,
@@ -181,8 +186,17 @@
 		B0B99630291D987D00F75997 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B0C5114E291FFF6D00A3A0D0 /* SignUpViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B0C51150291FFFDE00A3A0D0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B0C51151291FFFF600A3A0D0 /* UserService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,7 +343,9 @@
 				2B0A4800291981D200AF179A /* ProfileView.swift in Sources */,
 				081B29212919209700981671 /* ContentView.swift in Sources */,
 				2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */,
+				B0C51152291FFFF600A3A0D0 /* UserService.swift in Sources */,
 				B025A95F291EE2D2007FF6FF /* User.swift in Sources */,
+				B0C5114F291FFF6D00A3A0D0 /* SignUpViewModel.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

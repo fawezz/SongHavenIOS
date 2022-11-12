@@ -37,6 +37,7 @@ struct VerificationCodeView: View {
                     
                     ZStack{
                         HStack(spacing: 40){
+                            
                             otpText(text: viewModel.otp1)
                             otpText(text: viewModel.otp2)
                             otpText(text: viewModel.otp3)
@@ -53,27 +54,25 @@ struct VerificationCodeView: View {
                                               .background(Color.clear)
                                               .keyboardType(.numberPad)
                     }
-                    
-                    Button("Verify"){
-                        
+                    NavigationLink (destination :RegisterView()){
+                        Button("Verify"){
+                            
+                        }
                     }
+                    
                     .foregroundColor(.white)
                     .frame(width: 300, height: 50)
                     .background(Color.pink)
                     .cornerRadius(10)
                     
                     
-                    NavigationLink (destination :Text(" You are logged in")){
-                        EmptyView()
-                    }
+                    
                     
                 }
                 
-            }
-            NavigationLink (destination :Text(" You are logged in)")){
-                EmptyView()
-            }
+            }.navigationBarHidden(true)
         }
+        
         
     }
     
@@ -88,16 +87,24 @@ struct VerificationCodeView: View {
         return ZStack{
             /*Circle().background(Circle().fill(.blue))
                 .frame(width: textBoxWidth+20, height: textBoxWidth+20)*/
-            Text(text)
-                .background(
-                    Circle().scale(2).foregroundColor(.white.opacity(0.15))
-                )
-                .frame(width: 35, height: 35, alignment: .center)
-                .fixedSize(horizontal: true, vertical: false)
-                .multilineTextAlignment(.center)
-                .foregroundColor(Color.white)
-                .fontWeight(Font.Weight.bold)
-                .font( .largeTitle)
+            if(text.isEmpty){
+                Circle()
+                    .scale(2)
+                    .foregroundColor(.white.opacity(0.15))
+                    .frame(width: 30, height: 30)
+                                                }
+            else{
+                Text(text)
+                    .background(
+                        Circle().scale(2).foregroundColor(.white.opacity(0.15))
+                    )
+                    .frame(width: 35, height: 35)
+                    .fixedSize(horizontal: true, vertical: false)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color.white)
+                    .fontWeight(Font.Weight.bold)
+                    .font( .largeTitle)
+            }
         }
     }
     /*

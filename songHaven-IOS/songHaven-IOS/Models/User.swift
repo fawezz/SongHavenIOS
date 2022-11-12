@@ -5,7 +5,7 @@
 //  Created by Apple Esprit on 11/11/2022.
 //
 
-struct Utilisateur {
+struct Utilisateur : Decodable{
     
     internal init(_id: String? = nil, email: String? = nil, password: String? = nil, name: String? = nil, lastname: String? = nil, idPhoto: String? = nil, isVerified: Bool? = nil) {
         self._id = _id

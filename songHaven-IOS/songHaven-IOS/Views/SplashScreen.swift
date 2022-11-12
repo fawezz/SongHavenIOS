@@ -4,7 +4,6 @@
 //
 //  Created by Cyrine-Faouze on 7/11/2022.
 //
-
 import SwiftUI
 
 struct SplashScreen: View {
@@ -23,6 +22,7 @@ struct SplashScreen: View {
             }.onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){
                     withAnimation{self.isActive = true}
+                    /*UserService.SignIn(email: "faouez.marzouk@esprit.tn", password: "12345678")*/
                 }
             }
         }
