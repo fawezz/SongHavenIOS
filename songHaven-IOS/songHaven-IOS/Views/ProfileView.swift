@@ -32,6 +32,7 @@ struct ProfileView: View {
                 }
             }
             Spacer()
+            
             Button (
                 action: { self.isPresented = true
                     //NavigationLink ("", destination: EditProfileView() )
@@ -39,6 +40,8 @@ struct ProfileView: View {
                 label: {
                     Label("Edit Profile", systemImage: "pencil")
       })
+            
+            
         }.background(LinearGradient(gradient: .init(colors: [.black , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
         
     }

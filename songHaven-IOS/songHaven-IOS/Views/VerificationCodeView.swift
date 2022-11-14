@@ -44,24 +44,28 @@ struct VerificationCodeView: View {
                         CodeField(digit: $code5)
                     }.padding(.vertical, 40)
                     
-                    Button("Verify"){
+                    NavigationLink(destination: ResetPasswordView()){
+                         
+                        Button("Send",action:{
+                            print("yo")
+                 
+                        }
                         
-                    }
-                    .foregroundColor(.white)
-                    .frame(width: 300, height: 50)
-                    .background(Color.green)
-                    .cornerRadius(10)
+                        )
+                         .foregroundColor(.white)
+                         .frame(width: 300, height: 50)
+                         .background(Color.green)
+                         .cornerRadius(10)
+                     }
+                 
                     
-                    NavigationLink (destination :Text(" You are logged in")){
-                        EmptyView()
+                    
                     }
                     
                 }
                 
             }
-            NavigationLink (destination :Text(" You are logged in)")){
-                EmptyView()
-            }
+        
         }
     }
     
@@ -87,4 +91,4 @@ struct VerificationCodeView: View {
                 .font( .largeTitle)
         }
     }
-}
+

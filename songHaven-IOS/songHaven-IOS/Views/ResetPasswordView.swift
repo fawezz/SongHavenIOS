@@ -11,7 +11,8 @@ struct ResetPasswordView: View {
     @State private var password = ""
     @State private var confirmPassword = ""
     
-    var body: some View {     NavigationView{
+    var body: some View {
+        NavigationView{
          ZStack{  LinearGradient(gradient: .init(colors: [.purple , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             VStack  (spacing: 50){
                 Text("Reset Password")
@@ -35,15 +36,22 @@ struct ResetPasswordView: View {
                     .cornerRadius(10)
                 
                
-                Button("Submit"){
-                  
+                
+                NavigationLink(destination: VerificationCodeView(),label : {
+                    Button(action: {
+                 
+                    }, label: {
+                        Text("Submit")
+                       
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 50)
+                            .background(Color.green)
+                            .cornerRadius(10)
+                    }
                     
-                }
-                .foregroundColor(.white)
-                .frame(width: 300, height: 50)
-                .background(Color.green)
-                .cornerRadius(10)
-           
+                    )
+                })
+                
             }
             
         }

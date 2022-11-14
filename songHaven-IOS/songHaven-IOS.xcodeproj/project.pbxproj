@@ -25,6 +25,9 @@
 		B068A280291FF991006EDF9E /* Song_HavenLogoTiny.png in Resources */ = {isa = PBXBuildFile; fileRef = B068A27F291FF991006EDF9E /* Song_HavenLogoTiny.png */; };
 		B068A282291FFE7C006EDF9E /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B068A281291FFE7C006EDF9E /* EditProfileView.swift */; };
 		B068A28829200943006EDF9E /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B068A28729200943006EDF9E /* EmailView.swift */; };
+		B0CAAE7729223FC200D50C03 /* padlock.png in Resources */ = {isa = PBXBuildFile; fileRef = B0CAAE7629223FC200D50C03 /* padlock.png */; };
+		B0CAAE792922658700D50C03 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CAAE782922658700D50C03 /* LoginView.swift */; };
+		B0CAAE7B292266A300D50C03 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CAAE7A292266A300D50C03 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		B068A27F291FF991006EDF9E /* Song_HavenLogoTiny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Song_HavenLogoTiny.png; path = ../../../../../Downloads/Song_HavenLogoTiny.png; sourceTree = "<group>"; };
 		B068A281291FFE7C006EDF9E /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		B068A28729200943006EDF9E /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		B0CAAE7629223FC200D50C03 /* padlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = padlock.png; path = ../../../../../Downloads/padlock.png; sourceTree = "<group>"; };
+		B0CAAE782922658700D50C03 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B0CAAE7A292266A300D50C03 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +127,7 @@
 				B0B9962E291D985300F75997 /* Views */,
 				081B291E2919209700981671 /* songHaven_IOSApp.swift */,
 				081B29202919209700981671 /* ContentView.swift */,
+				B0CAAE7629223FC200D50C03 /* padlock.png */,
 				081B29222919209900981671 /* Assets.xcassets */,
 				B068A27F291FF991006EDF9E /* Song_HavenLogoTiny.png */,
 				081B29272919209900981671 /* Persistence.swift */,
@@ -165,6 +172,8 @@
 				081B294D291923C600981671 /* RegisterView.swift */,
 				B068A281291FFE7C006EDF9E /* EditProfileView.swift */,
 				B068A28729200943006EDF9E /* EmailView.swift */,
+				B0CAAE782922658700D50C03 /* LoginView.swift */,
+				B0CAAE7A292266A300D50C03 /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,6 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0CAAE7729223FC200D50C03 /* padlock.png in Resources */,
 				B068A280291FF991006EDF9E /* Song_HavenLogoTiny.png in Resources */,
 				081B29262919209900981671 /* Preview Assets.xcassets in Resources */,
 				081B29232919209900981671 /* Assets.xcassets in Resources */,
@@ -322,10 +332,12 @@
 			files = (
 				B068A282291FFE7C006EDF9E /* EditProfileView.swift in Sources */,
 				2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */,
+				B0CAAE7B292266A300D50C03 /* HomeView.swift in Sources */,
 				2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */,
 				B068A28829200943006EDF9E /* EmailView.swift in Sources */,
 				081B294E291923C600981671 /* RegisterView.swift in Sources */,
 				081B29282919209900981671 /* Persistence.swift in Sources */,
+				B0CAAE792922658700D50C03 /* LoginView.swift in Sources */,
 				081B292B2919209900981671 /* songHaven_IOS.xcdatamodeld in Sources */,
 				2B0A4800291981D200AF179A /* ProfileView.swift in Sources */,
 				081B29212919209700981671 /* ContentView.swift in Sources */,

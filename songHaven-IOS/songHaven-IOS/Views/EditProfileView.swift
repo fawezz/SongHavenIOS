@@ -119,9 +119,9 @@ struct EditProfileView: View {
                         
                        }
                     
-                    NavigationLink (destination :Text(" You are logged in @\(email)"),isActive: $ShowingLoginscrean){
+                    /*NavigationLink (destination :Text(" You are logged in @\(email)"),isActive: $ShowingLoginscrean){
                         EmptyView()
-                    }
+                    }*/
                     
                 }
                 .padding(.all)

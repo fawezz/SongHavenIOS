@@ -31,17 +31,28 @@ struct RegisterView: View {
                         .resizable()
                         .frame(width: 100, height: 100)
                         .scaledToFit()
-                    /*
                     
-                    Button("Login in to your existant account"){
+                    
+                    NavigationLink(destination: LoginView()){
+                         
+                        Button("Login into your existant account",action:{
+                            print("yo")
+                 
+                        }
                         
-                    }
-                    .foregroundColor(.white)
-                    .frame(width: 300, height: 50)
-                    .background(Color.clear)
-                    .cornerRadius(10)
+                        )
+                         .foregroundColor(.white)
+                         .frame(width: 300, height: 50)
+                         .background(Color.clear)
+                         .cornerRadius(10)
+                     }
+                    
+                    
+                    
+                  
+                    
             //NavigationLink(destination: ResetPasswordView(), label: )
-                    */
+                    
                    
                     
                     TextField("Enter your name",text:$name)
@@ -81,32 +92,21 @@ struct RegisterView: View {
                         .background(Color.white.opacity(0.35))
                         .cornerRadius(10)
                         .foregroundColor(.white)
-                    /*
                     
-                    Button( action: {
-                        print("Upload your profile image")
-                        
-                    }){ Image ("logo")
-                            .renderingMode(Image.TemplateRenderingMode? .init(Image.TemplateRenderingMode.original))
-                    }
-                       */
                     
-                   
-                    VStack(spacing: 40){
-                        
-                        Button("Submit"){
-                            
-                        }
-                        .padding(.all)
-                        .foregroundColor(.white)
-                        .frame(width: 300, height: 50)
-                        .background(Color.green)
-                        .cornerRadius(20)}
-                    
-                    NavigationLink (destination :VerificationCodeView()){
-                   
-                    }
-                    
+                            NavigationLink(destination: HomeView()){
+                                 
+                                Button("Register",action:{
+                                    print("yo")
+                         
+                                }
+                                
+                                )
+                                 .foregroundColor(.white)
+                                 .frame(width: 300, height: 50)
+                                 .background(Color.green)
+                                 .cornerRadius(10)
+                             }
                 }
                 .padding(.all)
             }

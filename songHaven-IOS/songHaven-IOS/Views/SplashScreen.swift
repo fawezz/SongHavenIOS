@@ -11,7 +11,7 @@ struct SplashScreen: View {
     @State var isActive: Bool = false
     var body: some View {
         if(self.isActive){
-            VerificationCodeView()
+            RegisterView()
         }else{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
