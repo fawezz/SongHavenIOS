@@ -8,84 +8,50 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @State private var name = ""
-    @State private var lastname = ""
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
-    @State  private var ShowingLoginscrean = false
-    
-    
+
+    @StateObject var viewModel = RegisterViewModel()
     
     var body: some View {
         NavigationView{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
-                VStack {
+                VStack(spacing: 20){
                     Image("logo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 200, height: 200)
-                    
-                    Text("Song Haven")
+                    Text("Join Us Now")
                         .font(.largeTitle)
                         .bold()
                         .foregroundColor(.white)
-                        .padding()
+                    TextField("Enter your name",text:$viewModel.name)
+                        .textFieldStyle(RegisterTextFieldStyle())
                     
-                    TextField("Enter your name",text:$name)
-                        .padding()
-                        .frame(width: 300, height :50)
-                        .background(Color.white.opacity(0.35))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
+                    TextField("Enter your lastname",text:$viewModel.lastname)
+                        .textFieldStyle(RegisterTextFieldStyle())
                     
-                    TextField("Enter your lastname",text:$lastname)
-                        .padding()
-                        .frame(width: 300, height :50)
-                        .background(Color.white.opacity(0.35))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
+                    TextField("Enter your Email",text:$viewModel.email)
+                        .textFieldStyle(RegisterTextFieldStyle())
                     
-                    TextField("Enter your Email",text:$email)
-                        .padding()
-                        .frame(width: 300, height :50)
-                        .background(Color.white.opacity(0.35))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
+                    SecureField("Password",text:$viewModel.password)
+                        .textFieldStyle(RegisterTextFieldStyle())
                     
-                    TextField("Password",text:$password)
-                        .padding()
-                        .frame(width: 300, height :50)
-                        .background(Color.white.opacity(0.35))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                    
-                    TextField("Confirm your password",text:$confirmPassword)
-                        .padding()
-                        .frame(width: 300, height :50)
-                        .background(Color.white.opacity(0.35))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
+                    SecureField("Confirm your password",text:$viewModel.confirmPassword)
+                        .textFieldStyle(RegisterTextFieldStyle())
                     
                     Button("Submit"){
                         
                     }
                     .foregroundColor(.white)
                     .frame(width: 300, height: 50)
-                    .background(Color.pink)
+                    .background(Color.green)
                     .cornerRadius(10)
                     
-                    NavigationLink (destination :Text(" You are logged in @\(email)"),isActive: $ShowingLoginscrean){
-                        EmptyView()
-                    }
-                    
-                }
+                }.padding()
             }
             .navigationBarHidden(true)
-        }
+        }.accentColor(.white)
     }
-    
     
     struct Register_Previews: PreviewProvider {
         static var previews: some View {
@@ -96,3 +62,15 @@ struct RegisterView: View {
     }
 }
 
+
+struct RegisterTextFieldStyle: TextFieldStyle {
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .padding(.horizontal, 20)
+            .frame(height: 50)
+            .background(Color.white.opacity(0.8))
+            .cornerRadius(10)
+            .foregroundColor(.black)
+            .padding([.leading, .bottom, .trailing])
+    }
+}

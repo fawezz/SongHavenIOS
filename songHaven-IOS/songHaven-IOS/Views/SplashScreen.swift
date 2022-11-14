@@ -10,7 +10,7 @@ struct SplashScreen: View {
     @State var isActive: Bool = false
     var body: some View {
         if(self.isActive){
-            VerificationCodeView()
+            OtpVerificationView()
         }else{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
@@ -22,7 +22,6 @@ struct SplashScreen: View {
             }.onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){
                     withAnimation{self.isActive = true}
-                    /*UserService.SignIn(email: "faouez.marzouk@esprit.tn", password: "12345678")*/
                 }
             }
         }
