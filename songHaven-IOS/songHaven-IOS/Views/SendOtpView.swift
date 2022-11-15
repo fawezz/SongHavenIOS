@@ -5,6 +5,7 @@
 //  Created by zewaff on 12/11/2022.
 //
 import SwiftUI
+import AlertToast
 
 struct SendOtpView: View {
     
@@ -34,25 +35,33 @@ struct SendOtpView: View {
                     .background(Color.white)
                     .cornerRadius(20.0)
                     .padding(50)
+                    .autocorrectionDisabled(true)
                 
                 Button(action: {
                     viewModel.sendOtp()
-                    viewModel.navigator = "OtpVerification"
-                    //print(UserDefaults.standard.string(forKey: "email")!)
                 }) {
-                    Text("Next")
+                    Text("Send Email")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(width: 300, height: 50)
                         .background(buttonColor)
+                        .background(buttonColor)
                         .cornerRadius(15.0)
-                }.disabled(!viewModel.verifyFields())
-                NavigationLink(destination: OtpVerificationView(), tag: "OtpVerification", selection: $viewModel.navigator){}
+                }.disabled(!viewModel.validateFields())
+                
+                NavigationLink(destination: OtpVerificationView(), tag: "OtpVerification", selection: $viewModel.navigator){}.isDetailLink(false)
+            }
+            .toast(isPresenting: $viewModel.showSuccessToast){
+                AlertToast(type: .complete(.green), title: viewModel.toastMessage)
+            }
+            .toast(isPresenting: $viewModel.showFailToast){
+                AlertToast(type: .error(.red), title: viewModel.toastMessage)
             }
         }
     }
+        
     var buttonColor: Color{
-        if(!viewModel.verifyFields()){
+        if(!viewModel.validateFields()){
             return Color.gray
         }else{
             return Color.green

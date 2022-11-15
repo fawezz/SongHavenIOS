@@ -6,19 +6,14 @@
 //
 import SwiftUI
 import PhotosUI
+import AlertToast
 
 
 struct EditProfileView: View {
-    @State private var name = ""
-    @State private var lastname = ""
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
-    @State  private var ShowingLoginscrean = false
-    @State var isPresented = false
-    @State var selectedItems: [PhotosPickerItem] = []
     
-    
+    @StateObject var viewModel = EditProfileViewModel()
+
+        
     var body: some View {
         NavigationView{
             ZStack{
@@ -33,7 +28,7 @@ struct EditProfileView: View {
                             .shadow(radius: 10)
                             .frame(width: 150,height: 150)
                         PhotosPicker(
-                            selection: $selectedItems,
+                            selection: $viewModel.selectedItems,
                             matching: .images,
                             photoLibrary: .shared()
                         )
@@ -48,34 +43,61 @@ struct EditProfileView: View {
                     }
                     .padding(.bottom, 40)
                     
-                    TextField("Enter your name",text:$name)
+                    TextField("Enter your name",text:$viewModel.firstname)
                         .textFieldStyle(ProfileTextFieldStyle())
                     
-                    TextField("Enter your lastname",text:$lastname)
+                    TextField("Enter your lastname",text:$viewModel.lastname)
                         .textFieldStyle(ProfileTextFieldStyle())
                     
+                    /*TextField("Enter your Email",text:$viewModel.email)
+                        .textFieldStyle(ProfileTextFieldStyle())*/
                     
-                    TextField("Enter your Email",text:$email)
+                    SecureField("Password",text:$viewModel.password)
                         .textFieldStyle(ProfileTextFieldStyle())
                     
-                    SecureField("Password",text:$password)
+                    SecureField("Confirm your password",text:$viewModel.confirmPassword)
                         .textFieldStyle(ProfileTextFieldStyle())
-                    
-                    SecureField("Confirm your password",text:$confirmPassword)
-                        .textFieldStyle(ProfileTextFieldStyle())
-                    
-                    
-                    
                     Button (
-                        action: { self.isPresented = true },
+                        action: {
+                            viewModel.EditDetails()
+                        },
                         label: {
                             Label("Edit", systemImage: "square.and.pencil")
+                                .foregroundColor(buttonColor)
                         })
                     .padding(.vertical, 40)
+                    .disabled(!viewModel.validateFields())
                 }
                 .padding(.all)
+                
+                if(viewModel.isLoading){
+                    ZStack{
+                        Color(.white)
+                            .opacity(0.7)
+                            .ignoresSafeArea()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .purple))
+                            .scaleEffect(3)
+                        
+                    }
+                }
+                NavigationLink(destination: ProfileView(), tag: "Profile", selection: $viewModel.navigator) {}
             }
             .navigationBarHidden(true)
+            .toast(isPresenting: $viewModel.showSuccessToast){
+                AlertToast(type: .complete(.green), title: viewModel.toastMessage)
+            }
+            .toast(isPresenting: $viewModel.showFailToast){
+                AlertToast(type: .error(.red), title: viewModel.toastMessage)
+            }
+        }
+        
+    }
+    var buttonColor: Color{
+        if(viewModel.validateFields()){
+            return Color.green
+        }else{
+            return Color.gray
         }
     }
     
@@ -95,6 +117,7 @@ struct ProfileTextFieldStyle: TextFieldStyle {
             .padding()
             .background(Color.white)
             .cornerRadius(10)
+            .autocorrectionDisabled(true)
         
     }
 }

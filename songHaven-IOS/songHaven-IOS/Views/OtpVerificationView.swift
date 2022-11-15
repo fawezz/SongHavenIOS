@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct OtpVerificationView: View {
     @StateObject var viewModel = OtpVerificationViewModel()
@@ -40,11 +41,8 @@ struct OtpVerificationView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                     
-                    
-                    
                     ZStack(alignment: .center){
                         HStack(spacing: 40){
-                            
                             otpText(text: viewModel.otp1)
                             otpText(text: viewModel.otp2)
                             otpText(text: viewModel.otp3)
@@ -68,7 +66,7 @@ struct OtpVerificationView: View {
                                 .foregroundColor(.white)
                                 .multilineTextAlignment(.center)
                             Button(action: {
-                                //send mail
+                                viewModel.ResendCode()
                             }) {
                                 Text("Resend")
                                     .font(.headline)
@@ -77,27 +75,48 @@ struct OtpVerificationView: View {
                                     .background(Color.clear)
                                     .cornerRadius(15.0)
                                     .underline()
-                                
                             }
+                        }
+                        Button(){
+                            viewModel.VerifyOtp()
+                        }label:{
+                            Text("verify")
+                                .padding(.horizontal, 120)
                             
                         }
-                            Button(){
-                                viewModel.navigator = "ResetPassword"
-                            }label:{
-                                Text("verify")
-                                    .padding(.horizontal, 120)
-                                
-                            }
-                            .disabled(viewModel.otpField.count < 5)
-                            .foregroundColor(.white)
-                            .frame(width: 300, height: 50)
-                            .background(buttonColor)
-                            .cornerRadius(10)
+                        .foregroundColor(.white)
+                        .frame(width: 300, height: 50)
+                        .background(buttonColor)
+                        .cornerRadius(10)
+                        .disabled(viewModel.otpField.count < 5)
+                        .alert(isPresented: $viewModel.showAlert) {
+                            Alert(
+                                title: Text("Access Denied"),
+                                message: Text("The code entered does not match, Please Try Again.")
+                               
+                            )
+                        }
                     }
                     
                 }
-                NavigationLink(destination: ResetPasswordView(), tag: "ResetPassword", selection: $viewModel.navigator){}
+                NavigationLink(destination: ResetPasswordView(), tag: "ResetPassword", selection: $viewModel.navigator){}.isDetailLink(false)
             }
+            .toast(isPresenting: $viewModel.showToast){
+                AlertToast(displayMode: .banner(.slide), type: .complete(.green), title: "Email Sent")
+            }
+            //Loader
+            if(viewModel.isLoading){
+                ZStack{
+                    Color(.white)
+                        .opacity(0.7)
+                        .ignoresSafeArea()
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .purple))
+                        .scaleEffect(3)
+                    
+                }
+            }
+            
         }
     }
     

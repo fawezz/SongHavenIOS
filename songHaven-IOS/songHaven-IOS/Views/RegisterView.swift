@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct RegisterView: View {
-
+    
     @StateObject var viewModel = RegisterViewModel()
     
     var body: some View {
@@ -40,16 +41,37 @@ struct RegisterView: View {
                         .textFieldStyle(RegisterTextFieldStyle())
                     
                     Button("Submit"){
-                        
+                        viewModel.register()
                     }
                     .foregroundColor(.white)
                     .frame(width: 300, height: 50)
-                    .background(Color.green)
+                    .background(buttonColor)
                     .cornerRadius(10)
+                    .disabled(!viewModel.validateFields())
                     
                 }.padding()
+                
+                if(viewModel.isLoading){
+                    ZStack{
+                        Color(.white)
+                            .opacity(0.7)
+                            .ignoresSafeArea()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .purple))
+                            .scaleEffect(3)
+                        
+                    }
+                }
+                NavigationLink(destination: LoginView(), tag: "Login", selection: $viewModel.navigator) {}
             }
             .navigationBarHidden(true)
+            .toast(isPresenting: $viewModel.showFailToast){
+                AlertToast(type: .error(.red), title: viewModel.toastText)
+            }
+            .toast(isPresenting: $viewModel.showSuccessToast){
+                AlertToast(type: .complete(.green), title: viewModel.toastText)
+            }
+            
         }.accentColor(.white)
     }
     
@@ -58,6 +80,13 @@ struct RegisterView: View {
             Group {
                 RegisterView()
             }
+        }
+    }
+    var buttonColor: Color{
+        if(viewModel.validateFields()){
+            return Color.green
+        }else{
+            return Color.gray
         }
     }
 }
@@ -72,5 +101,6 @@ struct RegisterTextFieldStyle: TextFieldStyle {
             .cornerRadius(10)
             .foregroundColor(.black)
             .padding([.leading, .bottom, .trailing])
+            .autocorrectionDisabled(true)
     }
 }

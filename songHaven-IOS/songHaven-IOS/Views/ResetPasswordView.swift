@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct ResetPasswordView: View {
     @ObservedObject var viewModel = ResetPasswordViewModel()
@@ -15,13 +16,10 @@ struct ResetPasswordView: View {
         NavigationView{
             ZStack{  LinearGradient(gradient: .init(colors: [.purple , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack  (spacing: 20){
-                    
-                    
                     Text("Create new password")
                         .font(.title)
                         .bold()
                         .foregroundColor(.white                                                )
-                    
                     Image("forgotPass3")
                         .resizable()
                         .frame(width: 200, height: 200)
@@ -44,8 +42,7 @@ struct ResetPasswordView: View {
                         .cornerRadius(10)
                     
                     Button("Reset password"){
-                        viewModel.navigator = "LoginView"
-                        
+                        viewModel.changePassword()
                     }
                     .disabled(!viewModel.verifyFields())
                     .foregroundColor(.white)
@@ -54,7 +51,13 @@ struct ResetPasswordView: View {
                     .cornerRadius(10)
                     
                 }
-                NavigationLink(destination: LoginView(), tag: "LoginView", selection: $viewModel.navigator){}
+                .toast(isPresenting: $viewModel.showSuccessToast){
+                    AlertToast(type: .complete(.green), title: viewModel.toastMessage)
+                }
+                .toast(isPresenting: $viewModel.showFailToast){
+                    AlertToast(type: .error(.red), title: viewModel.toastMessage)
+                }
+                NavigationLink(destination: LoginView(), tag: "LoginView", selection: $viewModel.navigator){}.isDetailLink(false)
                 
             }
         }.navigationBarHidden(true)
