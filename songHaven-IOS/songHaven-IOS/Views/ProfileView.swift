@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject var viewModel = SendOtpViewModel()
+    @StateObject var viewModel = ProfileViewModel()
     
     var body: some View {
         NavigationView{
@@ -42,18 +42,49 @@ struct ProfileView: View {
             }.background(LinearGradient(gradient: .init(colors: [.black , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
         }.accentColor(.white)
     }
+    
+    struct Header: View {
+        static let gradientStart = Color(red: 0 / 255, green: 0 / 255, blue: 0 / 255)
+        static let gradientEnd = Color(red: 101 / 255, green: 104 / 255, blue: 203 / 255)
+        @ObservedObject var viewModel = ProfileViewModel()
+        
+        var body: some View {
+            ZStack(alignment: .center) {
+                Rectangle()
+                    .fill(LinearGradient(
+                        gradient: .init(colors: [Self.gradientStart, Self.gradientEnd]),
+                        startPoint: .init(x: 0.5, y: 0),
+                        endPoint: .init(x: 0.5, y: 0.6)
+                    ))
+                    .edgesIgnoringSafeArea(.top)
+                    .frame(height: 200)
+                AsyncImage(url:viewModel.profileImageUrl)
+                {
+                    Image in Image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 10)
+                .frame(width: 180,height: 180)
+            }
+            
+            
+        }
 }
 
 struct ProfileText: View {
-    var name = "Foulen Ben Foulen"
-    var  songName = ""
     
+    @ObservedObject var viewModel = ProfileViewModel()
+
+    var  songName = ""
     var description = "description"
     
     var body: some View {
         VStack(spacing: 15) {
             VStack(spacing: 5) {
-                Text(name)
+                Text(viewModel.firstname + " " + viewModel.lastname)
                     .bold()
                     .font(.title)
                     .foregroundColor(.white)
@@ -62,31 +93,7 @@ struct ProfileText: View {
         
     }
 }
-struct Header: View {
-    static let gradientStart = Color(red: 0 / 255, green: 0 / 255, blue: 0 / 255)
-    static let gradientEnd = Color(red: 101 / 255, green: 104 / 255, blue: 203 / 255)
-    
-    var body: some View {
-        ZStack(alignment: .center) {
-            Rectangle()
-                .fill(LinearGradient(
-                    gradient: .init(colors: [Self.gradientStart, Self.gradientEnd]),
-                    startPoint: .init(x: 0.5, y: 0),
-                    endPoint: .init(x: 0.5, y: 0.6)
-                ))
-                .edgesIgnoringSafeArea(.top)
-                .frame(height: 200)
-            Image("userIcon")
-                .resizable()
-                .clipShape(Circle())
-                .scaledToFit()
-                .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                .shadow(radius: 10)
-                .frame(width: 150,height: 150)
-        }
-        
-        
-    }
+
     
     
     struct ProfileView_Previews: PreviewProvider {

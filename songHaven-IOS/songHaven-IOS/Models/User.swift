@@ -7,13 +7,13 @@
 import SwiftyJSON
 struct User : Decodable{
     
-    internal init(_id: String? = nil, email: String? = nil, password: String? = nil, firstname: String? = nil, lastname: String? = nil, idPhoto: String? = nil, isVerified: Bool? = nil) {
+    internal init(_id: String? = nil, email: String? = nil, password: String? = nil, firstname: String? = nil, lastname: String? = nil, imageId: String? = nil, isVerified: Bool? = nil) {
         self._id = _id
         self.email = email
         self.password = password
         self.firstname = firstname
         self.lastname = lastname
-        self.idPhoto = idPhoto
+        self.imageId = imageId
         self.isVerified = isVerified
     }
     
@@ -22,7 +22,7 @@ struct User : Decodable{
     var password  : String?
     var firstname : String?
     var lastname : String?
-    var idPhoto : String?
+    var imageId : String?
     var isVerified : Bool?
     
     // relations
@@ -45,8 +45,7 @@ struct User : Decodable{
                 //password: jsonItem["mdp"].stringValue,
                 firstname: jsonData["firstname"].stringValue,
                 lastname: jsonData["lastname"].stringValue,
-                /*dateNaissance: DateUtils.formatFromString(string: jsonItem["dateNaissance"].stringValue),*/
-                idPhoto: jsonData["idPhoto"].stringValue,
+                imageId: jsonData["imageId"].stringValue,
                 isVerified: jsonData["isVerified"].boolValue
             )
         }

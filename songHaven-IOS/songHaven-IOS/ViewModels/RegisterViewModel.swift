@@ -8,7 +8,7 @@ import SwiftUI
 
 @MainActor class RegisterViewModel: ObservableObject {
     
-    @Published var name = ""
+    @Published var firstname = ""
     @Published var lastname = ""
     @Published var email = ""
     @Published var password = ""
@@ -25,7 +25,7 @@ import SwiftUI
     
     func register(){
         isLoading = true
-        UserService.SignUp(email: "faouez.marzouk@esprit.tn", password: "12345678", firstName: "fawez", lastName: "marzouk", completed: { (success, reponse) in
+        UserService.SignUp(email: email, password: password, firstName: firstname, lastName: lastname, completed: { (success, reponse) in
             
             self.isLoading = false
             if success {
@@ -51,7 +51,7 @@ import SwiftUI
     
     func validateFields()-> Bool{
         //return true
-        return (self.isEmail(strToValidate: email) && self.password.count >= 8 && self.password == self.confirmPassword && self.isLettersOnly(strToValidate: name) && self.isLettersOnly(strToValidate: lastname) )
+        return (self.isEmail(strToValidate: email) && self.password.count >= 8 && self.password == self.confirmPassword && self.isLettersOnly(strToValidate: firstname) && self.isLettersOnly(strToValidate: lastname) )
     }
     
     func isEmail(strToValidate : String)-> Bool{

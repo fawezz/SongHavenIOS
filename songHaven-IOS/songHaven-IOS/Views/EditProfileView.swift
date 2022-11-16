@@ -12,35 +12,61 @@ import AlertToast
 struct EditProfileView: View {
     
     @StateObject var viewModel = EditProfileViewModel()
-
-        
+    
+    
     var body: some View {
         NavigationView{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack(spacing:20) {
                     ZStack(alignment: .bottomTrailing){
-                        Image("userIcon")
-                            .resizable()
-                            .clipShape(Circle())
-                            .scaledToFit()
-                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                            .shadow(radius: 10)
-                            .frame(width: 150,height: 150)
-                        PhotosPicker(
-                            selection: $viewModel.selectedItems,
-                            matching: .images,
-                            photoLibrary: .shared()
-                        )
+                        
+                        AsyncImage(url:viewModel.profileImageUrl)
                         {
-                            Image(systemName: "camera")
-                                .frame(width: 40, height: 40)
-                                .background(Color(.white))
-                                .cornerRadius(50)
-                                .padding(.trailing, 3)
-                                .foregroundColor(.black)
+                            Image in Image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                        .shadow(radius: 10)
+                        .frame(width: 180,height: 180)
+                        
+                        PhotosPicker(
+                            selection: $viewModel.selectedItem,
+                            matching: .images,
+                            photoLibrary: .shared()){
+                                Image(systemName: "camera")
+                                    .frame(width: 40, height: 40)
+                                    .background(Color(.white))
+                                    .cornerRadius(50)
+                                    .padding(.trailing, 3)
+                                    .foregroundColor(.black)
+                            }
+                            .onChange(of: viewModel.selectedItem,
+                                      perform: {
+                                newItem in
+                                Task {
+                                    if let data = try? await newItem?.loadTransferable(type: Data.self){
+                                        viewModel.selectedImageData = data
+                                        print("Submitted image")
+                                        viewModel.editImage()
+                                    }
+                                }
+                            })
+                        if(viewModel.isUploading){
+                            ZStack{
+                                Color(.white)
+                                    .opacity(0.7)
+                                    .cornerRadius(50)
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .purple))
+                                    .scaleEffect(3)
+                                
+                            }.frame(width: 200, height: 200)
                         }
                     }
+                    .frame(width: 100, height: 100)
                     .padding(.bottom, 40)
                     
                     TextField("Enter your name",text:$viewModel.firstname)
@@ -50,7 +76,7 @@ struct EditProfileView: View {
                         .textFieldStyle(ProfileTextFieldStyle())
                     
                     /*TextField("Enter your Email",text:$viewModel.email)
-                        .textFieldStyle(ProfileTextFieldStyle())*/
+                     .textFieldStyle(ProfileTextFieldStyle())*/
                     
                     SecureField("Password",text:$viewModel.password)
                         .textFieldStyle(ProfileTextFieldStyle())
@@ -63,7 +89,12 @@ struct EditProfileView: View {
                         },
                         label: {
                             Label("Edit", systemImage: "square.and.pencil")
-                                .foregroundColor(buttonColor)
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame(width: 300, height: 50)
+                                .background(buttonColor)
+                                .cornerRadius(15.0)
+
                         })
                     .padding(.vertical, 40)
                     .disabled(!viewModel.validateFields())
@@ -91,8 +122,8 @@ struct EditProfileView: View {
                 AlertToast(type: .error(.red), title: viewModel.toastMessage)
             }
         }
-        
     }
+    
     var buttonColor: Color{
         if(viewModel.validateFields()){
             return Color.green

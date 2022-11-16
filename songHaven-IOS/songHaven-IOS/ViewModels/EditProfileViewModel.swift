@@ -10,16 +10,20 @@ import _PhotosUI_SwiftUI
 
 @MainActor class EditProfileViewModel: ObservableObject {
     
-    @Published var firstname = ""
-    @Published var lastname = ""
+    @Published var firstname = UserDefaults.standard.string(forKey: "firstname")!
+    @Published var lastname = UserDefaults.standard.string(forKey: "lastname")!
     //@Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
     
-    @Published var selectedItems: [PhotosPickerItem] = []
+    @Published var selectedItem: PhotosPickerItem? = nil
+    @Published var selectedImageData: Data? = nil
+    @Published var profileImageUrl: URL = URL(string: UserService.UserImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
+    
     
     @Published var navigator: String? = nil
     @Published var isLoading: Bool = false
+    @Published var isUploading: Bool = false
     
     @Published var showSuccessToast : Bool = false
     @Published var showFailToast : Bool = false
@@ -28,7 +32,7 @@ import _PhotosUI_SwiftUI
     
     func EditDetails(){
         isLoading = true
-        UserService.EditDetails(id: "6373c3575a4f51eb3fbbe7b1", firstname: firstname, lastname: lastname, password: password, completed: { (success, reponse) in
+        UserService.EditDetails(id: UserDefaults.standard.string(forKey: "userId")!, firstname: firstname, lastname: lastname, password: password, completed: { (success, reponse) in
             
             self.isLoading = false
             if success {
@@ -50,12 +54,36 @@ import _PhotosUI_SwiftUI
                 print("fail")
             }
         })
-        
+    }
+    
+    func editImage(){
+        self.isUploading = true
+        UserService.uploadImage(email: UserDefaults.standard.string(forKey: "email")!, image: UIImage(data: selectedImageData!), completed: { (success, reponse) in
+            
+            self.isUploading = false
+            if success {
+                print("success edit image")
+                self.profileImageUrl = URL(string: UserService.UserImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
+                self.toastMessage = reponse
+                self.showSuccessToast = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self.showSuccessToast = false
+                }
+            }
+            else {
+                self.toastMessage = reponse
+                self.showFailToast = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self.showFailToast = false
+                }
+                print("fail edit")
+            }
+        })
     }
     
     func validateFields()-> Bool{
-        return true
-        return (self.isLettersOnly(strToValidate: self.firstname) && self.isLettersOnly(strToValidate: self.lastname) && self.password.count >= 8 && self.password == self.confirmPassword )
+        //return true
+        return (self.isLettersOnly(strToValidate: self.firstname) && self.isLettersOnly(strToValidate: self.lastname) && self.password.count >= 8 || self.password.count == 0 && self.password == self.confirmPassword )
     }
     
     func isEmail(strToValidate : String)-> Bool{

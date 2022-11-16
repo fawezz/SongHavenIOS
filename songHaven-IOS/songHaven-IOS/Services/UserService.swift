@@ -7,18 +7,21 @@
 import Alamofire
 import SwiftyJSON
 import Foundation
+import UIKit
 
 class UserService{
-    let ip = "http://172.17.1.89:9090"
-    static let SignInURL = "http://172.17.1.89:9090/user/signin"
-    static let SignUpURL = "http://172.17.1.89:9090/user/signup"
-    static let ResendWelcomeMailURL = "http://172.17.1.89:9090/user/resendWelcomeMail"
+    let ip = "http://172.17.4.71:9090"
+    static let SignInURL = "http://172.17.4.71:9090/user/signin"
+    static let SignUpURL = "http://172.17.4.71:9090/user/signup"
+    static let ResendWelcomeMailURL = "http://172.17.4.71:9090/user/resendWelcomeMail"
     
-    static let SendOtpMailURL = "http://172.17.1.89:9090/user/forgotPassword/sendOtpMail"
-    static let VerifyOtpURL = "http://172.17.1.89:9090/user/forgotPassword/verifyOTP"
-    static let CreatePasswordURL = "http://172.17.1.89:9090/user/forgotPassword/createNewPassword"
-    static let EditDetailsURL = "http://172.17.1.89:9090/user/modifyDetails"
+    static let SendOtpMailURL = "http://172.17.4.71:9090/user/forgotPassword/sendOtpMail"
+    static let VerifyOtpURL = "http://172.17.4.71:9090/user/forgotPassword/verifyOTP"
+    static let CreatePasswordURL = "http://172.17.4.71:9090/user/forgotPassword/createNewPassword"
+    static let EditDetailsURL = "http://172.17.4.71:9090/user/modifyDetails"
     
+    static let UploadImageURL = "http://172.17.4.71:9090/user/profileImage"
+    static let UserImageUrl = "http://172.17.4.71:9090/img/"
     
     static func SignIn(email: String, password: String, completed: @escaping (Bool, Any?) -> Void){
         
@@ -48,6 +51,15 @@ class UserService{
                     )
                     UserDefaults.standard.setValue(
                         currentUser.email, forKey: "email"
+                    )
+                    UserDefaults.standard.setValue(
+                        currentUser.imageId, forKey: "imageId"
+                    )
+                    UserDefaults.standard.setValue(
+                        currentUser.lastname, forKey: "lastname"
+                    )
+                    UserDefaults.standard.setValue(
+                        currentUser.firstname, forKey: "firstname"
                     )
                     print(currentUser)
                     
@@ -260,14 +272,15 @@ class UserService{
                     let currentUser = User.fromJson(jsonData: jsonData["currentUser"])
                     
                     UserDefaults.standard.setValue(
-                        jsonData["token"].stringValue,forKey: "token"
+                        jsonData["firstname"].stringValue,forKey: "firstname"
+                    )
+                    UserDefaults.standard.setValue(
+                        jsonData["lastname"].stringValue,forKey: "lastname"
                     )
                     UserDefaults.standard.setValue(
                         currentUser._id, forKey: "userId"
                     )
-                    UserDefaults.standard.setValue(
-                        currentUser.email, forKey: "email"
-                    )
+                    
                     print(currentUser)
                     
                     completed(true, currentUser)
@@ -279,5 +292,49 @@ class UserService{
                     completed(false, message)
                 }
             }
+    }
+    
+    static func uploadImage(email: String, image : UIImage?, completed: @escaping (Bool, String) -> Void){
+        
+        let headers: HTTPHeaders = [
+            /* "Authorization": "your_access_token",  in case you need authorization header */
+            "Content-type": "multipart/form-data"
+        ]
+        let params = [
+            "email" : email,
+        ]
+        
+        AF.upload(
+            multipartFormData: { multipartFormData in
+                for(key, keyValue) in params{
+                    if let keyData = keyValue.data(using: .utf8){
+                        multipartFormData.append(keyData, withName: key)
+                    }
+                }
+                multipartFormData.append(image!.jpegData(compressionQuality: 0)!, withName: "image" , fileName: "file.jpeg", mimeType: "image/jpeg")
+            },
+            to: UserService.UploadImageURL, method: .post, headers: headers)
+        .response { response in
+            switch response.result {
+            case .success:
+                let jsonData = JSON(response.data!)
+                let imageId = jsonData["imageId"].stringValue
+                let message = jsonData["message"].stringValue
+                
+                UserDefaults.standard.setValue(
+                    imageId,forKey: "imageId"
+                )
+                print("success")
+                completed(true, message)
+                
+            case let .failure(error):
+                debugPrint(error)
+                let jsonData = JSON(response.data!)
+                let message = jsonData["message"].stringValue
+                print(message)
+                completed(false, message)
+            }
+            
+        }
     }
 }

@@ -25,7 +25,7 @@ struct RegisterView: View {
                         .font(.largeTitle)
                         .bold()
                         .foregroundColor(.white)
-                    TextField("Enter your name",text:$viewModel.name)
+                    TextField("Enter your name",text:$viewModel.firstname)
                         .textFieldStyle(RegisterTextFieldStyle())
                     
                     TextField("Enter your lastname",text:$viewModel.lastname)
