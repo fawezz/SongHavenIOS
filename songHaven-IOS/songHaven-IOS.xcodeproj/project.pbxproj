@@ -21,6 +21,10 @@
 		2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* ResetPasswordView.swift */; };
 		2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48072919929C00AF179A /* VerificationCodeView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
+		99C06EF22927881000DD6A05 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C06EF12927881000DD6A05 /* FriendsView.swift */; };
+		99C06EF82927D6E300DD6A05 /* RequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C06EF72927D6E300DD6A05 /* RequestView.swift */; };
+		99C06EFB2927EE5C00DD6A05 /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = 99C06EFA2927EE5C00DD6A05 /* User.png */; };
+		99C06EFD2927F06100DD6A05 /* BandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C06EFC2927F06100DD6A05 /* BandView.swift */; };
 		B0D2419E291EA67600148FC3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D2419D291EA67600148FC3 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +63,10 @@
 		2B0A48052919910B00AF179A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2B0A48072919929C00AF179A /* VerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		99C06EF12927881000DD6A05 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		99C06EF72927D6E300DD6A05 /* RequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestView.swift; sourceTree = "<group>"; };
+		99C06EFA2927EE5C00DD6A05 /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = User.png; path = ../../../../../Downloads/User.png; sourceTree = "<group>"; };
+		99C06EFC2927F06100DD6A05 /* BandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandView.swift; sourceTree = "<group>"; };
 		B0D2419D291EA67600148FC3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +124,7 @@
 				081B291E2919209700981671 /* songHaven_IOSApp.swift */,
 				081B29202919209700981671 /* ContentView.swift */,
 				081B29222919209900981671 /* Assets.xcassets */,
+				99C06EFA2927EE5C00DD6A05 /* User.png */,
 				081B29272919209900981671 /* Persistence.swift */,
 				081B29292919209900981671 /* songHaven_IOS.xcdatamodeld */,
 				081B29242919209900981671 /* Preview Content */,
@@ -157,6 +166,9 @@
 				2B0A47FF291981D200AF179A /* ProfileView.swift */,
 				081B294D291923C600981671 /* RegisterView.swift */,
 				B0D2419D291EA67600148FC3 /* LoginView.swift */,
+				99C06EF12927881000DD6A05 /* FriendsView.swift */,
+				99C06EF72927D6E300DD6A05 /* RequestView.swift */,
+				99C06EFC2927F06100DD6A05 /* BandView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -279,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99C06EFB2927EE5C00DD6A05 /* User.png in Resources */,
 				081B29262919209900981671 /* Preview Assets.xcassets in Resources */,
 				081B29232919209900981671 /* Assets.xcassets in Resources */,
 			);
@@ -313,6 +326,9 @@
 				2B0A4800291981D200AF179A /* ProfileView.swift in Sources */,
 				081B29212919209700981671 /* ContentView.swift in Sources */,
 				2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */,
+				99C06EF82927D6E300DD6A05 /* RequestView.swift in Sources */,
+				99C06EFD2927F06100DD6A05 /* BandView.swift in Sources */,
+				99C06EF22927881000DD6A05 /* FriendsView.swift in Sources */,
 				B0D2419E291EA67600148FC3 /* LoginView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
 			);

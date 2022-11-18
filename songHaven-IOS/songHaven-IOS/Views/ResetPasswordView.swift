@@ -11,7 +11,8 @@ struct ResetPasswordView: View {
     @State private var password = ""
     @State private var confirmPassword = ""
     
-    var body: some View {     NavigationView{
+    var body: some View {
+        NavigationView{
          ZStack{  LinearGradient(gradient: .init(colors: [.purple , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             VStack  (spacing: 50){
                 Text("Reset Password")
