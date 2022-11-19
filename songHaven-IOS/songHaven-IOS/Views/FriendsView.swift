@@ -17,52 +17,63 @@ struct FriendsView: View {
             LinearGradient(gradient: .init(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             
             VStack{
+                NavigationLink("", destination: FriendsView())
                 
-                Text("Friend & Groups")
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                    .bold()
-                    .padding()
-                
-                
-                Spacer()
+                    Text("Friend & Groups")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .bold()
+                        .padding()
+
                 VStack{
-                    Spacer()
+                    
+                                TextField("Search...",text:$name)
+                                    .padding()
+                                    .frame(width: 300, height :50)
+                                    .background(Color.white.opacity(0.15))
+                                    .cornerRadius(50)
+                                    .foregroundColor(.white)
+
+
                     HStack{
-                        Text("FRIEND")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 130, height: 50)
-                            .background(Color.clear)
-                            .cornerRadius(15.0)
-                            .bold()
-                        Text("REQUESTS")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 130, height: 50)
-                            .background(Color.clear)
-                            .cornerRadius(15.0)
-                        Text("REQUESTS")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 130, height: 50)
-                            .background(Color.clear)
-                            .cornerRadius(15.0)
                         
+                        
+                        
+                            Text("FRIEND")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(width: 130, height: 50)
+                                .background(Color.clear)
+                                .cornerRadius(15.0)
+                                .bold()
+                        
+                        
+                        NavigationLink( destination: BandView()
+                            .navigationBarBackButtonHidden(true)){
+                            Text("Bands")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(width: 130, height: 50)
+                                .background(Color.clear)
+                            .cornerRadius(15.0)
+                            
+                        }
+                        
+                        NavigationLink( destination: RequestView()
+                            .navigationBarBackButtonHidden(true)){
+                            Text("REQUESTS")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(width: 130, height: 50)
+                                .background(Color.clear)
+                                .cornerRadius(15.0)
+                        }
                         
                     }
-        
-                    TextField("Search...",text:$name)
-                        .padding()
-                        .frame(width: 300, height :50)
-                        .background(Color.white.opacity(0.35))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-
-                
+                        
                     
                 }
                 
