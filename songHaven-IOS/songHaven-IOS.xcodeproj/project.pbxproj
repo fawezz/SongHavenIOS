@@ -21,6 +21,7 @@
 		2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* ResetPasswordView.swift */; };
 		2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48072919929C00AF179A /* VerificationCodeView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
+		940DA30B292BC32800266FDE /* BandDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940DA30A292BC32800266FDE /* BandDetailView.swift */; };
 		99C06EF22927881000DD6A05 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C06EF12927881000DD6A05 /* FriendsView.swift */; };
 		99C06EF82927D6E300DD6A05 /* RequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C06EF72927D6E300DD6A05 /* RequestView.swift */; };
 		99C06EFD2927F06100DD6A05 /* BandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C06EFC2927F06100DD6A05 /* BandView.swift */; };
@@ -65,6 +66,7 @@
 		2B0A48052919910B00AF179A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2B0A48072919929C00AF179A /* VerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		940DA30A292BC32800266FDE /* BandDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandDetailView.swift; sourceTree = "<group>"; };
 		99C06EF12927881000DD6A05 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		99C06EF72927D6E300DD6A05 /* RequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestView.swift; sourceTree = "<group>"; };
 		99C06EFC2927F06100DD6A05 /* BandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				99C06EF12927881000DD6A05 /* FriendsView.swift */,
 				99C06EF72927D6E300DD6A05 /* RequestView.swift */,
 				99C06EFC2927F06100DD6A05 /* BandView.swift */,
+				940DA30A292BC32800266FDE /* BandDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */,
 				081B294E291923C600981671 /* RegisterView.swift in Sources */,
 				081B29282919209900981671 /* Persistence.swift in Sources */,
+				940DA30B292BC32800266FDE /* BandDetailView.swift in Sources */,
 				B026E49529292A9D00E35B3D /* FriendsViewModel.swift in Sources */,
 				081B292B2919209900981671 /* songHaven_IOS.xcdatamodeld in Sources */,
 				B026E49929292AF000E35B3D /* RequestViewModel.swift in Sources */,
