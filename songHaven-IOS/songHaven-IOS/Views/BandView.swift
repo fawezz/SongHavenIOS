@@ -22,24 +22,41 @@ struct BandView: View {
         NavigationView{
             
             ZStack{
-                LinearGradient(gradient: .init(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+                LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             
-                
                 
                 VStack{
                     
-                    Text("Friends & Groups")
+                    
+                    Text("Artists & Bands")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .bold()
                         .padding()
                     
-                    TextField("Search...",text:$name)
-                        .padding()
-                        .frame(width: 300, height :50)
-                        .background(Color.white.opacity(0.15))
-                        .cornerRadius(50)
-                        .foregroundColor(.white)
+                    HStack{
+                        
+                        TextField("Search...",text:$name)
+                            .padding()
+                            .frame(width: 300, height :50)
+                            .background(Color.white.opacity(0.15))
+                            .cornerRadius(50)
+                            .foregroundColor(.white)
+                        
+                        Button(
+                            
+                            action:{
+                            
+                                
+                            }, label:{
+                                Label("", systemImage: "magnifyingglass")
+                                    .foregroundColor(.white)
+                                    .padding(.leading, -50.0)
+                            })
+                        
+                    }
+                    .padding()
+                    
                     
                     
                    
@@ -52,13 +69,15 @@ struct BandView: View {
                                 .navigationBarBackButtonHidden(true)){
                                
                                 
-                                Text("FRIEND")
+                                Text("SUGGESTION")
                                     .font(.headline)
                                     .foregroundColor(.white)
+                                    .fixedSize()
                                     .padding()
                                     .frame(width: 130, height: 50)
                                     .background(Color.clear)
                                     .cornerRadius(15.0)
+                              
                             }
             
                                 Text("BANDS")
@@ -94,11 +113,15 @@ struct BandView: View {
                             
                             ForEach(data, id: \.self ){ number in
                                 ZStack{
-                                    
-                                    Rectangle()
-                                        .frame(width: 130, height: 130)
-                                        .opacity(0.20)
-                                        .cornerRadius(30)
+                                    NavigationLink( destination: BandDetailView()
+                                        .navigationBarBackButtonHidden(true)){
+                                            Rectangle()
+                                                .foregroundColor(.gray)
+                                                .navigationBarBackButtonHidden(true)
+                                                .frame(width: 130, height: 130)
+                                                .opacity(0.20)
+                                                .cornerRadius(30)
+                                        }
                                     VStack{
                                         Image("User")
                                             .resizable()
@@ -118,7 +141,42 @@ struct BandView: View {
                         }
                         
                     }
-                }.padding(.all)
+                    
+                    
+                    
+                    HStack{
+                        
+                        Button(
+                            
+                            action:{
+                            
+                                
+                            }, label:{
+                                Label("", systemImage: "house.fill")
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 10.0)
+                            })
+                        .padding()
+                       
+                        
+                        
+                        Button(
+                            
+                            action:{
+                            
+                                
+                            }, label:{
+                                Label("", systemImage: "person.fill")
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 150.0)
+                                
+                            })
+                        .padding(.leading)
+                        .frame(width: 200.0, height: 11.0)
+                        
+                        
+                    }
+                }.padding(.top)
             }
             
         }

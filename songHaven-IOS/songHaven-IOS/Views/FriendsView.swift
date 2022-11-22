@@ -14,35 +14,50 @@ struct FriendsView: View {
     var body: some View {
         
         ZStack{
-            LinearGradient(gradient: .init(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             
             VStack{
+        
                 NavigationLink("", destination: FriendsView())
-                
-                    Text("Friend & Groups")
+                Spacer()
+                    Text("Artists & Bands")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .bold()
                         .padding()
 
                 VStack{
+                    Spacer()
+                    HStack{
                     
-                                TextField("Search...",text:$name)
-                                    .padding()
-                                    .frame(width: 300, height :50)
-                                    .background(Color.white.opacity(0.15))
-                                    .cornerRadius(50)
-                                    .foregroundColor(.white)
-
-
+                    TextField("Search...",text:$name)
+                            .padding(.top)
+                        .frame(width: 300, height :50)
+                        .background(Color.white.opacity(0.15))
+                        .cornerRadius(50)
+                        .foregroundColor(.white)
+                    
+                    Button(
+                        
+                        action:{
+                        
+                            
+                        }, label:{
+                            Label("", systemImage: "magnifyingglass")
+                                .foregroundColor(.white)
+                                .padding(.leading, -50.0)
+                        })
+                    
+                }
+                    Spacer()
                     HStack{
                         
                         
-                        
-                            Text("FRIEND")
+                            Text("SUGGESTION")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .padding()
+                                .fixedSize()
                                 .frame(width: 130, height: 50)
                                 .background(Color.clear)
                                 .cornerRadius(15.0)
@@ -51,7 +66,7 @@ struct FriendsView: View {
                         
                         NavigationLink( destination: BandView()
                             .navigationBarBackButtonHidden(true)){
-                            Text("Bands")
+                            Text("BANDS")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .padding()
@@ -73,6 +88,7 @@ struct FriendsView: View {
                         }
                         
                     }
+                    .padding(.top)
                         
                     
                 }
@@ -108,6 +124,7 @@ struct FriendsView: View {
 
 struct FriendRowItem: View {
 var body: some View {
+    Spacer()
     HStack{
     
         Image("User")
@@ -122,17 +139,19 @@ var body: some View {
                 .bold()
                 .foregroundColor(.white)
                 .padding()
-            
-            Text("is Actice")
-            
-                .foregroundColor(.green)
-              
-                .padding()
+        
         }
         Spacer()
-        Button(role: .destructive, action: {}){
-            Label("",systemImage: "trash")
+        Button ("Invite",action:{
+            
         }
+            )
+        .font(.headline)
+        .foregroundColor(.white)
+        .padding()
+        .buttonStyle(.bordered)
+
+
         
     }.padding(.all)
     
