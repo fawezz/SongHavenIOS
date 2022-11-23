@@ -64,7 +64,7 @@ struct BandView: View {
                         
                         HStack{
                             
-                            NavigationLink( destination: FriendsView()
+                            NavigationLink( destination: ArtistSuggestionView()
                             
                                 .navigationBarBackButtonHidden(true)){
                                
@@ -90,7 +90,7 @@ struct BandView: View {
                                     .cornerRadius(15.0)
                             
                             
-                            NavigationLink( destination: RequestView()
+                            NavigationLink( destination: BandRequestView()
                                 .navigationBarBackButtonHidden(true)){
                                 
                                 Text("REQUESTS")

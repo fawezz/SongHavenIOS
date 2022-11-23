@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RequestView: View {
+struct BandRequestView: View {
     @State private var name = ""
     var body: some View {
         NavigationView{
@@ -49,7 +49,7 @@ struct RequestView: View {
                         
                         HStack{
                             
-                            NavigationLink( destination: FriendsView()
+                            NavigationLink( destination: ArtistSuggestionView()
                                 .navigationBarBackButtonHidden(true)){
                                 Text("SUGGESTION")
                                     .font(.headline)
@@ -108,7 +108,7 @@ struct RequestView: View {
     
     struct RequestView_Previews: PreviewProvider {
         static var previews: some View {
-            RequestView()
+            BandRequestView()
         }
     }
     struct RequestRowItem: View {

@@ -22,12 +22,9 @@
 		2B0A48082919929C00AF179A /* VerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48072919929C00AF179A /* VerificationCodeView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
 		940DA30B292BC32800266FDE /* BandDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940DA30A292BC32800266FDE /* BandDetailView.swift */; };
-		99C06EF22927881000DD6A05 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C06EF12927881000DD6A05 /* FriendsView.swift */; };
-		99C06EF82927D6E300DD6A05 /* RequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C06EF72927D6E300DD6A05 /* RequestView.swift */; };
+		99C06EF22927881000DD6A05 /* ArtistSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C06EF12927881000DD6A05 /* ArtistSuggestionView.swift */; };
+		99C06EF82927D6E300DD6A05 /* BandRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C06EF72927D6E300DD6A05 /* BandRequestView.swift */; };
 		99C06EFD2927F06100DD6A05 /* BandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C06EFC2927F06100DD6A05 /* BandView.swift */; };
-		B026E49529292A9D00E35B3D /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B026E49429292A9D00E35B3D /* FriendsViewModel.swift */; };
-		B026E49729292ACE00E35B3D /* BandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B026E49629292ACE00E35B3D /* BandViewModel.swift */; };
-		B026E49929292AF000E35B3D /* RequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B026E49829292AF000E35B3D /* RequestViewModel.swift */; };
 		B0D2419E291EA67600148FC3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D2419D291EA67600148FC3 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,12 +64,9 @@
 		2B0A48072919929C00AF179A /* VerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		940DA30A292BC32800266FDE /* BandDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandDetailView.swift; sourceTree = "<group>"; };
-		99C06EF12927881000DD6A05 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
-		99C06EF72927D6E300DD6A05 /* RequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestView.swift; sourceTree = "<group>"; };
+		99C06EF12927881000DD6A05 /* ArtistSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSuggestionView.swift; sourceTree = "<group>"; };
+		99C06EF72927D6E300DD6A05 /* BandRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandRequestView.swift; sourceTree = "<group>"; };
 		99C06EFC2927F06100DD6A05 /* BandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandView.swift; sourceTree = "<group>"; };
-		B026E49429292A9D00E35B3D /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = SOURCE_ROOT; };
-		B026E49629292ACE00E35B3D /* BandViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandViewModel.swift; sourceTree = SOURCE_ROOT; };
-		B026E49829292AF000E35B3D /* RequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewModel.swift; sourceTree = SOURCE_ROOT; };
 		B0D2419D291EA67600148FC3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				B026E493292929E800E35B3D /* Services */,
-				B0B99630291D987D00F75997 /* ViewModel */,
 				B0B9962F291D987300F75997 /* Models */,
 				B0B9962E291D985300F75997 /* Views */,
 				081B291E2919209700981671 /* songHaven_IOSApp.swift */,
@@ -179,8 +172,8 @@
 				2B0A47FF291981D200AF179A /* ProfileView.swift */,
 				081B294D291923C600981671 /* RegisterView.swift */,
 				B0D2419D291EA67600148FC3 /* LoginView.swift */,
-				99C06EF12927881000DD6A05 /* FriendsView.swift */,
-				99C06EF72927D6E300DD6A05 /* RequestView.swift */,
+				99C06EF12927881000DD6A05 /* ArtistSuggestionView.swift */,
+				99C06EF72927D6E300DD6A05 /* BandRequestView.swift */,
 				99C06EFC2927F06100DD6A05 /* BandView.swift */,
 				940DA30A292BC32800266FDE /* BandDetailView.swift */,
 			);
@@ -192,16 +185,6 @@
 			children = (
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		B0B99630291D987D00F75997 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				B026E49429292A9D00E35B3D /* FriendsViewModel.swift */,
-				B026E49629292ACE00E35B3D /* BandViewModel.swift */,
-				B026E49829292AF000E35B3D /* RequestViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,16 +322,13 @@
 				081B294E291923C600981671 /* RegisterView.swift in Sources */,
 				081B29282919209900981671 /* Persistence.swift in Sources */,
 				940DA30B292BC32800266FDE /* BandDetailView.swift in Sources */,
-				B026E49529292A9D00E35B3D /* FriendsViewModel.swift in Sources */,
 				081B292B2919209900981671 /* songHaven_IOS.xcdatamodeld in Sources */,
-				B026E49929292AF000E35B3D /* RequestViewModel.swift in Sources */,
 				2B0A4800291981D200AF179A /* ProfileView.swift in Sources */,
 				081B29212919209700981671 /* ContentView.swift in Sources */,
 				2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */,
-				B026E49729292ACE00E35B3D /* BandViewModel.swift in Sources */,
-				99C06EF82927D6E300DD6A05 /* RequestView.swift in Sources */,
+				99C06EF82927D6E300DD6A05 /* BandRequestView.swift in Sources */,
 				99C06EFD2927F06100DD6A05 /* BandView.swift in Sources */,
-				99C06EF22927881000DD6A05 /* FriendsView.swift in Sources */,
+				99C06EF22927881000DD6A05 /* ArtistSuggestionView.swift in Sources */,
 				B0D2419E291EA67600148FC3 /* LoginView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
 			);
