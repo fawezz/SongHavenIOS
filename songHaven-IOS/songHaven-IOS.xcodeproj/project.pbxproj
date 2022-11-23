@@ -27,6 +27,9 @@
 		94AFFC04292E1F8E00824EF6 /* BandsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC03292E1F8E00824EF6 /* BandsViewModel.swift */; };
 		94AFFC06292E1FAF00824EF6 /* BandDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC05292E1FAF00824EF6 /* BandDetailViewModel.swift */; };
 		94AFFC08292E1FE200824EF6 /* BandRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC07292E1FE200824EF6 /* BandRequestViewModel.swift */; };
+		94AFFC0A292E223400824EF6 /* MusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC09292E223400824EF6 /* MusicPlayerView.swift */; };
+		94AFFC0C292E224100824EF6 /* MusicPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC0B292E224100824EF6 /* MusicPlayerViewModel.swift */; };
+		94AFFC0E292E22EF00824EF6 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC0D292E22EF00824EF6 /* ColorExtension.swift */; };
 		B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B009E7EE291EAD8C0068A57C /* Alamofire */; };
 		B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADAE2923E70900C9E601 /* EditProfileView.swift */; };
 		B024ADB12923E71000C9E601 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADB02923E71000C9E601 /* LoginView.swift */; };
@@ -89,6 +92,9 @@
 		94AFFC03292E1F8E00824EF6 /* BandsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandsViewModel.swift; sourceTree = "<group>"; };
 		94AFFC05292E1FAF00824EF6 /* BandDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandDetailViewModel.swift; sourceTree = "<group>"; };
 		94AFFC07292E1FE200824EF6 /* BandRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandRequestViewModel.swift; sourceTree = "<group>"; };
+		94AFFC09292E223400824EF6 /* MusicPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerView.swift; sourceTree = "<group>"; };
+		94AFFC0B292E224100824EF6 /* MusicPlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewModel.swift; sourceTree = "<group>"; };
+		94AFFC0D292E22EF00824EF6 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		B024ADAE2923E70900C9E601 /* EditProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		B024ADB02923E71000C9E601 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B024ADB22923E71700C9E601 /* OtpVerificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpVerificationView.swift; sourceTree = "<group>"; };
@@ -201,6 +207,7 @@
 		94AFFC00292E195800824EF6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				94AFFC0D292E22EF00824EF6 /* ColorExtension.swift */,
 				94AFFC01292E197800824EF6 /* Constants.swift */,
 			);
 			path = Utilities;
@@ -217,6 +224,7 @@
 		B0B9962E291D985300F75997 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				94AFFC09292E223400824EF6 /* MusicPlayerView.swift */,
 				94AFFBFE292E15C700824EF6 /* BandsView.swift */,
 				94AFFBFC292E15C100824EF6 /* BandDetailView.swift */,
 				94AFFBFA292E15B600824EF6 /* BandRequestView.swift */,
@@ -236,6 +244,7 @@
 		B0B99630291D987D00F75997 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				94AFFC0B292E224100824EF6 /* MusicPlayerViewModel.swift */,
 				B024ADC82923E7D700C9E601 /* ProfileViewModel.swift */,
 				B024ADC62923E7D100C9E601 /* RegisterViewModel.swift */,
 				B024ADC42923E7CB00C9E601 /* SendOtpViewModel.swift */,
@@ -401,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */,
+				94AFFC0C292E224100824EF6 /* MusicPlayerViewModel.swift in Sources */,
 				B024ADB32923E71700C9E601 /* OtpVerificationView.swift in Sources */,
 				B024ADC52923E7CB00C9E601 /* SendOtpViewModel.swift in Sources */,
 				94AFFC04292E1F8E00824EF6 /* BandsViewModel.swift in Sources */,
@@ -422,9 +432,11 @@
 				B024ADC32923E7C500C9E601 /* SignUpViewModel.swift in Sources */,
 				B024ADBB2923E7A700C9E601 /* LoginViewModel.swift in Sources */,
 				B024ADB12923E71000C9E601 /* LoginView.swift in Sources */,
+				94AFFC0E292E22EF00824EF6 /* ColorExtension.swift in Sources */,
 				B0C51152291FFFF600A3A0D0 /* UserService.swift in Sources */,
 				B025A95F291EE2D2007FF6FF /* User.swift in Sources */,
 				94AFFC06292E1FAF00824EF6 /* BandDetailViewModel.swift in Sources */,
+				94AFFC0A292E223400824EF6 /* MusicPlayerView.swift in Sources */,
 				94AFFBFB292E15B600824EF6 /* BandRequestView.swift in Sources */,
 				B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,

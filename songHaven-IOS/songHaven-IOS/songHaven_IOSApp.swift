@@ -13,7 +13,7 @@ struct songHaven_IOSApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Login()
+            MusicPlayerView(viewModel: MusicPlayerViewModel(model: "aaaa", slider: 5))
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
