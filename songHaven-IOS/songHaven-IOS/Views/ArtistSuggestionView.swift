@@ -52,7 +52,7 @@ struct ArtistSuggestionView: View {
                             .cornerRadius(15.0)
                             .bold()
                         
-                        NavigationLink( destination: BandView()
+                        NavigationLink( destination: BandsView()
                             .navigationBarBackButtonHidden(true)){
                                 Text("BANDS")
                                     .font(.headline)

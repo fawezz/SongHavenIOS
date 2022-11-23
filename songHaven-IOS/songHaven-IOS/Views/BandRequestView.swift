@@ -60,7 +60,7 @@ struct BandRequestView: View {
                                     .background(Color.clear)
                                     .cornerRadius(15.0)
                             }
-                            NavigationLink( destination: BandView()
+                            NavigationLink( destination: BandsView()
                                 .navigationBarBackButtonHidden(true)){
                                 Text("BANDS")
                                     .font(.headline)
