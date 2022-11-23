@@ -10,18 +10,18 @@ import Foundation
 import UIKit
 
 class UserService{
-    let ip = "http://172.17.4.71:9090"
-    static let SignInURL = "http://172.17.4.71:9090/user/signin"
-    static let SignUpURL = "http://172.17.4.71:9090/user/signup"
-    static let ResendWelcomeMailURL = "http://172.17.4.71:9090/user/resendWelcomeMail"
+    let ip = "http://172.17.5.247:9090"
+    static let SignInURL = "http://172.17.5.247:9090/user/signin"
+    static let SignUpURL = "http://172.17.5.247:9090/user/signup"
+    static let ResendWelcomeMailURL = "http://172.17.5.247:9090/user/resendWelcomeMail"
     
-    static let SendOtpMailURL = "http://172.17.4.71:9090/user/forgotPassword/sendOtpMail"
-    static let VerifyOtpURL = "http://172.17.4.71:9090/user/forgotPassword/verifyOTP"
-    static let CreatePasswordURL = "http://172.17.4.71:9090/user/forgotPassword/createNewPassword"
-    static let EditDetailsURL = "http://172.17.4.71:9090/user/modifyDetails"
+    static let SendOtpMailURL = "http://172.17.5.247:9090/user/forgotPassword/sendOtpMail"
+    static let VerifyOtpURL = "http://172.17.5.247:9090/user/forgotPassword/verifyOTP"
+    static let CreatePasswordURL = "http://172.17.5.247:9090/user/forgotPassword/createNewPassword"
+    static let EditDetailsURL = "http://172.17.5.247:9090/user/modifyDetails"
     
-    static let UploadImageURL = "http://172.17.4.71:9090/user/profileImage"
-    static let UserImageUrl = "http://172.17.4.71:9090/img/"
+    static let UploadImageURL = "http://172.17.5.247:9090/user/profileImage"
+    static let UserImageUrl = "http://172.17.5.247:9090/img/"
     
     static func SignIn(email: String, password: String, completed: @escaping (Bool, Any?) -> Void){
         

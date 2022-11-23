@@ -31,7 +31,8 @@ import SwiftUI
                 print("success")
                 let currentUser = reponse as! User
                 if currentUser.isVerified! {
-                    self.navigator = "Profile"
+                    //self.navigator = "Profile"
+                    self.navigator = "Bands"
                     print("user Verified")
                 } else {
                     print("user not Verified")

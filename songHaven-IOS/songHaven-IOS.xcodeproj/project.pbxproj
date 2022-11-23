@@ -19,6 +19,11 @@
 		2B0A4800291981D200AF179A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A47FF291981D200AF179A /* ProfileView.swift */; };
 		2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* ResetPasswordView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
+		94AFFBF9292E15AD00824EF6 /* ArtistSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBF8292E15AD00824EF6 /* ArtistSuggestionView.swift */; };
+		94AFFBFB292E15B600824EF6 /* BandRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBFA292E15B600824EF6 /* BandRequestView.swift */; };
+		94AFFBFD292E15C100824EF6 /* BandDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBFC292E15C100824EF6 /* BandDetailView.swift */; };
+		94AFFBFF292E15C700824EF6 /* BandsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBFE292E15C700824EF6 /* BandsView.swift */; };
+		94AFFC02292E197800824EF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC01292E197800824EF6 /* Constants.swift */; };
 		B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B009E7EE291EAD8C0068A57C /* Alamofire */; };
 		B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADAE2923E70900C9E601 /* EditProfileView.swift */; };
 		B024ADB12923E71000C9E601 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADB02923E71000C9E601 /* LoginView.swift */; };
@@ -73,6 +78,11 @@
 		2B0A47FF291981D200AF179A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2B0A48052919910B00AF179A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		94AFFBF8292E15AD00824EF6 /* ArtistSuggestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistSuggestionView.swift; sourceTree = "<group>"; };
+		94AFFBFA292E15B600824EF6 /* BandRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandRequestView.swift; sourceTree = "<group>"; };
+		94AFFBFC292E15C100824EF6 /* BandDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandDetailView.swift; sourceTree = "<group>"; };
+		94AFFBFE292E15C700824EF6 /* BandsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandsView.swift; sourceTree = "<group>"; };
+		94AFFC01292E197800824EF6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B024ADAE2923E70900C9E601 /* EditProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		B024ADB02923E71000C9E601 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B024ADB22923E71700C9E601 /* OtpVerificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpVerificationView.swift; sourceTree = "<group>"; };
@@ -143,10 +153,10 @@
 			isa = PBXGroup;
 			children = (
 				B066E04C2923F446002A27D8 /* songHaven_IOS.xcdatamodeld */,
+				94AFFC00292E195800824EF6 /* Utilities */,
 				B0C51150291FFFDE00A3A0D0 /* Services */,
 				B025A958291EE26E007FF6FF /* Models */,
 				B0B99630291D987D00F75997 /* ViewModels */,
-				B0B9962F291D987300F75997 /* Models */,
 				B0B9962E291D985300F75997 /* Views */,
 				081B291E2919209700981671 /* songHaven_IOSApp.swift */,
 				081B29202919209700981671 /* ContentView.swift */,
@@ -182,6 +192,14 @@
 			path = "songHaven-IOSUITests";
 			sourceTree = "<group>";
 		};
+		94AFFC00292E195800824EF6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				94AFFC01292E197800824EF6 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		B025A958291EE26E007FF6FF /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +211,10 @@
 		B0B9962E291D985300F75997 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				94AFFBFE292E15C700824EF6 /* BandsView.swift */,
+				94AFFBFC292E15C100824EF6 /* BandDetailView.swift */,
+				94AFFBFA292E15B600824EF6 /* BandRequestView.swift */,
+				94AFFBF8292E15AD00824EF6 /* ArtistSuggestionView.swift */,
 				B024ADB42923E72000C9E601 /* SendOtpView.swift */,
 				B024ADB22923E71700C9E601 /* OtpVerificationView.swift */,
 				B024ADB02923E71000C9E601 /* LoginView.swift */,
@@ -203,13 +225,6 @@
 				081B294D291923C600981671 /* RegisterView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		B0B9962F291D987300F75997 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		B0B99630291D987D00F75997 /* ViewModels */ = {
@@ -384,8 +399,11 @@
 				B024ADB52923E72000C9E601 /* SendOtpView.swift in Sources */,
 				B024ADC92923E7D700C9E601 /* ProfileViewModel.swift in Sources */,
 				B024ADC12923E7BF00C9E601 /* ResetPasswordViewModel.swift in Sources */,
+				94AFFBFF292E15C700824EF6 /* BandsView.swift in Sources */,
 				081B29282919209900981671 /* Persistence.swift in Sources */,
 				B024ADBD2923E7AD00C9E601 /* ForgotPasswordViewModel.swift in Sources */,
+				94AFFC02292E197800824EF6 /* Constants.swift in Sources */,
+				94AFFBFD292E15C100824EF6 /* BandDetailView.swift in Sources */,
 				2B0A4800291981D200AF179A /* ProfileView.swift in Sources */,
 				B024ADBF2923E7B800C9E601 /* OtpVerificationViewModel.swift in Sources */,
 				081B29212919209700981671 /* ContentView.swift in Sources */,
@@ -396,9 +414,11 @@
 				B024ADB12923E71000C9E601 /* LoginView.swift in Sources */,
 				B0C51152291FFFF600A3A0D0 /* UserService.swift in Sources */,
 				B025A95F291EE2D2007FF6FF /* User.swift in Sources */,
+				94AFFBFB292E15B600824EF6 /* BandRequestView.swift in Sources */,
 				B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
 				B024ADC72923E7D100C9E601 /* RegisterViewModel.swift in Sources */,
+				94AFFBF9292E15AD00824EF6 /* ArtistSuggestionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

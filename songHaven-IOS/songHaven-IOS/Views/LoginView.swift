@@ -76,7 +76,7 @@ struct LoginView: View {
                         }) {
                             Text("Forgot Password?")
                                 .font(.headline)
-                                .foregroundColor(.red)
+                                .foregroundColor(.purple)
                                 .frame(height: 50)
                                 .background(Color.clear)
                                 .cornerRadius(15.0)
@@ -137,9 +137,12 @@ struct LoginView: View {
                         
                     }
                 }
-                NavigationLink(destination: ProfileView(), tag: "Profile", selection: $viewModel.navigator) {}
+                NavigationLink(destination: ProfileView().navigationBarBackButtonHidden(true), tag: "Profile", selection: $viewModel.navigator) {}
+                    
                 NavigationLink(destination: SendOtpView(), tag: "ForgotPass", selection: $viewModel.navigator) {}
                 NavigationLink(destination: RegisterView(), tag: "SignUp", selection: $viewModel.navigator) {}
+                NavigationLink(destination: BandsView().navigationBarBackButtonHidden(true), tag: "Bands", selection: $viewModel.navigator) {}
+                    
             }
             .toast(isPresenting: $viewModel.showSuccessToast){
                 AlertToast(type: .complete(.green), title: viewModel.toastMessage)
