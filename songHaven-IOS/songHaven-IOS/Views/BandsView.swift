@@ -121,7 +121,7 @@ struct BandsView: View {
                                                 .cornerRadius(30)
                                         }
                                     VStack{
-                                        Image("User")
+                                        Image("user")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 50, height: 50)

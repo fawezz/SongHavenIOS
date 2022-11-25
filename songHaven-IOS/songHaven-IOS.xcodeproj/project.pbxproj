@@ -19,6 +19,8 @@
 		2B0A4800291981D200AF179A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A47FF291981D200AF179A /* ProfileView.swift */; };
 		2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* ResetPasswordView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
+		94A4AEB529310B9C00A3B109 /* AddBandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4AEB429310B9C00A3B109 /* AddBandView.swift */; };
+		94A4AEB729310EB300A3B109 /* AddBandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4AEB629310EB300A3B109 /* AddBandViewModel.swift */; };
 		94AFFBF9292E15AD00824EF6 /* ArtistSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBF8292E15AD00824EF6 /* ArtistSuggestionView.swift */; };
 		94AFFBFB292E15B600824EF6 /* BandRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBFA292E15B600824EF6 /* BandRequestView.swift */; };
 		94AFFBFD292E15C100824EF6 /* BandDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBFC292E15C100824EF6 /* BandDetailView.swift */; };
@@ -81,6 +83,8 @@
 		2B0A47FF291981D200AF179A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2B0A48052919910B00AF179A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		94A4AEB429310B9C00A3B109 /* AddBandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBandView.swift; sourceTree = "<group>"; };
+		94A4AEB629310EB300A3B109 /* AddBandViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBandViewModel.swift; sourceTree = "<group>"; };
 		94AFFBF8292E15AD00824EF6 /* ArtistSuggestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistSuggestionView.swift; sourceTree = "<group>"; };
 		94AFFBFA292E15B600824EF6 /* BandRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandRequestView.swift; sourceTree = "<group>"; };
 		94AFFBFC292E15C100824EF6 /* BandDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandDetailView.swift; sourceTree = "<group>"; };
@@ -229,6 +233,7 @@
 				2B0A48052919910B00AF179A /* ResetPasswordView.swift */,
 				2B0A47FF291981D200AF179A /* ProfileView.swift */,
 				081B294D291923C600981671 /* RegisterView.swift */,
+				94A4AEB429310B9C00A3B109 /* AddBandView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 				94AFFC03292E1F8E00824EF6 /* BandsViewModel.swift */,
 				94AFFC05292E1FAF00824EF6 /* BandDetailViewModel.swift */,
 				94AFFC07292E1FE200824EF6 /* BandRequestViewModel.swift */,
+				94A4AEB629310EB300A3B109 /* AddBandViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -405,10 +411,12 @@
 				B024ADC52923E7CB00C9E601 /* SendOtpViewModel.swift in Sources */,
 				94AFFC04292E1F8E00824EF6 /* BandsViewModel.swift in Sources */,
 				B024ADB92923E7A100C9E601 /* EditProfileViewModel.swift in Sources */,
+				94A4AEB529310B9C00A3B109 /* AddBandView.swift in Sources */,
 				081B294E291923C600981671 /* RegisterView.swift in Sources */,
 				B024ADB52923E72000C9E601 /* SendOtpView.swift in Sources */,
 				B024ADC92923E7D700C9E601 /* ProfileViewModel.swift in Sources */,
 				B024ADC12923E7BF00C9E601 /* ResetPasswordViewModel.swift in Sources */,
+				94A4AEB729310EB300A3B109 /* AddBandViewModel.swift in Sources */,
 				94AFFBFF292E15C700824EF6 /* BandsView.swift in Sources */,
 				081B29282919209900981671 /* Persistence.swift in Sources */,
 				B024ADBD2923E7AD00C9E601 /* ForgotPasswordViewModel.swift in Sources */,
