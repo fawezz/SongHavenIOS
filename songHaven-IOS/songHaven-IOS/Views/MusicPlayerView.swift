@@ -23,7 +23,7 @@ struct MusicPlayerView: View {
                     Button(action: {}) {
                         Image(systemName: "arrow.down").foregroundColor(.white)
                             .frame(width: 20, height: 20)
-                            .padding(8).background(Color.main_color_hard)
+                            .padding(8).background(Color.main_color)
                             .cornerRadius(20)
                             .shadow(color: Color.black,radius: 8, x: 0, y: 5)
                     }
@@ -32,7 +32,7 @@ struct MusicPlayerView: View {
                         Image(systemName: "play.square.stack.fill")
                             .foregroundColor(.white)
                             .frame(width: 16, height: 16)
-                            .padding(12).background(Color.main_color_hard)
+                            .padding(12).background(Color.main_color)
                             .cornerRadius(20)
                             .shadow(color: Color.black,radius: 8, x: 0, y: 5)
                     }
@@ -62,21 +62,19 @@ struct MusicPlayerView: View {
                 }
                 //.frame(width: 120, height: 120).cornerRadius(60)
                 
-                
-                Text("viewModel.model.name").foregroundColor(Color.purple)
+                Text("viewModel.model.name").foregroundColor(Color.main_color)
                     .padding(.top, 12)
-                Text("viewModel.model.artistName").foregroundColor(Color.purple.opacity(0.8))
+                Text("viewModel.model.artistName").foregroundColor(Color.main_color.opacity(0.8))
                     .padding(.top, 12)
                 
                 Spacer()
                 
                 HStack(alignment: .center, spacing: 12) {
-                    Text("01:34").foregroundColor(Color.purple)
+                    Text("01:34").foregroundColor(Color.main_color)
                     Slider(value: $viewModel.slider, in: 0...100)
-                        .accentColor(Color.purple)
+                        .accentColor(Color.main_color)
                     Button(action: { viewModel.liked.toggle() }) {
-                        (viewModel.liked ? Image(systemName: "heart.fill").foregroundColor(.red) :
-                            Image(systemName: "heart").foregroundColor(.red))
+                        Image(systemName: viewModel.liked ?  "heart.fill" : "heart").foregroundColor(.purple)
                             .frame(width: 20, height: 20)
                     }
                 }.padding(.horizontal, 45)
@@ -94,30 +92,36 @@ struct MusicPlayerView: View {
         var body: some View {
             HStack(alignment: .center) {
                 Button(action: {  }) {
-                    Image("nextIcon").resizable().frame(width: 18, height: 18)
+                    Image("nextIcon").renderingMode(.template)
+                        .resizable().frame(width: 18, height: 18)
                         .rotationEffect(Angle(degrees: 180))
-                        .padding(24)
-                        .foregroundColor(.white)
-                        .background(Color.main_color_hard)
+                        .padding(20)
                         .cornerRadius(40)
+                        .foregroundColor(.white)
+                        .overlay(RoundedRectangle(cornerRadius: 50).stroke(Color.main_color, lineWidth: 2))
+
                 }
                 .shadow(color: Color.black,radius: 8, x: 0, y: 5)
                 Spacer()
                 Button(action: { viewModel.isPlaying.toggle() }) {
-                    (viewModel.isPlaying ?
-                     Image(systemName: "pause.fill") :
-                        Image(systemName: "play")
+                    (
+                        Image(systemName: viewModel.isPlaying ? "pause.fill" : "play.fill")
                     )
+                    .renderingMode(.template)
                     .resizable().frame(width: 28, height: 28)
-                    .padding(50).background(Color.main_color_soft)
-                    .cornerRadius(70)
+                    .padding(40)
+                    .foregroundColor(.purple)
+                    .overlay(RoundedRectangle(cornerRadius: 60).stroke(Color.main_color, lineWidth: 2))
                 }
                 .shadow(color: Color.black,radius: 8, x: 0, y: 5)
                 Spacer()
                 Button(action: {  }) {
-                    Image("nextIcon").resizable().frame(width: 18, height: 18)
-                        .padding(24).background(Color.main_color_hard)
+                    Image("nextIcon").renderingMode(.template)
+                        .resizable().frame(width: 18, height: 18)
+                        .padding(20)
                         .cornerRadius(40)
+                        .foregroundColor(.white)
+                        .overlay(RoundedRectangle(cornerRadius: 50).stroke(Color.main_color, lineWidth: 2))
                     
                 }
                 .shadow(color: Color.black,radius: 8, x: 0, y: 5)

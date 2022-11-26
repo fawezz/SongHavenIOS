@@ -7,11 +7,12 @@
 
 import SwiftUI
 import AlertToast
+import NavigationStack
 
 struct RegisterView: View {
     
     @StateObject var viewModel = RegisterViewModel()
-    
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
     var body: some View {
         NavigationView{
             ZStack{
@@ -73,6 +74,7 @@ struct RegisterView: View {
             }
             
         }.accentColor(.white)
+            .navigationBarItems(leading: BackButton(action: {}))
     }
     
     struct Register_Previews: PreviewProvider {

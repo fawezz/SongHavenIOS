@@ -6,6 +6,7 @@
 //
 import SwiftUI
 import AlertToast
+import NavigationStack
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
@@ -137,11 +138,11 @@ struct LoginView: View {
                         
                     }
                 }
-                NavigationLink(destination: ProfileView().navigationBarBackButtonHidden(true), tag: "Profile", selection: $viewModel.navigator) {}
+                PushView(destination: ProfileView().navigationBarBackButtonHidden(true), tag: "Profile", selection: $viewModel.navigator) {}
                     
-                NavigationLink(destination: SendOtpView(), tag: "ForgotPass", selection: $viewModel.navigator) {}
-                NavigationLink(destination: RegisterView(), tag: "SignUp", selection: $viewModel.navigator) {}
-                NavigationLink(destination: BandsView().navigationBarBackButtonHidden(true), tag: "Bands", selection: $viewModel.navigator) {}
+                PushView(destination: SendOtpView(), tag: "ForgotPass", selection: $viewModel.navigator) {}
+                PushView(destination: RegisterView(), tag: "SignUp", selection: $viewModel.navigator) {}
+                PushView(destination: BandsView().navigationBarBackButtonHidden(true), tag: "Bands", selection: $viewModel.navigator) {}
                     
             }
             .toast(isPresenting: $viewModel.showSuccessToast){

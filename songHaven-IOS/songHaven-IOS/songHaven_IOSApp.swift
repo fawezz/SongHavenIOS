@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NavigationStack
 
 @main
 struct songHaven_IOSApp: App {
@@ -13,8 +14,11 @@ struct songHaven_IOSApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MusicPlayerView(viewModel: MusicPlayerViewModel(model: "aaaa", slider: 5))
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            //MusicPlayerView(viewModel: MusicPlayerViewModel(model: "aaaa", slider: 5))
+            NavigationStackView{
+                HomeView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }
         }
     }
 }
