@@ -21,6 +21,9 @@
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
 		94A4AEB529310B9C00A3B109 /* AddBandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4AEB429310B9C00A3B109 /* AddBandView.swift */; };
 		94A4AEB729310EB300A3B109 /* AddBandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4AEB629310EB300A3B109 /* AddBandViewModel.swift */; };
+		94AFA89529324E42008955A1 /* BandService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFA89429324E42008955A1 /* BandService.swift */; };
+		94AFA89729324E56008955A1 /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFA89629324E56008955A1 /* Band.swift */; };
+		94AFA89929325C1D008955A1 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFA89829325C1D008955A1 /* NotificationView.swift */; };
 		94AFFBF9292E15AD00824EF6 /* ArtistSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBF8292E15AD00824EF6 /* ArtistSuggestionView.swift */; };
 		94AFFBFB292E15B600824EF6 /* BandRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBFA292E15B600824EF6 /* BandRequestView.swift */; };
 		94AFFBFD292E15C100824EF6 /* BandDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBFC292E15C100824EF6 /* BandDetailView.swift */; };
@@ -85,6 +88,9 @@
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		94A4AEB429310B9C00A3B109 /* AddBandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBandView.swift; sourceTree = "<group>"; };
 		94A4AEB629310EB300A3B109 /* AddBandViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBandViewModel.swift; sourceTree = "<group>"; };
+		94AFA89429324E42008955A1 /* BandService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandService.swift; sourceTree = "<group>"; };
+		94AFA89629324E56008955A1 /* Band.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
+		94AFA89829325C1D008955A1 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		94AFFBF8292E15AD00824EF6 /* ArtistSuggestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistSuggestionView.swift; sourceTree = "<group>"; };
 		94AFFBFA292E15B600824EF6 /* BandRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandRequestView.swift; sourceTree = "<group>"; };
 		94AFFBFC292E15C100824EF6 /* BandDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandDetailView.swift; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				B025A95E291EE2D2007FF6FF /* User.swift */,
+				94AFA89629324E56008955A1 /* Band.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -234,6 +241,7 @@
 				2B0A47FF291981D200AF179A /* ProfileView.swift */,
 				081B294D291923C600981671 /* RegisterView.swift */,
 				94A4AEB429310B9C00A3B109 /* AddBandView.swift */,
+				94AFA89829325C1D008955A1 /* NotificationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -262,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				B0C51151291FFFF600A3A0D0 /* UserService.swift */,
+				94AFA89429324E42008955A1 /* BandService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -422,6 +431,7 @@
 				B024ADBD2923E7AD00C9E601 /* ForgotPasswordViewModel.swift in Sources */,
 				94AFFC02292E197800824EF6 /* Constants.swift in Sources */,
 				94AFFBFD292E15C100824EF6 /* BandDetailView.swift in Sources */,
+				94AFA89529324E42008955A1 /* BandService.swift in Sources */,
 				2B0A4800291981D200AF179A /* ProfileView.swift in Sources */,
 				B024ADBF2923E7B800C9E601 /* OtpVerificationViewModel.swift in Sources */,
 				081B29212919209700981671 /* ContentView.swift in Sources */,
@@ -432,6 +442,7 @@
 				B024ADB12923E71000C9E601 /* LoginView.swift in Sources */,
 				B0C51152291FFFF600A3A0D0 /* UserService.swift in Sources */,
 				B025A95F291EE2D2007FF6FF /* User.swift in Sources */,
+				94AFA89729324E56008955A1 /* Band.swift in Sources */,
 				94AFFC06292E1FAF00824EF6 /* BandDetailViewModel.swift in Sources */,
 				94AFFBFB292E15B600824EF6 /* BandRequestView.swift in Sources */,
 				B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */,
@@ -439,6 +450,7 @@
 				B024ADC72923E7D100C9E601 /* RegisterViewModel.swift in Sources */,
 				94AFFC08292E1FE200824EF6 /* BandRequestViewModel.swift in Sources */,
 				94AFFBF9292E15AD00824EF6 /* ArtistSuggestionView.swift in Sources */,
+				94AFA89929325C1D008955A1 /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

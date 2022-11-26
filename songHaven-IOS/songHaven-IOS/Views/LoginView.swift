@@ -76,7 +76,7 @@ struct LoginView: View {
                         }) {
                             Text("Forgot Password?")
                                 .font(.headline)
-                                .foregroundColor(.purple)
+                                .foregroundColor(.white)
                                 .frame(height: 50)
                                 .background(Color.clear)
                                 .cornerRadius(15.0)
