@@ -12,6 +12,7 @@ struct MusicPlayerView: View {
     
     @StateObject var viewModel: MusicPlayerViewModel
     
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom)
@@ -44,7 +45,7 @@ struct MusicPlayerView: View {
                         .frame(width: 300, height: 300)
                     ForEach(0...15, id: \.self) { i in
                         RoundedRectangle(cornerRadius: (150 + CGFloat((8 * i))) / 2)
-                            .stroke(lineWidth: 0.5)
+                            .stroke(lineWidth: 0.1)
                             .foregroundColor(.white)
                             .frame(width: 150 + CGFloat((8 * i)),
                                    height: 150 + CGFloat((8 * i)))
@@ -70,8 +71,8 @@ struct MusicPlayerView: View {
                 Spacer()
                 
                 HStack(alignment: .center, spacing: 12) {
-                    Text("01:34").foregroundColor(Color.main_color)
-                    Slider(value: $viewModel.slider, in: 0...100)
+                    Text(viewModel.slider.rounded().description).foregroundColor(Color.main_color)
+                    Slider(value: $viewModel.slider, in: (0...100)) //viewModel.duration
                         .accentColor(Color.main_color)
                     Button(action: { viewModel.liked.toggle() }) {
                         Image(systemName: viewModel.liked ?  "heart.fill" : "heart").foregroundColor(.purple)
@@ -103,7 +104,15 @@ struct MusicPlayerView: View {
                 }
                 .shadow(color: Color.black,radius: 8, x: 0, y: 5)
                 Spacer()
-                Button(action: { viewModel.isPlaying.toggle() }) {
+                Button(action: {
+                    if(viewModel.isPlaying){
+                        viewModel.player.pause()
+                        viewModel.isPlaying = false
+                    }else{
+                        viewModel.player.play()
+                        viewModel.isPlaying = true
+                    }
+                }) {
                     (
                         Image(systemName: viewModel.isPlaying ? "pause.fill" : "play.fill")
                     )

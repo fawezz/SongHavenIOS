@@ -49,4 +49,8 @@ struct User : Decodable{
                 isVerified: jsonData["isVerified"].boolValue
             )
         }
+    
+    func getFullName() -> String {
+        return self.firstname!.capitalized + " " + self.lastname!.capitalized
+    }
 }

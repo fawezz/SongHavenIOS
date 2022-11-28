@@ -10,7 +10,9 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         TabView{
-            MusicPlayerView(viewModel: MusicPlayerViewModel(model: "fff", slider: 4))
+           // MusicPlayerView(viewModel: MusicPlayerViewModel(model: , slider: 4))
+            //MusicHomeView()
+            Text("ho;e")
                 .tabItem( {
                     Label("Music", systemImage: "music.note.list")
                 })
