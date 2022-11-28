@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 
 class SongService{
-    let ip = "http://192.168.0.3:9090"
-    static let getAllURL = "http://192.168.0.3:9090/song/getAll"
-    static let getByUserURL = "http://192.168.0.3:9090/song/getByUser/"
-    static let createURL = "http://192.168.0.3:9090/song/create"
-    static let modifyeURL = "http://192.168.0.3:9090/song/modify"
-    static let deleteSongURL = "http://192.168.0.3:9090/song/delete/"
-    static let songImageUrl = "http://192.168.0.3:9090/img/"
-    static let songMusicUrl = "http://192.168.0.3:9090/music/" + "music1669159393115.mp3"
+    let ip = "http://172.17.5.207:9090"
+    static let getAllURL = "http://172.17.5.207:9090/song/getAll"
+    static let getByUserURL = "http://172.17.5.207:9090/song/getByUser/"
+    static let createURL = "http://172.17.5.207:9090/song/create"
+    static let modifyeURL = "http://172.17.5.207:9090/song/modify"
+    static let deleteSongURL = "http://172.17.5.207:9090/song/delete/"
+    static let songImageUrl = "http://172.17.5.207:9090/img/"
+    static let songMusicUrl = "http://172.17.5.207:9090/music/" //+ "music1669159393115.mp3"
     
     static func GetAllSongs(completed: @escaping (Bool, [Song]?) -> Void){
         AF.request(getAllURL,  method: .get )

@@ -11,17 +11,18 @@ import Foundation
 import UIKit
 
 class PlaylistService{
-    let ip = "http://192.168.0.3:9090"
-    static let getByUserURL = "http://192.168.0.3:9090/playlist/getByUser/"
-    static let createURL = "http://192.168.0.3:9090/playlist/create"
-    static let modifyURL = "http://192.168.0.3:9090/playlist/modify"
-    static let deletePlaylistURL = "http://192.168.0.3:9090/playlist/delete/"
-    static let addSongURL = "http://192.168.0.3:9090/playlist/addSong"
-    static let removeSongURL = "http://192.168.0.3:9090/playlist/removeSong"
+    let ip = "http://172.17.5.207:9090"
+    static let getByUserURL = "http://172.17.5.207:9090/playlist/getByUser/"
+    static let createURL = "http://172.17.5.207:9090/playlist/create"
+    static let modifyURL = "http://172.17.5.207:9090/playlist/modify"
+    static let deletePlaylistURL = "http://172.17.5.207:9090/playlist/delete/"
+    static let addSongURL = "http://172.17.5.207:9090/playlist/addSong"
+    static let removeSongURL = "http://172.17.5.207:9090/playlist/removeSong"
     
     
-    static func GetByUser(ownerId: String, completed: @escaping (Bool, [Playlist]?) -> Void){
-        AF.request(getByUserURL + "63749eac6781be3df2521807"/*creatorId*/,  method: .get )
+    static func GetByUser(completed: @escaping (Bool, [Playlist]?) -> Void){
+        let userId : String = UserDefaults.standard.string(forKey: "userId")!
+        AF.request(getByUserURL + "63749eac6781be3df2521807"/*userId*/,  method: .get )
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseData { response in

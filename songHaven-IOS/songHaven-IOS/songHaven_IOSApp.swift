@@ -15,8 +15,8 @@ struct songHaven_IOSApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStackView{
-                MusicPlayerView(viewModel: MusicPlayerViewModel(model: "aaaa", slider: 5))
-                //LoginView()
+                //MusicPlayerView(viewModel: MusicPlayerViewModel(model: "aaaa", slider: 5))
+                HomeView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }/*.onAppear(
                 perform: {

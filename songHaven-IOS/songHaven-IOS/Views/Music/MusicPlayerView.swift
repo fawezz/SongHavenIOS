@@ -5,13 +5,15 @@
 //  Created by zewaff on 20/11/2022.
 //
 import SwiftUI
+import NavigationStack
 
 fileprivate let HORIZONTAL_SPACING: CGFloat = 24
 
 struct MusicPlayerView: View {
     
     @StateObject var viewModel: MusicPlayerViewModel
-    
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
+
     
     var body: some View {
         ZStack {
@@ -21,8 +23,8 @@ struct MusicPlayerView: View {
             
             VStack(alignment: .center, spacing: 0) {
                 HStack(alignment: .center) {
-                    Button(action: {}) {
-                        Image(systemName: "arrow.down").foregroundColor(.white)
+                    Button(action: {navigationStack.pop()}) {
+                        Image(systemName: "arrow.left").foregroundColor(.white)
                             .frame(width: 20, height: 20)
                             .padding(8).background(Color.main_color)
                             .cornerRadius(20)
@@ -45,7 +47,7 @@ struct MusicPlayerView: View {
                         .frame(width: 300, height: 300)
                     ForEach(0...15, id: \.self) { i in
                         RoundedRectangle(cornerRadius: (150 + CGFloat((8 * i))) / 2)
-                            .stroke(lineWidth: 0.1)
+                            .stroke(lineWidth: 0.15)
                             .foregroundColor(.white)
                             .frame(width: 150 + CGFloat((8 * i)),
                                    height: 150 + CGFloat((8 * i)))
@@ -63,16 +65,17 @@ struct MusicPlayerView: View {
                 }
                 //.frame(width: 120, height: 120).cornerRadius(60)
                 
-                Text("viewModel.model.name").foregroundColor(Color.main_color)
+                Text(viewModel.model.title!).foregroundColor(Color.main_color)
                     .padding(.top, 12)
-                Text("viewModel.model.artistName").foregroundColor(Color.main_color.opacity(0.8))
+                Text((viewModel.model.creator?.getFullName())!).foregroundColor(Color.main_color.opacity(0.8))
                     .padding(.top, 12)
                 
                 Spacer()
                 
                 HStack(alignment: .center, spacing: 12) {
+                    //Text(viewModel.slider.rounded().formatted(allowedUnits: [.hour, .minute, .second]) ?? "")
                     Text(viewModel.slider.rounded().description).foregroundColor(Color.main_color)
-                    Slider(value: $viewModel.slider, in: (0...100)) //viewModel.duration
+                    Slider(value: $viewModel.slider, in: (0...Double(viewModel.duration))) //viewModel.duration
                         .accentColor(Color.main_color)
                     Button(action: { viewModel.liked.toggle() }) {
                         Image(systemName: viewModel.liked ?  "heart.fill" : "heart").foregroundColor(.purple)
@@ -85,7 +88,6 @@ struct MusicPlayerView: View {
                 MusicControleButtons(viewModel: viewModel).padding(.horizontal, 32)
             }.padding(.bottom, HORIZONTAL_SPACING).animation(.spring())
         }
-        
     }
     struct MusicControleButtons: View {
         @ObservedObject var viewModel: MusicPlayerViewModel
@@ -140,7 +142,14 @@ struct MusicPlayerView: View {
         }
 }
 }
-
+extension Int {
+    func formatted(allowedUnits: NSCalendar.Unit = [.hour, .minute]) -> String? {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = allowedUnits
+        formatter.zeroFormattingBehavior = .pad
+        return formatter.string(from: DateComponents(second: self))
+    }
+}
 
 //
 //struct MusicPlayerView_Previews: PreviewProvider {

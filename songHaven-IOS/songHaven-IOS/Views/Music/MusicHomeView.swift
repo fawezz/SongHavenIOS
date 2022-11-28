@@ -6,6 +6,65 @@
 //
 
 import SwiftUI
+import NavigationStack
+struct MusicHomeView: View {
+    @StateObject var viewModel : MusicHomeViewModel
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
+    var body: some View {
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
+            VStack{
+                VStack(alignment: .leading){
+                    Text("Most Popular")
+                        .font(.title)
+                        .foregroundColor(.white)
+                    ScrollView(.horizontal){
+                        LazyHStack{
+                            ForEach($viewModel.pupularSongs, id: \._id) { song in
+                                SongCard(song: song.wrappedValue)
+                                    .padding(.horizontal, 3)
+                            }
+                        }
+                    }
+                }
+                VStack(alignment: .leading){
+                    Text("Newest")
+                        .font(.title)
+                        .foregroundColor(.white)
+                    ScrollView(.horizontal){
+                        LazyHStack{
+                            ForEach($viewModel.newestSongs, id: \._id) { song in
+                                SongCard(song: song.wrappedValue)
+                                    .padding(.horizontal, 3)
+                            }
+                        }
+                    }
+                }
+                VStack(alignment: .leading){
+                    Text("Your Playlists")
+                        .font(.title)
+                        .foregroundColor(.white)
+                    ScrollView(.horizontal){
+                        LazyHStack{
+                            ForEach($viewModel.userPlaylists, id: \._id) { playlist in
+                                PlaylistCard(playlist: playlist.wrappedValue)
+                                    .padding(.horizontal, 3)
+                                    .onTapGesture {
+                                        self.navigationStack.push(PlaylistDetails(viewModel: PlaylistDetailsViewModel(playlist: playlist.wrappedValue)))
+                                    }
+                            }
+                        }
+                    }
+                }
+            }
+            .padding(8)
+        }
+    }
+}
+
+
+
 /*
 struct MusicHomeView: View {
     @StateObject var viewModel = MusicHomeViewModel()

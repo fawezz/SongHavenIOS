@@ -11,8 +11,8 @@ struct HomeView: View {
     var body: some View {
         TabView{
            // MusicPlayerView(viewModel: MusicPlayerViewModel(model: , slider: 4))
-            //MusicHomeView()
-            Text("ho;e")
+            MusicHomeView(viewModel: MusicHomeViewModel())
+            //MusicPlayerView(viewModel: MusicPlayerViewModel(model: "aaaa", slider: 5))
                 .tabItem( {
                     Label("Music", systemImage: "music.note.list")
                 })

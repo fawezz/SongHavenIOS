@@ -7,24 +7,44 @@
 
 import Foundation
 @MainActor class MusicHomeViewModel: ObservableObject {
-    @Published private(set) var headerStr = "Hello Sameer 👋🏻"
-    @Published private(set) var playlists = [Song]()
-    @Published private(set) var recentlyPlayed = [Song]()
+    @Published var pupularSongs = [Song]()
+    @Published var newestSongs = [Song]()
+    @Published var userPlaylists = [Playlist]()
+    @Published var searchText : String = ""
     
-    @Published private(set) var selectedMusic: Song? = nil
+    @Published var selectedMusic: Song? = nil
     @Published var displayPlayer = false
     
     init() {
-        fetchPlaylist()
-        fetchRecentlyPlayed()
+        fetchUserPlaylists()
+        fetchNewestSongs()
+        fetchPopularSongs()
     }
     
-    private func fetchPlaylist() {
-        //playlists = Data.getPlaylists()
+    private func fetchUserPlaylists() {
+        PlaylistService.GetByUser(completed: { (success, playlistArray) in
+            if(success){
+                self.userPlaylists = playlistArray ?? []
+            }
+        })
     }
     
-    private func fetchRecentlyPlayed() {
-        //recentlyPlayed = Data.getRecentlyPlayed()
+    private func fetchNewestSongs() {
+        SongService.GetAllSongs(completed: {(success, songsArray) in
+            if(success){
+                self.newestSongs = songsArray ?? []
+                //
+                self.pupularSongs = songsArray ?? []
+            }
+        })
+    }
+    
+    private func fetchPopularSongs() {
+//        SongService.GetMostPopular(completed: {(success, songsArray) in
+//            if(success){
+//                self.newestSongs = songsArray ?? []
+//            }
+//        })
     }
     
     func selectMusic(music: Song) {

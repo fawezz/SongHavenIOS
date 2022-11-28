@@ -65,16 +65,15 @@ struct RegisterView: View {
                 }
                 NavigationLink(destination: LoginView(), tag: "Login", selection: $viewModel.navigator) {}
             }
-            .navigationBarHidden(true)
             .toast(isPresenting: $viewModel.showFailToast){
                 AlertToast(type: .error(.red), title: viewModel.toastText)
             }
             .toast(isPresenting: $viewModel.showSuccessToast){
                 AlertToast(type: .complete(.green), title: viewModel.toastText)
             }
-            
+            .navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
         }.accentColor(.white)
-            .navigationBarItems(leading: BackButton(action: {}))
+            
     }
     
     struct Register_Previews: PreviewProvider {
