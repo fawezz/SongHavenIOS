@@ -110,6 +110,7 @@ struct MusicPlayerView: View {
                         .overlay(RoundedRectangle(cornerRadius: 50).stroke(Color.main_color, lineWidth: 2))
                     
                 }
+                .disabled(viewModel.playlist == nil)
                 .shadow(color: Color.black,radius: 8, x: 0, y: 5)
                 Spacer()
                 Button(action: {
@@ -143,6 +144,7 @@ struct MusicPlayerView: View {
                         .overlay(RoundedRectangle(cornerRadius: 50).stroke(Color.main_color, lineWidth: 2))
                     
                 }
+                .disabled(viewModel.playlist == nil)
                 .shadow(color: Color.black,radius: 8, x: 0, y: 5)
             }
             

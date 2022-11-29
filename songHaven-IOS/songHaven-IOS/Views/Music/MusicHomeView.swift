@@ -24,6 +24,9 @@ struct MusicHomeView: View {
                             ForEach($viewModel.pupularSongs, id: \._id) { song in
                                 SongCard(song: song.wrappedValue)
                                     .padding(.horizontal, 3)
+                                    .onTapGesture {
+                                        self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel(model: song.wrappedValue, currentPlaylist: nil)))
+                                    }
                             }
                         }
                     }
@@ -37,6 +40,9 @@ struct MusicHomeView: View {
                             ForEach($viewModel.newestSongs, id: \._id) { song in
                                 SongCard(song: song.wrappedValue)
                                     .padding(.horizontal, 3)
+                                    .onTapGesture {
+                                        self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel(model: song.wrappedValue, currentPlaylist: nil)))
+                                    }
                             }
                         }
                     }

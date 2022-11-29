@@ -5,6 +5,7 @@
 //  Created by zewaff on 12/11/2022.
 //
 import SwiftUI
+import NavigationStack
 @MainActor class ProfileViewModel: ObservableObject {
 
     @Published var navigator : String? = nil
@@ -13,9 +14,17 @@ import SwiftUI
     let lastname : String = UserDefaults.standard.string(forKey: "lastname")!
     
     
-    /*func verifyFields()->Bool{
-        return email.count > 5
-    }*/
+    func Logout(){
+        UserDefaults.standard.setValue(
+            nil,forKey: "token"
+        )
+        UserDefaults.standard.setValue(
+            nil,forKey: "email"
+        )
+        UserDefaults.standard.setValue(
+            nil,forKey: "userId"
+        )
+     }
     
     
 }

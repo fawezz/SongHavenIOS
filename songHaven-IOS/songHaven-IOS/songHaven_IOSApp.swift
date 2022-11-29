@@ -14,14 +14,15 @@ struct songHaven_IOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStackView{                
+            NavigationStackView{
                 let token = UserDefaults.standard.string(forKey: "token")
                 if(token == "" || token == nil){
                     LoginView().environment(\.managedObjectContext, persistenceController.container.viewContext)
                 }else{
                     HomeView().environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    
                 }
+                //CreateSongView(viewModel: CreateSongViewModel()).environment(\.managedObjectContext, persistenceController.container.viewContext)
+
             }/*.onAppear(
               perform: {
               //                    SongService.GetAllSongs(completed:

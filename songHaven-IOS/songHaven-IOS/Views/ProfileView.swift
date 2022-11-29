@@ -5,12 +5,14 @@
 //  Created by Cyrine-Faouze on 7/11/2022.
 //
 import SwiftUI
+import NavigationStack
 
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack {
                 VStack {
                     Header()
@@ -39,6 +41,11 @@ struct ProfileView: View {
                         Label("Edit Profile", systemImage: "pencil")
                     })
                 NavigationLink(destination: EditProfileView(), tag: "EditProfile", selection: $viewModel.navigator){}
+                    .navigationBarItems(trailing:  Button("Logout", action: {
+                        viewModel.Logout()
+                        navigationStack.push(LoginView())}
+                                                          
+                                                         ))
             }.background(LinearGradient(gradient: .init(colors: [.black , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
         }.accentColor(.white)
     }
