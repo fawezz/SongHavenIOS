@@ -29,7 +29,7 @@ struct PlaylistDetails: View {
                                     PlayListDetailsRow(song: song.wrappedValue)
                                         .padding(.horizontal, 3)
                                         .onTapGesture {
-                                            self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel(model: song.wrappedValue)))
+                                            self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel(model: song.wrappedValue, currentPlaylist: viewModel.selectedPlaylist)))
                                         }
                                 }
                             }

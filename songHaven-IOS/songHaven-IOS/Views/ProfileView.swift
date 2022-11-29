@@ -52,7 +52,7 @@ struct ProfileView: View {
             ZStack(alignment: .center) {
                 Rectangle()
                     .fill(LinearGradient(
-                        gradient: .init(colors: [Self.gradientStart, Self.gradientEnd]),
+                        gradient: .init(colors: [ Self.gradientStart, .purple]),
                         startPoint: .init(x: 0.5, y: 0),
                         endPoint: .init(x: 0.5, y: 0.6)
                     ))
@@ -69,32 +69,28 @@ struct ProfileView: View {
                 .shadow(radius: 10)
                 .frame(width: 180,height: 180)
             }
-            
-            
         }
-}
-
-struct ProfileText: View {
-    
-    @ObservedObject var viewModel = ProfileViewModel()
-
-    var  songName = ""
-    var description = "description"
-    
-    var body: some View {
-        VStack(spacing: 15) {
-            VStack(spacing: 5) {
-                Text(viewModel.firstname + " " + viewModel.lastname)
-                    .bold()
-                    .font(.title)
-                    .foregroundColor(.white)
-            }.padding()
-        }
-        
     }
-}
-
     
+    struct ProfileText: View {
+        
+        @ObservedObject var viewModel = ProfileViewModel()
+        
+        var  songName = ""
+        var description = "description"
+        
+        var body: some View {
+            VStack(spacing: 15) {
+                VStack(spacing: 5) {
+                    Text(viewModel.firstname + " " + viewModel.lastname)
+                        .bold()
+                        .font(.title)
+                        .foregroundColor(.white)
+                }.padding()
+            }
+            
+        }
+    }
     
     struct ProfileView_Previews: PreviewProvider {
         static var previews: some View {

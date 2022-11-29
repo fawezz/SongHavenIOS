@@ -10,18 +10,17 @@ import Foundation
 import UIKit
 
 class UserService{
-    let ip = "http://172.17.5.207:9090"
-    static let SignInURL = "http://172.17.5.207:9090/user/signin"
-    static let SignUpURL = "http://172.17.5.207:9090/user/signup"
-    static let ResendWelcomeMailURL = "http://172.17.5.207:9090/user/resendWelcomeMail"
+    static let SignInURL = Constants.HOSTNAME + "/user/signin"
+    static let SignUpURL = Constants.HOSTNAME + "/user/signup"
+    static let ResendWelcomeMailURL = Constants.HOSTNAME + "/user/resendWelcomeMail"
     
-    static let SendOtpMailURL = "http://172.17.5.207:9090/user/forgotPassword/sendOtpMail"
-    static let VerifyOtpURL = "http://172.17.5.207:9090/user/forgotPassword/verifyOTP"
-    static let CreatePasswordURL = "http://172.17.5.207:9090/user/forgotPassword/createNewPassword"
-    static let EditDetailsURL = "http://172.17.5.207:9090/user/modifyDetails"
+    static let SendOtpMailURL = Constants.HOSTNAME + "/user/forgotPassword/sendOtpMail"
+    static let VerifyOtpURL = Constants.HOSTNAME + "/user/forgotPassword/verifyOTP"
+    static let CreatePasswordURL = Constants.HOSTNAME + "/user/forgotPassword/createNewPassword"
+    static let EditDetailsURL = Constants.HOSTNAME + "/user/modifyDetails"
     
-    static let UploadImageURL = "http://172.17.5.207:9090/user/profileImage"
-    static let UserImageUrl = "http://172.17.5.207:9090/img/"
+    static let UploadImageURL = Constants.HOSTNAME + "/user/profileImage"
+    static let UserImageUrl = Constants.HOSTNAME + "/img/"
     
     static func SignIn(email: String, password: String, completed: @escaping (Bool, Any?) -> Void){
         

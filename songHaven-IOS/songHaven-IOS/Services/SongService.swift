@@ -10,14 +10,13 @@ import Foundation
 import UIKit
 
 class SongService{
-    let ip = "http://172.17.5.207:9090"
-    static let getAllURL = "http://172.17.5.207:9090/song/getAll"
-    static let getByUserURL = "http://172.17.5.207:9090/song/getByUser/"
-    static let createURL = "http://172.17.5.207:9090/song/create"
-    static let modifyeURL = "http://172.17.5.207:9090/song/modify"
-    static let deleteSongURL = "http://172.17.5.207:9090/song/delete/"
-    static let songImageUrl = "http://172.17.5.207:9090/img/"
-    static let songMusicUrl = "http://172.17.5.207:9090/music/" //+ "music1669159393115.mp3"
+    static let getAllURL = Constants.HOSTNAME + "/song/getAll"
+    static let getByUserURL = Constants.HOSTNAME + "/song/getByUser/"
+    static let createURL = Constants.HOSTNAME + "/song/create"
+    static let modifyeURL = Constants.HOSTNAME + "/song/modify"
+    static let deleteSongURL = Constants.HOSTNAME + "/song/delete/"
+    static let songImageUrl = Constants.HOSTNAME + "/img/"
+    static let songMusicUrl = Constants.HOSTNAME + "/music/" //+ "music1669159393115.mp3"
     
     static func GetAllSongs(completed: @escaping (Bool, [Song]?) -> Void){
         AF.request(getAllURL,  method: .get )
@@ -80,5 +79,8 @@ class SongService{
                 }
             }
     }
+    
+
+
     
 }

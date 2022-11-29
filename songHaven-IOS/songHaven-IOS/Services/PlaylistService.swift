@@ -11,13 +11,12 @@ import Foundation
 import UIKit
 
 class PlaylistService{
-    let ip = "http://172.17.5.207:9090"
-    static let getByUserURL = "http://172.17.5.207:9090/playlist/getByUser/"
-    static let createURL = "http://172.17.5.207:9090/playlist/create"
-    static let modifyURL = "http://172.17.5.207:9090/playlist/modify"
-    static let deletePlaylistURL = "http://172.17.5.207:9090/playlist/delete/"
-    static let addSongURL = "http://172.17.5.207:9090/playlist/addSong"
-    static let removeSongURL = "http://172.17.5.207:9090/playlist/removeSong"
+    static let getByUserURL = Constants.HOSTNAME + "/playlist/getByUser/"
+    static let createURL = Constants.HOSTNAME + "/playlist/create"
+    static let modifyURL = Constants.HOSTNAME + "/playlist/modify"
+    static let deletePlaylistURL = Constants.HOSTNAME + "/playlist/delete/"
+    static let addSongURL = Constants.HOSTNAME + "/playlist/addSong"
+    static let removeSongURL = Constants.HOSTNAME + "/playlist/removeSong"
     
     
     static func GetByUser(completed: @escaping (Bool, [Playlist]?) -> Void){

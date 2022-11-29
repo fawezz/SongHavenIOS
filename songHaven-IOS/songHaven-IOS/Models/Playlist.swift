@@ -27,11 +27,12 @@ struct Playlist : Decodable{
         for singleJsonItem in jsonData["songs"] {
             songs!.append(Song.fromJson(jsonData: singleJsonItem.1))
         }
-            return Playlist(
-                _id: jsonData["_id"].stringValue,
-                title: jsonData["title"].stringValue,
-                songs: songs,
-                ownerId : jsonData["owner"].stringValue
-            )
-        }
+        return Playlist(
+            _id: jsonData["_id"].stringValue,
+            title: jsonData["title"].stringValue,
+            songs: songs,
+            ownerId : jsonData["owner"].stringValue
+        )
+    }
+    
 }

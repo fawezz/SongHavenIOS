@@ -6,7 +6,7 @@
 //
 
 import SwiftyJSON
-struct Song : Decodable{
+struct Song : Decodable, Equatable{
     
     internal init(_id: String? = nil, title: String? = nil, genre: String? = nil, filename: String? = nil, duration: Double? = nil, isPublished: Bool? = nil, creator: User? = nil) {
         self._id = _id
@@ -29,14 +29,18 @@ struct Song : Decodable{
     // relations
     
     static func fromJson(jsonData: JSON) -> Song {
-            return Song(
-                _id: jsonData["_id"].stringValue,
-                title: jsonData["title"].stringValue,
-                genre: jsonData["genre"].stringValue,
-                filename: jsonData["filename"].stringValue,
-                duration: jsonData["duration"].doubleValue,
-                isPublished: jsonData["isPublished"].boolValue,
-                creator : User.fromJson(jsonData: jsonData["creator"])
-            )
-        }
+        return Song(
+            _id: jsonData["_id"].stringValue,
+            title: jsonData["title"].stringValue,
+            genre: jsonData["genre"].stringValue,
+            filename: jsonData["filename"].stringValue,
+            duration: jsonData["duration"].doubleValue,
+            isPublished: jsonData["isPublished"].boolValue,
+            creator : User.fromJson(jsonData: jsonData["creator"])
+        )
+    }
+    
+    static func == (lhs: Song, rhs: Song) -> Bool {
+        return lhs._id == rhs._id
+    }
 }

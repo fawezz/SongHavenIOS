@@ -14,32 +14,36 @@ struct songHaven_IOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStackView{
-                //MusicPlayerView(viewModel: MusicPlayerViewModel(model: "aaaa", slider: 5))
-                HomeView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            }/*.onAppear(
-                perform: {
-//                    SongService.GetAllSongs(completed:
-//                                                { (success, reponse) in print(reponse!.count) })
-//                    SongService.GetByUser(creatorId: "", completed:
-//                                                { (success, reponse) in print("aaa") })
-//                    SongService.DeleteSong(songId: "", completed:
-//                                                { (success, reponse) in print("bbb") })
-//                    PlaylistService.GetByUser(ownerId: "", completed:
-//                                            { (success, reponse) in print("aaa") })
-//                    PlaylistService.AddSong(playlistId: "637d013fd35081e7c6c90d7a", songId: "637d785689c0e4e674a0c614", completed:
-//                                            { (success, reponse) in print(success) })
-//                    PlaylistService.RemoveSong(playlistId: "637d013fd35081e7c6c90d7a", songId: "637d785689c0e4e674a0c614", completed:
-//                                            { (success, reponse) in print(success) })
-                    //let arrayy = ["637d013fd35081e7c6c90d7a"]
-//                    PlaylistService.CreatePlaylist(title: "test playlist", ownerId: "636459ab1ba58bdd172e92bd", songs: [], completed:
-//                                            { (success, reponse) in print(success) })
-//                    PlaylistService.ModifyPlaylist(playlistId: "637d013fd35081e7c6c90d7a", title: "playlist7", completed:
-//                                            { (success, reponse) in print(success) })
-
+            NavigationStackView{                
+                let token = UserDefaults.standard.string(forKey: "token")
+                if(token == "" || token == nil){
+                    LoginView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+                }else{
+                    HomeView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    
                 }
-            )*/
+            }/*.onAppear(
+              perform: {
+              //                    SongService.GetAllSongs(completed:
+              //                                                { (success, reponse) in print(reponse!.count) })
+              //                    SongService.GetByUser(creatorId: "", completed:
+              //                                                { (success, reponse) in print("aaa") })
+              //                    SongService.DeleteSong(songId: "", completed:
+              //                                                { (success, reponse) in print("bbb") })
+              //                    PlaylistService.GetByUser(ownerId: "", completed:
+              //                                            { (success, reponse) in print("aaa") })
+              //                    PlaylistService.AddSong(playlistId: "637d013fd35081e7c6c90d7a", songId: "637d785689c0e4e674a0c614", completed:
+              //                                            { (success, reponse) in print(success) })
+              //                    PlaylistService.RemoveSong(playlistId: "637d013fd35081e7c6c90d7a", songId: "637d785689c0e4e674a0c614", completed:
+              //                                            { (success, reponse) in print(success) })
+              //let arrayy = ["637d013fd35081e7c6c90d7a"]
+              //                    PlaylistService.CreatePlaylist(title: "test playlist", ownerId: "636459ab1ba58bdd172e92bd", songs: [], completed:
+              //                                            { (success, reponse) in print(success) })
+              //                    PlaylistService.ModifyPlaylist(playlistId: "637d013fd35081e7c6c90d7a", title: "playlist7", completed:
+              //                                            { (success, reponse) in print(success) })
+              
+              }
+              )*/
         }
     }
 }

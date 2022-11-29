@@ -142,7 +142,8 @@ struct LoginView: View {
                     
                 PushView(destination: SendOtpView(), tag: "ForgotPass", selection: $viewModel.navigator) {}
                 PushView(destination: RegisterView(), tag: "SignUp", selection: $viewModel.navigator) {}
-                PushView(destination: BandsView().navigationBarBackButtonHidden(true), tag: "Bands", selection: $viewModel.navigator) {}
+                PushView(destination: HomeView(), tag: "HomeView", selection: $viewModel.navigator) {}
+                //PushView(destination: BandsView().navigationBarBackButtonHidden(true), tag: "Bands", selection: $viewModel.navigator) {}
                     
             }
             .toast(isPresenting: $viewModel.showSuccessToast){
