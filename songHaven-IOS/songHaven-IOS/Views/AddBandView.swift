@@ -10,13 +10,11 @@ import SwiftUI
 struct AddBandView: View {
     
     @State private var name = ""
-    @State private var description = ""
+    @State private var discription = ""
+    @StateObject var viewModel  = AddBandViewModel()
     
     
     var body: some View {
-        
-        
-        
         NavigationView{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
@@ -25,8 +23,6 @@ struct AddBandView: View {
                     Text(" Do you want to create Your Band? ")
                         .foregroundColor(.white)
                         .font(.largeTitle)
-                    
-                    
                     
                     VStack(spacing: 20){
                         Image("META")
@@ -37,19 +33,20 @@ struct AddBandView: View {
                             .shadow(radius: 50)
                             .frame(width: 150,height: 150)
                         
-                        TextField("Choose name for your Band",text:$name)
+                        TextField("Choose name for your Band",text:$viewModel.name)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(50)
                             .autocorrectionDisabled(true)
                         
                         
-                        TextField("Read Something about you...",text:$description)
+                        TextField("Read Something about you...",text:$viewModel.discription)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(50)
                             .autocorrectionDisabled(true)
                         
+            
                         
                     }
                     ScrollView{
@@ -57,6 +54,22 @@ struct AddBandView: View {
                         ArtistRowItem()
                         ArtistRowItem()
                         ArtistRowItem()
+                    }
+                    
+                    
+                    Button(action: {
+                       
+                    }) {
+                        /*Text("Validate")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 50)
+                            .background(.green)
+                            .cornerRadius(15.0)*/
+                        
+                        Button("Submit",action:{
+                            viewModel.createBand()
+                        })
                     }
                     
                 }

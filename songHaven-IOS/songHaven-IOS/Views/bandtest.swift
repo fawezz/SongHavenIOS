@@ -4,7 +4,7 @@
 //
 //  Created by cyrine on 18/11/2022.
 //
-
+/*
 import SwiftUI
 
 struct BandsView: View {
@@ -19,8 +19,6 @@ struct BandsView: View {
     ]
     
     var body: some View {
-        
-        
         NavigationView{
             
             ZStack{
@@ -28,8 +26,7 @@ struct BandsView: View {
             
                 
                 VStack{
-                    Text(name).fontWeight(.heavy)
-
+                    
                     
                     Text("Artists & Bands")
                         .font(.largeTitle)
@@ -189,3 +186,4 @@ struct BandsView: View {
         }
     }
 
+*/

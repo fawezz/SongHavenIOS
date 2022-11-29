@@ -9,43 +9,16 @@ import SwiftUI
 import _PhotosUI_SwiftUI
 @MainActor class AddBandViewModel: ObservableObject {
     @Published var name = ""
-    @Published var discriptopn = ""
+    @Published var discription = ""
     @Published var isUploading: Bool = false
     @Published var isLoading: Bool = false
     @Published var selectedImageData: Data? = nil
-    //  @Published var bandImageUrl : URL = URL(string: BandService.Band)
+    
     @Published var profileImageUrl: URL = URL(string: UserService.UserImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
     @Published var toastMessage = ""
     @Published var showSuccessToast : Bool = false
     @Published var showFailToast : Bool = false
     
-    
-    
-    func Addband(){
-        isLoading = true
-        UserService.Edi(id: UserDefaults.standard.string(forKey: "bandId")!, firstname: firstname, lastname: lastname, password: password, completed: { (success, reponse) in
-            
-            self.isLoading = false
-            if success {
-                print("success")
-                let currentUser = reponse as! User
-                self.toastMessage = "Success"
-                self.showSuccessToast = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
-                    self.navigator = "Profile"
-                    self.showSuccessToast = false
-                }
-            }
-            else {
-                self.toastMessage = reponse as! String
-                self.showFailToast = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
-                    self.showFailToast = false
-                }
-                print("fail")
-            }
-        })
-    }
     
     func EditImage(){
          self.isUploading = true
@@ -74,7 +47,29 @@ import _PhotosUI_SwiftUI
          
          }
          
-        
+    func createBand(){
+        isLoading = true
+        BandService.create(name: name, discription: discription,  completed: { (success, reponse) in
+            
+            self.isLoading = false
+            if success {
+                self.showSuccessToast = true
+                print("success")
+                //let currentUser = reponse as! User
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
+                    print("check ur mail")
+                    self.showSuccessToast = false
+                }
+            } else {
+                self.toastMessage = reponse as! String
+                self.showFailToast = true
+                print("failure")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self.showFailToast = false
+                }
+            }
+        })
+    }
         
     }
     

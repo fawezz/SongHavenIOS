@@ -18,6 +18,7 @@ struct BandDetailView: View {
                 
                 VStack{
                     Spacer()
+                    
                     Button(
                         action:{
                             

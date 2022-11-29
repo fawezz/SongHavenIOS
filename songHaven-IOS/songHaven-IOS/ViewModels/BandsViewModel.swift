@@ -9,12 +9,24 @@ import SwiftUI
 
 @MainActor class BandsViewModel: ObservableObject {
     
-    @Published var firstname = ""
-    @Published var lastname = ""
-    @Published var email = ""
-    @Published var password = ""
-    @Published var confirmPassword = ""
+    @Published var newBands = [ Band] ()
+    @Published var searchText : String = ""
+    
+    
+    init (){
+        
+        fetchNewBands()
+    }
+    
+    private func fetchNewBands(){
+        
+        BandService.GetAllBands(completed:{(success , bandArray) in
+            if( success){
+                self.newBands = bandArray ?? []
+                
+            }
+        })
+    }
+    
     
 }
-
-

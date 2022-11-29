@@ -32,6 +32,9 @@
 		94AFFC04292E1F8E00824EF6 /* BandsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC03292E1F8E00824EF6 /* BandsViewModel.swift */; };
 		94AFFC06292E1FAF00824EF6 /* BandDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC05292E1FAF00824EF6 /* BandDetailViewModel.swift */; };
 		94AFFC08292E1FE200824EF6 /* BandRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC07292E1FE200824EF6 /* BandRequestViewModel.swift */; };
+		94F7662029367FA8001DB1B3 /* bandtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F7661F29367FA8001DB1B3 /* bandtest.swift */; };
+		94F76622293683DA001DB1B3 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F76621293683DA001DB1B3 /* TestView.swift */; };
+		94F7662529368545001DB1B3 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 94F7662429368545001DB1B3 /* SDWebImageSwiftUI */; };
 		B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B009E7EE291EAD8C0068A57C /* Alamofire */; };
 		B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADAE2923E70900C9E601 /* EditProfileView.swift */; };
 		B024ADB12923E71000C9E601 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADB02923E71000C9E601 /* LoginView.swift */; };
@@ -99,6 +102,8 @@
 		94AFFC03292E1F8E00824EF6 /* BandsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandsViewModel.swift; sourceTree = "<group>"; };
 		94AFFC05292E1FAF00824EF6 /* BandDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandDetailViewModel.swift; sourceTree = "<group>"; };
 		94AFFC07292E1FE200824EF6 /* BandRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandRequestViewModel.swift; sourceTree = "<group>"; };
+		94F7661F29367FA8001DB1B3 /* bandtest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bandtest.swift; sourceTree = "<group>"; };
+		94F76621293683DA001DB1B3 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		B024ADAE2923E70900C9E601 /* EditProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		B024ADB02923E71000C9E601 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B024ADB22923E71700C9E601 /* OtpVerificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpVerificationView.swift; sourceTree = "<group>"; };
@@ -122,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F7662529368545001DB1B3 /* SDWebImageSwiftUI in Frameworks */,
 				B066E0482923F0D0002A27D8 /* SwiftyJSON in Frameworks */,
 				B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */,
 				B066E0452923EFA6002A27D8 /* AlertToast in Frameworks */,
@@ -229,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				94AFFBFE292E15C700824EF6 /* BandsView.swift */,
+				94F7661F29367FA8001DB1B3 /* bandtest.swift */,
 				94AFFBFC292E15C100824EF6 /* BandDetailView.swift */,
 				94AFFBFA292E15B600824EF6 /* BandRequestView.swift */,
 				94AFFBF8292E15AD00824EF6 /* ArtistSuggestionView.swift */,
@@ -242,6 +249,7 @@
 				081B294D291923C600981671 /* RegisterView.swift */,
 				94A4AEB429310B9C00A3B109 /* AddBandView.swift */,
 				94AFA89829325C1D008955A1 /* NotificationView.swift */,
+				94F76621293683DA001DB1B3 /* TestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,6 +303,7 @@
 				B009E7EE291EAD8C0068A57C /* Alamofire */,
 				B066E0442923EFA6002A27D8 /* AlertToast */,
 				B066E0472923F0D0002A27D8 /* SwiftyJSON */,
+				94F7662429368545001DB1B3 /* SDWebImageSwiftUI */,
 			);
 			productName = "songHaven-IOS";
 			productReference = 081B291B2919209700981671 /* songHaven-IOS.app */;
@@ -372,6 +381,7 @@
 				B009E7ED291EAD8C0068A57C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				B066E0432923EFA6002A27D8 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				B066E0462923F0D0002A27D8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				94F7662329368545001DB1B3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 081B291C2919209700981671 /* Products */;
 			projectDirPath = "";
@@ -439,6 +449,7 @@
 				B066E04E2923F446002A27D8 /* songHaven_IOS.xcdatamodeld in Sources */,
 				B024ADC32923E7C500C9E601 /* SignUpViewModel.swift in Sources */,
 				B024ADBB2923E7A700C9E601 /* LoginViewModel.swift in Sources */,
+				94F7662029367FA8001DB1B3 /* bandtest.swift in Sources */,
 				B024ADB12923E71000C9E601 /* LoginView.swift in Sources */,
 				B0C51152291FFFF600A3A0D0 /* UserService.swift in Sources */,
 				B025A95F291EE2D2007FF6FF /* User.swift in Sources */,
@@ -448,6 +459,7 @@
 				B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
 				B024ADC72923E7D100C9E601 /* RegisterViewModel.swift in Sources */,
+				94F76622293683DA001DB1B3 /* TestView.swift in Sources */,
 				94AFFC08292E1FE200824EF6 /* BandRequestViewModel.swift in Sources */,
 				94AFFBF9292E15AD00824EF6 /* ArtistSuggestionView.swift in Sources */,
 				94AFA89929325C1D008955A1 /* NotificationView.swift in Sources */,
@@ -795,6 +807,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		94F7662329368545001DB1B3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		B009E7ED291EAD8C0068A57C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -822,6 +842,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		94F7662429368545001DB1B3 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94F7662329368545001DB1B3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		B009E7EE291EAD8C0068A57C /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B009E7ED291EAD8C0068A57C /* XCRemoteSwiftPackageReference "Alamofire" */;
