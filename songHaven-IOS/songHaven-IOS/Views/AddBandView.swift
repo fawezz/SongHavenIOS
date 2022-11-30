@@ -46,35 +46,45 @@ struct AddBandView: View {
                             .cornerRadius(50)
                             .autocorrectionDisabled(true)
                         
-            
+                        
                         
                     }
-                    ScrollView{
-                        ArtistRowItem()
-                        ArtistRowItem()
-                        ArtistRowItem()
-                        ArtistRowItem()
-                    }
-                    
+                    /*
+                     ScrollView{
+                     ArtistRowItem()
+                     ArtistRowItem()
+                     ArtistRowItem()
+                     ArtistRowItem()
+                     }
+                     */
                     
                     Button(action: {
-                       
+                        
                     }) {
                         /*Text("Validate")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(width: 300, height: 50)
-                            .background(.green)
-                            .cornerRadius(15.0)*/
+                         .font(.headline)
+                         .foregroundColor(.white)
+                         .frame(width: 300, height: 50)
+                         .background(.green)
+                         .cornerRadius(15.0)*/
                         
-                        Button("Submit",action:{
-                            viewModel.createBand()
-                        })
+                        NavigationLink(destination: TestView()) {
+                            Button(action:{
+                                viewModel.createBand()
+                            })
+                            {
+                                Text("Validate")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame(width: 300, height: 50)
+                                    .background(.green)
+                                    .cornerRadius(15.0)
+                            }
+
+                        }
                     }
-                    
                 }
-            }
-        }
+            }}
     }
         struct AddBandView_Previews: PreviewProvider {
             static var previews: some View {
@@ -83,6 +93,7 @@ struct AddBandView: View {
         }
     }
 
+/*
 struct ArtistRowItem: View {
     var body: some View {
         Spacer()
@@ -119,3 +130,4 @@ struct ArtistRowItem: View {
         
     }
 }
+*/

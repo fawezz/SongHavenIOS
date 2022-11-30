@@ -90,7 +90,6 @@ struct BandsView: View {
                                     .background(Color.clear)
                                     .cornerRadius(15.0)
                             
-                            
                             NavigationLink( destination: BandRequestView()
                                 .navigationBarBackButtonHidden(true)){
                                 

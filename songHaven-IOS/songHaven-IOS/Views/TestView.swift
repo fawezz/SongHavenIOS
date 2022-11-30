@@ -12,20 +12,31 @@ import SwiftyJSON
 
 
 struct TestView: View {
+    
     @ObservedObject var obs = Observer()
-
-
-        var body: some View {
-            NavigationView{
-                List(obs.datas){
-                    i in
-                    card(name: i.name, discription: i.discription)
-                    
-                }.navigationTitle("Bands")
+    var body: some View {
+        NavigationView{
+                /*List(obs.datas){
+                i in
+                //card(name: i.name, discription: i.discription)
+                    Text(i.name)
+                
+            }.navigationTitle("Bands")*/
+            ZStack{
+                Color.purple.edgesIgnoringSafeArea(.all)
+                VStack{
+                        ScrollView{
+                            ForEach(obs.datas){ i in
+                                
+                                card(name: i.name, discription: i.discription)
+                            }
+                        }.scrollIndicators(.hidden)
+                    }
             }
+            
         }
+    }
 }
-
 struct TestView_Previews: PreviewProvider {
     static var previews: some View {
         TestView()
@@ -59,21 +70,29 @@ struct datatype : Identifiable{
 
 struct card : View {
     
-    var name = ""
-    var discription = ""
+    var name = "Cyrine"
+    var discription = "Salem"
     var body: some View {
         
         
-        HStack {
-                   /*AnimatedImage(url: URL(string: image)!).resizable().frame(width: 60, height: 60).clipShape(Circle()).shadow(radius: 20)*/
-                   
-                   
-                   Text(name).fontWeight(.heavy)
+HStack(spacing:20){
+    
+            Image("user")
+        .resizable()
+        .frame(width: 100,height: 100)
+    VStack{
+        Text(name).fontWeight(.heavy)
 
-            Text(name).fontWeight(.heavy)
+        Text(discription).fontWeight(.heavy)
+    }
+            
 
 
-               }
+}
+.padding(.horizontal)
+.shadow(radius: 1)
+.background(Color(.white))
+.cornerRadius(15)
                
            }
            
