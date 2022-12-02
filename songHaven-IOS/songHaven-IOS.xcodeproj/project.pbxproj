@@ -58,6 +58,7 @@
 		B066E0452923EFA6002A27D8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = B066E0442923EFA6002A27D8 /* AlertToast */; };
 		B066E0482923F0D0002A27D8 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B066E0472923F0D0002A27D8 /* SwiftyJSON */; };
 		B066E04E2923F446002A27D8 /* songHaven_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B066E04C2923F446002A27D8 /* songHaven_IOS.xcdatamodeld */; };
+		B091A019293A621A00E201F8 /* PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B091A018293A621A00E201F8 /* PlayMusic.swift */; };
 		B0AAC0E92935376400C3EFE4 /* PlaylistCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AAC0E82935376400C3EFE4 /* PlaylistCard.swift */; };
 		B0AAC0EC29354ADE00C3EFE4 /* PlaylistDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AAC0EB29354ADE00C3EFE4 /* PlaylistDetails.swift */; };
 		B0AAC0EE29354BB600C3EFE4 /* PlaylistDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AAC0ED29354BB600C3EFE4 /* PlaylistDetailsViewModel.swift */; };
@@ -135,6 +136,8 @@
 		B024ADC82923E7D700C9E601 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		B025A95E291EE2D2007FF6FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B066E04D2923F446002A27D8 /* songHaven_IOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = songHaven_IOS.xcdatamodel; sourceTree = "<group>"; };
+		B091A017293A5F2D00E201F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B091A018293A621A00E201F8 /* PlayMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
 		B0AAC0E82935376400C3EFE4 /* PlaylistCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCard.swift; sourceTree = "<group>"; };
 		B0AAC0EB29354ADE00C3EFE4 /* PlaylistDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetails.swift; sourceTree = "<group>"; };
 		B0AAC0ED29354BB600C3EFE4 /* PlaylistDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -196,6 +199,7 @@
 		081B291D2919209700981671 /* songHaven-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				B091A017293A5F2D00E201F8 /* Info.plist */,
 				9BE5D2B42931F1DD0046041A /* Components */,
 				B066E04C2923F446002A27D8 /* songHaven_IOS.xcdatamodeld */,
 				94AFFC00292E195800824EF6 /* Utilities */,
@@ -242,6 +246,7 @@
 			children = (
 				94AFFC0D292E22EF00824EF6 /* ColorExtension.swift */,
 				94AFFC01292E197800824EF6 /* Constants.swift */,
+				B091A018293A621A00E201F8 /* PlayMusic.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -483,6 +488,7 @@
 				B0AAC0EE29354BB600C3EFE4 /* PlaylistDetailsViewModel.swift in Sources */,
 				B024ADB92923E7A100C9E601 /* EditProfileViewModel.swift in Sources */,
 				081B294E291923C600981671 /* RegisterView.swift in Sources */,
+				B091A019293A621A00E201F8 /* PlayMusic.swift in Sources */,
 				B01F887A2935266900950EB1 /* SongCard.swift in Sources */,
 				B024ADB52923E72000C9E601 /* SendOtpView.swift in Sources */,
 				9BE5D2B0293080290046041A /* HomeView.swift in Sources */,
@@ -685,6 +691,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"songHaven-IOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "songHaven-IOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -714,6 +721,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"songHaven-IOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "songHaven-IOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

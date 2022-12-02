@@ -25,8 +25,10 @@ struct MusicHomeView: View {
                                 SongCard(song: song.wrappedValue)
                                     .padding(.horizontal, 3)
                                     .onTapGesture {
-                                        self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel(model: song.wrappedValue, currentPlaylist: nil)))
+                                        MusicPlayerViewModel.setup(Configurations(model: song.wrappedValue, currentPlaylist: nil))
+                                        self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel.shared ))
                                     }
+                                //MusicPlayerViewModel.shared.config?(model: song.wrappedValue, currentPlaylist: nil)
                             }
                         }
                     }
@@ -41,7 +43,7 @@ struct MusicHomeView: View {
                                 SongCard(song: song.wrappedValue)
                                     .padding(.horizontal, 3)
                                     .onTapGesture {
-                                        self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel(model: song.wrappedValue, currentPlaylist: nil)))
+                                        //self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel(model: song.wrappedValue, currentPlaylist: nil)))
                                     }
                             }
                         }

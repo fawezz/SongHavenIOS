@@ -50,7 +50,7 @@ struct MusicPlayerView: View {
                                 .frame(width: 150 + CGFloat((8 * i)),
                                        height: 150 + CGFloat((8 * i)))
                         }
-                        AsyncImage(url:viewModel.SongImageUrl)
+                        AsyncImage(url:MusicPlayerViewModel.config!.SongImageUrl)
                         {
                             Image in Image.resizable().scaledToFill()
                         } placeholder: {
@@ -64,10 +64,10 @@ struct MusicPlayerView: View {
                     }
                     //.frame(width: 120, height: 120).cornerRadius(60)
                     
-                    Text(viewModel.model.title!).foregroundColor(Color.main_color)
+                    Text(MusicPlayerViewModel.config!.model.title!).foregroundColor(Color.main_color)
                         .padding(.top, 12)
                     
-                    Text((viewModel.model.creator?.getFullName())!).foregroundColor(Color.main_color.opacity(0.8))
+                    Text((MusicPlayerViewModel.config!.model.creator?.getFullName())!).foregroundColor(Color.main_color.opacity(0.8))
                         .padding(.top, 12)
                     
                     Spacer()
@@ -76,10 +76,10 @@ struct MusicPlayerView: View {
                         //Text(viewModel.slider.rounded().formatted(allowedUnits: [.hour, .minute, .second]) ?? "")
                         //Text(Date viewModel.slider.rounded()).foregroundColor(Color.main_color)
                         TimerText(viewModel: viewModel)
-                        Slider(value: $viewModel.slider, in: (0...Double(viewModel.duration))) //viewModel.duration
+                        Slider(value: $viewModel.slider , in: (0...Double($viewModel.duration.wrappedValue))) //viewModel.duration
                             .accentColor(Color.main_color)
-                        Button(action: { viewModel.liked.toggle() }) {
-                            Image(systemName: viewModel.liked ?  "heart.fill" : "heart").foregroundColor(.purple)
+                        Button(action: { MusicPlayerViewModel.config!.liked.toggle() }) {
+                            Image(systemName: MusicPlayerViewModel.config!.liked ?  "heart.fill" : "heart").foregroundColor(.purple)
                                 .frame(width: 20, height: 20)
                         }
                     }.padding(.horizontal, 45)
@@ -110,20 +110,20 @@ struct MusicPlayerView: View {
                         .overlay(RoundedRectangle(cornerRadius: 50).stroke(Color.main_color, lineWidth: 2))
                     
                 }
-                .disabled(viewModel.playlist == nil)
+                .disabled(MusicPlayerViewModel.config!.playlist == nil)
                 .shadow(color: Color.black,radius: 8, x: 0, y: 5)
                 Spacer()
                 Button(action: {
-                    if(viewModel.isPlaying){
-                        viewModel.player.pause()
-                        viewModel.isPlaying = false
+                    if($viewModel.isPlaying.wrappedValue){
+                        MusicPlayerViewModel.config!.player.pause()
+                        MusicPlayerViewModel.config!.isPlaying = false
                     }else{
-                        viewModel.player.play()
-                        viewModel.isPlaying = true
+                        MusicPlayerViewModel.config!.player.play()
+                        MusicPlayerViewModel.config!.isPlaying = true
                     }
                 }) {
                     (
-                        Image(systemName: viewModel.isPlaying ? "pause.fill" : "play.fill")
+                        Image(systemName: MusicPlayerViewModel.config!.isPlaying ? "pause.fill" : "play.fill")
                     )
                     .renderingMode(.template)
                     .resizable().frame(width: 28, height: 28)
@@ -134,7 +134,7 @@ struct MusicPlayerView: View {
                 .shadow(color: Color.black,radius: 8, x: 0, y: 5)
                 Spacer()
                 Button(action: {
-                    viewModel.playNextSong()
+                    //viewModel.playNextSong()
                 }) {
                     Image("nextIcon").renderingMode(.template)
                         .resizable().frame(width: 18, height: 18)
@@ -144,7 +144,7 @@ struct MusicPlayerView: View {
                         .overlay(RoundedRectangle(cornerRadius: 50).stroke(Color.main_color, lineWidth: 2))
                     
                 }
-                .disabled(viewModel.playlist == nil)
+                .disabled(MusicPlayerViewModel.config!.playlist == nil)
                 .shadow(color: Color.black,radius: 8, x: 0, y: 5)
             }
             
@@ -156,9 +156,9 @@ struct MusicPlayerView: View {
 
         var body: some View {
             HStack(alignment: .center, spacing: 0) {
-                Text(viewModel.minutes < 10 ? "0\(viewModel.minutes):" : "\(viewModel.minutes)")
+                Text($viewModel.minutes.wrappedValue < 10 ? "0\($viewModel.minutes.wrappedValue):" : "\($viewModel.minutes.wrappedValue)")
                     .foregroundColor(Color.main_color)
-                Text(viewModel.seconds < 10 ? "0\(viewModel.seconds)" : "\(viewModel.seconds)")
+                Text($viewModel.seconds.wrappedValue < 10 ? "0\($viewModel.seconds.wrappedValue)" : "\($viewModel.seconds.wrappedValue)")
                     .foregroundColor(Color.main_color)
             }
             .shadow(color: Color.black ,radius: 8, x: 0, y: 5)
