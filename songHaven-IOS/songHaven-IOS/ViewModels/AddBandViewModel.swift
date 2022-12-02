@@ -14,20 +14,21 @@ import _PhotosUI_SwiftUI
     @Published var isLoading: Bool = false
     @Published var selectedImageData: Data? = nil
     
-    @Published var profileImageUrl: URL = URL(string: UserService.UserImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
+    @Published var bandImageUrl: URL = URL(string: BandService.BandImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
     @Published var toastMessage = ""
     @Published var showSuccessToast : Bool = false
     @Published var showFailToast : Bool = false
+    @Published var selectedItem: PhotosPickerItem? = nil
     
     
-    func EditImage(){
+    func AddImage(){
          self.isUploading = true
-         UserService.uploadImage(email: UserDefaults.standard.string(forKey: "email")!, image: UIImage(data: selectedImageData!), completed: { (success, reponse) in
+         BandService.uploadImage(name: UserDefaults.standard.string(forKey: "name")!, image: UIImage(data: selectedImageData!), completed: { (success, reponse) in
          
          self.isUploading = false
          if success {
-         print("success edit image")
-         self.profileImageUrl = URL(string: UserService.UserImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
+         print("success add image")
+             self.bandImageUrl = URL(string: BandService.BandImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
          self.toastMessage = reponse
          self.showSuccessToast = true
          DispatchQueue.main.asyncAfter(deadline: .now() + 1){

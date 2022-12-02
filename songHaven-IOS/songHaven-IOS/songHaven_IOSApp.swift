@@ -13,7 +13,8 @@ struct songHaven_IOSApp: App {
 
     var body: some Scene {
         WindowGroup {
-AddBandView()
+            TestView()
+          //  EditProfileView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct BandDetailView: View {
     @State private var bandName = ""
-    @State private var description = ""
+    @State private var discription = ""
+    @ObservedObject var viewModel = BandDetailViewModel()
+
 
     var body: some View {
         NavigationView{
@@ -22,10 +24,6 @@ struct BandDetailView: View {
                     Button(
                         action:{
                             
-                            
-                            
-                        
-                            
                         }, label:{
                             Label("Back", systemImage: "arrowshape.left.fill")
                                 .foregroundColor(.white)
@@ -36,6 +34,7 @@ struct BandDetailView: View {
                     
                 }
                 .padding(.all)
+                
                 VStack{
                  
                
@@ -72,16 +71,12 @@ struct BandDetailView: View {
                         .padding(.all)
                         .frame(width: 200, height: 200)
                     
-                    Text("Metallica")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .bold()
-                        .padding(.all)
-                    
-                    Text("       Metallica is an American heavy metal band. The band was formed in 1981 in Los Angeles by vocalist/guitarist James Hetfield and drummer Lars Ulrich and has been based in San Francisco for most of its career.")
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.leading)
-                        .padding(.all)
+                    VStack(spacing: 5) {
+                        Text(viewModel.name + " " + viewModel.discription)
+                            .bold()
+                            .font(.title)
+                            .foregroundColor(.white)
+                    }.padding()
                 }
                 .padding(.all)
             }

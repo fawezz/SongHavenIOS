@@ -5,4 +5,12 @@
 //  Created by SongH on 23/11/2022.
 //
 
-import Foundation
+import SwiftUI
+@MainActor class BandDetailViewModel : ObservableObject {
+
+    @Published var navigator : String? = nil
+    @Published var profileImageUrl: URL = URL(string: BandService.BandImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
+    let name : String = UserDefaults.standard.string(forKey: "name") ?? "NAME"
+    let discription : String = UserDefaults.standard.string(forKey: "discription") ?? "Description"
+}
+
