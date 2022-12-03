@@ -30,6 +30,8 @@ struct PlaylistDetails: View {
                                         .padding(.horizontal, 3)
                                         .onTapGesture {
                                             //self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel(model: song.wrappedValue, currentPlaylist: viewModel.selectedPlaylist)))
+                                            MusicPlayerViewModel.setup(Configurations(model: song.wrappedValue, currentPlaylist: viewModel.selectedPlaylist))
+                                            self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel.shared ))
                                         }
                                 }
                             }

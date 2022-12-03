@@ -78,8 +78,8 @@ struct MusicPlayerView: View {
                         TimerText(viewModel: viewModel)
                         Slider(value: $viewModel.slider , in: (0...Double($viewModel.duration.wrappedValue))) //viewModel.duration
                             .accentColor(Color.main_color)
-                        Button(action: { MusicPlayerViewModel.config!.liked.toggle() }) {
-                            Image(systemName: MusicPlayerViewModel.config!.liked ?  "heart.fill" : "heart").foregroundColor(.purple)
+                        Button(action: { viewModel.toggleLike() }) {
+                            Image(systemName: viewModel.liked ?  "heart.fill" : "heart").foregroundColor(.purple)
                                 .frame(width: 20, height: 20)
                         }
                     }.padding(.horizontal, 45)
@@ -88,19 +88,26 @@ struct MusicPlayerView: View {
                     
                     MusicControleButtons(viewModel: viewModel).padding(.horizontal, 32)
                 }.padding(.bottom, HORIZONTAL_SPACING).animation(.spring())
-            }
+            }.onAppear(
+                perform: self.viewModel.isLikedByUser
+            )
+            
         }.sheet(isPresented: $viewModel.showSheet) {
             Text("Detail")
                 .presentationDetents([.medium, .large])
             
         }
     }
+    
+    
     struct MusicControleButtons: View {
         @ObservedObject var viewModel: MusicPlayerViewModel
         
         var body: some View {
             HStack(alignment: .center) {
-                Button(action: {  }) {
+                Button(action: {
+                    viewModel.playPreviousSong()
+                }) {
                     Image("nextIcon").renderingMode(.template)
                         .resizable().frame(width: 18, height: 18)
                         .rotationEffect(Angle(degrees: 180))
@@ -116,14 +123,14 @@ struct MusicPlayerView: View {
                 Button(action: {
                     if($viewModel.isPlaying.wrappedValue){
                         MusicPlayerViewModel.config!.player.pause()
-                        MusicPlayerViewModel.config!.isPlaying = false
+                        viewModel.isPlaying = false
                     }else{
                         MusicPlayerViewModel.config!.player.play()
-                        MusicPlayerViewModel.config!.isPlaying = true
+                        viewModel.isPlaying = true
                     }
                 }) {
                     (
-                        Image(systemName: MusicPlayerViewModel.config!.isPlaying ? "pause.fill" : "play.fill")
+                        Image(systemName: $viewModel.isPlaying.wrappedValue ? "pause.fill" : "play.fill")
                     )
                     .renderingMode(.template)
                     .resizable().frame(width: 28, height: 28)
@@ -134,7 +141,7 @@ struct MusicPlayerView: View {
                 .shadow(color: Color.black,radius: 8, x: 0, y: 5)
                 Spacer()
                 Button(action: {
-                    //viewModel.playNextSong()
+                    viewModel.playNextSong()
                 }) {
                     Image("nextIcon").renderingMode(.template)
                         .resizable().frame(width: 18, height: 18)

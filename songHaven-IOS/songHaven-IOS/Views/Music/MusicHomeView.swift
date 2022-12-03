@@ -15,6 +15,7 @@ struct MusicHomeView: View {
             LinearGradient(gradient: Gradient(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             VStack{
+                
                 VStack(alignment: .leading){
                     Text("Most Popular")
                         .font(.title)
@@ -43,7 +44,8 @@ struct MusicHomeView: View {
                                 SongCard(song: song.wrappedValue)
                                     .padding(.horizontal, 3)
                                     .onTapGesture {
-                                        //self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel(model: song.wrappedValue, currentPlaylist: nil)))
+                                        MusicPlayerViewModel.setup(Configurations(model: song.wrappedValue, currentPlaylist: nil))
+                                        self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel.shared ))
                                     }
                             }
                         }
@@ -53,15 +55,23 @@ struct MusicHomeView: View {
                     Text("Your Playlists")
                         .font(.title)
                         .foregroundColor(.white)
-                    ScrollView(.horizontal){
-                        LazyHStack{
-                            ForEach($viewModel.userPlaylists, id: \._id) { playlist in
-                                PlaylistCard(playlist: playlist.wrappedValue)
-                                    .padding(.horizontal, 3)
-                                    .onTapGesture {
-                                        self.navigationStack.push(PlaylistDetails(viewModel: PlaylistDetailsViewModel(playlist: playlist.wrappedValue)))
-                                    }
+                    if(!$viewModel.userPlaylists.isEmpty){
+                        ScrollView(.horizontal){
+                            LazyHStack{
+                                ForEach($viewModel.userPlaylists, id: \._id) { playlist in
+                                    PlaylistCard(playlist: playlist.wrappedValue)
+                                        .padding(.horizontal, 3)
+                                        .onTapGesture {
+                                            self.navigationStack.push(PlaylistDetails(viewModel: PlaylistDetailsViewModel(playlist: playlist.wrappedValue)))
+                                        }
+                                }
                             }
+                        }
+                    }else{
+                        HStack{
+                            Text("You don't have any playlists yet")
+                                .foregroundColor(.main_color)
+                                .padding(.all, 50)
                         }
                     }
                 }

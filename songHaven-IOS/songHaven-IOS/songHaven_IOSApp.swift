@@ -7,10 +7,15 @@
 
 import SwiftUI
 import NavigationStack
+import AVFAudio
 
 @main
 struct songHaven_IOSApp: App {
     let persistenceController = PersistenceController.shared
+    @UIApplicationDelegateAdaptor(MyAppDelegate.self) private var appDelegate
+    init(){
+
+    }
     
     var body: some Scene {
         WindowGroup {

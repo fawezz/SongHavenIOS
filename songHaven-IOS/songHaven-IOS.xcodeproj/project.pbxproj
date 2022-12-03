@@ -55,6 +55,8 @@
 		B024ADC72923E7D100C9E601 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADC62923E7D100C9E601 /* RegisterViewModel.swift */; };
 		B024ADC92923E7D700C9E601 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADC82923E7D700C9E601 /* ProfileViewModel.swift */; };
 		B025A95F291EE2D2007FF6FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025A95E291EE2D2007FF6FF /* User.swift */; };
+		B0388798293BACF000DE78BD /* LikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0388797293BACF000DE78BD /* LikeService.swift */; };
+		B038879C293BC95400DE78BD /* MyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B038879B293BC95400DE78BD /* MyAppDelegate.swift */; };
 		B066E0452923EFA6002A27D8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = B066E0442923EFA6002A27D8 /* AlertToast */; };
 		B066E0482923F0D0002A27D8 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B066E0472923F0D0002A27D8 /* SwiftyJSON */; };
 		B066E04E2923F446002A27D8 /* songHaven_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B066E04C2923F446002A27D8 /* songHaven_IOS.xcdatamodeld */; };
@@ -135,6 +137,8 @@
 		B024ADC62923E7D100C9E601 /* RegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		B024ADC82923E7D700C9E601 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		B025A95E291EE2D2007FF6FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B0388797293BACF000DE78BD /* LikeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeService.swift; sourceTree = "<group>"; };
+		B038879B293BC95400DE78BD /* MyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppDelegate.swift; sourceTree = "<group>"; };
 		B066E04D2923F446002A27D8 /* songHaven_IOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = songHaven_IOS.xcdatamodel; sourceTree = "<group>"; };
 		B091A017293A5F2D00E201F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B091A018293A621A00E201F8 /* PlayMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				081B29222919209900981671 /* Assets.xcassets */,
 				081B29272919209900981671 /* Persistence.swift */,
 				081B29242919209900981671 /* Preview Content */,
+				B038879B293BC95400DE78BD /* MyAppDelegate.swift */,
 			);
 			path = "songHaven-IOS";
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 				B0C51151291FFFF600A3A0D0 /* UserService.swift */,
 				9BE5D2BD29332D660046041A /* SongService.swift */,
 				9BE5D2BF2933A25C0046041A /* PlaylistService.swift */,
+				B0388797293BACF000DE78BD /* LikeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -509,6 +515,7 @@
 				9BE5D2BE29332D660046041A /* SongService.swift in Sources */,
 				081B29212919209700981671 /* ContentView.swift in Sources */,
 				2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */,
+				B038879C293BC95400DE78BD /* MyAppDelegate.swift in Sources */,
 				B0AAC0E92935376400C3EFE4 /* PlaylistCard.swift in Sources */,
 				B066E04E2923F446002A27D8 /* songHaven_IOS.xcdatamodeld in Sources */,
 				B024ADC32923E7C500C9E601 /* SignUpViewModel.swift in Sources */,
@@ -522,6 +529,7 @@
 				94AFFC06292E1FAF00824EF6 /* BandDetailViewModel.swift in Sources */,
 				94AFFC0A292E223400824EF6 /* MusicPlayerView.swift in Sources */,
 				94AFFBFB292E15B600824EF6 /* BandRequestView.swift in Sources */,
+				B0388798293BACF000DE78BD /* LikeService.swift in Sources */,
 				9BE5D2BC29331C7F0046041A /* MusicHomeViewModel.swift in Sources */,
 				B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
