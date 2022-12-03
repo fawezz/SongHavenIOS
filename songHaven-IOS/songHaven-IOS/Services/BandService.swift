@@ -9,17 +9,17 @@ import SwiftyJSON
 import Foundation
 import UIKit
 class BandService{
-    let ip = "http://172.17.2.78:9090"
+    static let  ip = "http://172.17.2.137:9090"
     static let UploadImageURL = ""
-    static let CreateBandURL = "http://172.17.2.78:9090/band/CreateBand"
+    static let CreateBandURL = "http://172.17.2.137:9090/band/CreateBand"
     static let DeleteBandURL = "http://172.17.2.78:9090/band/delete"
     static let EditBandURL = "http://172.17.2.78:9090/band/modify"
     static let getAllURL = "http://172.17.2.78:9090/band/getAllBand"
     static let getByUserURL = "http://172.17.2.78:9090/band/getByUser"
-    static let AddMumberURL = "http://172.17.2.78:9090/band/addArtiste"
-    static let BandImageUrl = "http://172.17.2.78:9090/img/"
+    static let AddMumberURL = "http://172.17.2.137:9090/band/addArtiste"
+    static let BandImageUrl = "http://172.17.2.137:9090/img/"
     
-    static func create(/*creator: User,*/name: String, discription: String, completed: @escaping (Bool, Any?) ->Void){
+    static func create(/*creator: User,*/name: String, discription: String,imageId: String, completed: @escaping (Bool, Any?) ->Void){
         
         let headers :HTTPHeaders = [
             .contentType("application/json"),
@@ -29,6 +29,7 @@ class BandService{
            // "creatorId": creator._id!,
             "name" : name ,
             "discription" : discription,
+            "imageId" : imageId
         ]
         AF.request(CreateBandURL, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers )
             .validate(statusCode : 200..<300)
@@ -151,7 +152,7 @@ class BandService{
                 
             case let .failure(error):
                 debugPrint(error)
-                let jsonData = JSON(response.data!)
+                let jsonData = JSON(response.data ?? "data")
                 let message = jsonData["message"].stringValue
                 print(message)
                 completed(false, message)

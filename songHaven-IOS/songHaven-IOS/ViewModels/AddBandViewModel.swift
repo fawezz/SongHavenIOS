@@ -15,15 +15,17 @@ import _PhotosUI_SwiftUI
     @Published var selectedImageData: Data? = nil
     
     @Published var bandImageUrl: URL = URL(string: BandService.BandImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
+    @Published var uplodedImg : UIImage = UIImage()
     @Published var toastMessage = ""
     @Published var showSuccessToast : Bool = false
     @Published var showFailToast : Bool = false
     @Published var selectedItem: PhotosPickerItem? = nil
     
     
+    
     func AddImage(){
          self.isUploading = true
-         BandService.uploadImage(name: UserDefaults.standard.string(forKey: "name")!, image: UIImage(data: selectedImageData!), completed: { (success, reponse) in
+        BandService.uploadImage(name: UserDefaults.standard.string(forKey: "name") ?? "name", image: UIImage(data: selectedImageData!), completed: { (success, reponse) in
          
          self.isUploading = false
          if success {
@@ -50,7 +52,7 @@ import _PhotosUI_SwiftUI
          
     func createBand(){
         isLoading = true
-        BandService.create(name: name, discription: discription,  completed: { (success, reponse) in
+        BandService.create(name: name, discription: discription, imageId: "" , completed: { (success, reponse) in
             
             self.isLoading = false
             if success {
