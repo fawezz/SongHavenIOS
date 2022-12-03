@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct AddBandView: View {
+struct addTestView: View {
     
     @State private var name = ""
     @State private var discription = ""
@@ -114,9 +114,9 @@ struct AddBandView: View {
           }
     }
 }
-        struct AddBandView_Previews: PreviewProvider {
-            static var previews: some View {
-                AddBandView()
-            }
-        }
 
+struct addTestView_Previews: PreviewProvider {
+    static var previews: some View {
+        addTestView()
+    }
+}

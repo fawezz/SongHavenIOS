@@ -13,9 +13,12 @@ struct songHaven_IOSApp: App {
 
     var body: some Scene {
         WindowGroup {
-           // TestView()
+          //TestView()
           //  EditProfileView()
-            AddBandView()
+         //   AddBandView()
+           // LoginView()
+        //   BandDetailView()
+            addTestView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

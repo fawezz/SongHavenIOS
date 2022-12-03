@@ -13,7 +13,7 @@ import _PhotosUI_SwiftUI
     @Published var isUploading: Bool = false
     @Published var isLoading: Bool = false
     @Published var selectedImageData: Data? = nil
-    
+    @Published var navigator : String? = nil
     @Published var bandImageUrl: URL = URL(string: BandService.BandImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
     @Published var uplodedImg : UIImage = UIImage()
     @Published var toastMessage = ""

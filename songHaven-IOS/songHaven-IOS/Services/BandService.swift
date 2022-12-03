@@ -37,7 +37,7 @@ class BandService{
             .responseData { response in
                 switch response.result {
                 case .success:
-                    let jsonData = JSON(response.data!)
+                let jsonData = JSON(response.data!)
                 case let .failure(error):
                     if(response.response?.statusCode == 409){
                         let jsonData = JSON(response.data!)

@@ -24,6 +24,8 @@
 		94AFA89529324E42008955A1 /* BandService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFA89429324E42008955A1 /* BandService.swift */; };
 		94AFA89729324E56008955A1 /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFA89629324E56008955A1 /* Band.swift */; };
 		94AFA89929325C1D008955A1 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFA89829325C1D008955A1 /* NotificationView.swift */; };
+		94AFECBC293B9E2100FA25B3 /* EditBandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFECBB293B9E2100FA25B3 /* EditBandView.swift */; };
+		94AFECBE293BA4A400FA25B3 /* addTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFECBD293BA4A400FA25B3 /* addTestView.swift */; };
 		94AFFBF9292E15AD00824EF6 /* ArtistSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBF8292E15AD00824EF6 /* ArtistSuggestionView.swift */; };
 		94AFFBFB292E15B600824EF6 /* BandRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBFA292E15B600824EF6 /* BandRequestView.swift */; };
 		94AFFBFD292E15C100824EF6 /* BandDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFBFC292E15C100824EF6 /* BandDetailView.swift */; };
@@ -94,6 +96,8 @@
 		94AFA89429324E42008955A1 /* BandService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandService.swift; sourceTree = "<group>"; };
 		94AFA89629324E56008955A1 /* Band.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
 		94AFA89829325C1D008955A1 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		94AFECBB293B9E2100FA25B3 /* EditBandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBandView.swift; sourceTree = "<group>"; };
+		94AFECBD293BA4A400FA25B3 /* addTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTestView.swift; sourceTree = "<group>"; };
 		94AFFBF8292E15AD00824EF6 /* ArtistSuggestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistSuggestionView.swift; sourceTree = "<group>"; };
 		94AFFBFA292E15B600824EF6 /* BandRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandRequestView.swift; sourceTree = "<group>"; };
 		94AFFBFC292E15C100824EF6 /* BandDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandDetailView.swift; sourceTree = "<group>"; };
@@ -250,6 +254,8 @@
 				94A4AEB429310B9C00A3B109 /* AddBandView.swift */,
 				94AFA89829325C1D008955A1 /* NotificationView.swift */,
 				94F76621293683DA001DB1B3 /* TestView.swift */,
+				94AFECBB293B9E2100FA25B3 /* EditBandView.swift */,
+				94AFECBD293BA4A400FA25B3 /* addTestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -457,8 +463,10 @@
 				94AFFC06292E1FAF00824EF6 /* BandDetailViewModel.swift in Sources */,
 				94AFFBFB292E15B600824EF6 /* BandRequestView.swift in Sources */,
 				B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */,
+				94AFECBE293BA4A400FA25B3 /* addTestView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
 				B024ADC72923E7D100C9E601 /* RegisterViewModel.swift in Sources */,
+				94AFECBC293B9E2100FA25B3 /* EditBandView.swift in Sources */,
 				94F76622293683DA001DB1B3 /* TestView.swift in Sources */,
 				94AFFC08292E1FE200824EF6 /* BandRequestViewModel.swift in Sources */,
 				94AFFBF9292E15AD00824EF6 /* ArtistSuggestionView.swift in Sources */,

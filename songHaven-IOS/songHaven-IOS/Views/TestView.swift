@@ -13,12 +13,11 @@ import SwiftyJSON
 
 struct TestView: View {
     @StateObject var viewModel = ProfileViewModel()
-    private let adaptiveColumns = [
-        
-        GridItem (.adaptive(minimum: 170))
+    private let adaptiveColumns = [GridItem (.adaptive(minimum: 170))
         
         
     ]
+    
     @ObservedObject var obs = Observer()
     @State private var name = ""
     var body: some View {
@@ -133,10 +132,9 @@ class Observer : ObservableObject {
                 self.datas.append(datatype(id: i.1["_id"].stringValue, name: i.1["name"].stringValue,  discription: i.1["discription"].stringValue))
                 print(i.1)
             }
-            //print("1")
+         
         }
-        //print("2")
-    }
+            }
 }
 
 struct datatype : Identifiable{
@@ -164,6 +162,8 @@ struct card : View {
                         .opacity(0.20)
                         .cornerRadius(30)
                     
+                    
+                    
                 }
             Rectangle()
                 .foregroundColor(.gray)
@@ -172,7 +172,9 @@ struct card : View {
                 .opacity(0.20)
                 .cornerRadius(30)
             VStack(spacing:20){
+             
                 
+                    
                 AsyncImage(url:viewModel.bandImageUrl)
                 {
                     Image in Image.resizable()

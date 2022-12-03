@@ -19,18 +19,35 @@ struct BandDetailView: View {
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 
                 VStack{
-                    Spacer()
                     
-                    Button(
-                        action:{
+                    
+                         HStack(spacing:210){
+                             Button(
+                                 action: {
+                                     
+                                 }, label:{
+                                     Label("Remove Band", systemImage: "trash")
+                                 })
+                             .padding([.top, .leading, .trailing], -90.0)
+                      
+                             .foregroundColor(.white)
+                 
+                             
+                             Button(
+                                 action: {
+                                     
+                                 }, label:{
+                                     Label("Edit Band", systemImage: "square.and.pencil")
+                                 })
+                             .padding([.top, .leading, .trailing], -90.0)
                             
-                        }, label:{
-                            Label("Back", systemImage: "arrowshape.left.fill")
-                                .foregroundColor(.white)
-                                .padding(.leading, -150.0)
-                        }
+                             .foregroundColor(.white)
+                             
+                         }
+             
+       
                     
-                    )
+                  
                     
                 }
                 .padding(.all)
