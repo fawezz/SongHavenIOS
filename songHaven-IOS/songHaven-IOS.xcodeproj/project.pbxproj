@@ -60,6 +60,8 @@
 		B066E0452923EFA6002A27D8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = B066E0442923EFA6002A27D8 /* AlertToast */; };
 		B066E0482923F0D0002A27D8 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B066E0472923F0D0002A27D8 /* SwiftyJSON */; };
 		B066E04E2923F446002A27D8 /* songHaven_IOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B066E04C2923F446002A27D8 /* songHaven_IOS.xcdatamodeld */; };
+		B08494B3293D09DC0071320F /* EditPlaylistSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08494B2293D09DC0071320F /* EditPlaylistSheet.swift */; };
+		B08494B5293D0ADF0071320F /* EditPlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08494B4293D0ADF0071320F /* EditPlaylistViewModel.swift */; };
 		B091A019293A621A00E201F8 /* PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B091A018293A621A00E201F8 /* PlayMusic.swift */; };
 		B0AAC0E92935376400C3EFE4 /* PlaylistCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AAC0E82935376400C3EFE4 /* PlaylistCard.swift */; };
 		B0AAC0EC29354ADE00C3EFE4 /* PlaylistDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AAC0EB29354ADE00C3EFE4 /* PlaylistDetails.swift */; };
@@ -140,6 +142,8 @@
 		B0388797293BACF000DE78BD /* LikeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeService.swift; sourceTree = "<group>"; };
 		B038879B293BC95400DE78BD /* MyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppDelegate.swift; sourceTree = "<group>"; };
 		B066E04D2923F446002A27D8 /* songHaven_IOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = songHaven_IOS.xcdatamodel; sourceTree = "<group>"; };
+		B08494B2293D09DC0071320F /* EditPlaylistSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaylistSheet.swift; sourceTree = "<group>"; };
+		B08494B4293D0ADF0071320F /* EditPlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaylistViewModel.swift; sourceTree = "<group>"; };
 		B091A017293A5F2D00E201F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B091A018293A621A00E201F8 /* PlayMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
 		B0AAC0E82935376400C3EFE4 /* PlaylistCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCard.swift; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 				B01F88792935266900950EB1 /* SongCard.swift */,
 				B0AAC0E82935376400C3EFE4 /* PlaylistCard.swift */,
 				B0AAC0EF2935506300C3EFE4 /* PlayListDetailsRow.swift */,
+				B08494B2293D09DC0071320F /* EditPlaylistSheet.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 				9BE5D2BB29331C7F0046041A /* MusicHomeViewModel.swift */,
 				B0AAC0ED29354BB600C3EFE4 /* PlaylistDetailsViewModel.swift */,
 				B0C1CDFF293668DD00BFC534 /* CreateSongViewModel.swift */,
+				B08494B4293D0ADF0071320F /* EditPlaylistViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -517,6 +523,7 @@
 				2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */,
 				B038879C293BC95400DE78BD /* MyAppDelegate.swift in Sources */,
 				B0AAC0E92935376400C3EFE4 /* PlaylistCard.swift in Sources */,
+				B08494B5293D0ADF0071320F /* EditPlaylistViewModel.swift in Sources */,
 				B066E04E2923F446002A27D8 /* songHaven_IOS.xcdatamodeld in Sources */,
 				B024ADC32923E7C500C9E601 /* SignUpViewModel.swift in Sources */,
 				B0AAC0EC29354ADE00C3EFE4 /* PlaylistDetails.swift in Sources */,
@@ -533,6 +540,7 @@
 				9BE5D2BC29331C7F0046041A /* MusicHomeViewModel.swift in Sources */,
 				B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
+				B08494B3293D09DC0071320F /* EditPlaylistSheet.swift in Sources */,
 				9BE5D2B62931F1FB0046041A /* BackButton.swift in Sources */,
 				B024ADC72923E7D100C9E601 /* RegisterViewModel.swift in Sources */,
 				94AFFC08292E1FE200824EF6 /* BandRequestViewModel.swift in Sources */,

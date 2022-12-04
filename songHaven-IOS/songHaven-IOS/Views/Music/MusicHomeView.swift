@@ -29,7 +29,6 @@ struct MusicHomeView: View {
                                         MusicPlayerViewModel.setup(Configurations(model: song.wrappedValue, currentPlaylist: nil))
                                         self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel.shared ))
                                     }
-                                //MusicPlayerViewModel.shared.config?(model: song.wrappedValue, currentPlaylist: nil)
                             }
                         }
                     }

@@ -44,11 +44,11 @@ class MusicPlayerViewModel: ObservableObject {
     
     func updateTimer(){
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ (_) in
-            if(self.isPlaying){
+            if(self.isPlaying && self.showSheet == false){
                 self.slider = (MusicPlayerViewModel.config!.player.currentItem?.currentTime().seconds)!
                 self.minutes = Int((self.slider / 60))
                 self.seconds = Int((self.slider.truncatingRemainder(dividingBy: 60).rounded()))
-                self.isPlaying = MusicPlayerViewModel.config!.isPlaying
+                //self.isPlaying = MusicPlayerViewModel.config!.isPlaying
                 print("seconds", self.seconds )
                 print("minutes", self.minutes )
             }
@@ -61,7 +61,6 @@ class MusicPlayerViewModel: ObservableObject {
         LikeService.toggleLike(songId: (MusicPlayerViewModel.config?.model._id)!, completed: { (success, reponse) in
             if success {
                 print("success toggled like")
-                let liked = reponse
                 self.liked = reponse ?? self.liked
             } else {
                 print("fail toggle like")

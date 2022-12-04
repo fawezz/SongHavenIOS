@@ -21,7 +21,7 @@ class PlaylistService{
     
     static func GetByUser(completed: @escaping (Bool, [Playlist]?) -> Void){
         let userId : String = UserDefaults.standard.string(forKey: "userId")!
-        AF.request(getByUserURL + "63749eac6781be3df2521807"/*userId*/,  method: .get )
+        AF.request(getByUserURL + userId,  method: .get ) //"63749eac6781be3df2521807"
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseData { response in
@@ -98,15 +98,16 @@ class PlaylistService{
                 }
             }
     }
-    static func CreatePlaylist(title: String, ownerId: String,songs: [String], completed: @escaping (Bool, Playlist?) -> Void){
-        print(songs)
+    //RODDHA TAKHOU SONG WA7DA///////////////
+    static func CreatePlaylist(title: String,songs: [String]?, completed: @escaping (Bool, Playlist?) -> Void){
+        let userId : String = UserDefaults.standard.string(forKey: "userId")!
         let headers : HTTPHeaders = [
             .contentType("application/json"),
             .accept("application/json")
         ]
         let params = [
             "title" : title,
-            "ownerId" : ownerId,
+            "ownerId" : userId,
             //"songs" : try! JSONSerialization.data(withJSONObject: songs)
         ]
         

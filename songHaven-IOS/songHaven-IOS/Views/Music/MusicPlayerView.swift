@@ -92,10 +92,9 @@ struct MusicPlayerView: View {
                 perform: self.viewModel.isLikedByUser
             )
             
-        }.sheet(isPresented: $viewModel.showSheet) {
-            Text("Detail")
+        }.sheet(isPresented: $viewModel.showSheet, onDismiss: {self.viewModel.showSheet = false}) {
+            EditPlaylistSheet(viewModel: EditPlaylistViewModel(song: MusicPlayerViewModel.config!.model))
                 .presentationDetents([.medium, .large])
-            
         }
     }
     
@@ -172,6 +171,8 @@ struct MusicPlayerView: View {
 
         }
     }
+    
+    
 }
 extension Int {
     func formatted(allowedUnits: NSCalendar.Unit = [.hour, .minute]) -> String? {

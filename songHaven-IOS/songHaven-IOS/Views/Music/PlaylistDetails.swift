@@ -18,11 +18,7 @@ struct PlaylistDetails: View {
                     .edgesIgnoringSafeArea(.all)
                 VStack{
                     //search bar
-                    
                     VStack(alignment: .leading){
-//                        Text(viewModel.selectedPlaylist.title ?? "error getting title")
-//                            .font(.title)
-//                            .foregroundColor(.white)
                         ScrollView(.vertical){
                             LazyVStack{
                                 ForEach($viewModel.songs, id: \._id) { song in
@@ -41,10 +37,10 @@ struct PlaylistDetails: View {
                 .padding(8)
                 .navigationBarTitle(viewModel.selectedPlaylist.title!)
                 .navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
-
+                
             }
         }
-
+        
     }
     
 }
