@@ -12,10 +12,7 @@ import SwiftUI
     @Published var newBands = [ Band] ()
     @Published var searchText : String = ""
     @Published var bandImageUrl: URL = URL(string:BandService.BandImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
-    
-    
     init (){
-        
         fetchNewBands()
     }
     
@@ -28,6 +25,4 @@ import SwiftUI
             }
         })
     }
-    
-    
 }

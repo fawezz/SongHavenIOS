@@ -13,11 +13,9 @@ import SwiftUI
     @Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
-    
     @Published var navigator: String? = nil
     @Published var isLoading: Bool = false
     @Published var hiddenPass: Bool = false
-    
     @Published var showSuccessToast: Bool = false
     @Published var showFailToast: Bool = false
     @Published var toastText: String = ""

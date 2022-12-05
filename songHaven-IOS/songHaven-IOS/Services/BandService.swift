@@ -17,7 +17,7 @@ class BandService{
     static let getAllURL = "http://172.17.8.102:9090/band/getAllBand"
     static let getByUserURL = "http://172.8.102.78:9090/band/getByUser"
     static let AddMumberURL = "http://172.17.8.102:9090/band/addArtiste"
-    static let BandImageUrl = "http://172.17.8.102:9090/img/"
+    static let BandImageUrl = "http://172.17.8.102:9090/uploads/"
     
     static func create(/*creator: User,*/name: String, discription: String,imageId: String, completed: @escaping (Bool, Any?) ->Void){
         
@@ -228,7 +228,7 @@ class BandService{
                 multipartFormData: { multipartFormData in
                     multipartFormData.append(image.jpegData(compressionQuality: 0.5)!, withName: "image",fileName: "band.jpg",mimeType: "image/jpg")
                     multipartFormData.append(band.name!.data(using: String.Encoding.utf8)!, withName: "name")
-                    multipartFormData.append(band.discription!.data(using: String.Encoding.utf8)!, withName: "description")
+                    multipartFormData.append(band.discription!.data(using: String.Encoding.utf8)!, withName: "discription")
                
                 },to: CreateBandURL,method: .post, headers: headers)
             .validate(statusCode: 200..<300)
@@ -242,10 +242,8 @@ class BandService{
                     print(error)
                     completed(false,error.responseCode!)
                 }
+          
             }
-            }
-
-
-    /**********************************************/
+    }
 
 }

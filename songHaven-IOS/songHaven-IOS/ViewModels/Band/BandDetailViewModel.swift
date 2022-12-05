@@ -10,7 +10,7 @@ import SwiftUI
 
     @Published var navigator : String? = nil
     @Published var profileImageUrl: URL = URL(string: BandService.BandImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
-    let name : String = UserDefaults.standard.string(forKey: "name") ?? "NAME"
-    let discription : String = UserDefaults.standard.string(forKey: "discription") ?? "Description"
+    let name : String = UserDefaults.standard.string(forKey: "name") ?? ""
+    let discription : String = UserDefaults.standard.string(forKey: "discription") ?? ""
 }
 

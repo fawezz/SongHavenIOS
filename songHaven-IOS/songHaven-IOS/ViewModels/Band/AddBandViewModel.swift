@@ -27,56 +27,56 @@ import _PhotosUI_SwiftUI
     
     
     func AddImage(){
-         self.isUploading = true
+        self.isUploading = true
         BandService.uploadImage(name: UserDefaults.standard.string(forKey: "name") ?? "name", image: UIImage(data: selectedImageData!), completed: { (success, reponse) in
-         
-         self.isUploading = false
-         if success {
-         print("success add image")
-             self.bandImageUrl = URL(string: BandService.BandImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
-         self.toastMessage = reponse
-         self.showSuccessToast = true
-         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-         self.showSuccessToast = false
-         }
-         }
-         else {
-         self.toastMessage = reponse
-         self.showFailToast = true
-         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-         self.showFailToast = false
-         }
-         print("fail edit")
-         }
-         })
-         
-         
-         }
-/*
-    func createBand(){
-        isLoading = true
-        BandService.add(band: Band, image: UIImage, completed:  { (success, reponse) in
-       
             
-            self.isLoading = false
+            self.isUploading = false
             if success {
+                print("success add image")
+                self.bandImageUrl = URL(string: BandService.BandImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
+                self.toastMessage = reponse
                 self.showSuccessToast = true
-                print("success")
-                //let currentUser = reponse as! User
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
-                    print("check ur mail")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                     self.showSuccessToast = false
                 }
-            } else {
-                self.toastMessage = reponse as! String
+            }
+            else {
+                self.toastMessage = reponse
                 self.showFailToast = true
-                print("failure")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                     self.showFailToast = false
                 }
+                print("fail edit")
             }
         })
+        
+        
     }
+    /*
+     func createBand(){
+     isLoading = true
+     BandService.add(band: Band, image: UIImage, completed:  { (success, reponse) in
+     
+     
+     self.isLoading = false
+     if success {
+     self.showSuccessToast = true
+     print("success")
+     //let currentUser = reponse as! User
+     DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
+     print("check ur mail")
+     self.showSuccessToast = false
+     }
+     } else {
+     self.toastMessage = reponse as! String
+     self.showFailToast = true
+     print("failure")
+     DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+     self.showFailToast = false
+     }
+     }
+     })
+     }
      */
     
     
@@ -85,22 +85,20 @@ import _PhotosUI_SwiftUI
     func addBand (){
         if (name.isEmpty || discription.isEmpty){
             print( )
-           // action("Some fields aren't filed please check ", false)
+            // action("Some fields aren't filed please check ", false)
             return
         }
         BandService.add(band: Band(name: name, discription: discription,image: ""),image: image){
             
             passed , statusCode in
-            if ( passed == true){
-                
-              //  action("Band Created ! " ,  true)
-        }else{
-           // action("Error", false)
+            passed == true
         }
     }
+    func validateFields()-> Bool{
+        return (name.isEmpty || discription.isEmpty)
     }
-                        }
-                        
+
+}
 
 
 

@@ -18,7 +18,7 @@ struct ArtistSuggestionView: View {
             VStack{
                 NavigationLink("", destination: ArtistSuggestionView())
                 Spacer()
-                Text("Artists & Bands")
+                Text("SUGGESTION")
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .bold()
@@ -42,17 +42,8 @@ struct ArtistSuggestionView: View {
                     }
                     Spacer()
                     HStack{
-                        Text("SUGGESTION")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .fixedSize()
-                            .frame(width: 130, height: 50)
-                            .background(Color.clear)
-                            .cornerRadius(15.0)
-                            .bold()
                         
-                        NavigationLink( destination: BandsView()
+                        NavigationLink( destination: UserBandsView()
                             .navigationBarBackButtonHidden(true)){
                                 Text("BANDS")
                                     .font(.headline)
@@ -61,7 +52,6 @@ struct ArtistSuggestionView: View {
                                     .frame(width: 130, height: 50)
                                     .background(Color.clear)
                                     .cornerRadius(15.0)
-                                
                             }
                         
                         NavigationLink( destination: BandRequestView()

@@ -141,7 +141,7 @@ struct LoginView: View {
                     
                 NavigationLink(destination: SendOtpView(), tag: "ForgotPass", selection: $viewModel.navigator) {}
                 NavigationLink(destination: RegisterView(), tag: "SignUp", selection: $viewModel.navigator) {}
-                NavigationLink(destination: BandsView().navigationBarBackButtonHidden(true), tag: "Bands", selection: $viewModel.navigator) {}
+                NavigationLink(destination: UserBandsView().navigationBarBackButtonHidden(true), tag: "Bands", selection: $viewModel.navigator) {}
                     
             }
             .toast(isPresenting: $viewModel.showSuccessToast){

@@ -11,47 +11,45 @@ struct BandDetailView: View {
     @State private var bandName = ""
     @State private var discription = ""
     @ObservedObject var viewModel = BandDetailViewModel()
-
-
+    var datatype : datatype
+    
+    
     var body: some View {
         NavigationView{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 
                 VStack{
-                         HStack(spacing:210){
-                             Button(
-                                 action: {
-                                     
-                                 }, label:{
-                                     Label("Remove Band", systemImage: "trash")
-                                 })
-                             .padding([.top, .leading, .trailing], -90.0)
-                      
-                             .foregroundColor(.white)
-                 
-                             
-                             Button(
-                                 action: {
-                                     
-                                 }, label:{
-                                     Label("Edit Band", systemImage: "square.and.pencil")
-                                 })
-                             .padding([.top, .leading, .trailing], -90.0)
+                    VStack(spacing: 30){
+                        
+                        
+                        HStack(spacing:210){
+                            Button(
+                                action: {
+                                    
+                                }, label:{
+                                    Label("Remove Band", systemImage: "trash")
+                                })
+                            .padding([.top, .leading, .trailing], -90.0)
                             
-                             .foregroundColor(.white)
-                             
-                         }
-             
-       
-                    
-                  
-                    
-                }
-                .padding(.all)
-                
-                VStack{
-                   // if (creatorId == currentUser){
+                            .foregroundColor(.white)
+                            
+                            
+                            Button(
+                                action: {
+                                    
+                                }, label:{
+                                    Label("Edit Band", systemImage: "square.and.pencil")
+                                })
+                            .padding([.top, .leading, .trailing], -90.0)
+                            
+                            .foregroundColor(.white)
+                            
+              
+
+                            
+                        }
+                        .padding(.leading, 67.0)
                         HStack(spacing:210){
                             Button(
                                 action: {
@@ -60,9 +58,9 @@ struct BandDetailView: View {
                                     Label("Members", systemImage: "person.2.fill")
                                 })
                             .padding([.top, .leading, .trailing], -90.0)
-                     
+                            
                             .foregroundColor(.white)
-                
+                            
                             
                             Button(
                                 action: {
@@ -71,42 +69,15 @@ struct BandDetailView: View {
                                     Label("Add Artist", systemImage: "person.fill.badge.plus")
                                 })
                             .padding([.top, .leading, .trailing], -90.0)
-                           
+                            
                             .foregroundColor(.white)
                             
                         }
                         .padding(.leading, 67.0)
                         
-                   // }else{
                         
-                        HStack(spacing:210){
-                            Button(
-                                action: {
-                                    
-                                }, label:{
-                                    Label("Members", systemImage: "person.2.fill")
-                                })
-                            .padding([.top, .leading, .trailing], -90.0)
-                     
-                            .foregroundColor(.white)
-                
-                            
-                            Button(
-                                action: {
-                                    
-                                }, label:{
-                                    Label("Add Artist", systemImage: "person.fill.badge.plus")
-                                })
-                            .padding([.top, .leading, .trailing], -90.0)
-                           
-                            .foregroundColor(.white)
-                            
-                        }
-                        .padding(.leading, 67.0)
-                        .hidden()
+                        
                     }
-               
-                    
                     
                     
                     Image("logo")
@@ -116,10 +87,16 @@ struct BandDetailView: View {
                         .frame(width: 200, height: 200)
                     
                     VStack(spacing: 5) {
-                        Text(viewModel.name + " " + viewModel.discription)
-                            .bold()
-                            .font(.title)
+                        Text(datatype.name )
+                            .font(.largeTitle)
                             .foregroundColor(.white)
+                        
+                        Text( datatype.discription)
+                            .bold()
+                            .foregroundColor(.white)
+                        
+                        
+                        
                     }.padding()
                 }
                 .padding(.all)
@@ -127,10 +104,11 @@ struct BandDetailView: View {
             
         }
     }
+}
     
     struct BandDetailView_Previews: PreviewProvider {
         static var previews: some View {
-            BandDetailView()
+            BandDetailView(datatype: datatype(id: "", name: "", discription: ""))
         }
     }
 

@@ -7,13 +7,8 @@
 
 import SwiftUI
 import PhotosUI
-
-struct addTestView: View {
-    
-    @State private var name = ""
-    @State private var discription = ""
+struct AddBandView: View {
     @StateObject var viewModel  = AddBandViewModel()
-    @State private var   shouldChange = false
     var body: some View {
         NavigationView{
             ZStack{
@@ -43,11 +38,6 @@ struct addTestView: View {
                         
                     }
                     
-                    
-                    
-                    
-                    
-                    
                     TextField("Choose name for your Band",text:$viewModel.name)
                         .padding()
                         .background(Color.white)
@@ -63,9 +53,11 @@ struct addTestView: View {
                     
                     
                     
-                    NavigationLink(destination: TestView()){
+                    NavigationLink(destination: UserBandsView(), tag: "addBand", selection: $viewModel.navigator){}
+                    
                         Button(action:{
                             viewModel.addBand()
+                            viewModel.navigator = "addBand"
                      
                         })
                         {
@@ -73,13 +65,9 @@ struct addTestView: View {
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .frame(width: 300, height: 50)
-                                .background(.green)
+                                .background(!viewModel.validateFields() ? .green : .gray)
                                 .cornerRadius(15.0)
-                        }
-                        
-                    }
-                    
-                    
+                        }.disabled(viewModel.validateFields())
                     
                 }.padding(.all)
                 if (viewModel.isLoading){
@@ -88,9 +76,7 @@ struct addTestView: View {
                         ProgressView()
                     }
                 }
-                
-                
-                
+
             }
           }
     }
@@ -98,6 +84,6 @@ struct addTestView: View {
 
 struct addTestView_Previews: PreviewProvider {
     static var previews: some View {
-        addTestView()
+        AddBandView()
     }
 }

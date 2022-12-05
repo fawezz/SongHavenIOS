@@ -11,11 +11,11 @@ import SDWebImageSwiftUI
 import SwiftyJSON
 
 
-struct TestView: View {
+struct UserBandsView: View {
     @StateObject var viewModel = ProfileViewModel()
     private let adaptiveColumns = [GridItem (.adaptive(minimum: 170))
-        
-        
+                                   
+                                   
     ]
     
     @ObservedObject var obs = Observer()
@@ -26,7 +26,7 @@ struct TestView: View {
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack{
-                    Text("Artists & Bands")
+                    Text("Bands")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .bold()
@@ -43,7 +43,7 @@ struct TestView: View {
                         Button(
                             
                             action:{
-                            
+                                
                                 
                             }, label:{
                                 Label("", systemImage: "magnifyingglass")
@@ -59,63 +59,55 @@ struct TestView: View {
                             
                             NavigationLink( destination: ArtistSuggestionView()
                                 .navigationBarBackButtonHidden(true)){
-                               
-                                Text("SUGGESTION")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .fixedSize()
-                                    .padding()
-                                    .frame(width: 130, height: 50)
-                                    .background(Color.clear)
-                                    .cornerRadius(15.0)
-                              
-                            }
-            
-                                Text("BANDS")
-                                    .bold()
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(width: 130, height: 50)
-                                    .background(Color.clear)
-                                    .cornerRadius(15.0)
+                                    
+                                    Text("SUGGESTION")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                        .fixedSize()
+                                        .padding()
+                                        .frame(width: 130, height: 50)
+                                        .background(Color.clear)
+                                        .cornerRadius(15.0)
+                                    
+                                }
                             
-                            NavigationLink( destination:TestView()
+                            
+                            NavigationLink( destination: BandRequestView()
                                 .navigationBarBackButtonHidden(true)){
-                                
-                                Text("REQUESTS")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(width: 130, height: 50)
-                                    .background(Color.clear)
-                                    .cornerRadius(15.0)
-                                
-                                
+                                    
+                                    Text("REQUESTS")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                        .padding()
+                                        .frame(width: 130, height: 50)
+                                        .background(Color.clear)
+                                        .cornerRadius(15.0)
+                                    
+                                    
+                                }
+                        }
+                        
+                    }
+                    
+                    ScrollView{
+                        LazyVGrid(columns:adaptiveColumns, spacing: 20){
+                            ForEach(obs.datas){ i in
+                                card(datatype: i)
                             }
                         }
-
-                    }
+                        
+                    }.scrollIndicators(.hidden)
                     
-                        ScrollView{
-                            LazyVGrid(columns:adaptiveColumns, spacing: 20){
-                                ForEach(obs.datas){ i in
-                                    card(name: i.name, discription: i.discription)
-                                }//.onDelete(perform:     )
-                            }
-                            
-                        }.scrollIndicators(.hidden)
                     
-            
-                    }
+                }
             }
-            
+
         }
     }
 }
 struct TestView_Previews: PreviewProvider {
     static var previews: some View {
-        TestView()
+        UserBandsView()
     }
 }
 
@@ -132,9 +124,9 @@ class Observer : ObservableObject {
                 self.datas.append(datatype(id: i.1["_id"].stringValue, name: i.1["name"].stringValue,  discription: i.1["discription"].stringValue))
                 print(i.1)
             }
-         
+            
         }
-            }
+    }
 }
 
 struct datatype : Identifiable{
@@ -142,17 +134,13 @@ struct datatype : Identifiable{
     var name : String
     var discription : String
 }
-
-
 struct card : View {
     @StateObject var viewModel = BandsViewModel()
-    
-    var name = "Cyrine"
-    var discription = "Salem"
+    var datatype : datatype
     var body: some View {
-
+        
         ZStack{
-            NavigationLink( destination: BandDetailView()
+            NavigationLink( destination: BandDetailView(datatype: datatype )
                 .navigationBarBackButtonHidden(true)){
                     
                     Rectangle()
@@ -161,9 +149,6 @@ struct card : View {
                         .frame(width: 130, height: 130)
                         .opacity(0.20)
                         .cornerRadius(30)
-                    
-                    
-                    
                 }
             Rectangle()
                 .foregroundColor(.gray)
@@ -172,9 +157,9 @@ struct card : View {
                 .opacity(0.20)
                 .cornerRadius(30)
             VStack(spacing:20){
-             
                 
-                    
+                
+                
                 AsyncImage(url:viewModel.bandImageUrl)
                 {
                     Image in Image.resizable()
@@ -186,39 +171,39 @@ struct card : View {
                 .shadow(radius: 10)
                 .frame(width: 180,height: 180)
                 
-                HStack{
-                   
-                    Text(name).fontWeight(.heavy)
-
-                 //   Text(discription).fontWeight(.heavy)
+                VStack{
+                    
+                    Text(datatype.name).fontWeight(.heavy)
+                    
+                    Text(datatype.discription).fontWeight(.light)
                 }
+                
+            }
+            
+            
+            
+            
             
         }
+        .padding(.horizontal)
+        .shadow(radius: 54)
+        .background(Color(.clear))
+        .cornerRadius(15)
+        .foregroundColor(.white)
+        .navigationBarBackButtonHidden(true)
+        .frame(width: 130, height: 130)
         
-
-            
-
-
+        
+        
+        
+    }
+    
+    
+    
 }
-.padding(.horizontal)
-.shadow(radius: 54)
-.background(Color(.clear))
-.cornerRadius(15)
-.foregroundColor(.white)
-.navigationBarBackButtonHidden(true)
-.frame(width: 130, height: 130)
-
-
-
-               
-           }
-           
-           
-           
-       }
 /*
-func deleteItems ( at offsets: IndexSet){
-obs.items.remove(atOffsets : offsets)
-
-}
-*/
+ func deleteItems ( at offsets: IndexSet){
+ obs.items.remove(atOffsets : offsets)
+ 
+ }
+ */
