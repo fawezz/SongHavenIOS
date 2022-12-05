@@ -20,6 +20,7 @@ class MusicPlayerViewModel: ObservableObject {
     @Published var isPlaying: Bool = (config?.isPlaying)!
     @Published var duration: Int = 10
     @Published var liked = false
+    @Published var timer : Timer? = nil
 
 
     private init() {}
@@ -38,19 +39,34 @@ class MusicPlayerViewModel: ObservableObject {
             MusicPlayerViewModel.shared.isPlaying = true
             if(firstConfig){ // to make sure update timer is called only once
                 self.shared.updateTimer()
+                //ACTIVATE AUDIO SESSION
+//                do{
+//                    try AVAudioSession.sharedInstance().setActive(true)
+//
+//                }
+//                catch {print("aaaa")}
             }
+            
         }
     }
     
     func updateTimer(){
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ (_) in
-            if(self.isPlaying && self.showSheet == false){
-                self.slider = (MusicPlayerViewModel.config!.player.currentItem?.currentTime().seconds)!
-                self.minutes = Int((self.slider / 60))
-                self.seconds = Int((self.slider.truncatingRemainder(dividingBy: 60).rounded()))
-                //self.isPlaying = MusicPlayerViewModel.config!.isPlaying
-                print("seconds", self.seconds )
-                //print("minutes", self.minutes )
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ (_) in
+            if(MusicPlayerViewModel.config!.player.currentItem?.currentTime() != nil){
+                if(self.isPlaying && self.showSheet == false){
+                    self.slider = (MusicPlayerViewModel.config!.player.currentItem?.currentTime().seconds)!
+                    self.minutes = Int((self.slider / 60))
+                    self.seconds = Int((self.slider.truncatingRemainder(dividingBy: 60).rounded()))
+                    //self.isPlaying = MusicPlayerViewModel.config!.isPlaying
+                    print("seconds", self.seconds )
+                    //print("minutes", self.minutes )
+                }
+            }else{
+                if(MusicPlayerViewModel.config?.playlist == nil){
+                    self.timer?.invalidate()
+                }else{
+                    self.playNextSong()
+                }
             }
         }
         print((MusicPlayerViewModel.config!.player.currentItem?.duration.seconds.rounded())!)

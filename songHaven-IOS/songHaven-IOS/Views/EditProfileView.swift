@@ -7,15 +7,17 @@
 import SwiftUI
 import PhotosUI
 import AlertToast
+import NavigationStack
 
 
 struct EditProfileView: View {
     
     @StateObject var viewModel = EditProfileViewModel()
-    
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
+
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack(spacing:20) {
@@ -75,9 +77,6 @@ struct EditProfileView: View {
                     TextField("Enter your lastname",text:$viewModel.lastname)
                         .textFieldStyle(ProfileTextFieldStyle())
                     
-                    /*TextField("Enter your Email",text:$viewModel.email)
-                     .textFieldStyle(ProfileTextFieldStyle())*/
-                    
                     SecureField("Password",text:$viewModel.password)
                         .textFieldStyle(ProfileTextFieldStyle())
                     
@@ -85,7 +84,7 @@ struct EditProfileView: View {
                         .textFieldStyle(ProfileTextFieldStyle())
                     Button (
                         action: {
-                            viewModel.EditDetails()
+                            viewModel.EditDetails(action: {navigationStack.pop()}())
                         },
                         label: {
                             Label("Edit", systemImage: "square.and.pencil")
@@ -94,7 +93,6 @@ struct EditProfileView: View {
                                 .frame(width: 300, height: 50)
                                 .background(buttonColor)
                                 .cornerRadius(15.0)
-
                         })
                     .padding(.vertical, 40)
                     .disabled(!viewModel.validateFields())
@@ -109,12 +107,13 @@ struct EditProfileView: View {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .purple))
                             .scaleEffect(3)
-                        
                     }
                 }
-                NavigationLink(destination: ProfileView(), tag: "Profile", selection: $viewModel.navigator) {}
+                PushView(destination: ProfileView(), tag: "Profile", selection: $viewModel.navigator) {}
             }
-            .navigationBarHidden(true)
+            .navigationBarItems(
+                leading: BackButton(action: {navigationStack.pop(to: .previous)})
+                )
             .toast(isPresenting: $viewModel.showSuccessToast){
                 AlertToast(type: .complete(.green), title: viewModel.toastMessage)
             }

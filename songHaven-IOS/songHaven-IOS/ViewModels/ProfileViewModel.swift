@@ -25,6 +25,12 @@ import NavigationStack
         UserDefaults.standard.setValue(
             nil,forKey: "userId"
         )
+        UserDefaults.standard.setValue(
+            nil,forKey: "firstname"
+        )
+        UserDefaults.standard.setValue(
+            nil,forKey: "lastname"
+        )
      }
     
     

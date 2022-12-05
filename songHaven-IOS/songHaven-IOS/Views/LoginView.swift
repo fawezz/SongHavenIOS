@@ -13,7 +13,7 @@ struct LoginView: View {
 
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack{
                 LinearGradient(gradient: Gradient(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all)
@@ -33,6 +33,7 @@ struct LoginView: View {
                     VStack( spacing: 15) {
                         TextField("Email", text: $viewModel.email)
                             .padding()
+                            .foregroundColor(.black)
                             .background(Color.white)
                             .cornerRadius(20.0)
                             .autocorrectionDisabled(true)
@@ -41,6 +42,7 @@ struct LoginView: View {
                                 SecureField("Password", text: $viewModel.password)
                                     .padding()
                                     .background(Color.white)
+                                    .foregroundColor(.black)
                                 .cornerRadius(20.0)
                                 Button (
                                     action: {
@@ -57,6 +59,7 @@ struct LoginView: View {
                                     .padding()
                                     .background(Color.white)
                                     .cornerRadius(20.0)
+                                    .foregroundColor(.black)
                                 Button (
                                     action: {
                                         viewModel.hiddenPass.toggle()
@@ -135,16 +138,12 @@ struct LoginView: View {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .purple))
                             .scaleEffect(3)
-                        
                     }
                 }
                 PushView(destination: ProfileView().navigationBarBackButtonHidden(true), tag: "Profile", selection: $viewModel.navigator) {}
-                    
                 PushView(destination: SendOtpView(), tag: "ForgotPass", selection: $viewModel.navigator) {}
                 PushView(destination: RegisterView(), tag: "SignUp", selection: $viewModel.navigator) {}
                 PushView(destination: HomeView(), tag: "HomeView", selection: $viewModel.navigator) {}
-                //PushView(destination: BandsView().navigationBarBackButtonHidden(true), tag: "Bands", selection: $viewModel.navigator) {}
-                    
             }
             .toast(isPresenting: $viewModel.showSuccessToast){
                 AlertToast(type: .complete(.green), title: viewModel.toastMessage)

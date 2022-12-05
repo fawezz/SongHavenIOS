@@ -7,9 +7,12 @@
 
 import SwiftUI
 import AlertToast
+import NavigationStack
 
 struct OtpVerificationView: View {
     @StateObject var viewModel = OtpVerificationViewModel()
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
+
     @State var isFocused = false
     
     let textBoxWidth = UIScreen.main.bounds.width / 10
@@ -21,7 +24,7 @@ struct OtpVerificationView: View {
     }
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ZStack(alignment: Alignment(horizontal: .center, vertical: .top) ){
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 
@@ -93,14 +96,16 @@ struct OtpVerificationView: View {
                             Alert(
                                 title: Text("Access Denied"),
                                 message: Text("The code entered does not match, Please Try Again.")
-                               
                             )
                         }
                     }
                     
                 }
-                NavigationLink(destination: ResetPasswordView(), tag: "ResetPassword", selection: $viewModel.navigator){}.isDetailLink(false)
+                PushView(destination: ResetPasswordView(), tag: "ResetPassword", selection: $viewModel.navigator) {}
             }
+            .navigationBarItems(
+                leading: BackButton(action: {navigationStack.pop(to: .previous)})
+                )
             .toast(isPresenting: $viewModel.showToast){
                 AlertToast(displayMode: .banner(.slide), type: .complete(.green), title: "Email Sent")
             }
@@ -116,8 +121,9 @@ struct OtpVerificationView: View {
                     
                 }
             }
-            
+                
         }
+        
     }
     
     var buttonColor: Color{

@@ -30,7 +30,7 @@ import _PhotosUI_SwiftUI
     @Published var toastMessage = ""
     
     
-    func EditDetails(){
+    func EditDetails(action: ()){
         isLoading = true
         UserService.EditDetails(id: UserDefaults.standard.string(forKey: "userId")!, firstname: firstname, lastname: lastname, password: password, completed: { (success, reponse) in
             
@@ -38,10 +38,16 @@ import _PhotosUI_SwiftUI
             if success {
                 print("success")
                 let currentUser = reponse as! User
+                UserDefaults.standard.setValue(
+                    currentUser.firstname,forKey: "firstname"
+                )
+                UserDefaults.standard.setValue(
+                    currentUser.lastname,forKey: "lastname"
+                )
                 self.toastMessage = "Success"
                 self.showSuccessToast = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
-                    self.navigator = "Profile"
+                    action//self.navigator = "Profile"
                     self.showSuccessToast = false
                 }
             }

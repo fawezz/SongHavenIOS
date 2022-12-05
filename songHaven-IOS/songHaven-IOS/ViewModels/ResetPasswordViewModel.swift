@@ -7,7 +7,7 @@
 import SwiftUI
 
 @MainActor class ResetPasswordViewModel: ObservableObject {
-
+    
     @Published var navigator : String? = nil
     @Published var hiddenPass: Bool = false
     @Published var password = ""
@@ -22,14 +22,14 @@ import SwiftUI
         return password.count >= 8 && confirmPassword == password
     }
     
-    func changePassword(){
+    func changePassword(action: ()){
         UserService.CreateNewPassword(email: UserDefaults.standard.string(forKey: "email")!, password: self.password) { (success, reponse) in
             self.toastMessage = reponse!
             if success {
                 self.showSuccessToast = true
                 print("success password changed")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
-                    self.navigator = "LoginView"
+                    action //self.navigator = "LoginView"
                     self.showSuccessToast = false
                 }
             } else {
@@ -40,7 +40,6 @@ import SwiftUI
                 print(self.toastMessage)
                 
             }
-            
         }
     }
 }

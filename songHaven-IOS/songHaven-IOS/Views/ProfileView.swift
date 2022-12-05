@@ -40,12 +40,14 @@ struct ProfileView: View {
                     label: {
                         Label("Edit Profile", systemImage: "pencil")
                     })
-                NavigationLink(destination: EditProfileView(), tag: "EditProfile", selection: $viewModel.navigator){}
-                    .navigationBarItems(trailing:  Button("Logout", action: {
-                        viewModel.showAlert = true
-                    }
-                                                         ).alert("Are You sure You want to delete this playlist ?", isPresented: $viewModel.showAlert) {
-                        Button("Delete", role: .destructive) {
+                PushView(destination: EditProfileView(), tag: "EditProfile", selection: $viewModel.navigator) {}
+
+                    .navigationBarItems(trailing:  Button(
+                        "Log out", action: {
+                            viewModel.showAlert = true
+                        }
+                    ).alert("Are You sure You want Log out ?", isPresented: $viewModel.showAlert) {
+                        Button("Log out", role: .destructive) {
                             viewModel.Logout()
                             navigationStack.push(LoginView())
                         }
