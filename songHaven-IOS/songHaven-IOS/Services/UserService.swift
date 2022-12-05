@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class UserService{
-    let ip = "http://172.17.5.247:9090"
-    static let SignInURL = "http://172.17.5.247:9090/user/signin"
-    static let SignUpURL = "http://172.17.5.247:9090/user/signup"
+    let ip = "http://172.17.8.102:9090"
+    static let SignInURL = "http://172.17.8.102:9090/user/signin"
+    static let SignUpURL = "http://172.17.8.102:9090/user/signup"
     static let ResendWelcomeMailURL = "http://172.17.5.247:9090/user/resendWelcomeMail"
     
     static let SendOtpMailURL = "http://172.17.5.247:9090/user/forgotPassword/sendOtpMail"
@@ -337,4 +337,5 @@ class UserService{
             
         }
     }
+    
 }

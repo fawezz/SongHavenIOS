@@ -13,6 +13,9 @@ struct AddBandView: View {
     @State private var name = ""
     @State private var discription = ""
     @StateObject var viewModel  = AddBandViewModel()
+   
+    
+    
     @State private var   shouldChange = false
     var body: some View {
         NavigationView{
@@ -85,7 +88,7 @@ struct AddBandView: View {
                     
                     NavigationLink(destination: TestView(), tag: "", selection: $viewModel.navigator){
                         Button(action:{
-                            viewModel.createBand()
+                          //  viewModel.createBand()
                         })
                         {
                             Text("Validate")

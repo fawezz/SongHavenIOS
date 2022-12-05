@@ -21,6 +21,7 @@
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
 		94A4AEB529310B9C00A3B109 /* AddBandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4AEB429310B9C00A3B109 /* AddBandView.swift */; };
 		94A4AEB729310EB300A3B109 /* AddBandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4AEB629310EB300A3B109 /* AddBandViewModel.swift */; };
+		94ABC86C293DEFC300E25688 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94ABC86B293DEFC300E25688 /* ImagePicker.swift */; };
 		94AFA89529324E42008955A1 /* BandService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFA89429324E42008955A1 /* BandService.swift */; };
 		94AFA89729324E56008955A1 /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFA89629324E56008955A1 /* Band.swift */; };
 		94AFA89929325C1D008955A1 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFA89829325C1D008955A1 /* NotificationView.swift */; };
@@ -93,6 +94,7 @@
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		94A4AEB429310B9C00A3B109 /* AddBandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBandView.swift; sourceTree = "<group>"; };
 		94A4AEB629310EB300A3B109 /* AddBandViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBandViewModel.swift; sourceTree = "<group>"; };
+		94ABC86B293DEFC300E25688 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		94AFA89429324E42008955A1 /* BandService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandService.swift; sourceTree = "<group>"; };
 		94AFA89629324E56008955A1 /* Band.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
 		94AFA89829325C1D008955A1 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				94AFFC01292E197800824EF6 /* Constants.swift */,
+				94ABC86B293DEFC300E25688 /* ImagePicker.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				94AFFC02292E197800824EF6 /* Constants.swift in Sources */,
 				94AFFBFD292E15C100824EF6 /* BandDetailView.swift in Sources */,
 				94AFA89529324E42008955A1 /* BandService.swift in Sources */,
+				94ABC86C293DEFC300E25688 /* ImagePicker.swift in Sources */,
 				2B0A4800291981D200AF179A /* ProfileView.swift in Sources */,
 				B024ADBF2923E7B800C9E601 /* OtpVerificationViewModel.swift in Sources */,
 				081B29212919209700981671 /* ContentView.swift in Sources */,

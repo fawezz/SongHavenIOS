@@ -9,15 +9,15 @@ import SwiftyJSON
 import Foundation
 import UIKit
 class BandService{
-    static let  ip = "http://172.17.2.137:9090"
+    static let  ip = "http://172.17.8.102:9090"
     static let UploadImageURL = ""
-    static let CreateBandURL = "http://172.17.2.137:9090/band/CreateBand"
-    static let DeleteBandURL = "http://172.17.2.78:9090/band/delete"
-    static let EditBandURL = "http://172.17.2.78:9090/band/modify"
-    static let getAllURL = "http://172.17.2.78:9090/band/getAllBand"
-    static let getByUserURL = "http://172.17.2.78:9090/band/getByUser"
-    static let AddMumberURL = "http://172.17.2.137:9090/band/addArtiste"
-    static let BandImageUrl = "http://172.17.2.137:9090/img/"
+    static let CreateBandURL = "http://172.17.8.102:9090/band/CreateBand"
+    static let DeleteBandURL = "http://172.17.8.102:9090/band/delete"
+    static let EditBandURL = "http://172.17.8.102:9090/band/modify"
+    static let getAllURL = "http://172.17.8.102:9090/band/getAllBand"
+    static let getByUserURL = "http://172.8.102.78:9090/band/getByUser"
+    static let AddMumberURL = "http://172.17.8.102:9090/band/addArtiste"
+    static let BandImageUrl = "http://172.17.8.102:9090/img/"
     
     static func create(/*creator: User,*/name: String, discription: String,imageId: String, completed: @escaping (Bool, Any?) ->Void){
         
@@ -221,5 +221,31 @@ class BandService{
         
     }
     
-    
+    static func add(band : Band , image :UIImage , completed:@escaping(Bool,Int)->Void){
+            let token = UserDefaults.standard.string(forKey: "token")
+            let headers : HTTPHeaders = [.authorization(bearerToken: token!),.contentType("multipart/form-data")]
+            AF.upload(
+                multipartFormData: { multipartFormData in
+                    multipartFormData.append(image.jpegData(compressionQuality: 0.5)!, withName: "image",fileName: "band.jpg",mimeType: "image/jpg")
+                    multipartFormData.append(band.name!.data(using: String.Encoding.utf8)!, withName: "name")
+                    multipartFormData.append(band.discription!.data(using: String.Encoding.utf8)!, withName: "description")
+               
+                },to: CreateBandURL,method: .post, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseData { response in
+                switch(response.result){
+                    
+                case .success(let data):
+                    print(data)
+                    completed(true,200)
+                case .failure(let error):
+                    print(error)
+                    completed(false,error.responseCode!)
+                }
+            }
+            }
+
+
+    /**********************************************/
+
 }

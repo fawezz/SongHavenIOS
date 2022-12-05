@@ -125,7 +125,7 @@ struct TestView_Previews: PreviewProvider {
 class Observer : ObservableObject {
     @Published var datas = [datatype]()
     init(){
-        AF.request("http://172.17.2.137:9090/band/getAllBand").responseData {
+        AF.request("http://172.17.8.102:9090/band/getAllBand").responseData {
             (data) in
             let json = try! JSON(data: data.data!)
             for i in json ["bands"] {

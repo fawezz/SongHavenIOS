@@ -26,42 +26,22 @@ struct addTestView: View {
                         .font(.title2)
                     ZStack(alignment: .bottomTrailing){
                         
-                        Image(uiImage: viewModel.uplodedImg)
+                        Image(uiImage: viewModel.image)
                             .resizable()
+                            .frame( width: 200,height: 200)
+                            .aspectRatio(contentMode: .fill)
                             .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                            .shadow(radius: 10)
-                            .frame(width: 130,height: 130)
-                        
-                        PhotosPicker(
-                            selection: $viewModel.selectedItem,
-                            matching: .images,
-                            photoLibrary: .shared()){
-                                Image(systemName: "camera")
-                                    .frame(width: 40, height: 40)
-                                    .background(Color(.white))
-                                    .cornerRadius(50)
-                                    .padding(.trailing, 3)
-                                    .foregroundColor(.black)
+                            .onTapGesture {
+                                viewModel.isUploading = true
+                                
                             }
-                            .onChange(of: viewModel.selectedItem,
-                                      perform: {
-                                newItem in
-                                Task {
-                                    if let data = try? await newItem?.loadTransferable(type: Data.self){
-                                        viewModel.selectedImageData = data//ll
-                                        viewModel.uplodedImg = UIImage(data: data) ?? UIImage()
-                                        print("Submitted image")
-                                        viewModel.AddImage()
-                                        
-                                    }
-                                }
-                            })
+                        
+                            .sheet(isPresented: $viewModel.isUploading){
+                                ImagePicker(sourceType : .photoLibrary,
+                                            selectedImage: $viewModel.image)
+                            }
+                        
                     }
-                    
-                    .frame(width: 100, height: 100)
-                    .padding(.bottom, 40)
-                    
                     
                     
                     
@@ -83,9 +63,10 @@ struct addTestView: View {
                     
                     
                     
-                    NavigationLink(destination: TestView(), tag: "", selection: $viewModel.navigator){
+                    NavigationLink(destination: TestView()){
                         Button(action:{
-                            viewModel.createBand()
+                            viewModel.addBand()
+                     
                         })
                         {
                             Text("Validate")

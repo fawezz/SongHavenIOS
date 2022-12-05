@@ -21,6 +21,9 @@ import _PhotosUI_SwiftUI
     @Published var showFailToast : Bool = false
     @Published var selectedItem: PhotosPickerItem? = nil
     
+    /// image methode 2
+    @Published var image : UIImage = UIImage.init(named: "empty") ?? UIImage()
+    
     
     
     func AddImage(){
@@ -49,10 +52,11 @@ import _PhotosUI_SwiftUI
          
          
          }
-         
+/*
     func createBand(){
         isLoading = true
-        BandService.create(name: name, discription: discription, imageId: "" , completed: { (success, reponse) in
+        BandService.add(band: Band, image: UIImage, completed:  { (success, reponse) in
+       
             
             self.isLoading = false
             if success {
@@ -73,7 +77,30 @@ import _PhotosUI_SwiftUI
             }
         })
     }
-        
-    }
+     */
     
+    
+    
+    
+    func addBand (){
+        if (name.isEmpty || discription.isEmpty){
+            print( )
+           // action("Some fields aren't filed please check ", false)
+            return
+        }
+        BandService.add(band: Band(name: name, discription: discription,image: ""),image: image){
+            
+            passed , statusCode in
+            if ( passed == true){
+                
+              //  action("Band Created ! " ,  true)
+        }else{
+           // action("Error", false)
+        }
+    }
+    }
+                        }
+                        
+
+
 

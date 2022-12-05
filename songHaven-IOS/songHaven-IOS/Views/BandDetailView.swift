@@ -19,8 +19,6 @@ struct BandDetailView: View {
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 
                 VStack{
-                    
-                    
                          HStack(spacing:210){
                              Button(
                                  action: {
@@ -53,32 +51,61 @@ struct BandDetailView: View {
                 .padding(.all)
                 
                 VStack{
-                 
-               
-                    HStack(spacing:210){
-                        Button(
-                            action: {
-                                
-                            }, label:{
-                                Label("Members", systemImage: "person.2.fill")
-                            })
-                        .padding([.top, .leading, .trailing], -90.0)
-                 
-                        .foregroundColor(.white)
-            
+                   // if (creatorId == currentUser){
+                        HStack(spacing:210){
+                            Button(
+                                action: {
+                                    
+                                }, label:{
+                                    Label("Members", systemImage: "person.2.fill")
+                                })
+                            .padding([.top, .leading, .trailing], -90.0)
+                     
+                            .foregroundColor(.white)
+                
+                            
+                            Button(
+                                action: {
+                                    
+                                }, label:{
+                                    Label("Add Artist", systemImage: "person.fill.badge.plus")
+                                })
+                            .padding([.top, .leading, .trailing], -90.0)
+                           
+                            .foregroundColor(.white)
+                            
+                        }
+                        .padding(.leading, 67.0)
                         
-                        Button(
-                            action: {
-                                
-                            }, label:{
-                                Label("Add Artist", systemImage: "person.fill.badge.plus")
-                            })
-                        .padding([.top, .leading, .trailing], -90.0)
-                       
-                        .foregroundColor(.white)
+                   // }else{
                         
+                        HStack(spacing:210){
+                            Button(
+                                action: {
+                                    
+                                }, label:{
+                                    Label("Members", systemImage: "person.2.fill")
+                                })
+                            .padding([.top, .leading, .trailing], -90.0)
+                     
+                            .foregroundColor(.white)
+                
+                            
+                            Button(
+                                action: {
+                                    
+                                }, label:{
+                                    Label("Add Artist", systemImage: "person.fill.badge.plus")
+                                })
+                            .padding([.top, .leading, .trailing], -90.0)
+                           
+                            .foregroundColor(.white)
+                            
+                        }
+                        .padding(.leading, 67.0)
+                        .hidden()
                     }
-                    .padding(.leading, 67.0)
+               
                     
                     
                     
@@ -106,4 +133,4 @@ struct BandDetailView: View {
             BandDetailView()
         }
     }
-}
+
