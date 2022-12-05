@@ -42,10 +42,16 @@ struct ProfileView: View {
                     })
                 NavigationLink(destination: EditProfileView(), tag: "EditProfile", selection: $viewModel.navigator){}
                     .navigationBarItems(trailing:  Button("Logout", action: {
-                        viewModel.Logout()
-                        navigationStack.push(LoginView())}
-                                                          
-                                                         ))
+                        viewModel.showAlert = true
+                    }
+                                                         ).alert("Are You sure You want to delete this playlist ?", isPresented: $viewModel.showAlert) {
+                        Button("Delete", role: .destructive) {
+                            viewModel.Logout()
+                            navigationStack.push(LoginView())
+                        }
+                        Button("cancel", role: .cancel) { }
+                    }
+                    )
             }.background(LinearGradient(gradient: .init(colors: [.black , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
         }.accentColor(.white)
     }

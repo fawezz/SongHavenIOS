@@ -9,6 +9,7 @@ import NavigationStack
 @MainActor class ProfileViewModel: ObservableObject {
 
     @Published var navigator : String? = nil
+    @Published var showAlert : Bool = false
     @Published var profileImageUrl: URL = URL(string: UserService.UserImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
     let firstname : String = UserDefaults.standard.string(forKey: "firstname")!
     let lastname : String = UserDefaults.standard.string(forKey: "lastname")!

@@ -89,7 +89,7 @@ class PlaylistService{
                 switch response.result {
                 case .success:
                     let jsonData = JSON(response.data!)
-                    let playlist = Playlist.fromJson(jsonData: jsonData["playlist"])
+                    let playlist = Playlist.fromJson(jsonData: jsonData["newPlaylist"])
                     print("success removed song from: " + playlist.title!)
                     completed(true, playlist)
                 case let .failure(error):
@@ -158,8 +158,8 @@ class PlaylistService{
             }
     }
     
-    static func DeletePlaylist(songId: String, completed: @escaping (Bool, String?) -> Void){
-        AF.request(deletePlaylistURL + "637d586fe95ad20baf9a47e0"/*songId*/,  method: .delete )
+    static func DeletePlaylist(playlistId: String, completed: @escaping (Bool, String) -> Void){
+        AF.request(deletePlaylistURL + playlistId,  method: .delete )
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseData { response in
@@ -169,7 +169,7 @@ class PlaylistService{
                     let message = jsonData["message"].stringValue
                     completed(true, message)
                 case let .failure(error):
-                    completed(false, error.errorDescription)
+                    completed(false, "error")
                     debugPrint(error)
                 }
             }

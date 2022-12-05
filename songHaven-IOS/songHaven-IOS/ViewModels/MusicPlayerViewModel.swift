@@ -50,7 +50,7 @@ class MusicPlayerViewModel: ObservableObject {
                 self.seconds = Int((self.slider.truncatingRemainder(dividingBy: 60).rounded()))
                 //self.isPlaying = MusicPlayerViewModel.config!.isPlaying
                 print("seconds", self.seconds )
-                print("minutes", self.minutes )
+                //print("minutes", self.minutes )
             }
         }
         print((MusicPlayerViewModel.config!.player.currentItem?.duration.seconds.rounded())!)
@@ -85,8 +85,7 @@ class MusicPlayerViewModel: ObservableObject {
             }else{
                 index = 0
             }
-    
-            //MusicPlayerViewModel.config?.player.insert((MusicPlayerViewModel.config?.queuedSongs[index])!, after: MusicPlayerViewModel.config?.player.currentItem)
+                //MusicPlayerViewModel.config?.player.insert((MusicPlayerViewModel.config?.queuedSongs[index])!, after: MusicPlayerViewModel.config?.player.currentItem)
             //MusicPlayerViewModel.config?.player.advanceToNextItem()
             MusicPlayerViewModel.config?.player.seek(to: CMTime.zero)
             MusicPlayerViewModel.config?.player.replaceCurrentItem(with: MusicPlayerViewModel.config?.queuedSongs[index])
@@ -218,6 +217,8 @@ struct Configurations {
             currentPlaylist!.songs?.forEach { songItem in
                 queuedSongs.append(AVPlayerItem(url: URL(string: SongService.songMusicUrl + songItem.filename!)!))
             }
+        }else{
+            
         }
     }
 

@@ -32,8 +32,8 @@ import Foundation
         PlaylistService.CreatePlaylist(title: newPlaylistTitle, songs: [], completed:
                                                     { (success, reponse) in
             if(success){
-                var p : Playlist = reponse!
-                self.addSongToPlaylist(selectedPlaylist: p)
+                //let p : Playlist = reponse!
+                //self.addSongToPlaylist(selectedPlaylist: p)
             }
             
         })
