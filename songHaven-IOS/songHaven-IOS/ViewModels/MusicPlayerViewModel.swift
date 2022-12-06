@@ -18,7 +18,7 @@ class MusicPlayerViewModel: ObservableObject {
     @Published var minutes: Int = 0
     @Published var seconds: Int = 0
     @Published var isPlaying: Bool = (config?.isPlaying)!
-    @Published var duration: Int = 10
+    @Published var duration: Int = 140
     @Published var liked = false
     @Published var timer : Timer? = nil
 
@@ -210,7 +210,7 @@ struct Configurations {
      var slider: Double = 0
      var isPlaying = true
      var SongImageUrl : URL = URL(string: UserService.UserImageUrl + "songDefaultImage.png")!
-     var duration: Int = 10
+     var duration: Int = 140
      var minutes: Int = 0
      var seconds: Int = 0
      var queuedSongs: [AVPlayerItem] = []

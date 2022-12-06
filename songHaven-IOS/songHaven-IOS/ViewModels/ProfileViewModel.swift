@@ -55,17 +55,17 @@ import NavigationStack
         UserDefaults.standard.setValue(
             nil,forKey: "token"
         )
-        UserDefaults.standard.setValue(
-            nil,forKey: "email"
-        )
-        UserDefaults.standard.setValue(
-            nil,forKey: "userId"
-        )
-        UserDefaults.standard.setValue(
-            nil,forKey: "firstname"
-        )
-        UserDefaults.standard.setValue(
-            nil,forKey: "lastname"
-        )
+//        UserDefaults.standard.setValue(
+//            nil,forKey: "email"
+//        )
+//        UserDefaults.standard.setValue(
+//            nil,forKey: "userId"
+//        )
+//        UserDefaults.standard.setValue(
+//            nil,forKey: "firstname"
+//        )
+//        UserDefaults.standard.setValue(
+//            nil,forKey: "lastname"
+//        )
     }
 }

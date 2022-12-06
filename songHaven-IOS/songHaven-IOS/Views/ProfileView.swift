@@ -20,10 +20,13 @@ struct ProfileView: View {
                     VStack(spacing: 0){
                         HStack{
                             Spacer()
+                            Divider().frame(height: 40)
                             ProfileSectionItem(title: "Likes", nbr: $viewModel.totalLikes.wrappedValue.description)
                             //ProfileSectionItem(title: "Albums", nbr: "10")
                             //Spacer()
+                            Divider().frame(height: 40).foregroundColor(.main_color)
                             ProfileSectionItem(title: "Songs", nbr: $viewModel.userSongs.count.description)
+                            Divider().frame(height: 40).foregroundColor(.main_color)
                             Spacer()
                         }
                         if(viewModel.userSongs.isEmpty){
@@ -72,6 +75,7 @@ struct ProfileView: View {
                     label: {
                         Label("Edit Profile", systemImage: "pencil")
                     })
+                .padding()
                 PushView(destination: EditProfileView(), tag: "EditProfile", selection: $viewModel.navigator) {}
                 
                     .navigationBarItems(trailing:  Button(
@@ -80,8 +84,8 @@ struct ProfileView: View {
                         }
                     ).alert("Are You sure You want Log out ?", isPresented: $viewModel.showLogoutAlert) {
                         Button("Log out", role: .destructive) {
-                            viewModel.Logout()
                             navigationStack.push(LoginView())
+                            viewModel.Logout()
                         }
                         Button("cancel", role: .cancel) { }
                     }
@@ -128,12 +132,12 @@ struct ProfileView: View {
                         .bold()
                         .font(.title)
                         .foregroundColor(.white)
-                        .rotation3DEffect(.degrees(30), axis: (x: 1, y: 0, z: 0))
+                        .rotation3DEffect(.degrees(20), axis: (x: 1, y: 0, z: 0))
                 }.padding()
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.main_color, lineWidth: 0.5)
-            )
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 16)
+//                    .stroke(Color.main_color, lineWidth: 0.5)
+//            )
         }
     }
 }
@@ -150,7 +154,7 @@ struct ProfileSectionItem: View {
                 .foregroundColor(.white)
             Text(title)
                 .font(.caption2)
-                .foregroundColor(.white)
+                .foregroundColor(.main_color)
         }
     }
 }

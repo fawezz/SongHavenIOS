@@ -11,6 +11,7 @@ import Foundation
     @Published var song : Song
     @Published var userPlaylists : [Playlist] = []
     
+    @Published var isLoading : Bool = true
     @Published var showCreationSheet : Bool = false
     @Published var newPlaylistTitle : String = ""
     
@@ -19,11 +20,11 @@ import Foundation
         fetchUserPlaylists()
     }
     
-    
     private func fetchUserPlaylists() {
         PlaylistService.GetByUser(completed: { (success, playlistArray) in
             if(success){
                 self.userPlaylists = playlistArray ?? []
+                self.isLoading = false
             }
         })
     }

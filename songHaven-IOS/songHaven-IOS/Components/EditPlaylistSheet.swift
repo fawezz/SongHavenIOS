@@ -62,6 +62,17 @@ struct EditPlaylistSheet: View {
                 }
                 
             }.padding()
+            //LOADER
+            if(viewModel.isLoading){
+                ZStack{
+                    Color(.white)
+                        .opacity(0.3)
+                        .ignoresSafeArea()
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .purple))
+                        .scaleEffect(3)
+                }
+            }
         }.sheet(isPresented: $viewModel.showCreationSheet, onDismiss: {presentationMode.wrappedValue.dismiss()}){
             ZStack{
                 Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)

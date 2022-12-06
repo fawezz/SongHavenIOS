@@ -28,7 +28,7 @@ struct MusicHomeView: View {
                                     .foregroundColor(.purple)
                             }
                             .disabled(viewModel.searchText.isEmpty)
-                            TextField("Search...", text: $viewModel.searchText)
+                            TextField($viewModel.criteria.wrappedValue == "title" ? "Search by Title.." : "Search by Genre..", text: $viewModel.searchText)
                                 .foregroundColor(.main_color.opacity(0.8))
                             if(!viewModel.searchText.isEmpty){
                                 Button(action: {

@@ -37,11 +37,9 @@ class SongService{
                     print(error)
                     completed(false, [])
                     debugPrint(error)
-                    
                 }
             }
     }
-    
     
     static func GetByCurrentUser(completed: @escaping (Bool, [Song]) -> Void){
         let creatorId = UserDefaults.standard.string(forKey: "userId")!
