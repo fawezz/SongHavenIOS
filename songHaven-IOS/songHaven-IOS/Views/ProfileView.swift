@@ -17,19 +17,51 @@ struct ProfileView: View {
                 VStack {
                     Header()
                     ProfileText()
-                    
-                    VStack{
+                    VStack(spacing: 0){
                         HStack{
-                            ProfileSectionItem(title: "Likes", nbr: "1111")
                             Spacer()
-                            ProfileSectionItem(title: "Albums", nbr: "10")
+                            ProfileSectionItem(title: "Likes", nbr: $viewModel.totalLikes.wrappedValue.description)
+                            //ProfileSectionItem(title: "Albums", nbr: "10")
+                            //Spacer()
+                            ProfileSectionItem(title: "Songs", nbr: $viewModel.userSongs.count.description)
                             Spacer()
-                            ProfileSectionItem(title: "Songs", nbr: "57")
                         }
-                        SongRowItem()
-                        SongRowItem()
-                        SongRowItem()
-                        SongRowItem()
+                        if(viewModel.userSongs.isEmpty){
+                            Spacer()
+                            Text("You don't have any songs yet")
+                                .font(.title3)
+                                .foregroundColor(.main_color)
+                            Spacer()
+                        }else{
+                            List{
+                                ForEach(viewModel.userSongs, id: \._id){ song in
+                                    ProfileSongRow(song: song )
+                                        .listRowSeparator(.visible)
+                                        .listRowBackground(
+                                            Color.main_color
+                                                .clipped()
+                                                .cornerRadius(20)
+                                                .padding(EdgeInsets(top: 15, leading: 25, bottom: 10, trailing: 25))
+                                        )
+                                        .swipeActions(allowsFullSwipe: false) {
+                                            Button {
+                                                viewModel.showDeleteAlert = true
+                                                print("remove song")
+                                            } label: {
+                                                Label("remove", systemImage: "trash.fill")
+                                            }
+                                            .tint(.red.opacity(0.8))
+                                        }
+                                        .alert("Are You sure You want to delete this song?", isPresented: $viewModel.showDeleteAlert) {
+                                            Button("Delete", role: .destructive) {
+                                                viewModel.removeSong(swipedSong: song)
+                                            }
+                                            Button("cancel", role: .cancel) { }
+                                        }
+                                }
+                            }
+                            .scrollContentBackground(.hidden)
+                        }
                     }
                 }
                 Spacer()
@@ -41,12 +73,12 @@ struct ProfileView: View {
                         Label("Edit Profile", systemImage: "pencil")
                     })
                 PushView(destination: EditProfileView(), tag: "EditProfile", selection: $viewModel.navigator) {}
-
+                
                     .navigationBarItems(trailing:  Button(
                         "Log out", action: {
-                            viewModel.showAlert = true
+                            viewModel.showLogoutAlert = true
                         }
-                    ).alert("Are You sure You want Log out ?", isPresented: $viewModel.showAlert) {
+                    ).alert("Are You sure You want Log out ?", isPresented: $viewModel.showLogoutAlert) {
                         Button("Log out", role: .destructive) {
                             viewModel.Logout()
                             navigationStack.push(LoginView())
@@ -88,70 +120,37 @@ struct ProfileView: View {
     }
     
     struct ProfileText: View {
-        
         @ObservedObject var viewModel = ProfileViewModel()
-        
-        var  songName = ""
-        var description = "description"
         
         var body: some View {
             VStack(spacing: 15) {
-                VStack(spacing: 5) {
                     Text(viewModel.firstname + " " + viewModel.lastname)
                         .bold()
                         .font(.title)
                         .foregroundColor(.white)
+                        .rotation3DEffect(.degrees(30), axis: (x: 1, y: 0, z: 0))
                 }.padding()
-            }
-            
-        }
-    }
-    
-    struct ProfileView_Previews: PreviewProvider {
-        static var previews: some View {
-            Group {
-                ProfileView()
-            }
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.main_color, lineWidth: 0.5)
+            )
         }
     }
 }
 
-
-struct SongRowItem: View {
-    var body: some View {
-        HStack{
-            Image("logo")
-                .resizable()
-                .clipShape(Circle())
-                .scaledToFit()
-                .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                .shadow(radius: 10)
-                .frame(width: 50,height: 50)
-            
-            Spacer()
-            Text("EarthSong")
-                .bold()
-                .foregroundColor(.white)
-                .padding()
-        }
-    }
-}
 
 struct ProfileSectionItem: View {
     var title : String
     var nbr : String
     var body: some View {
-        VStack{
+        VStack(spacing: 0){
             Text(nbr)
-                .font(.largeTitle)
+                .font(.headline)
                 .bold()
                 .foregroundColor(.white)
-                .padding()
             Text(title)
-                .bold()
+                .font(.caption2)
                 .foregroundColor(.white)
-                .padding()
-            
         }
     }
 }

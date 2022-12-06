@@ -11,6 +11,7 @@ import Foundation
     @Published var newestSongs = [Song]()
     @Published var userPlaylists = [Playlist]()
     @Published var searchText : String = ""
+    @Published var criteria : String = "title"
     
     @Published var isLoading = false
     

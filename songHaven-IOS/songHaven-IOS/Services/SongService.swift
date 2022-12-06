@@ -43,30 +43,31 @@ class SongService{
     }
     
     
-    static func GetByUser(creatorId: String, completed: @escaping (Bool, [Song]?) -> Void){
-        AF.request(getByUserURL + "63749eac6781be3df2521807"/*creatorId*/,  method: .get )
+    static func GetByCurrentUser(completed: @escaping (Bool, [Song]) -> Void){
+        let creatorId = UserDefaults.standard.string(forKey: "userId")!
+        AF.request(getByUserURL + creatorId,  method: .get )
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseData { response in
                 switch response.result {
                 case .success:
                     let jsonData = JSON(response.data!)
-                    var songs : [Song]? = []
+                    var songs : [Song] = []
                     for singleJsonItem in jsonData["songs"] {
-                        songs!.append(Song.fromJson(jsonData: singleJsonItem.1))
+                        songs.append(Song.fromJson(jsonData: singleJsonItem.1))
                     }
-                    print("success received Songs: " + (songs?.count.description)!)
+                    print("success received Songs: " + songs.count.description)
                     completed(true, songs)
                 case let .failure(error):
                     print(error)
                     completed(false, [])
                     debugPrint(error)
-                    
                 }
             }
     }
+    
     static func DeleteSong(songId: String, completed: @escaping (Bool, String?) -> Void){
-        AF.request(deleteSongURL + "637d586fe95ad20baf9a47e0"/*songId*/,  method: .delete )
+        AF.request(deleteSongURL + songId,  method: .delete )
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseData { response in
@@ -81,7 +82,6 @@ class SongService{
                 }
             }
     }
-    
     
     static func SearchSongs(criteria: String, searchText: String, completed: @escaping (Bool, [Song]) -> Void){
         

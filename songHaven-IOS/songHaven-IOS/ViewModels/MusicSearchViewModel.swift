@@ -13,7 +13,7 @@ import Foundation
     @Published var criteria : String
     @Published var isLoading = true
     
-    init(criteria: String = "title", searchText: String) {
+    init(criteria: String, searchText: String) {
         self.searchText = searchText
         self.criteria = criteria
         searchSongs()

@@ -8,7 +8,7 @@
 import SwiftUI
 import NavigationStack
 
-struct PlaylistDetails: View {
+struct PlaylistDetailsView: View {
     @StateObject var viewModel : PlaylistDetailsViewModel
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     var body: some View {

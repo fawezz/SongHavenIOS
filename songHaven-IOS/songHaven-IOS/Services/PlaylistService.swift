@@ -38,7 +38,6 @@ class PlaylistService{
                     print(error)
                     completed(false, [])
                     debugPrint(error)
-                    
                 }
             }
     }

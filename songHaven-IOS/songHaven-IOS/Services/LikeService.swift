@@ -10,7 +10,7 @@ import SwiftyJSON
 import Alamofire
 class LikeService{
     static let toggleLikeURL = Constants.HOSTNAME + "/like/toggle"
-    static let createURL = Constants.HOSTNAME + "/like/artistTotalLikes"
+    static let artistTotalLikesURL = Constants.HOSTNAME + "/like/artistTotalLikes/"
     static let isLikedByUserURL = Constants.HOSTNAME + "/like/isLikedByUser"
     
     
@@ -66,6 +66,26 @@ class LikeService{
                 case let .failure(error):
                     debugPrint(error.errorDescription!)
                     completed(false, nil)
+                }
+            }
+    }
+    
+    static func getArtistTotalLikes(completed: @escaping (Bool, Int) -> Void){
+        let userId : String = UserDefaults.standard.string(forKey: "userId")!
+        AF.request(artistTotalLikesURL + userId,  method: .get ) //"63749eac6781be3df2521807"
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    let jsonData = JSON(response.data!)
+                    let total = jsonData["totalLikes"].intValue
+                    print("TOTAAAAL" + total.description)
+                    completed(true, total)
+                case let .failure(error):
+                    print(error)
+                    completed(false, 0)
+                    debugPrint(error)
                 }
             }
     }
