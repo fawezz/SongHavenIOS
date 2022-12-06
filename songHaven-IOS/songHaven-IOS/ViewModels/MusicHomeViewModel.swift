@@ -12,8 +12,7 @@ import Foundation
     @Published var userPlaylists = [Playlist]()
     @Published var searchText : String = ""
     
-    @Published var selectedMusic: Song? = nil
-    @Published var displayPlayer = false
+    @Published var isLoading = false
     
     init() {
         fetchUserPlaylists()
@@ -47,9 +46,12 @@ import Foundation
 //        })
     }
     
-    func selectMusic(music: Song) {
-        selectedMusic = music
-        displayPlayer = true
+
+    func isDataReceived() -> Bool{
+        
+        return !self.newestSongs.isEmpty && !self.pupularSongs.isEmpty
     }
+    
+    
     
 }

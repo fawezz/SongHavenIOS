@@ -21,13 +21,7 @@ struct MusicPlayerView: View {
                     .edgesIgnoringSafeArea(.all)
                 VStack(alignment: .center, spacing: 0) {
                     HStack(alignment: .center) {
-                        Button(action: {navigationStack.pop()}) {
-                            Image(systemName: "arrow.left").foregroundColor(.white)
-                                .frame(width: 20, height: 20)
-                                .padding(8).background(Color.main_color)
-                                .cornerRadius(20)
-                                .shadow(color: Color.black,radius: 8, x: 0, y: 5)
-                        }
+                        BackButton(action: {navigationStack.pop()})
                         Spacer()
                         Button(action: { viewModel.showSheet.toggle() }) {
                             Image(systemName: "play.square.stack.fill")

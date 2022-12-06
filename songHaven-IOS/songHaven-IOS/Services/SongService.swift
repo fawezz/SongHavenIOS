@@ -17,6 +17,7 @@ class SongService{
     static let deleteSongURL = Constants.HOSTNAME + "/song/delete/"
     static let songImageUrl = Constants.HOSTNAME + "/img/"
     static let songMusicUrl = Constants.HOSTNAME + "/music/" //+ "music1669159393115.mp3"
+    static let searchSongsURL = Constants.HOSTNAME + "/song/search"
     
     static func GetAllSongs(completed: @escaping (Bool, [Song]?) -> Void){
         AF.request(getAllURL,  method: .get )
@@ -40,6 +41,7 @@ class SongService{
                 }
             }
     }
+    
     
     static func GetByUser(creatorId: String, completed: @escaping (Bool, [Song]?) -> Void){
         AF.request(getByUserURL + "63749eac6781be3df2521807"/*creatorId*/,  method: .get )
@@ -80,7 +82,37 @@ class SongService{
             }
     }
     
-
-
     
+    static func SearchSongs(criteria: String, searchText: String, completed: @escaping (Bool, [Song]) -> Void){
+        
+        let headers : HTTPHeaders = [
+            .contentType("application/json"),
+            .accept("application/json")
+        ]
+        let params = [
+            "criteria" : criteria,
+            "searchText" : searchText
+        ]
+        
+        AF.request(searchSongsURL,  method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers   )
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    let jsonData = JSON(response.data!)
+                    var songs : [Song] = []
+                    for singleJsonItem in jsonData["songs"] {
+                        songs.append(Song.fromJson(jsonData: singleJsonItem.1))
+                    }
+                    print("success search Songs")
+                    completed(true, songs)
+                case let .failure(error):
+                    print(error.errorDescription)
+                    completed(false, [])
+                    debugPrint(error)
+                    
+                }
+            }
+    }
 }
