@@ -9,15 +9,15 @@ import SwiftyJSON
 import Foundation
 import UIKit
 class BandService{
-    static let  ip = "http://172.17.8.102:9090"
+    static let  ip = "http://172.17.11.25:9090"
     static let UploadImageURL = ""
-    static let CreateBandURL = "http://172.17.8.102:9090/band/CreateBand"
-    static let DeleteBandURL = "http://172.17.8.102:9090/band/delete"
-    static let EditBandURL = "http://172.17.8.102:9090/band/modify"
-    static let getAllURL = "http://172.17.8.102:9090/band/getAllBand"
-    static let getByUserURL = "http://172.8.102.78:9090/band/getByUser"
-    static let AddMumberURL = "http://172.17.8.102:9090/band/addArtiste"
-    static let BandImageUrl = "http://172.17.8.102:9090/uploads/"
+    static let CreateBandURL = "http://172.17.11.25:9090/band/CreateBand"
+    static let DeleteBandURL = "http://172.17.11.25:9090/band/delete"
+    static let EditBandURL = "http://172.17.11.25:9090/band/modify"
+    static let getAllURL = "http://172.17.11.25:9090/band/getAllBand"
+    static let getByUserURL = "http://172.17.11.25:9090/band/getByUser/"
+    static let  addUserURL = "http://172.17.11.25:9090/band/addArtiste"
+    static let BandImageUrl = "http://172.17.11.25:9090/img/"
     
     static func create(/*creator: User,*/name: String, discription: String,imageId: String, completed: @escaping (Bool, Any?) ->Void){
         
@@ -77,7 +77,7 @@ class BandService{
                     debugPrint(error)
                 }
             }
-        
+
     }
     
     static func EditBand(id: String,name: String, discription: String, completed:
@@ -191,35 +191,6 @@ class BandService{
         
     }
     
-    static func GetByUser( creatorId: String ,completed:@escaping (Bool, [ Band]?) ->Void){
-        AF.request(getByUserURL + ""/* creatorId*/,method: .get)
-            .validate(statusCode : 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseData { response in
-                switch response.result {
-                case .success:
-                    let jsonData = JSON(response.data!)
-                    var bands : [ Band]? = []
-                    for singleJsonItem in jsonData [ "bands "]{
-                            bands!.append( Band.fromJson(jsonData: singleJsonItem.1))}
-                        print("success get All Bands")
-                        completed ( true, bands)
-                
-                case let .failure(error):
-                    if(response.response?.statusCode == 409){
-                        let jsonData = JSON(response.data!)
-                        let message = jsonData["message"].stringValue
-                        print( message)
-                        completed(false, [ ])
-                    }else{
-                        print("Error" + error.errorDescription!)
-                    }
-                    
-                    
-                }
-            }
-        
-    }
     
     static func add(band : Band , image :UIImage , completed:@escaping(Bool,Int)->Void){
             let token = UserDefaults.standard.string(forKey: "token")
@@ -246,4 +217,58 @@ class BandService{
             }
     }
 
+    
+    static func getByUser(completed: @escaping (Bool, [Band]?) -> Void){
+        let userId : String = UserDefaults.standard.string(forKey: "userId")!
+        AF.request(getByUserURL + userId,  method: .get )
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    let jsonData = JSON(response.data!)
+                    var bands : [Band]? = []
+                    for singleJsonItem in jsonData["bands"] {
+                        bands!.append(Band.fromJson(jsonData: singleJsonItem.1))
+                    }
+                    print("aaaaaaaaaaa" + BandService.BandImageUrl + (bands?.first?.image)!)
+                    print("success received Bands: " + (bands?.description)!)
+                    completed(true, bands)
+                case let .failure(error):
+                    print(error)
+                    completed(false, [])
+                    debugPrint(error)
+                    
+                }
+            }
+    }
+    static func AddUser(bandId: String, userId: String, completed: @escaping (Bool, Band?) -> Void){
+            
+            let headers : HTTPHeaders = [
+                .contentType("application/json"),
+                .accept("application/json")
+            ]
+            let params = [
+                "bandId" : bandId,
+                "userId" : userId
+            ]
+            
+            AF.request(addUserURL,  method: .put, parameters: params, encoder: JSONParameterEncoder.default, headers: headers  )
+                .validate(statusCode: 200..<300)
+                .validate(contentType: ["application/json"])
+                .responseData { response in
+                    switch response.result {
+                    case .success:
+                        let jsonData = JSON(response.data!)
+                        let band = Band.fromJson(jsonData: jsonData["band"])
+                        print("success added user to: " + band.name!)
+                        completed(true, band)
+                    case let .failure(error):
+                        debugPrint(error.errorDescription!)
+                        completed(false, nil)
+                        
+                        
+                    }
+                }
+        }
 }

@@ -6,23 +6,17 @@
 //
 
 import SwiftUI
-
+import Foundation
 struct BandDetailView: View {
-    @State private var bandName = ""
-    @State private var discription = ""
-    @ObservedObject var viewModel = BandDetailViewModel()
-    var datatype : datatype
     
+    @StateObject var viewModel : BandDetailViewModel
     
     var body: some View {
         NavigationView{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
-                
                 VStack{
                     VStack(spacing: 30){
-                        
-                        
                         HStack(spacing:210){
                             Button(
                                 action: {
@@ -33,8 +27,6 @@ struct BandDetailView: View {
                             .padding([.top, .leading, .trailing], -90.0)
                             
                             .foregroundColor(.white)
-                            
-                            
                             Button(
                                 action: {
                                     
@@ -44,10 +36,7 @@ struct BandDetailView: View {
                             .padding([.top, .leading, .trailing], -90.0)
                             
                             .foregroundColor(.white)
-                            
-              
 
-                            
                         }
                         .padding(.leading, 67.0)
                         HStack(spacing:210){
@@ -74,41 +63,34 @@ struct BandDetailView: View {
                             
                         }
                         .padding(.leading, 67.0)
-                        
-                        
-                        
                     }
                     
-                    
-                    Image("logo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(.all)
-                        .frame(width: 200, height: 200)
-                    
+                    AsyncImage(url: URL(string: BandService.BandImageUrl + viewModel.selectedBand.image!))
+                    {image in image.image?
+                            .resizable()
+                            .frame(width: 300, height: 300)
+                    }
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.white, lineWidth: 0))
+                    .shadow(radius: 10)
+                    .frame(width: 300,height: 300)
+                    .shadow(radius: 10)
+                        
                     VStack(spacing: 5) {
-                        Text(datatype.name )
+                        Text(viewModel.selectedBand.name! )
                             .font(.largeTitle)
                             .foregroundColor(.white)
                         
-                        Text( datatype.discription)
+                        Text( viewModel.selectedBand.discription!)
                             .bold()
                             .foregroundColor(.white)
-                        
-                        
-                        
                     }.padding()
                 }
-                .padding(.all)
             }
             
         }
     }
-}
     
-    struct BandDetailView_Previews: PreviewProvider {
-        static var previews: some View {
-            BandDetailView(datatype: datatype(id: "", name: "", discription: ""))
-        }
-    }
-
+    
+    
+}

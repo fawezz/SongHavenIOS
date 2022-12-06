@@ -29,16 +29,6 @@ struct User : Decodable{
     
     static func fromJson(jsonData: JSON) -> User {
             
-            var BParray : [String] = []
-            for singleJsonItem in jsonData["blockedPosts"]   {
-                BParray.append(singleJsonItem.1.stringValue)
-            }
-            
-            var BUarray : [String] = []
-            for singleJsonItem in  jsonData["blockedUsers"]  {
-                BUarray.append(singleJsonItem.1.stringValue)
-            }
-            
             return User(
                 _id: jsonData["_id"].stringValue,
                 email: jsonData["email"].stringValue,
@@ -49,4 +39,9 @@ struct User : Decodable{
                 isVerified: jsonData["isVerified"].boolValue
             )
         }
-}
+    
+    func getFullName() -> String {
+            return self.firstname!.capitalized + " " + self.lastname!.capitalized
+        }
+    }
+

@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ArtistSuggestionView: View {
-    @State private var nbrF = ""
-    @State private var name = ""
+    public var name = ""
+    @StateObject var viewModel  = ArtistSuggetionViewModel()
+
+    
     
     var body: some View {
         
@@ -17,16 +19,16 @@ struct ArtistSuggestionView: View {
             LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             VStack{
                 NavigationLink("", destination: ArtistSuggestionView())
-                Spacer()
+            
                 Text("SUGGESTION")
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .bold()
                     .padding()
                 VStack{
-                    Spacer()
                     HStack{
-                        TextField("Search...",text:$name)
+                        Spacer() 
+                        Text("Search...")
                             .padding(.top)
                             .frame(width: 300, height :50)
                             .background(Color.white.opacity(0.15))
@@ -40,89 +42,40 @@ struct ArtistSuggestionView: View {
                                     .padding(.leading, -50.0)
                             })
                     }
-                    Spacer()
                     HStack{
-                        
-                        NavigationLink( destination: UserBandsView()
-                            .navigationBarBackButtonHidden(true)){
-                                Text("BANDS")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(width: 130, height: 50)
-                                    .background(Color.clear)
-                                    .cornerRadius(15.0)
+                        Spacer()
+                        if(!$viewModel.users.isEmpty){
+                                ScrollView(.vertical){
+                                    LazyVStack{
+                                        ForEach($viewModel.users, id: \._id) { user in
+                                            UserCard(user: user.wrappedValue)
+                                                .padding(.horizontal, 3)
+                                             
+                                        }
+                                    }
+                                }
                             }
-                        
-                        NavigationLink( destination: BandRequestView()
-                            .navigationBarBackButtonHidden(true)){
-                                Text("REQUESTS")
-                                    .font(.headline)
+
+                        Button(
+                            action:{},
+                            label:{
+                                Label("", systemImage: "person.badge.plus")
                                     .foregroundColor(.white)
-                                    .padding()
-                                    .frame(width: 130, height: 50)
-                                    .background(Color.clear)
-                                    .cornerRadius(15.0)
-                            }
+                                    .padding(.leading, -50.0)
+                            })
+                    }
+                        }
                         
                     }
-                    .padding(.top)
-                }
-                FriendRowItem()
-                FriendRowItem()
-                FriendRowItem()
-                FriendRowItem()
+                    .padding(.all)
+                
             }
         }
     }
-}
+
 struct Register_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            ArtistSuggestionView()
-        }
-        
-        
-    }
-    
-    
-    
-}
-
-struct FriendRowItem: View {
-    var body: some View {
-        Spacer()
-        HStack{
-            
-            Image("User")
-                .resizable()
-                .clipShape(Circle())
-                .scaledToFit()
-                .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                .shadow(radius: 10)
-                .frame(width: 50,height: 50)
-            VStack{
-                Text("Jean Paul")
-                    .bold()
-                    .foregroundColor(.white)
-                    .padding()
-                
-            }
-            Spacer()
-            Button ("Invite",action:{
-                
-            }
-            )
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .buttonStyle(.bordered)
-            
-            
-            
-        }.padding(.all)
-        
-        
+        ArtistSuggestionView()
     }
 }
 

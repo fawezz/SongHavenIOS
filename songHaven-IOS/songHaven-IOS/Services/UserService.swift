@@ -18,10 +18,11 @@ class UserService{
     static let SendOtpMailURL = "http://172.17.5.247:9090/user/forgotPassword/sendOtpMail"
     static let VerifyOtpURL = "http://172.17.5.247:9090/user/forgotPassword/verifyOTP"
     static let CreatePasswordURL = "http://172.17.5.247:9090/user/forgotPassword/createNewPassword"
-    static let EditDetailsURL = "http://172.17.5.247:9090/user/modifyDetails"
+    static let EditDetailsURL = "http://172.17.11.25:9090/user/modifyDetails"
+    static let getAllURL = "http://172.17.11.25:9090/user/all"
     
     static let UploadImageURL = "http://172.17.5.247:9090/user/profileImage"
-    static let UserImageUrl = "http://172.17.5.247:9090/img/"
+    static let UserImageUrl = "http://172.17.11.25:9090/img/"
     
     static func SignIn(email: String, password: String, completed: @escaping (Bool, Any?) -> Void){
         
@@ -336,6 +337,37 @@ class UserService{
             }
             
         }
+    }
+    
+    
+    static func GetAllusers( completed:@escaping (Bool, [ User]?) ->Void){
+        AF.request(getAllURL,method: .get)
+            .validate(statusCode : 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    let jsonData = JSON(response.data!)
+                    var users : [ User]? = []
+                    for singleJsonItem in jsonData [ "users"]{
+                            users!.append( User.fromJson(jsonData: singleJsonItem.1))}
+                        print("success get All Bands")
+                        completed ( true, users)
+                
+                case let .failure(error):
+                    if(response.response?.statusCode == 409){
+                        let jsonData = JSON(response.data!)
+                        let message = jsonData["message"].stringValue
+                        print( message)
+                        completed(false, [ ])
+                    }else{
+                        print("Error" + error.errorDescription!)
+                    }
+                    
+                    
+                }
+            }
+        
     }
     
 }

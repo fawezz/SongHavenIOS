@@ -52,36 +52,6 @@ import _PhotosUI_SwiftUI
         
         
     }
-    /*
-     func createBand(){
-     isLoading = true
-     BandService.add(band: Band, image: UIImage, completed:  { (success, reponse) in
-     
-     
-     self.isLoading = false
-     if success {
-     self.showSuccessToast = true
-     print("success")
-     //let currentUser = reponse as! User
-     DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
-     print("check ur mail")
-     self.showSuccessToast = false
-     }
-     } else {
-     self.toastMessage = reponse as! String
-     self.showFailToast = true
-     print("failure")
-     DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-     self.showFailToast = false
-     }
-     }
-     })
-     }
-     */
-    
-    
-    
-    
     func addBand (){
         if (name.isEmpty || discription.isEmpty){
             print( )

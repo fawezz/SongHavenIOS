@@ -43,18 +43,23 @@ struct AddBandView: View {
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
-                    
-                    
                     TextField("Read Something about you...",text:$viewModel.discription)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
-                    
-                    
-                    
+                    NavigationLink(destination: ArtistSuggestionView(), tag: "addBand", selection: $viewModel.navigator){}
+                        Button(action:{
+                            viewModel.navigator = "addBand"  })
+                        {
+                            Text("Add Members")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame(width: 300, height: 50)
+                                .background(.green )
+                                .cornerRadius(15.0)
+                        }
                     NavigationLink(destination: UserBandsView(), tag: "addBand", selection: $viewModel.navigator){}
-                    
                         Button(action:{
                             viewModel.addBand()
                             viewModel.navigator = "addBand"
@@ -69,7 +74,10 @@ struct AddBandView: View {
                                 .cornerRadius(15.0)
                         }.disabled(viewModel.validateFields())
                     
+                    
+                    
                 }.padding(.all)
+          
                 if (viewModel.isLoading){
                     ZStack{
                         Color(.white)

@@ -9,49 +9,44 @@ import SwiftUI
 import Alamofire
 import SDWebImageSwiftUI
 import SwiftyJSON
+import NavigationStack
+
 
 
 struct UserBandsView: View {
-    @StateObject var viewModel = ProfileViewModel()
-    private let adaptiveColumns = [GridItem (.adaptive(minimum: 170))
-                                   
-                                   
-    ]
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
+    @StateObject var viewModel = UserBandsViewModel()
+    private let  adaptiveColums = [ GridItem( .adaptive(minimum: 170))]
+
     
-    @ObservedObject var obs = Observer()
-    @State private var name = ""
     var body: some View {
-        NavigationView{
-            
+        NavigationStackView{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack{
-                    Text("Bands")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .bold()
-                        .padding()
-                    HStack{
-                        
-                        TextField("Search...",text:$name)
-                            .padding()
-                            .frame(width: 300, height :50)
-                            .background(Color.white.opacity(0.15))
-                            .cornerRadius(50)
+                    HStack(spacing: 60){
+                        Text("Your Bands")
+                            .font(.largeTitle)
                             .foregroundColor(.white)
+                            .bold()
+                            .padding()
                         
-                        Button(
+                        NavigationLink(destination: AddBandView(), tag: "addBand", selection: $viewModel.navigator){}
+                        
+                        Button(action:{
                             
-                            action:{
-                                
-                                
-                            }, label:{
-                                Label("", systemImage: "magnifyingglass")
-                                    .foregroundColor(.white)
-                                    .padding(.leading, -50.0)
-                            })
-                        
-                    }.padding()
+                            viewModel.navigator = "addBand"})
+                        {
+                            
+                            Image(systemName: "cross.circle.fill").foregroundColor(.white)
+                                .frame(width: 20, height: 20)
+                                .padding(8).background(Color.green)
+                                .cornerRadius(20)
+                                .frame(width: 36,height: 36 , alignment: .trailing)
+                                .shadow(color: Color.black,radius: 8, x: 0, y: 5)
+                            
+                        }
+                    }
                     
                     HStack{
                         
@@ -82,29 +77,45 @@ struct UserBandsView: View {
                                         .frame(width: 130, height: 50)
                                         .background(Color.clear)
                                         .cornerRadius(15.0)
-                                    
-                                    
                                 }
                         }
                         
                     }
-                    
-                    ScrollView{
-                        LazyVGrid(columns:adaptiveColumns, spacing: 20){
-                            ForEach(obs.datas){ i in
-                                card(datatype: i)
+                    VStack(alignment: .leading){
+                        Spacer()
+                        if(!$viewModel.userBands.isEmpty){
+                                ScrollView(.vertical){
+                                    LazyVGrid(columns: adaptiveColums, spacing: 20){
+                                        ForEach($viewModel.userBands, id: \._id) { band in
+                                            BandCard(band: band.wrappedValue)
+                                                .padding(.horizontal, 3)
+                                                .onTapGesture {
+                                                    self.navigationStack.push(BandDetailView(viewModel: BandDetailViewModel(selectedBand: band.wrappedValue)))
+                                                }
+                                        }
+                                    }
+                                }
+                            }else{
+                                HStack{
+                                    Text("You don't have any bands yet")
+                                        .foregroundColor(.white)
+                                        .font(.title3)
+                                        .padding(.all, 50)
+                                }
                             }
+                        Spacer()
                         }
-                        
-                    }.scrollIndicators(.hidden)
+                    }
+                    .padding(8)
+                }
+        
                     
                     
                 }
             }
 
         }
-    }
-}
+ 
 struct TestView_Previews: PreviewProvider {
     static var previews: some View {
         UserBandsView()
@@ -114,96 +125,3 @@ struct TestView_Previews: PreviewProvider {
 
 
 
-class Observer : ObservableObject {
-    @Published var datas = [datatype]()
-    init(){
-        AF.request("http://172.17.8.102:9090/band/getAllBand").responseData {
-            (data) in
-            let json = try! JSON(data: data.data!)
-            for i in json ["bands"] {
-                self.datas.append(datatype(id: i.1["_id"].stringValue, name: i.1["name"].stringValue,  discription: i.1["discription"].stringValue))
-                print(i.1)
-            }
-            
-        }
-    }
-}
-
-struct datatype : Identifiable{
-    var id : String
-    var name : String
-    var discription : String
-}
-struct card : View {
-    @StateObject var viewModel = BandsViewModel()
-    var datatype : datatype
-    var body: some View {
-        
-        ZStack{
-            NavigationLink( destination: BandDetailView(datatype: datatype )
-                .navigationBarBackButtonHidden(true)){
-                    
-                    Rectangle()
-                        .foregroundColor(.gray)
-                        .navigationBarBackButtonHidden(true)
-                        .frame(width: 130, height: 130)
-                        .opacity(0.20)
-                        .cornerRadius(30)
-                }
-            Rectangle()
-                .foregroundColor(.gray)
-                .navigationBarBackButtonHidden(true)
-                .frame(width: 130, height: 130)
-                .opacity(0.20)
-                .cornerRadius(30)
-            VStack(spacing:20){
-                
-                
-                
-                AsyncImage(url:viewModel.bandImageUrl)
-                {
-                    Image in Image.resizable()
-                } placeholder: {
-                    ProgressView()
-                }
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                .shadow(radius: 10)
-                .frame(width: 180,height: 180)
-                
-                VStack{
-                    
-                    Text(datatype.name).fontWeight(.heavy)
-                    
-                    Text(datatype.discription).fontWeight(.light)
-                }
-                
-            }
-            
-            
-            
-            
-            
-        }
-        .padding(.horizontal)
-        .shadow(radius: 54)
-        .background(Color(.clear))
-        .cornerRadius(15)
-        .foregroundColor(.white)
-        .navigationBarBackButtonHidden(true)
-        .frame(width: 130, height: 130)
-        
-        
-        
-        
-    }
-    
-    
-    
-}
-/*
- func deleteItems ( at offsets: IndexSet){
- obs.items.remove(atOffsets : offsets)
- 
- }
- */
