@@ -9,15 +9,15 @@ import SwiftyJSON
 import Foundation
 import UIKit
 class BandService{
-    static let  ip = "http://172.17.11.25:9090"
+    static let  ip = "http://172.17.7.216:9090"
     static let UploadImageURL = ""
-    static let CreateBandURL = "http://172.17.11.25:9090/band/CreateBand"
-    static let DeleteBandURL = "http://172.17.11.25:9090/band/delete"
-    static let EditBandURL = "http://172.17.11.25:9090/band/modify"
-    static let getAllURL = "http://172.17.11.25:9090/band/getAllBand"
-    static let getByUserURL = "http://172.17.11.25:9090/band/getByUser/"
-    static let  addUserURL = "http://172.17.11.25:9090/band/addArtiste"
-    static let BandImageUrl = "http://172.17.11.25:9090/img/"
+    static let CreateBandURL = "http://172.17.7.216:9090/band/CreateBand"
+    static let DeleteBandURL = "http://172.17.7.216:9090/band/delete/"
+    static let EditBandURL = "http://172.17.7.216:9090/band/modify"
+    static let getAllURL = "http://172.17.7.216:9090/band/getAllBand"
+    static let getByUserURL = "http://172.17.7.216:9090/band/getByUser/"
+    static let  addUserURL = "http://172.17.7.216:9090/band/addArtiste"
+    static let BandImageUrl = "http://172.17.7.216:9090/img/band/"
     
     static func create(/*creator: User,*/name: String, discription: String,imageId: String, completed: @escaping (Bool, Any?) ->Void){
         
@@ -53,32 +53,51 @@ class BandService{
 
             }
  }
+//
+//    static func supprimerBand( id : String?, completed: @escaping (Bool, Any?) ->Void){
+//
+//        let headers :HTTPHeaders = [
+//            .contentType("application/json"),
+//            .accept("application/json")
+//        ]
+//        let params = [ "id" : id ]
+//
+//        AF.request(DeleteBandURL, method: .delete, parameters: params, encoder: JSONParameterEncoder.default, headers: headers )
+//            .validate(statusCode : 200..<300)
+//            .validate(contentType: ["application/json"])
+//            .responseData { response in
+//                switch response.result {
+//                case .success:
+//                    let jsonData = JSON(response.data!)
+//                    let message = jsonData["message"].stringValue
+//                    print(message)
+//                    completed(true, message)
+//                case let  .failure(error):
+//                    completed(false, error.errorDescription)
+//                    debugPrint(error)
+//                }
+//            }
+//
+//    }
     
-    static func supprimerBand( id : String?, completed: @escaping (Bool, Any?) ->Void){
-        
-        let headers :HTTPHeaders = [
-            .contentType("application/json"),
-            .accept("application/json")
-        ]
-        let params = [ "id" : id ]
-        
-        AF.request(DeleteBandURL, method: .delete, parameters: params, encoder: JSONParameterEncoder.default, headers: headers )
-            .validate(statusCode : 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseData { response in
-                switch response.result {
-                case .success:
-                    let jsonData = JSON(response.data!)
-                    let message = jsonData["message"].stringValue
-                    print(message)
-                    completed(true, message)
-                case let  .failure(error):
-                    completed(false, error.errorDescription)
-                    debugPrint(error)
+    
+    static func DeleteBand(bandId: String, completed: @escaping (Bool, String) -> Void){
+            AF.request(DeleteBandURL + bandId,  method: .delete )
+                .validate(statusCode: 200..<300)
+                .validate(contentType: ["application/json"])
+                .responseData { response in
+                    switch response.result {
+                    case .success:
+                        let jsonData = JSON(response.data!)
+                        let message = jsonData["message"].stringValue
+                        completed(true, message)
+                    case let .failure(error):
+                        completed(false, "error")
+                        debugPrint(error)
+                    }
                 }
-            }
+        }
 
-    }
     
     static func EditBand(id: String,name: String, discription: String, completed:
         @escaping (Bool, Any?) ->Void){
@@ -194,7 +213,7 @@ class BandService{
     
     static func add(band : Band , image :UIImage , completed:@escaping(Bool,Int)->Void){
             let token = UserDefaults.standard.string(forKey: "token")
-            let headers : HTTPHeaders = [.authorization(bearerToken: token!),.contentType("multipart/form-data")]
+        let headers : HTTPHeaders = [.authorization(bearerToken: token ?? "cyrine"),.contentType("multipart/form-data")]
             AF.upload(
                 multipartFormData: { multipartFormData in
                     multipartFormData.append(image.jpegData(compressionQuality: 0.5)!, withName: "image",fileName: "band.jpg",mimeType: "image/jpg")

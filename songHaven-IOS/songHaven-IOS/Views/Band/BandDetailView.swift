@@ -7,9 +7,12 @@
 
 import SwiftUI
 import Foundation
+import NavigationStack
 struct BandDetailView: View {
     
     @StateObject var viewModel : BandDetailViewModel
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
+
     
     var body: some View {
         NavigationView{
@@ -20,6 +23,7 @@ struct BandDetailView: View {
                         HStack(spacing:210){
                             Button(
                                 action: {
+                                    
                                     
                                 }, label:{
                                     Label("Remove Band", systemImage: "trash")
@@ -85,12 +89,31 @@ struct BandDetailView: View {
                             .bold()
                             .foregroundColor(.white)
                     }.padding()
+                    
+                    
+                    
+                       Button(
+                                       action: {
+                                           print("delete band")
+                                           viewModel.showAlert = true
+                                       } ) {
+                                           Image(systemName: "trash.fill").foregroundColor(.white)
+                                               .frame(width: 20, height: 20)
+                                               .padding(8).background(Color.red.opacity(0.7))
+                                               .cornerRadius(20)
+                                               .shadow(color: Color.black,radius: 8, x: 0, y: 5)
+                                       }
+                                       .alert("Are You sure You want to delete this band ?", isPresented: $viewModel.showAlert) {
+                                           Button("Delete", role: .destructive) {
+                                               
+                                               viewModel.deleteBnad(action: {navigationStack.pop()}())
+                                           }
+                                           Button("cancel", role: .cancel) { }
+                                       }
+                    
+                }
+                       }
                 }
             }
             
         }
-    }
-    
-    
-    
-}

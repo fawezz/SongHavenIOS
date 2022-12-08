@@ -19,9 +19,9 @@ struct songHaven_IOSApp: App {
             //  AddBandView()
             // LoginView()
             //  BandDetailView()
-            //  AddBandView()
+            // AddBandView()
             //  BandsView()
-            NavigationStackView{
+         NavigationStackView{
                 UserBandsView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }

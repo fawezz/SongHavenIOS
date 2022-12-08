@@ -7,10 +7,11 @@
 
 import SwiftUI
 import PhotosUI
+import NavigationStack
 struct AddBandView: View {
     @StateObject var viewModel  = AddBandViewModel()
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 
@@ -48,7 +49,7 @@ struct AddBandView: View {
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
-                    NavigationLink(destination: ArtistSuggestionView(), tag: "addBand", selection: $viewModel.navigator){}
+                    PushView(destination: ArtistSuggestionView(), tag: "addBand", selection: $viewModel.navigator){}
                         Button(action:{
                             viewModel.navigator = "addBand"  })
                         {
@@ -59,7 +60,8 @@ struct AddBandView: View {
                                 .background(.green )
                                 .cornerRadius(15.0)
                         }
-                    NavigationLink(destination: UserBandsView(), tag: "addBand", selection: $viewModel.navigator){}
+                    PushView(destination: UserBandsView(), tag: "addBand", selection: $viewModel.navigator) {}
+
                         Button(action:{
                             viewModel.addBand()
                             viewModel.navigator = "addBand"

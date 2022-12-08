@@ -31,7 +31,7 @@ struct UserBandsView: View {
                             .bold()
                             .padding()
                         
-                        NavigationLink(destination: AddBandView(), tag: "addBand", selection: $viewModel.navigator){}
+                        PushView(destination: AddBandView(), tag: "addBand", selection: $viewModel.navigator){}
                         
                         Button(action:{
                             
