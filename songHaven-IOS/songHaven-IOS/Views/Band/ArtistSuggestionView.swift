@@ -1,82 +1,98 @@
 //
-//  FriendsView.swift
+//  MusicSearchView.swift
 //  songHaven-IOS
 //
-//  Created by cyrine on 18/11/2022.
+//  Created by Apple Esprit on 6/12/2022.
 //
 
 import SwiftUI
+import NavigationStack
 
-struct ArtistSuggestionView: View {
-    public var name = ""
-    @StateObject var viewModel  = ArtistSuggetionViewModel()
-
-    
-    
+struct ArtistSuggestionView : View {
+    @StateObject var viewModel = ArtistSuggetionViewModel(searchText: "String")
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
     var body: some View {
-        
-        ZStack{
-            LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
-            VStack{
-                NavigationLink("", destination: ArtistSuggestionView())
-            
-                Text("SUGGESTION")
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                    .bold()
-                    .padding()
-                VStack{
-                    HStack{
-                        Spacer() 
-                        Text("Search...")
-                            .padding(.top)
-                            .frame(width: 300, height :50)
-                            .background(Color.white.opacity(0.15))
-                            .cornerRadius(50)
-                            .foregroundColor(.white)
-                        Button(
-                            action:{},
-                            label:{
-                                Label("", systemImage: "magnifyingglass")
-                                    .foregroundColor(.white)
-                                    .padding(.leading, -50.0)
-                            })
-                    }
-                    HStack{
-                        Spacer()
-                        if(!$viewModel.users.isEmpty){
-                                ScrollView(.vertical){
-                                    LazyVStack{
-                                        ForEach($viewModel.users, id: \._id) { user in
-                                            UserCard(user: user.wrappedValue)
-                                                .padding(.horizontal, 3)
-                                             
-                                        }
-                                    }
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
+            VStack(spacing: 0){
+                HStack{
+                    BackButton(action: {navigationStack.pop()})
+                    //SEARCH BAR
+                    ZStack {
+                        HStack {
+                            Button(action: {
+                                print("search pressed")
+                                viewModel.searchUsers()
+                            }) {
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.purple)
+                            }
+                            .disabled(viewModel.searchText.isEmpty)
+                            TextField($viewModel.searchText.wrappedValue == "title" ? "Search by Name.." : "Search by Genre", text: $viewModel.searchText)
+
+                                .foregroundColor(.main_color.opacity(0.8))
+                            if(!viewModel.searchText.isEmpty){
+                                Button(action: {
+                                    print("clear pressed")
+                                    viewModel.searchText = ""
+                                }) {
+                                    Text("Clear")
+                                        .foregroundColor(.main_color.opacity(0.5))
                                 }
                             }
-
-                        Button(
-                            action:{},
-                            label:{
-                                Label("", systemImage: "person.badge.plus")
-                                    .foregroundColor(.white)
-                                    .padding(.leading, -50.0)
-                            })
-                    }
                         }
-                        
+                        .foregroundColor(.gray)
+                        .padding(.all, 13)
+                        .background(
+                            .regularMaterial,
+                            in: RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        )
                     }
-                    .padding(.all)
-                
+                    .frame(height: 40)
+                    .cornerRadius(13)
+                    .padding()
+                }
+                .padding()
+                if(!viewModel.searchedUsers.isEmpty){
+                    VStack(alignment: .leading){
+                        Text("Search Results")
+                            .font(.title)
+                            .foregroundColor(.white)
+                        ScrollView(.vertical){
+                            LazyVStack{
+                                ForEach($viewModel.searchedUsers, id: \._id) { user in
+                                    UserCard(user: user.wrappedValue)
+                                        .padding(.horizontal, 3)
+//                                        .onTapGesture {
+//                                            MusicPlayerViewModel.setup(Configurations(model: user.wrappedValue, currentPlaylist: nil))
+//                                            self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel.shared ))
+//                                        }
+                                }
+                            }
+                        }
+                    }
+                    .padding()
+                }else{
+                    Spacer()
+                    Text("No matching user found")
+                        .font(.title3)
+                        .foregroundColor(.white)
+                        .padding(.all, 20)
+                    Spacer()
+                }
+                //LOADER
+                if(viewModel.isLoading){
+                    ZStack{
+                        Color(.white)
+                            .opacity(0.7)
+                            .ignoresSafeArea()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .purple))
+                            .scaleEffect(3)
+                    }
+                }
             }
         }
     }
-
-struct Register_Previews: PreviewProvider {
-    static var previews: some View {
-        ArtistSuggestionView()
-    }
 }
-
-

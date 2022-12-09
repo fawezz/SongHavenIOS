@@ -20,7 +20,7 @@ struct HomeView: View {
                 })
             UserBandsView()
                 .tabItem({
-                    Label("Chat", systemImage: "message.fill")
+                    Label("Band", systemImage: "person.3.fill")
                 })
             ProfileView()
                 .tabItem( {

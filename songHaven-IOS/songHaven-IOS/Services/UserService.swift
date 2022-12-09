@@ -21,6 +21,7 @@ class UserService{
     
     static let UploadImageURL = Constants.HOSTNAME + "/user/profileImage"
     static let UserImageUrl = Constants.HOSTNAME + "/img/user/"
+    static let searchUsersURL = Constants.HOSTNAME + "/user/searchByName"
     
     static func SignIn(email: String, password: String, completed: @escaping (Bool, Any?) -> Void){
         
@@ -336,4 +337,37 @@ class UserService{
             
         }
     }
+    
+    static func SearchUsers( searchText: String, completed: @escaping (Bool, [User]) -> Void){
+        
+        let headers : HTTPHeaders = [
+            .contentType("application/json"),
+            .accept("application/json")
+        ]
+        let params = [
+            
+            "searchText" : searchText
+        ]
+        AF.request(searchUsersURL,  method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers   )
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    let jsonData = JSON(response.data!)
+                    var users : [User] = []
+                    for singleJsonItem in jsonData["users"] {
+                        users.append(User.fromJson(jsonData: singleJsonItem.1))
+                    }
+                    print("success search Users")
+                    completed(true, users)
+                case let .failure(error):
+                    print(error.errorDescription)
+                    completed(false, [])
+                    debugPrint(error)
+                }
+            }
+    }
 }
+
+

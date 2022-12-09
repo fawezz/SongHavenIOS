@@ -64,8 +64,6 @@ struct AddBandView: View {
 
                         Button(action:{
                             viewModel.addBand()
-                            viewModel.navigator = "addBand"
-                     
                         })
                         {
                             Text("Validate")

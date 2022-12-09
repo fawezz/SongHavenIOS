@@ -11,6 +11,7 @@ import NavigationStack
 struct BandDetailView: View {
     
     @StateObject var viewModel : BandDetailViewModel
+    
     @EnvironmentObject private var navigationStack: NavigationStackCompat
 
     
@@ -19,56 +20,57 @@ struct BandDetailView: View {
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack{
-                    VStack(spacing: 30){
-                        HStack(spacing:210){
-                            Button(
-                                action: {
-                                    
-                                    
-                                }, label:{
-                                    Label("Remove Band", systemImage: "trash")
-                                })
-                            .padding([.top, .leading, .trailing], -90.0)
-                            
-                            .foregroundColor(.white)
-                            Button(
-                                action: {
-                                    
-                                }, label:{
-                                    Label("Edit Band", systemImage: "square.and.pencil")
-                                })
-                            .padding([.top, .leading, .trailing], -90.0)
-                            
-                            .foregroundColor(.white)
-
-                        }
-                        .padding(.leading, 67.0)
-                        HStack(spacing:210){
-                            Button(
-                                action: {
-                                    
-                                }, label:{
-                                    Label("Members", systemImage: "person.2.fill")
-                                })
-                            .padding([.top, .leading, .trailing], -90.0)
-                            
-                            .foregroundColor(.white)
-                            
-                            
-                            Button(
-                                action: {
-                                    
-                                }, label:{
-                                    Label("Add Artist", systemImage: "person.fill.badge.plus")
-                                })
-                            .padding([.top, .leading, .trailing], -90.0)
-                            
-                            .foregroundColor(.white)
-                            
-                        }
-                        .padding(.leading, 67.0)
-                    }
                     
+                    Menu {
+                        Button(action: {
+                            //viewModel.criteria = "title"
+                        }) {
+                            Label("Edit Band", systemImage: "pencil")
+                        }
+                        Button(action: {
+                           // viewModel.criteria = "genre"
+                        }) {
+                            Label("Members", systemImage: "person.2.fill")
+                        }
+                        
+                        PushView(destination: ArtistSuggestionView(), tag: "addBand", selection: $viewModel.navigator){}
+                        Button(action: {
+                            
+                            viewModel.navigator = "addBand"
+                            
+                        }) {
+                            Label("Add Artist", systemImage: "person.fill.badge.plus")
+                        }
+                       
+                        Button(
+                            action: {
+                                print("delete band")
+                                viewModel.showAlert = true
+                                
+                            }, label:{
+                                Label("Remove Band", systemImage: "trash")
+                                    .frame(width: 20, height: 20)
+                                    .padding(8).background(Color.red.opacity(0.7))
+                                    .cornerRadius(20)
+                                    .shadow(color: Color.black,radius: 8, x: 0, y: 5)
+                            })
+                    } label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                .fill(.regularMaterial)
+                                .frame(width: 40, height: 40)
+                            Image(systemName: "slider.horizontal.3")
+                                .foregroundColor(.main_color)
+                                .frame(height: 35)
+                        }
+                    }
+                    .alert("Are You sure You want to delete this band ?", isPresented: $viewModel.showAlert) {
+                        Button("Delete", role: .destructive) {
+                            
+                            viewModel.deleteBand(action: {navigationStack.pop()}())
+                        }
+                        Button("cancel", role: .cancel) { }
+                    }
                     AsyncImage(url: URL(string: BandService.BandImageUrl + viewModel.selectedBand.image!))
                     {image in image.image?
                             .resizable()
@@ -92,26 +94,7 @@ struct BandDetailView: View {
                     
                     
                     
-                       Button(
-                                       action: {
-                                           print("delete band")
-                                           viewModel.showAlert = true
-                                       } ) {
-                                           Image(systemName: "trash.fill").foregroundColor(.white)
-                                               .frame(width: 20, height: 20)
-                                               .padding(8).background(Color.red.opacity(0.7))
-                                               .cornerRadius(20)
-                                               .shadow(color: Color.black,radius: 8, x: 0, y: 5)
-                                       }
-                                       .alert("Are You sure You want to delete this band ?", isPresented: $viewModel.showAlert) {
-                                           Button("Delete", role: .destructive) {
-                                               
-                                               viewModel.deleteBnad(action: {navigationStack.pop()}())
-                                           }
-                                           Button("cancel", role: .cancel) { }
-                                       }
-                    
-                }
+                } .navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
                        }
                 }
             }

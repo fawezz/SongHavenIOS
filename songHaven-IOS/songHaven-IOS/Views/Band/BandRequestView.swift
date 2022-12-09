@@ -46,37 +46,7 @@ struct BandRequestView: View {
                             
                         }
                         .padding()
-                        
-                        HStack{
-                            
-                            NavigationLink( destination: ArtistSuggestionView()
-                                .navigationBarBackButtonHidden(true)){
-                                Text("SUGGESTION")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .fixedSize()
-                                    .frame(width: 130, height: 50)
-                                    .background(Color.clear)
-                                    .cornerRadius(15.0)
-                            }
-                            NavigationLink( destination: UserBandsView()
-                                .navigationBarBackButtonHidden(true)){
-                                Text("BANDS")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(width: 130, height: 50)
-                                    .background(Color.clear)
-                                    .cornerRadius(15.0)
-                            }
-                           
-                                
-                               
-                        }
-                        
-                       
-                        
+
                     }
                     
                     ScrollView{

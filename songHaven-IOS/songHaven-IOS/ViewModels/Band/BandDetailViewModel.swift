@@ -10,6 +10,7 @@ import Foundation
     @Published var selectedBand : Band
     @Published var navigator : String? = nil
     @Published var showAlert = false
+  
 
 //    @Published var profileImageUrl: URL = URL(string: BandService.BandImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
 //    let name : String = UserDefaults.standard.string(forKey: "name") ?? ""
@@ -19,7 +20,7 @@ import Foundation
         self.selectedBand = selectedBand
     }
     
-    func deleteBnad(action: ()){
+    func deleteBand(action: ()){
         BandService.DeleteBand(bandId: selectedBand._id!, completed: 
         { (success, reponse) in
                if(success){

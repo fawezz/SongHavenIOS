@@ -53,21 +53,18 @@ import _PhotosUI_SwiftUI
         
     }
     func addBand (){
-        if (name.isEmpty || discription.isEmpty){
-            print( )
-            // action("Some fields aren't filed please check ", false)
-            return
-        }
-        BandService.add(band: Band(name: name, discription: discription,image: ""),image: image){
+        BandService.add(band: Band(name: name, discription: discription),image: image){
             
             passed , statusCode in
-            passed == true
+            if(passed){
+                self.navigator = "addBand"
+            }
         }
     }
     func validateFields()-> Bool{
         return (name.isEmpty || discription.isEmpty)
     }
-
+    
 }
 
 
