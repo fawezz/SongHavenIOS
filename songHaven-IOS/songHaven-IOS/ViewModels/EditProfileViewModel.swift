@@ -46,6 +46,7 @@ import _PhotosUI_SwiftUI
                 )
                 self.toastMessage = "Success"
                 self.showSuccessToast = true
+                UserSession.shared.isAlreadySignedIn() //get modified user
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
                     action//self.navigator = "Profile"
                     self.showSuccessToast = false

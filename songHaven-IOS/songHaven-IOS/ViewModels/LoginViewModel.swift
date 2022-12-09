@@ -32,10 +32,11 @@ import SwiftUI
                 let currentUser = reponse as! User
                 if currentUser.isVerified! {
                     //self.navigator = "Profile"
+                    UserSession.shared.isSignedIn = true
+                    UserSession.shared.currentUser = currentUser
                     self.navigator = "HomeView"
-                    print("user Verified")
+                    
                 } else {
-                    print("user not Verified")
                     self.showAlert = true
                 }
             } else {

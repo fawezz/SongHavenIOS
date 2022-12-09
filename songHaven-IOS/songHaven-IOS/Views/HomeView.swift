@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var userSession: UserSession
+    
     var body: some View {
         TabView{
             MusicHomeView(viewModel: MusicHomeViewModel())

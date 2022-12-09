@@ -15,9 +15,12 @@ import NavigationStack
     @Published var totalLikes : Int = 0
     @Published var profileImageUrl: URL = URL(string: UserService.UserImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
     @Published var isLoading = true
+    var userSession: UserSession = UserSession.shared
     
-    let firstname : String = UserDefaults.standard.string(forKey: "firstname")!
-    let lastname : String = UserDefaults.standard.string(forKey: "lastname")!
+//    let firstname : String = UserDefaults.standard.string(forKey: "firstname")!
+//    let lastname : String = UserDefaults.standard.string(forKey: "lastname")!
+    let firstname : String = (UserSession.shared.currentUser?.firstname)!
+    let lastname : String = (UserSession.shared.currentUser?.lastname)!
     
     init() {
         fetchUserSongs()
@@ -55,6 +58,8 @@ import NavigationStack
         UserDefaults.standard.setValue(
             nil,forKey: "token"
         )
+        UserSession.shared.isSignedIn = false
+
 //        UserDefaults.standard.setValue(
 //            nil,forKey: "email"
 //        )

@@ -73,6 +73,14 @@
 		B06AF261293FAB7900C8EE20 /* ProfileSongRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AF260293FAB7900C8EE20 /* ProfileSongRow.swift */; };
 		B08494B3293D09DC0071320F /* EditPlaylistSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08494B2293D09DC0071320F /* EditPlaylistSheet.swift */; };
 		B08494B5293D0ADF0071320F /* EditPlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08494B4293D0ADF0071320F /* EditPlaylistViewModel.swift */; };
+		B0876E3729438BF000A8BFA5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0876E3629438BF000A8BFA5 /* GoogleService-Info.plist */; };
+		B0876E3A29438DF800A8BFA5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B0876E3929438DF800A8BFA5 /* FirebaseFirestore */; };
+		B0876E3C29438DF800A8BFA5 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B0876E3B29438DF800A8BFA5 /* FirebaseFirestoreSwift */; };
+		B0876E3F2943943A00A8BFA5 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E3E2943943A00A8BFA5 /* ChatView.swift */; };
+		B0876E422943958E00A8BFA5 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E412943958E00A8BFA5 /* ChatViewModel.swift */; };
+		B0876E442943997800A8BFA5 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E432943997800A8BFA5 /* MessageBubble.swift */; };
+		B0876E4629439A5D00A8BFA5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E4529439A5D00A8BFA5 /* Message.swift */; };
+		B0876E482943B24400A8BFA5 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E472943B24400A8BFA5 /* UserSession.swift */; };
 		B091A019293A621A00E201F8 /* PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B091A018293A621A00E201F8 /* PlayMusic.swift */; };
 		B0AAC0E92935376400C3EFE4 /* PlaylistCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AAC0E82935376400C3EFE4 /* PlaylistCard.swift */; };
 		B0AAC0EC29354ADE00C3EFE4 /* PlaylistDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AAC0EB29354ADE00C3EFE4 /* PlaylistDetailsView.swift */; };
@@ -166,6 +174,12 @@
 		B06AF260293FAB7900C8EE20 /* ProfileSongRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSongRow.swift; sourceTree = "<group>"; };
 		B08494B2293D09DC0071320F /* EditPlaylistSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaylistSheet.swift; sourceTree = "<group>"; };
 		B08494B4293D0ADF0071320F /* EditPlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaylistViewModel.swift; sourceTree = "<group>"; };
+		B0876E3629438BF000A8BFA5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B0876E3E2943943A00A8BFA5 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		B0876E412943958E00A8BFA5 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		B0876E432943997800A8BFA5 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
+		B0876E4529439A5D00A8BFA5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B0876E472943B24400A8BFA5 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		B091A017293A5F2D00E201F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B091A018293A621A00E201F8 /* PlayMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
 		B0AAC0E82935376400C3EFE4 /* PlaylistCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCard.swift; sourceTree = "<group>"; };
@@ -185,7 +199,9 @@
 				B066E0482923F0D0002A27D8 /* SwiftyJSON in Frameworks */,
 				9BE5D2B32931ED670046041A /* NavigationStack in Frameworks */,
 				B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */,
+				B0876E3A29438DF800A8BFA5 /* FirebaseFirestore in Frameworks */,
 				B066E0452923EFA6002A27D8 /* AlertToast in Frameworks */,
+				B0876E3C29438DF800A8BFA5 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +245,7 @@
 		081B291D2919209700981671 /* songHaven-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				B0876E3629438BF000A8BFA5 /* GoogleService-Info.plist */,
 				B091A017293A5F2D00E201F8 /* Info.plist */,
 				9BE5D2B42931F1DD0046041A /* Components */,
 				B066E04C2923F446002A27D8 /* songHaven_IOS.xcdatamodeld */,
@@ -279,6 +296,7 @@
 				94AFFC0D292E22EF00824EF6 /* ColorExtension.swift */,
 				94AFFC01292E197800824EF6 /* Constants.swift */,
 				B091A018293A621A00E201F8 /* PlayMusic.swift */,
+				B0876E472943B24400A8BFA5 /* UserSession.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -294,6 +312,7 @@
 				B0AAC0EF2935506300C3EFE4 /* PlayListDetailsRow.swift */,
 				B08494B2293D09DC0071320F /* EditPlaylistSheet.swift */,
 				B06AF260293FAB7900C8EE20 /* ProfileSongRow.swift */,
+				B0876E432943997800A8BFA5 /* MessageBubble.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -305,6 +324,7 @@
 				B025A95E291EE2D2007FF6FF /* User.swift */,
 				9BE5D2B9293224BB0046041A /* Song.swift */,
 				9BE5D2C12933A2B30046041A /* Playlist.swift */,
+				B0876E4529439A5D00A8BFA5 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -333,6 +353,22 @@
 			name = Band;
 			sourceTree = "<group>";
 		};
+		B0876E3D294393A600A8BFA5 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				B0876E3E2943943A00A8BFA5 /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		B0876E402943955D00A8BFA5 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				B0876E412943958E00A8BFA5 /* ChatViewModel.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		B0AAC0EA29354A6A00C3EFE4 /* Music */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +384,7 @@
 		B0B9962E291D985300F75997 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B0876E3D294393A600A8BFA5 /* Chat */,
 				B0587AD2294368D600A91193 /* Band */,
 				B0AAC0EA29354A6A00C3EFE4 /* Music */,
 				B024ADB42923E72000C9E601 /* SendOtpView.swift */,
@@ -366,6 +403,7 @@
 		B0B99630291D987D00F75997 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B0876E402943955D00A8BFA5 /* Chat */,
 				B0587ADD2943692700A91193 /* Band */,
 				94AFFC0B292E224100824EF6 /* MusicPlayerViewModel.swift */,
 				B024ADC82923E7D700C9E601 /* ProfileViewModel.swift */,
@@ -419,6 +457,8 @@
 				B066E0442923EFA6002A27D8 /* AlertToast */,
 				B066E0472923F0D0002A27D8 /* SwiftyJSON */,
 				9BE5D2B22931ED670046041A /* NavigationStack */,
+				B0876E3929438DF800A8BFA5 /* FirebaseFirestore */,
+				B0876E3B29438DF800A8BFA5 /* FirebaseFirestoreSwift */,
 			);
 			productName = "songHaven-IOS";
 			productReference = 081B291B2919209700981671 /* songHaven-IOS.app */;
@@ -497,6 +537,7 @@
 				B066E0432923EFA6002A27D8 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				B066E0462923F0D0002A27D8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				9BE5D2B12931ED670046041A /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */,
+				B0876E3829438DF800A8BFA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 081B291C2919209700981671 /* Products */;
 			projectDirPath = "";
@@ -516,6 +557,7 @@
 			files = (
 				081B29262919209900981671 /* Preview Assets.xcassets in Resources */,
 				081B29232919209900981671 /* Assets.xcassets in Resources */,
+				B0876E3729438BF000A8BFA5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +586,7 @@
 				94AFFC0C292E224100824EF6 /* MusicPlayerViewModel.swift in Sources */,
 				B0587AE72943695700A91193 /* BandRequestViewModel.swift in Sources */,
 				B0587AE52943695700A91193 /* UserBandsViewModel.swift in Sources */,
+				B0876E3F2943943A00A8BFA5 /* ChatView.swift in Sources */,
 				B0AAC0F02935506300C3EFE4 /* PlayListDetailsRow.swift in Sources */,
 				B024ADB32923E71700C9E601 /* OtpVerificationView.swift in Sources */,
 				B024ADC52923E7CB00C9E601 /* SendOtpViewModel.swift in Sources */,
@@ -566,9 +609,11 @@
 				B024ADBD2923E7AD00C9E601 /* ForgotPasswordViewModel.swift in Sources */,
 				9BE5D2BA293224BB0046041A /* Song.swift in Sources */,
 				94AFFC02292E197800824EF6 /* Constants.swift in Sources */,
+				B0876E442943997800A8BFA5 /* MessageBubble.swift in Sources */,
 				9BE5D2B8293220790046041A /* MusicHomeView.swift in Sources */,
 				9BE5D2C22933A2B30046041A /* Playlist.swift in Sources */,
 				B0C1CDFC293666BD00BFC534 /* CreateSongView.swift in Sources */,
+				B0876E482943B24400A8BFA5 /* UserSession.swift in Sources */,
 				2B0A4800291981D200AF179A /* ProfileView.swift in Sources */,
 				B024ADBF2923E7B800C9E601 /* OtpVerificationViewModel.swift in Sources */,
 				B0C1CE00293668DD00BFC534 /* CreateSongViewModel.swift in Sources */,
@@ -582,6 +627,7 @@
 				B08494B5293D0ADF0071320F /* EditPlaylistViewModel.swift in Sources */,
 				B066E04E2923F446002A27D8 /* songHaven_IOS.xcdatamodeld in Sources */,
 				B024ADC32923E7C500C9E601 /* SignUpViewModel.swift in Sources */,
+				B0876E422943958E00A8BFA5 /* ChatViewModel.swift in Sources */,
 				B0AAC0EC29354ADE00C3EFE4 /* PlaylistDetailsView.swift in Sources */,
 				B024ADBB2923E7A700C9E601 /* LoginViewModel.swift in Sources */,
 				B024ADB12923E71000C9E601 /* LoginView.swift in Sources */,
@@ -600,6 +646,7 @@
 				B0587ADC294368E400A91193 /* BandDetailView.swift in Sources */,
 				B0587AE32943695700A91193 /* SuggetionModelView.swift in Sources */,
 				B0587AE62943695700A91193 /* BandDetailViewModel.swift in Sources */,
+				B0876E4629439A5D00A8BFA5 /* Message.swift in Sources */,
 				B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
 				B08494B3293D09DC0071320F /* EditPlaylistSheet.swift in Sources */,
@@ -985,6 +1032,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		B0876E3829438DF800A8BFA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1007,6 +1062,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B066E0462923F0D0002A27D8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		B0876E3929438DF800A8BFA5 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0876E3829438DF800A8BFA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		B0876E3B29438DF800A8BFA5 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0876E3829438DF800A8BFA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

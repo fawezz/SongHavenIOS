@@ -8,29 +8,31 @@
 import SwiftUI
 import NavigationStack
 import AVFAudio
+import Firebase
 
 @main
 struct songHaven_IOSApp: App {
     let persistenceController = PersistenceController.shared
     @UIApplicationDelegateAdaptor(MyAppDelegate.self) private var appDelegate
+    @State var userSession = UserSession.shared
+    
     init(){
-
+        FirebaseApp.configure()
+        userSession.isAlreadySignedIn()
     }
     
     var body: some Scene {
         WindowGroup {
             NavigationStackView{
-                let token = UserDefaults.standard.string(forKey: "token")
-                if(token == "" || token == nil){
+                if(!userSession.isSignedIn){
                     LoginView().environment(\.managedObjectContext, persistenceController.container.viewContext)
                 }else{
                     HomeView().environment(\.managedObjectContext, persistenceController.container.viewContext)
                 }
                 //CreateSongView(viewModel: CreateSongViewModel()).environment(\.managedObjectContext, persistenceController.container.viewContext)
-            }/*.onAppear(
+            }.environmentObject(userSession)
+            /*.onAppear(
               perform: {
-              //                    SongService.GetAllSongs(completed:
-              //                                                { (success, reponse) in print(reponse!.count) })
               //                    PlaylistService.ModifyPlaylist(playlistId: "637d013fd35081e7c6c90d7a", title: "playlist7", completed:
               //                                            { (success, reponse) in print(success) })
               }
