@@ -20,6 +20,7 @@ import SwiftUI
     @Published var isLoading: Bool = false
     @Published var showAlert: Bool = false
     @Published var navigator: String? = nil
+    @StateObject var userAuth: UserAuthModel =  UserAuthModel()
     
     
     func Login(){
@@ -74,6 +75,53 @@ import SwiftUI
             }
         })
     }
+    
+    func GoogleAuth(){
+        userAuth.signIn(completed: {success in
+            if(success){
+                self.userAuth.checkStatus()
+                //                UserService.userExists(email: userAuth.email.lowercased(),
+                //                                           completed: { success in
+                //                    if(success){
+                //                        print("login without creating user in db")
+                //                        UserService().loginWithGoogle(email: userAuth.email, completed: { success,response in
+                //                            if success {
+                //                                self.navigator = "HomeView"
+                //                            } else {
+                //                                print("couldn't login user")
+                //                            }
+                //
+                //                        })
+                //                    }
+                //                    else{
+                ////                        user.firstname=userAuth.firstname
+                ////                        user.lastname=userAuth.lastname
+                ////                        user.email=userAuth.email
+                ////                        user.address=""
+                ////                        user.hash=""
+                ////                        user.pic=""
+                ////                        user.speciality=""
+                ////                        user.workDays=[]
+                ////                        user.tos=[]
+                ////                        //user.pic=userAuth.profilePicUrl
+                ////                        UserViewModel().registerUserFormData(user: user,image:nil, completedAction: { (success) in
+                ////                            if success {
+                ////                                showHomePage=true
+                ////                            } else {
+                ////                                print("couldn't create user")
+                ////
+                ////                            }
+                ////
+                ////                        })
+                //                    }
+                //                })
+                
+            }
+            else{
+            }
+        })
+    }
+    
     func validateFields()-> Bool{
         return (self.isEmail(strToValidate: email) && password.count >= 8)
     }

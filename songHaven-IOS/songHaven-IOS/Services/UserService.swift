@@ -22,6 +22,8 @@ class UserService{
     static let UploadImageURL = Constants.HOSTNAME + "/user/profileImage"
     static let UserImageUrl = Constants.HOSTNAME + "/img/user/"
     static let searchUsersURL = Constants.HOSTNAME + "/user/searchByName"
+    static let GetByIdURL = Constants.HOSTNAME + "/user/getById"
+    static let GoogleLoginURL = Constants.HOSTNAME + "/user/googleLogin"
     
     static func SignIn(email: String, password: String, completed: @escaping (Bool, Any?) -> Void){
         
@@ -348,7 +350,7 @@ class UserService{
             
             "searchText" : searchText
         ]
-        AF.request(searchUsersURL,  method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers   )
+        AF.request(searchUsersURL,  method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers )
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseData { response in
@@ -368,6 +370,54 @@ class UserService{
                 }
             }
     }
+    
+    static func GetById(userId: String, completed: @escaping (Bool, User?) -> Void){
+        let headers : HTTPHeaders = [
+            .contentType("application/json"),
+            .accept("application/json")
+        ]
+        
+        let params = [
+            "userId" : userId,
+        ]
+        AF.request(GetByIdURL,  method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers )
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    let jsonData = JSON(response.data!)
+                    let user = User.fromJson(jsonData: jsonData["user"])
+                    completed(true, user)
+                case let .failure(error):
+                    if(response.response?.statusCode == 409){
+                        completed(false, nil)
+                        print(error.errorDescription!)
+                    }
+                }
+            }
+    }
+    
+    func loginWithGoogle(email: String, completed: @escaping (Bool, Any?) -> Void) {
+        AF.request(UserService.GoogleLoginURL,
+                          method: .post,
+                          parameters: ["email": email])
+                   .validate(statusCode: 200..<300)
+                   .validate(contentType: ["application/json"])
+                   .responseData { response in
+                       switch response.result {
+                       case .success:
+                           let jsonData = JSON(response.data!)
+                           
+                           UserDefaults.standard.setValue(jsonData["token"].stringValue, forKey: "token")
+                           UserDefaults.standard.setValue(jsonData["userId"].stringValue, forKey: "userId")
+                           completed(true, jsonData["token"].stringValue)
+                       case let .failure(error):
+                           debugPrint(error)
+                           completed(false, nil)
+                       }
+                   }
+           }
 }
 
 
