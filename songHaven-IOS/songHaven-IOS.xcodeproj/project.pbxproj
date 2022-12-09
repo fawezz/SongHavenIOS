@@ -43,7 +43,6 @@
 		B024ADBD2923E7AD00C9E601 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADBC2923E7AD00C9E601 /* ForgotPasswordViewModel.swift */; };
 		B024ADBF2923E7B800C9E601 /* OtpVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADBE2923E7B800C9E601 /* OtpVerificationViewModel.swift */; };
 		B024ADC12923E7BF00C9E601 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADC02923E7BF00C9E601 /* ResetPasswordViewModel.swift */; };
-		B024ADC32923E7C500C9E601 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADC22923E7C500C9E601 /* SignUpViewModel.swift */; };
 		B024ADC52923E7CB00C9E601 /* SendOtpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADC42923E7CB00C9E601 /* SendOtpViewModel.swift */; };
 		B024ADC72923E7D100C9E601 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADC62923E7D100C9E601 /* RegisterViewModel.swift */; };
 		B024ADC92923E7D700C9E601 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024ADC82923E7D700C9E601 /* ProfileViewModel.swift */; };
@@ -149,7 +148,6 @@
 		B024ADBC2923E7AD00C9E601 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		B024ADBE2923E7B800C9E601 /* OtpVerificationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpVerificationViewModel.swift; sourceTree = "<group>"; };
 		B024ADC02923E7BF00C9E601 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
-		B024ADC22923E7C500C9E601 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		B024ADC42923E7CB00C9E601 /* SendOtpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOtpViewModel.swift; sourceTree = "<group>"; };
 		B024ADC62923E7D100C9E601 /* RegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		B024ADC82923E7D700C9E601 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -390,6 +388,34 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		B0876E512943D5CA00A8BFA5 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				B0AAC0ED29354BB600C3EFE4 /* PlaylistDetailsViewModel.swift */,
+				B0C1CDFF293668DD00BFC534 /* CreateSongViewModel.swift */,
+				B06AF25E293F658900C8EE20 /* MusicSearchViewModel.swift */,
+				B08494B4293D0ADF0071320F /* EditPlaylistViewModel.swift */,
+				9BE5D2BB29331C7F0046041A /* MusicHomeViewModel.swift */,
+				94AFFC0B292E224100824EF6 /* MusicPlayerViewModel.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		B0876E522943D60300A8BFA5 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				B024ADC82923E7D700C9E601 /* ProfileViewModel.swift */,
+				B024ADC62923E7D100C9E601 /* RegisterViewModel.swift */,
+				B024ADC42923E7CB00C9E601 /* SendOtpViewModel.swift */,
+				B024ADC02923E7BF00C9E601 /* ResetPasswordViewModel.swift */,
+				B024ADBE2923E7B800C9E601 /* OtpVerificationViewModel.swift */,
+				B024ADBC2923E7AD00C9E601 /* ForgotPasswordViewModel.swift */,
+				B024ADBA2923E7A700C9E601 /* LoginViewModel.swift */,
+				B024ADB82923E7A100C9E601 /* EditProfileViewModel.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		B0AAC0EA29354A6A00C3EFE4 /* Music */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,23 +444,10 @@
 		B0B99630291D987D00F75997 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B0876E522943D60300A8BFA5 /* User */,
+				B0876E512943D5CA00A8BFA5 /* Music */,
 				B0876E402943955D00A8BFA5 /* Chat */,
 				B0587ADD2943692700A91193 /* Band */,
-				94AFFC0B292E224100824EF6 /* MusicPlayerViewModel.swift */,
-				B024ADC82923E7D700C9E601 /* ProfileViewModel.swift */,
-				B024ADC62923E7D100C9E601 /* RegisterViewModel.swift */,
-				B024ADC42923E7CB00C9E601 /* SendOtpViewModel.swift */,
-				B024ADC22923E7C500C9E601 /* SignUpViewModel.swift */,
-				B024ADC02923E7BF00C9E601 /* ResetPasswordViewModel.swift */,
-				B024ADBE2923E7B800C9E601 /* OtpVerificationViewModel.swift */,
-				B024ADBC2923E7AD00C9E601 /* ForgotPasswordViewModel.swift */,
-				B024ADBA2923E7A700C9E601 /* LoginViewModel.swift */,
-				B024ADB82923E7A100C9E601 /* EditProfileViewModel.swift */,
-				9BE5D2BB29331C7F0046041A /* MusicHomeViewModel.swift */,
-				B0AAC0ED29354BB600C3EFE4 /* PlaylistDetailsViewModel.swift */,
-				B0C1CDFF293668DD00BFC534 /* CreateSongViewModel.swift */,
-				B08494B4293D0ADF0071320F /* EditPlaylistViewModel.swift */,
-				B06AF25E293F658900C8EE20 /* MusicSearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -644,7 +657,6 @@
 				B0AAC0E92935376400C3EFE4 /* PlaylistCard.swift in Sources */,
 				B08494B5293D0ADF0071320F /* EditPlaylistViewModel.swift in Sources */,
 				B066E04E2923F446002A27D8 /* songHaven_IOS.xcdatamodeld in Sources */,
-				B024ADC32923E7C500C9E601 /* SignUpViewModel.swift in Sources */,
 				B0876E422943958E00A8BFA5 /* ChatViewModel.swift in Sources */,
 				B0AAC0EC29354ADE00C3EFE4 /* PlaylistDetailsView.swift in Sources */,
 				B024ADBB2923E7A700C9E601 /* LoginViewModel.swift in Sources */,
