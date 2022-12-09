@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BandsView: View {
+struct BandView: View {
     @State private var name = ""
     private var data : [Int] = Array(1...20)
     private let colors : [Color] = [.purple]
@@ -65,8 +65,10 @@ struct BandsView: View {
                         HStack{
                             
                             NavigationLink( destination: ArtistSuggestionView()
+                            
                                 .navigationBarBackButtonHidden(true)){
                                
+                                
                                 Text("SUGGESTION")
                                     .font(.headline)
                                     .foregroundColor(.white)
@@ -181,7 +183,7 @@ struct BandsView: View {
     }
         struct BandView_Previews: PreviewProvider {
             static var previews: some View {
-                BandsView()
+                BandView()
             }
         }
     }

@@ -16,7 +16,7 @@ struct BandRequestView: View {
                 
                 VStack{
                     
-                    Text("Artists & Bands")
+                    Text("REQUESTS")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .bold()
@@ -60,7 +60,7 @@ struct BandRequestView: View {
                                     .background(Color.clear)
                                     .cornerRadius(15.0)
                             }
-                            NavigationLink( destination: BandsView()
+                            NavigationLink( destination: UserBandsView()
                                 .navigationBarBackButtonHidden(true)){
                                 Text("BANDS")
                                     .font(.headline)
@@ -72,14 +72,7 @@ struct BandRequestView: View {
                             }
                            
                                 
-                                Text("REQUESTS")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(width: 130, height: 50)
-                                    .background(Color.clear)
-                                    .cornerRadius(15.0)
-                            
+                               
                         }
                         
                        
