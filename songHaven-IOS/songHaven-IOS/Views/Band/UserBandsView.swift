@@ -7,8 +7,6 @@
 
 import SwiftUI
 import Alamofire
-import SDWebImageSwiftUI
-import SwiftyJSON
 import NavigationStack
 
 
@@ -17,7 +15,7 @@ struct UserBandsView: View {
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     @StateObject var viewModel = UserBandsViewModel()
     private let  adaptiveColums = [ GridItem( .adaptive(minimum: 170))]
-
+    
     
     var body: some View {
         NavigationStackView{
@@ -37,21 +35,16 @@ struct UserBandsView: View {
                             
                             viewModel.navigator = "addBand"})
                         {
-                            
                             Image(systemName: "cross.circle.fill").foregroundColor(.white)
                                 .frame(width: 20, height: 20)
                                 .padding(8).background(Color.green)
                                 .cornerRadius(20)
                                 .frame(width: 36,height: 36 , alignment: .trailing)
                                 .shadow(color: Color.black,radius: 8, x: 0, y: 5)
-                            
                         }
                     }
-                    
                     HStack{
-                        
                         HStack{
-                            
                             NavigationLink( destination: ArtistSuggestionView()
                                 .navigationBarBackButtonHidden(true)){
                                     
@@ -65,8 +58,6 @@ struct UserBandsView: View {
                                         .cornerRadius(15.0)
                                     
                                 }
-                            
-                            
                             NavigationLink( destination: BandRequestView()
                                 .navigationBarBackButtonHidden(true)){
                                     
@@ -84,38 +75,35 @@ struct UserBandsView: View {
                     VStack(alignment: .leading){
                         Spacer()
                         if(!$viewModel.userBands.isEmpty){
-                                ScrollView(.vertical){
-                                    LazyVGrid(columns: adaptiveColums, spacing: 20){
-                                        ForEach($viewModel.userBands, id: \._id) { band in
-                                            BandCard(band: band.wrappedValue)
-                                                .padding(.horizontal, 3)
-                                                .onTapGesture {
-                                                    self.navigationStack.push(BandDetailView(viewModel: BandDetailViewModel(selectedBand: band.wrappedValue)))
-                                                }
-                                        }
+                            ScrollView(.vertical){
+                                LazyVGrid(columns: adaptiveColums, spacing: 20){
+                                    ForEach($viewModel.userBands, id: \._id) { band in
+                                        BandCard(band: band.wrappedValue)
+                                            .padding(.horizontal, 3)
+                                            .onTapGesture {
+                                                self.navigationStack.push(BandDetailView(viewModel: BandDetailViewModel(selectedBand: band.wrappedValue)))
+                                            }
                                     }
                                 }
-                            }else{
-                                HStack{
-                                    Text("You don't have any bands yet")
-                                        .foregroundColor(.white)
-                                        .font(.title3)
-                                        .padding(.all, 50)
-                                }
                             }
-                        Spacer()
+                        }else{
+                            HStack{
+                                Text("You don't have any bands yet")
+                                    .foregroundColor(.white)
+                                    .font(.title3)
+                                    .padding(.all, 50)
+                            }
                         }
+                        Spacer()
                     }
-                    .padding(8)
                 }
-        
-                    
-                    
-                }
+                .padding(8)
             }
-
         }
- 
+    }
+    
+}
+
 struct TestView_Previews: PreviewProvider {
     static var previews: some View {
         UserBandsView()

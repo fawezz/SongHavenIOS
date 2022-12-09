@@ -9,15 +9,14 @@ import SwiftyJSON
 import Foundation
 import UIKit
 class BandService{
-    static let  ip = "http://172.17.7.216:9090"
     static let UploadImageURL = ""
-    static let CreateBandURL = "http://172.17.7.216:9090/band/CreateBand"
-    static let DeleteBandURL = "http://172.17.7.216:9090/band/delete/"
-    static let EditBandURL = "http://172.17.7.216:9090/band/modify"
-    static let getAllURL = "http://172.17.7.216:9090/band/getAllBand"
-    static let getByUserURL = "http://172.17.7.216:9090/band/getByUser/"
-    static let  addUserURL = "http://172.17.7.216:9090/band/addArtiste"
-    static let BandImageUrl = "http://172.17.7.216:9090/img/band/"
+    static let CreateBandURL = Constants.HOSTNAME + "/band/CreateBand"
+    static let DeleteBandURL = Constants.HOSTNAME + "/band/delete/"
+    static let EditBandURL = Constants.HOSTNAME + "/band/modify"
+    static let getAllURL = Constants.HOSTNAME + "/band/getAllBand"
+    static let getByUserURL = Constants.HOSTNAME + "/band/getByUser/"
+    static let  addUserURL = Constants.HOSTNAME + "/band/addArtiste"
+    static let BandImageUrl = Constants.HOSTNAME + "/img/band/"
     
     static func create(/*creator: User,*/name: String, discription: String,imageId: String, completed: @escaping (Bool, Any?) ->Void){
         

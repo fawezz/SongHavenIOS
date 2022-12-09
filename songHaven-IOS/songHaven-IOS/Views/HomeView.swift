@@ -18,7 +18,7 @@ struct HomeView: View {
                 .tabItem({
                     Label("Notifications", systemImage: "bell")
                 })
-            Text("Chat")
+            UserBandsView()
                 .tabItem({
                     Label("Chat", systemImage: "message.fill")
                 })

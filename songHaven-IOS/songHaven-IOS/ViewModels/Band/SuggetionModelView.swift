@@ -16,11 +16,11 @@ import Foundation
          }
     
     private func fetchUsers() {
-        UserService.GetAllusers( completed: { (success, usersArray) in
-                if(success){
-                    self.users = usersArray ?? []
-                    print("eeeeeeeee" + self.users.description)
-                }
-            })
+//        UserService.GetAllusers( completed: { (success, usersArray) in
+//                if(success){
+//                    self.users = usersArray ?? []
+//                    print("eeeeeeeee" + self.users.description)
+//                }
+//            })
         }
 }

@@ -20,7 +20,7 @@ class UserService{
     static let EditDetailsURL = Constants.HOSTNAME + "/user/modifyDetails"
     
     static let UploadImageURL = Constants.HOSTNAME + "/user/profileImage"
-    static let UserImageUrl = Constants.HOSTNAME + "/img/"
+    static let UserImageUrl = Constants.HOSTNAME + "/img/user/"
     
     static func SignIn(email: String, password: String, completed: @escaping (Bool, Any?) -> Void){
         
