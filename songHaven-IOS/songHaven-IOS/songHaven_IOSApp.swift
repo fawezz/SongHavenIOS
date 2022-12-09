@@ -6,15 +6,35 @@
 //
 
 import SwiftUI
+import NavigationStack
+import AVFAudio
 
 @main
 struct songHaven_IOSApp: App {
     let persistenceController = PersistenceController.shared
+    @UIApplicationDelegateAdaptor(MyAppDelegate.self) private var appDelegate
+    init(){
 
+    }
+    
     var body: some Scene {
         WindowGroup {
-            
-SplashScreen()
+            NavigationStackView{
+                let token = UserDefaults.standard.string(forKey: "token")
+                if(token == "" || token == nil){
+                    LoginView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+                }else{
+                    HomeView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+                }
+                //CreateSongView(viewModel: CreateSongViewModel()).environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }/*.onAppear(
+              perform: {
+              //                    SongService.GetAllSongs(completed:
+              //                                                { (success, reponse) in print(reponse!.count) })
+              //                    PlaylistService.ModifyPlaylist(playlistId: "637d013fd35081e7c6c90d7a", title: "playlist7", completed:
+              //                                            { (success, reponse) in print(success) })
+              }
+              )*/
         }
     }
 }

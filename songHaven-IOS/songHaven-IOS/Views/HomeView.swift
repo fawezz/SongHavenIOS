@@ -2,14 +2,34 @@
 //  HomeView.swift
 //  songHaven-IOS
 //
-//  Created by Apple Esprit on 14/11/2022.
+//  Created by zewaff on 24/11/2022.
 //
 
 import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView{
+            MusicHomeView(viewModel: MusicHomeViewModel())
+                .tabItem( {
+                    Label("Music", systemImage: "music.note.list")
+                })
+            Text("notifications")
+                .tabItem({
+                    Label("Notifications", systemImage: "bell")
+                })
+            Text("Chat")
+                .tabItem({
+                    Label("Chat", systemImage: "message.fill")
+                })
+            ProfileView()
+                .tabItem( {
+                    Label("Profile", systemImage: "person")
+                })
+        }.onAppear(){
+            UITabBar.appearance().backgroundColor = .black
+        }
+        .tint(.purple)
     }
 }
 

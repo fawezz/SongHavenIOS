@@ -4,14 +4,13 @@
 //
 //  Created by Cyrine-Faouze on 7/11/2022.
 //
-
 import SwiftUI
 
 struct SplashScreen: View {
     @State var isActive: Bool = false
     var body: some View {
         if(self.isActive){
-            RegisterView()
+            OtpVerificationView()
         }else{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)

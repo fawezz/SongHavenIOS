@@ -4,129 +4,130 @@
 //
 //  Created by Apple Esprit on 7/11/2022.
 //
-
 import SwiftUI
+import PhotosUI
+import AlertToast
+import NavigationStack
+
 
 struct EditProfileView: View {
-    @State private var name = ""
-    @State private var lastname = ""
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
-    @State  private var ShowingLoginscrean = false
-    @State var isPresented = false
     
-    
+    @StateObject var viewModel = EditProfileViewModel()
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
+
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack(spacing:20) {
-                    
-                    Text("Edit your Profile ")
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundColor(.white)
-                    VStack{
-                        Image("userIcon")
-                            .resizable()
-                            .clipShape(Circle())
-                            .scaledToFit()
-                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                            .shadow(radius: 10)
-                        .frame(width: 150,height: 150)
-                      
-                        Button (
-                            action: { self.isPresented = true },
-                            label: {
-                                Label("", systemImage: "camera")
-                            }).background(Color(.white))
-                            .cornerRadius(50)
-
+                    ZStack(alignment: .bottomTrailing){
                         
+                        AsyncImage(url:viewModel.profileImageUrl)
+                        {
+                            Image in Image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                        .shadow(radius: 10)
+                        .frame(width: 180,height: 180)
                         
-                        
+                        PhotosPicker(
+                            selection: $viewModel.selectedItem,
+                            matching: .images,
+                            photoLibrary: .shared()){
+                                Image(systemName: "camera")
+                                    .frame(width: 40, height: 40)
+                                    .background(Color(.white))
+                                    .cornerRadius(50)
+                                    .padding(.trailing, 3)
+                                    .foregroundColor(.black)
+                            }
+                            .onChange(of: viewModel.selectedItem,
+                                      perform: {
+                                newItem in
+                                Task {
+                                    if let data = try? await newItem?.loadTransferable(type: Data.self){
+                                        viewModel.selectedImageData = data
+                                        print("Submitted image")
+                                        viewModel.editImage()
+                                    }
+                                }
+                            })
+                        if(viewModel.isUploading){
+                            ZStack{
+                                Color(.white)
+                                    .opacity(0.7)
+                                    .cornerRadius(50)
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .purple))
+                                    .scaleEffect(3)
+                                
+                            }.frame(width: 200, height: 200)
+                        }
                     }
-                    /*
+                    .frame(width: 100, height: 100)
+                    .padding(.bottom, 40)
                     
-                    Button("Login in to your existant account"){
-                        
-                    }
-                    .foregroundColor(.white)
-                    .frame(width: 300, height: 50)
-                    .background(Color.clear)
-                    .cornerRadius(10)
-            //NavigationLink(destination: ResetPasswordView(), label: )
-                    */
-                   
+                    TextField("Enter your name",text:$viewModel.firstname)
+                        .textFieldStyle(ProfileTextFieldStyle())
                     
-                    TextField("Enter your name",text:$name)
-               
-                        .padding([.leading, .bottom, .trailing])
-                        .background(Color.white.opacity(0.35))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-               
+                    TextField("Enter your lastname",text:$viewModel.lastname)
+                        .textFieldStyle(ProfileTextFieldStyle())
                     
-                    TextField("Enter your lastname",text:$lastname)
-                        .padding([.leading, .bottom, .trailing])
-                 
-                        .background(Color.white.opacity(0.35))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                   //     .shadow(color: .pink.opacity(0.08), radius: 60, x: 16, y: 16)
+                    SecureField("Password",text:$viewModel.password)
+                        .textFieldStyle(ProfileTextFieldStyle())
                     
-                    TextField("Enter your Email",text:$email)
-                        .padding([.leading, .bottom, .trailing])
-                     
-                        .background(Color.white.opacity(0.35))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                    
-                    TextField("Password",text:$password)
-                        .padding([.leading, .bottom, .trailing])
-                        //.frame(width: 300, height :50)
-                        .background(Color.white.opacity(0.35))
-                    
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                    
-                    TextField("Confirm your password",text:$confirmPassword)
-                        .padding([.leading, .bottom, .trailing])
-                
-                        .background(Color.white.opacity(0.35))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                    /*
-                    
-                    Button( action: {
-                        print("Upload your profile image")
-                        
-                    }){ Image ("logo")
-                            .renderingMode(Image.TemplateRenderingMode? .init(Image.TemplateRenderingMode.original))
-                    }
-                       */
-                    
-                   
-                    VStack(spacing: 40){
-                        Button (
-                            action: { self.isPresented = true },
-                            label: {
-                                Label("Edit Profile", systemImage: "pencil")
-                             
+                    SecureField("Confirm your password",text:$viewModel.confirmPassword)
+                        .textFieldStyle(ProfileTextFieldStyle())
+                    Button (
+                        action: {
+                            viewModel.EditDetails(action: {navigationStack.pop()}())
+                        },
+                        label: {
+                            Label("Edit", systemImage: "square.and.pencil")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame(width: 300, height: 50)
+                                .background(buttonColor)
+                                .cornerRadius(15.0)
                         })
-                        
-                       }
-                    
-                    /*NavigationLink (destination :Text(" You are logged in @\(email)"),isActive: $ShowingLoginscrean){
-                        EmptyView()
-                    }*/
-                    
+                    .padding(.vertical, 40)
+                    .disabled(!viewModel.validateFields())
                 }
                 .padding(.all)
+                
+                if(viewModel.isLoading){
+                    ZStack{
+                        Color(.white)
+                            .opacity(0.7)
+                            .ignoresSafeArea()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .purple))
+                            .scaleEffect(3)
+                    }
+                }
+                PushView(destination: ProfileView(), tag: "Profile", selection: $viewModel.navigator) {}
             }
-            .navigationBarHidden(true)
+            .navigationBarItems(
+                leading: BackButton(action: {navigationStack.pop(to: .previous)})
+                )
+            .toast(isPresenting: $viewModel.showSuccessToast){
+                AlertToast(type: .complete(.green), title: viewModel.toastMessage)
+            }
+            .toast(isPresenting: $viewModel.showFailToast){
+                AlertToast(type: .error(.red), title: viewModel.toastMessage)
+            }
+        }
+    }
+    
+    var buttonColor: Color{
+        if(viewModel.validateFields()){
+            return Color.green
+        }else{
+            return Color.gray
         }
     }
     
@@ -140,3 +141,13 @@ struct EditProfileView: View {
     }
 }
 
+struct ProfileTextFieldStyle: TextFieldStyle {
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .padding()
+            .background(Color.white)
+            .cornerRadius(10)
+            .autocorrectionDisabled(true)
+        
+    }
+}
