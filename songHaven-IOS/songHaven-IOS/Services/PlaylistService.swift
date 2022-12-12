@@ -32,7 +32,7 @@ class PlaylistService{
                     for singleJsonItem in jsonData["playlists"] {
                         playlists!.append(Playlist.fromJson(jsonData: singleJsonItem.1))
                     }
-                    print("success received Playlists: " + (playlists?.description)!)
+                    //print("success received Playlists: " + (playlists?.description)!)
                     completed(true, playlists)
                 case let .failure(error):
                     print(error)
@@ -118,7 +118,6 @@ class PlaylistService{
                 case .success:
                     let jsonData = JSON(response.data!)
                     let playlist = Playlist.fromJson(jsonData: jsonData["playlist"])
-                    print("success removed song from: " + playlist.title!)
                     completed(true, playlist)
                 case let .failure(error):
                     debugPrint(error.errorDescription!)

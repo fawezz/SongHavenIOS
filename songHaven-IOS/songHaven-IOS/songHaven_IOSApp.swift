@@ -8,7 +8,6 @@
 import SwiftUI
 import NavigationStack
 import AVFAudio
-import Firebase
 
 @main
 struct songHaven_IOSApp: App {
@@ -17,8 +16,8 @@ struct songHaven_IOSApp: App {
     @State var userSession = UserSession.shared
     
     init(){
-        FirebaseApp.configure()
         userSession.isAlreadySignedIn()
+        let socketManager = SocketChatManager.init()
     }
     
     var body: some Scene {

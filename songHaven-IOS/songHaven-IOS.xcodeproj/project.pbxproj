@@ -73,8 +73,6 @@
 		B08494B3293D09DC0071320F /* EditPlaylistSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08494B2293D09DC0071320F /* EditPlaylistSheet.swift */; };
 		B08494B5293D0ADF0071320F /* EditPlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08494B4293D0ADF0071320F /* EditPlaylistViewModel.swift */; };
 		B0876E3729438BF000A8BFA5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0876E3629438BF000A8BFA5 /* GoogleService-Info.plist */; };
-		B0876E3A29438DF800A8BFA5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B0876E3929438DF800A8BFA5 /* FirebaseFirestore */; };
-		B0876E3C29438DF800A8BFA5 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B0876E3B29438DF800A8BFA5 /* FirebaseFirestoreSwift */; };
 		B0876E3F2943943A00A8BFA5 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E3E2943943A00A8BFA5 /* ChatView.swift */; };
 		B0876E422943958E00A8BFA5 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E412943958E00A8BFA5 /* ChatViewModel.swift */; };
 		B0876E442943997800A8BFA5 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E432943997800A8BFA5 /* MessageBubble.swift */; };
@@ -91,6 +89,9 @@
 		B0C1CDFC293666BD00BFC534 /* CreateSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C1CDFB293666BD00BFC534 /* CreateSongView.swift */; };
 		B0C1CE00293668DD00BFC534 /* CreateSongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C1CDFF293668DD00BFC534 /* CreateSongViewModel.swift */; };
 		B0C51152291FFFF600A3A0D0 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C51151291FFFF600A3A0D0 /* UserService.swift */; };
+		B0E7A45C29478B680094E7A0 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = B0E7A45B29478B680094E7A0 /* SocketIO */; };
+		B0E7A45E29478BD50094E7A0 /* SocketChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7A45D29478BD50094E7A0 /* SocketChatManager.swift */; };
+		B0E7A460294792840094E7A0 /* SocketParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7A45F294792840094E7A0 /* SocketParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,8 @@
 		B0C1CDFB293666BD00BFC534 /* CreateSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSongView.swift; sourceTree = "<group>"; };
 		B0C1CDFF293668DD00BFC534 /* CreateSongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSongViewModel.swift; sourceTree = "<group>"; };
 		B0C51151291FFFF600A3A0D0 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		B0E7A45D29478BD50094E7A0 /* SocketChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketChatManager.swift; sourceTree = "<group>"; };
+		B0E7A45F294792840094E7A0 /* SocketParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,11 +203,10 @@
 			files = (
 				B066E0482923F0D0002A27D8 /* SwiftyJSON in Frameworks */,
 				9BE5D2B32931ED670046041A /* NavigationStack in Frameworks */,
+				B0E7A45C29478B680094E7A0 /* SocketIO in Frameworks */,
 				B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */,
 				B0876E4F2943D0C700A8BFA5 /* GoogleSignInSwift in Frameworks */,
-				B0876E3A29438DF800A8BFA5 /* FirebaseFirestore in Frameworks */,
 				B066E0452923EFA6002A27D8 /* AlertToast in Frameworks */,
-				B0876E3C29438DF800A8BFA5 /* FirebaseFirestoreSwift in Frameworks */,
 				B0876E4D2943D0C700A8BFA5 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +303,8 @@
 				94AFFC01292E197800824EF6 /* Constants.swift */,
 				B091A018293A621A00E201F8 /* PlayMusic.swift */,
 				B0876E472943B24400A8BFA5 /* UserSession.swift */,
+				B0E7A45D29478BD50094E7A0 /* SocketChatManager.swift */,
+				B0E7A45F294792840094E7A0 /* SocketParser.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -485,10 +489,9 @@
 				B066E0442923EFA6002A27D8 /* AlertToast */,
 				B066E0472923F0D0002A27D8 /* SwiftyJSON */,
 				9BE5D2B22931ED670046041A /* NavigationStack */,
-				B0876E3929438DF800A8BFA5 /* FirebaseFirestore */,
-				B0876E3B29438DF800A8BFA5 /* FirebaseFirestoreSwift */,
 				B0876E4C2943D0C700A8BFA5 /* GoogleSignIn */,
 				B0876E4E2943D0C700A8BFA5 /* GoogleSignInSwift */,
+				B0E7A45B29478B680094E7A0 /* SocketIO */,
 			);
 			productName = "songHaven-IOS";
 			productReference = 081B291B2919209700981671 /* songHaven-IOS.app */;
@@ -567,8 +570,8 @@
 				B066E0432923EFA6002A27D8 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				B066E0462923F0D0002A27D8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				9BE5D2B12931ED670046041A /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */,
-				B0876E3829438DF800A8BFA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				B0876E4B2943D0C700A8BFA5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				B0E7A45A29478B680094E7A0 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
 			productRefGroup = 081B291C2919209700981671 /* Products */;
 			projectDirPath = "";
@@ -620,9 +623,11 @@
 				B0876E3F2943943A00A8BFA5 /* ChatView.swift in Sources */,
 				B0AAC0F02935506300C3EFE4 /* PlayListDetailsRow.swift in Sources */,
 				B024ADB32923E71700C9E601 /* OtpVerificationView.swift in Sources */,
+				B0E7A45E29478BD50094E7A0 /* SocketChatManager.swift in Sources */,
 				B024ADC52923E7CB00C9E601 /* SendOtpViewModel.swift in Sources */,
 				B0587AD9294368E400A91193 /* UserBandsView.swift in Sources */,
 				B06AF25D293F657900C8EE20 /* MusicSearchView.swift in Sources */,
+				B0E7A460294792840094E7A0 /* SocketParser.swift in Sources */,
 				B0587AE42943695700A91193 /* AddBandViewModel.swift in Sources */,
 				B0AAC0EE29354BB600C3EFE4 /* PlaylistDetailsViewModel.swift in Sources */,
 				B024ADB92923E7A100C9E601 /* EditProfileViewModel.swift in Sources */,
@@ -847,6 +852,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "songHaven-IOS/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -878,6 +884,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "songHaven-IOS/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1063,20 +1070,20 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		B0876E3829438DF800A8BFA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 		B0876E4B2943D0C700A8BFA5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.0.0;
+			};
+		};
+		B0E7A45A29478B680094E7A0 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1102,16 +1109,6 @@
 			package = B066E0462923F0D0002A27D8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
-		B0876E3929438DF800A8BFA5 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0876E3829438DF800A8BFA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		B0876E3B29438DF800A8BFA5 /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0876E3829438DF800A8BFA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
-		};
 		B0876E4C2943D0C700A8BFA5 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B0876E4B2943D0C700A8BFA5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
@@ -1121,6 +1118,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B0876E4B2943D0C700A8BFA5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		B0E7A45B29478B680094E7A0 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0E7A45A29478B680094E7A0 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
 		};
 /* End XCSwiftPackageProductDependency section */
 
