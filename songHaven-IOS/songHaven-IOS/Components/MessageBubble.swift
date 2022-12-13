@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MessageBubble: View {
-    var message: Message
+    var message: TextMessage
     @State private var showTime = false
     
     
@@ -26,7 +26,7 @@ struct MessageBubble: View {
             }
             
             if showTime {
-                Text("\(message.timestamp.formatted(.dateTime.hour().minute()))")
+                Text("\(message.timestamp!.formatted(.dateTime.hour().minute()))")
                     .font(.caption2)
                     .foregroundColor(.gray)
                     .padding(message.sender._id != UserSession.shared.currentUser?._id ? .leading : .trailing, 25)

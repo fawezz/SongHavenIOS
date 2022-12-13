@@ -15,12 +15,11 @@ struct songHaven_IOSApp: App {
     @UIApplicationDelegateAdaptor(MyAppDelegate.self) private var appDelegate
     @AppStorage("language")
     private var language = LocalizationService.shared.language
-
     @State var userSession = UserSession.shared
     
     init(){
         userSession.isAlreadySignedIn()
-        let socketManager = SocketChatManager()
+        let socketManager = SocketChatManager.shared
         socketManager.setupSocketEvents()
     }
     
@@ -29,6 +28,7 @@ struct songHaven_IOSApp: App {
             NavigationStackView{
                 if(!userSession.isSignedIn){
                     LoginView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                    ChatView(viewModel: ChatViewModel(band: nil)).environment(\.managedObjectContext, persistenceController.container.viewContext)
                 }else{
                     HomeView().environment(\.managedObjectContext, persistenceController.container.viewContext)
                 }

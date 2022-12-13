@@ -48,3 +48,7 @@
 
 "languageSheetTxt1" = "Selectionner une langue :";
 "languageSheetTxt2" = "Appliquer";
+
+"profileTxt1" = "Aimes";
+"profileTxt2" = "Chansons";
+"profileTxt3" = "Modifier Profile";

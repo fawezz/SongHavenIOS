@@ -15,7 +15,7 @@ import Foundation
     @Published var bandImageUrl: URL
     
     
-    @Published private(set) var messages: [Message] = []
+    @Published private(set) var messages: [TextMessage] = []
     @Published private(set) var lastMessageId: String = ""
     
     
@@ -30,7 +30,7 @@ import Foundation
 
     init(band: Band){
         self.band = band
-        self.bandImageUrl = URL(string: BandService.BandImageUrl + band.image!)!
+        self.bandImageUrl = URL(string: BandService.BandImageUrl + (band.image ?? "default"))!
         fetchMessages()
     }
     

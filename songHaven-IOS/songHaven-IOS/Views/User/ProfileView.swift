@@ -23,11 +23,11 @@ struct ProfileView: View {
                         HStack{
                             Spacer()
                             Divider().frame(height: 40)
-                            ProfileSectionItem(title: "Likes", nbr: $viewModel.totalLikes.wrappedValue.description)
+                            ProfileSectionItem(title: "profileTxt1".localized(languageService.language), nbr: $viewModel.totalLikes.wrappedValue.description)
                             //ProfileSectionItem(title: "Albums", nbr: "10")
                             //Spacer()
                             Divider().frame(height: 40).foregroundColor(.main_color)
-                            ProfileSectionItem(title: "Songs", nbr: $viewModel.userSongs.count.description)
+                            ProfileSectionItem(title: "profileTxt2".localized(languageService.language), nbr: $viewModel.userSongs.count.description)
                             Divider().frame(height: 40).foregroundColor(.main_color)
                             Spacer()
                         }
@@ -75,13 +75,13 @@ struct ProfileView: View {
                         viewModel.navigator = "EditProfile"
                     },
                     label: {
-                        Label("Edit Profile", systemImage: "pencil")
+                        Label("profileTxt3".localized(languageService.language), systemImage: "pencil")
                     })
                 .padding()
                 PushView(destination: EditProfileView(), tag: "EditProfile", selection: $viewModel.navigator) {}
                 
                     .navigationBarItems(trailing:
-                                            Menu {
+                    Menu {
                         Button(action: {
                             print("language Button")
                             viewModel.showLanguageSheet = true
@@ -97,12 +97,9 @@ struct ProfileView: View {
                         }
                     } label: {
                         ZStack{
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .fill(.regularMaterial)
-                                .frame(width: 40, height: 40)
                             Image(systemName: "ellipsis.circle")
-                                .foregroundColor(.main_color)
-                                .frame(height: 35)
+                                .foregroundColor(.white)
+                                .frame(width: 65, height: 65)
                         }
                     }
                         .alert("Are You sure You want Log out ?", isPresented: $viewModel.showLogoutAlert) {
