@@ -42,6 +42,7 @@ import Foundation
     
     func songExists(songList: [Song]) -> Bool{
         return songList.contains(song)
+        
     }
     
     func addSongToPlaylist(selectedPlaylist: Playlist) -> Bool {

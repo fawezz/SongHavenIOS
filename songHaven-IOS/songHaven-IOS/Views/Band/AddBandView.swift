@@ -10,6 +10,8 @@ import PhotosUI
 import NavigationStack
 struct AddBandView: View {
     @StateObject var viewModel  = AddBandViewModel()
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
+
     var body: some View {
         NavigationStack{
             ZStack{
@@ -40,26 +42,18 @@ struct AddBandView: View {
                     }
                     
                     TextField("Choose name for your Band",text:$viewModel.name)
+                        .foregroundColor(.black)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
-                    TextField("Read Something about you...",text:$viewModel.discription)
+                    TextField("Band description..",text:$viewModel.discription)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
-                    PushView(destination: ArtistSuggestionView(), tag: "addBand", selection: $viewModel.navigator){}
-                        Button(action:{
-                            viewModel.navigator = "addBand"  })
-                        {
-                            Text("Add Members")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .frame(width: 300, height: 50)
-                                .background(.green )
-                                .cornerRadius(15.0)
-                        }
+                        .foregroundColor(.black)
+
                     PushView(destination: UserBandsView(), tag: "addBand", selection: $viewModel.navigator) {}
 
                         Button(action:{
@@ -77,7 +71,9 @@ struct AddBandView: View {
                     
                     
                 }.padding(.all)
-          
+            } .navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
+
+
                 if (viewModel.isLoading){
                     ZStack{
                         Color(.white)
@@ -88,7 +84,7 @@ struct AddBandView: View {
             }
           }
     }
-}
+
 
 struct addTestView_Previews: PreviewProvider {
     static var previews: some View {

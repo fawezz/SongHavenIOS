@@ -12,11 +12,12 @@ class BandService{
     static let UploadImageURL = ""
     static let CreateBandURL = Constants.HOSTNAME + "/band/CreateBand"
     static let DeleteBandURL = Constants.HOSTNAME + "/band/delete/"
-    static let EditBandURL = Constants.HOSTNAME + "/band/modify"
+    static let EditBandURL = Constants.HOSTNAME + "/band/modify/"
     static let getAllURL = Constants.HOSTNAME + "/band/getAllBand"
     static let getByUserURL = Constants.HOSTNAME + "/band/getByUser/"
     static let  addUserURL = Constants.HOSTNAME + "/band/addArtiste"
     static let BandImageUrl = Constants.HOSTNAME + "/img/band/"
+    static let removeAertistURL = Constants.HOSTNAME + ""
     
     static func create(/*creator: User,*/name: String, discription: String,imageId: String, completed: @escaping (Bool, Any?) ->Void){
         
@@ -52,33 +53,6 @@ class BandService{
 
             }
  }
-//
-//    static func supprimerBand( id : String?, completed: @escaping (Bool, Any?) ->Void){
-//
-//        let headers :HTTPHeaders = [
-//            .contentType("application/json"),
-//            .accept("application/json")
-//        ]
-//        let params = [ "id" : id ]
-//
-//        AF.request(DeleteBandURL, method: .delete, parameters: params, encoder: JSONParameterEncoder.default, headers: headers )
-//            .validate(statusCode : 200..<300)
-//            .validate(contentType: ["application/json"])
-//            .responseData { response in
-//                switch response.result {
-//                case .success:
-//                    let jsonData = JSON(response.data!)
-//                    let message = jsonData["message"].stringValue
-//                    print(message)
-//                    completed(true, message)
-//                case let  .failure(error):
-//                    completed(false, error.errorDescription)
-//                    debugPrint(error)
-//                }
-//            }
-//
-//    }
-    
     
     static func DeleteBand(bandId: String, completed: @escaping (Bool, String) -> Void){
             AF.request(DeleteBandURL + bandId,  method: .delete )
@@ -98,7 +72,7 @@ class BandService{
         }
 
     
-    static func EditBand(id: String,name: String, discription: String, completed:
+    static func EditBand(id: String,name: String, discription: String,image: String, completed:
         @escaping (Bool, Any?) ->Void){
         
         let headers :HTTPHeaders = [
@@ -107,8 +81,10 @@ class BandService{
         ]
         let params = [
             "id": id,
+            "image" : image,
             "name" : name ,
             "discription" : discription,
+  
         ]
         AF.request(EditBandURL, method: .put, parameters: params, encoder: JSONParameterEncoder.default, headers: headers )
             .validate(statusCode : 200..<300)
@@ -260,14 +236,14 @@ class BandService{
                 }
             }
     }
-    static func AddUser(bandId: String, userId: String, completed: @escaping (Bool, Band?) -> Void){
+    static func AddUser( userId: String, completed: @escaping (Bool, Band?) -> Void){
             
             let headers : HTTPHeaders = [
                 .contentType("application/json"),
                 .accept("application/json")
             ]
             let params = [
-                "bandId" : bandId,
+              //  "bandId" : bandId,
                 "userId" : userId
             ]
             
@@ -289,4 +265,31 @@ class BandService{
                     }
                 }
         }
+    static func RemoveArtist(userId: String, completed: @escaping (Bool, Band?) -> Void){
+        
+        let headers : HTTPHeaders = [
+            .contentType("application/json"),
+            .accept("application/json")
+        ]
+        let params = [
+           // "bandId" : bandId,
+            "userId" : userId
+        ]
+        
+        AF.request(removeAertistURL,  method: .put, parameters: params, encoder: JSONParameterEncoder.default, headers: headers  )
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    let jsonData = JSON(response.data!)
+                    let band = Band.fromJson(jsonData: jsonData["newBand"])
+                    print("success removed Artist from: " + band.name!)
+                    completed(true, band)
+                case let .failure(error):
+                    debugPrint(error.errorDescription!)
+                    completed(false, nil)
+                }
+            }
+    }
 }

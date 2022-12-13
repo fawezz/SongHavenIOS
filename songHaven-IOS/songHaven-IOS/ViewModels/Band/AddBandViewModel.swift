@@ -21,7 +21,7 @@ import _PhotosUI_SwiftUI
     @Published var showFailToast : Bool = false
     @Published var selectedItem: PhotosPickerItem? = nil
     
-    /// image methode 2
+    ///image methode 2
     @Published var image : UIImage = UIImage.init(named: "empty") ?? UIImage()
     
     
@@ -59,6 +59,7 @@ import _PhotosUI_SwiftUI
             if(passed){
                 self.navigator = "addBand"
             }
+        
         }
     }
     func validateFields()-> Bool{

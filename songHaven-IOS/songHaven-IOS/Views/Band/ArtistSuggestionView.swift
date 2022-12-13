@@ -9,7 +9,7 @@ import SwiftUI
 import NavigationStack
 
 struct ArtistSuggestionView : View {
-    @StateObject var viewModel = ArtistSuggetionViewModel(searchText: "String")
+    @StateObject var viewModel : ArtistSuggetionViewModel
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     var body: some View {
         ZStack {
@@ -29,7 +29,7 @@ struct ArtistSuggestionView : View {
                                     .foregroundColor(.purple)
                             }
                             .disabled(viewModel.searchText.isEmpty)
-                            TextField($viewModel.searchText.wrappedValue == "title" ? "Search by Name.." : "Search by Genre", text: $viewModel.searchText)
+                            TextField($viewModel.searchText.wrappedValue == "title" ? "Search by Name.." : "Search by Name", text: $viewModel.searchText)
 
                                 .foregroundColor(.main_color.opacity(0.8))
                             if(!viewModel.searchText.isEmpty){
@@ -60,14 +60,25 @@ struct ArtistSuggestionView : View {
                             .font(.title)
                             .foregroundColor(.white)
                         ScrollView(.vertical){
-                            LazyVStack{
-                                ForEach($viewModel.searchedUsers, id: \._id) { user in
-                                    UserCard(user: user.wrappedValue)
-                                        .padding(.horizontal, 3)
-//                                        .onTapGesture {
-//                                            MusicPlayerViewModel.setup(Configurations(model: user.wrappedValue, currentPlaylist: nil))
-//                                            self.navigationStack.push(MusicPlayerView(viewModel: MusicPlayerViewModel.shared ))
-//                                        }
+                            HStack{
+                                
+                                LazyVStack{
+                                    ForEach($viewModel.searchedUsers, id: \._id) { user in
+                                        UserCard(user: user.wrappedValue)
+                                            .padding(.horizontal, 3)
+                                        PushView(destination: ArtistSuggestionView(viewModel: ArtistSuggetionViewModel(band: viewModel.selectedBand
+                                        )), tag: "artistSuggestion", selection: $viewModel.navigator){}
+                                            Button(action:{
+                                                viewModel.navigator = "artistSuggestion"  })
+                                            {
+                                                Text("Add Member")
+                                                    .font(.headline)
+                                                    .foregroundColor(.white)
+                                                    .frame(width: 300, height: 50)
+                                                    .background(.clear )
+                                                    .cornerRadius(15.0)
+                                            }
+                            }
                                 }
                             }
                         }

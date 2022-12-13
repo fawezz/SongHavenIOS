@@ -5,7 +5,7 @@
 //  Created by Apple Esprit on 11/11/2022.
 //
 import SwiftyJSON
-struct User : Decodable{
+struct User : Decodable,Equatable{
     
     internal init(_id: String? = nil, email: String? = nil, password: String? = nil, firstname: String? = nil, lastname: String? = nil, imageId: String? = nil, isVerified: Bool? = nil) {
         self._id = _id

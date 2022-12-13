@@ -11,37 +11,72 @@ import NavigationStack
 struct BandDetailView: View {
     
     @StateObject var viewModel : BandDetailViewModel
-    
     @EnvironmentObject private var navigationStack: NavigationStackCompat
-
-    
     var body: some View {
         NavigationView{
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack{
                     
+                    Text("About The Band")
+                        .bold()
+                        .foregroundColor(.purple)
+                        .font(.system(size: 34,weight: .light,design: .serif))
+                    
+                    AsyncImage(url: URL(string: BandService.BandImageUrl + viewModel.selectedBand.image!))
+                    {image in image.image?
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                    }
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.white, lineWidth: 0))
+                    .shadow(radius: 10)
+                    .frame(width: 150,height: 150)
+                    .shadow(radius: 10)
+                    
+                    VStack(spacing: 5) {
+                        Text(viewModel.selectedBand.name! )
+                            .font(.system(size: 25,weight: .light,design: .serif).italic())
+                            .foregroundColor(.white)
+                            .frame(alignment: .topTrailing)
+                        
+                        Text( viewModel.selectedBand.discription!)
+                            .bold()
+                            .foregroundColor(.white)
+                        
+                    }.padding()
+                    
+                    
+                    
+                } .navigationBarItems(leading: HStack(spacing: 140){
+                    BackButton(action: {navigationStack.push(UserBandsView())})
+                    Spacer()
                     Menu {
+                        
+                        Spacer( )
+                        PushView(destination: EditBandView(), tag: "editBand", selection: $viewModel.navigator){}
                         Button(action: {
-                            //viewModel.criteria = "title"
+                            viewModel.navigator = "editBand"
+                            
                         }) {
                             Label("Edit Band", systemImage: "pencil")
                         }
                         Button(action: {
-                           // viewModel.criteria = "genre"
+                            // viewModel.criteria = "genre"
                         }) {
                             Label("Members", systemImage: "person.2.fill")
                         }
                         
-                        PushView(destination: ArtistSuggestionView(), tag: "addBand", selection: $viewModel.navigator){}
+                        PushView(destination: ArtistSuggestionView(viewModel: ArtistSuggetionViewModel(band: viewModel.selectedBand
+                        )), tag: "artistSuggestion", selection: $viewModel.navigator){}
                         Button(action: {
                             
-                            viewModel.navigator = "addBand"
+                            viewModel.navigator = "artistSuggestion"
                             
                         }) {
                             Label("Add Artist", systemImage: "person.fill.badge.plus")
                         }
-                       
+                        
                         Button(
                             action: {
                                 print("delete band")
@@ -71,32 +106,10 @@ struct BandDetailView: View {
                         }
                         Button("cancel", role: .cancel) { }
                     }
-                    AsyncImage(url: URL(string: BandService.BandImageUrl + viewModel.selectedBand.image!))
-                    {image in image.image?
-                            .resizable()
-                            .frame(width: 300, height: 300)
-                    }
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.white, lineWidth: 0))
-                    .shadow(radius: 10)
-                    .frame(width: 300,height: 300)
-                    .shadow(radius: 10)
-                        
-                    VStack(spacing: 5) {
-                        Text(viewModel.selectedBand.name! )
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
-                        
-                        Text( viewModel.selectedBand.discription!)
-                            .bold()
-                            .foregroundColor(.white)
-                    }.padding()
-                    
-                    
-                    
-                } .navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
-                       }
-                }
+                    .padding(.top)
+                })
             }
-            
         }
+    }
+    
+}

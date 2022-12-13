@@ -70,10 +70,9 @@ struct UserBandsView: View {
                 }
                 .padding(8)
             }
+            }
         }
     }
-    
-}
 
 struct TestView_Previews: PreviewProvider {
     static var previews: some View {

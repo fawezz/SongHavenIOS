@@ -58,14 +58,8 @@ struct BandRequestView: View {
                     }
                 }
                 .padding(.top)
-                
-                
-                
-           
-                
+
             }
-            
-            
         }
     }
     
@@ -93,7 +87,6 @@ struct BandRequestView: View {
                 Spacer()
                 HStack{
                     Button ("Accept",action:{
-                        
                     }
                         )
                     .font(.headline)
