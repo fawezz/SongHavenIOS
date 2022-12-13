@@ -37,12 +37,13 @@ struct EditPlaylistSheet: View {
                 ScrollView{
                     ForEach($viewModel.userPlaylists, id: \._id) { playlist in
                         HStack(){
-                            Color.black.edgesIgnoringSafeArea(.all)
                             Text(playlist.title.wrappedValue ?? "default title")
                                 .bold()
                                 .foregroundColor(.purple)
+                            Spacer()
                             Text((playlist.wrappedValue.songs?.count.description)! + "editPlaylistTxt2".localized(languageService.language))
                                 .foregroundColor(.white)
+                            Spacer()
                             Image(systemName:viewModel.songExists(songList: playlist.songs.wrappedValue ?? self.emptySongList) ? "checkmark.square" : "square")
                                 .foregroundColor(.main_color)
                                 .font(.system(size: 36))
@@ -63,7 +64,7 @@ struct EditPlaylistSheet: View {
                 
             }.padding()
             //LOADER
-            if(viewModel.isLoading){
+            if($viewModel.isLoading.wrappedValue){
                 ZStack{
                     Color(.white)
                         .opacity(0.3)
@@ -72,6 +73,9 @@ struct EditPlaylistSheet: View {
                         .progressViewStyle(CircularProgressViewStyle(tint: .purple))
                         .scaleEffect(3)
                 }
+            }
+            if($viewModel.userPlaylists.isEmpty){
+                Text("You don't have any playlists yet")
             }
         }.sheet(isPresented: $viewModel.showCreationSheet, onDismiss: {presentationMode.wrappedValue.dismiss()}){
             ZStack{
@@ -111,3 +115,4 @@ struct EditPlaylistSheet: View {
     }
     
 }
+
