@@ -13,11 +13,15 @@ import AVFAudio
 struct songHaven_IOSApp: App {
     let persistenceController = PersistenceController.shared
     @UIApplicationDelegateAdaptor(MyAppDelegate.self) private var appDelegate
+    @AppStorage("language")
+    private var language = LocalizationService.shared.language
+
     @State var userSession = UserSession.shared
     
     init(){
         userSession.isAlreadySignedIn()
-        let socketManager = SocketChatManager.init()
+        let socketManager = SocketChatManager()
+        socketManager.setupSocketEvents()
     }
     
     var body: some Scene {

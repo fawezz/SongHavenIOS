@@ -10,6 +10,8 @@ import NavigationStack
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
     @EnvironmentObject private var navigationStack: NavigationStackCompat
+    @Environment(\.presentationMode) var presentationMode
+    @StateObject private var languageService = LocalizationService.shared
     
     var body: some View {
         NavigationStack{
@@ -78,19 +80,84 @@ struct ProfileView: View {
                 .padding()
                 PushView(destination: EditProfileView(), tag: "EditProfile", selection: $viewModel.navigator) {}
                 
-                    .navigationBarItems(trailing:  Button(
-                        "Log out", action: {
+                    .navigationBarItems(trailing:
+                                            Menu {
+                        Button(action: {
+                            print("language Button")
+                            viewModel.showLanguageSheet = true
+                            
+                        }) {
+                            Label("ProfileOptions1".localized(languageService.language), systemImage: "character.book.closed.fill" )
+                        }
+                        Button(action: {
+                            //logout
                             viewModel.showLogoutAlert = true
+                        }) {
+                            Label("ProfileOptions2".localized(languageService.language), systemImage: "xmark")
                         }
-                    ).alert("Are You sure You want Log out ?", isPresented: $viewModel.showLogoutAlert) {
-                        Button("Log out", role: .destructive) {
-                            navigationStack.push(LoginView())
-                            viewModel.Logout()
+                    } label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                .fill(.regularMaterial)
+                                .frame(width: 40, height: 40)
+                            Image(systemName: "ellipsis.circle")
+                                .foregroundColor(.main_color)
+                                .frame(height: 35)
                         }
-                        Button("cancel", role: .cancel) { }
                     }
+                        .alert("Are You sure You want Log out ?", isPresented: $viewModel.showLogoutAlert) {
+                            Button("Log out", role: .destructive) {
+                                navigationStack.push(LoginView())
+                                viewModel.Logout()
+                            }
+                            Button("cancel", role: .cancel) { }
+                        }
+                                        /*Button(
+                                         "Log out", action: {
+                                         viewModel.showLogoutAlert = true
+                                         }
+                                         ).alert("Are You sure You want Log out ?", isPresented: $viewModel.showLogoutAlert) {
+                                         Button("Log out", role: .destructive) {
+                                         navigationStack.push(LoginView())
+                                         viewModel.Logout()
+                                         }
+                                         Button("cancel", role: .cancel) { }
+                                         }*/
+                                        
                     )
             }.background(LinearGradient(gradient: .init(colors: [.black , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
+                .sheet(isPresented: $viewModel.showLanguageSheet, onDismiss: {presentationMode.wrappedValue.dismiss()}){
+                    ZStack{
+                        Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)
+                        VStack{
+                            Text("languageSheetTxt1".localized(languageService.language))
+                                .font(.title3)
+                                .foregroundColor(.white)
+                                .padding(.all, 20)
+                            Picker("languageSheetTxt1", selection: $viewModel.selectedLang) {
+                                ForEach($viewModel.langs, id: \.self) {
+                                    Text($0.wrappedValue)
+                                        .foregroundColor(.white)
+                                }
+                            }.pickerStyle(.wheel)
+                            Button (
+                                action: {
+                                    viewModel.applyChangeLang()
+                                    viewModel.showLanguageSheet = false
+                                    navigationStack.pop(to: .root)
+                                },
+                                label: {
+                                    Text("languageSheetTxt2".localized(languageService.language))
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                        .frame(width: 300, height: 50)
+                                        .cornerRadius(15.0)
+                                })
+                            .padding(.vertical, 40)
+                        }
+                    }
+                    .presentationDetents([.medium])
+                }
         }.accentColor(.white)
     }
     
@@ -128,16 +195,12 @@ struct ProfileView: View {
         
         var body: some View {
             VStack(spacing: 15) {
-                    Text(viewModel.firstname + " " + viewModel.lastname)
-                        .bold()
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .rotation3DEffect(.degrees(20), axis: (x: 1, y: 0, z: 0))
-                }.padding()
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 16)
-//                    .stroke(Color.main_color, lineWidth: 0.5)
-//            )
+                Text(viewModel.firstname + " " + viewModel.lastname)
+                    .bold()
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .rotation3DEffect(.degrees(20), axis: (x: 1, y: 0, z: 0))
+            }.padding()
         }
     }
 }

@@ -12,20 +12,20 @@ struct EditPlaylistSheet: View {
     @ObservedObject var viewModel: EditPlaylistViewModel
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     @Environment(\.presentationMode) var presentationMode
-    
+    @StateObject private var languageService = LocalizationService.shared
+
     let emptySongList : [Song] = []
     var body: some View {
         ZStack{
             Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)
             VStack{
                 HStack{
-                    Text("Add To Playlist")
+                    Text("editPlaylistTxt1".localized(languageService.language))
                         .font(.title)
                         .foregroundColor(.main_color)
                     Spacer()
                     Button(action: {
                         viewModel.showCreationSheet = true
-                        print("pressed")
                     } ) {
                         Image(systemName: "plus.circle").foregroundColor(.white)
                             .frame(width: 20, height: 20)
@@ -41,7 +41,7 @@ struct EditPlaylistSheet: View {
                             Text(playlist.title.wrappedValue ?? "default title")
                                 .bold()
                                 .foregroundColor(.purple)
-                            Text((playlist.wrappedValue.songs?.count.description)! + " Songs")
+                            Text((playlist.wrappedValue.songs?.count.description)! + "editPlaylistTxt2".localized(languageService.language))
                                 .foregroundColor(.white)
                             Image(systemName:viewModel.songExists(songList: playlist.songs.wrappedValue ?? self.emptySongList) ? "checkmark.square" : "square")
                                 .foregroundColor(.main_color)
@@ -77,12 +77,12 @@ struct EditPlaylistSheet: View {
             ZStack{
                 Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)
                 VStack{
-                    Text("Give your playlist a title")
+                    Text("editPlaylistTxt3".localized(languageService.language))
                         .font(.title3)
                         .foregroundColor(.main_color)
                         .padding(.all, 20)
                     
-                    TextField("Playlist Name", text: $viewModel.newPlaylistTitle)
+                    TextField("editPlaylistTxt4".localized(languageService.language), text: $viewModel.newPlaylistTitle)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(10)
@@ -95,7 +95,7 @@ struct EditPlaylistSheet: View {
                             viewModel.showCreationSheet = false
                         },
                         label: {
-                            Text("Create")
+                            Text("editPlaylistTxt5".localized(languageService.language))
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .frame(width: 300, height: 50)

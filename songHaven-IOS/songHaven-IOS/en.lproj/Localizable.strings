@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  songHaven-IOS
+
+  Created by Apple Esprit on 13/12/2022.
+  
+*/
+//LOGIN VIEW
+"loginTxt1" = "Welcome to SongHaven";
+"loginTxt2" = "Forgot Password?";
+"loginTxt3" = "password..";
+"loginTxt4" = "Sign In";
+"loginTxt5" = "Sign Up";
+
+//SIGN UP VIEW
+"SignUpTxt1" = "Join Us Now";
+"SignUpTxt2" = "Enter your name..";
+"SignUpTxt3" = "Enter your lastname..";
+"SignUpTxt4" = "Enter your email..";
+"SignUpTxt5" = "password..";
+"SignUpTxt6" = "Confirm your password..";
+"SignUpTxt7" = "Submit";
+
+//ForgotPassword View
+"ForgotPassTxt1" = "Forgot Password ?";
+"ForgotPassTxt2" = "Please enter your email adress to receive a verification code";
+"ForgotPassTxt3" = "Email";
+"ForgotPassTxt4" = "Send Mail";
+
+//MusicHomeView
+"homeViewTxt1.1" = "Search by Title..";
+"homeViewTxt1.2" = "Search by Genre..";
+"homeViewTxt2" = "Most Popular";
+"homeViewTxt3" = "Newest";
+"homeViewTxt4" = "Your Playlists";
+"homeViewTxt5" = "You don't have any playlists yet";
+
+//EditPlayListSheet
+"editPlaylistTxt1" = "Add To Playlist";
+"editPlaylistTxt2" = " Songs";
+"editPlaylistTxt3" = "Give your playlist a title";
+"editPlaylistTxt4" = "Title..";
+"editPlaylistTxt5" = "Create";
+
+//ProfileView
+"ProfileOptions1" = "Change Language";
+"ProfileOptions2" = "Log out";
+
+"languageSheetTxt1" = "Select a Language :";
+"languageSheetTxt2" = "Apply";
+

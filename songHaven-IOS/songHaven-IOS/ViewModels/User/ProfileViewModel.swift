@@ -15,6 +15,13 @@ import NavigationStack
     @Published var totalLikes : Int = 0
     @Published var profileImageUrl: URL = URL(string: UserService.UserImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
     @Published var isLoading = true
+    @Published var showLanguageSheet = false
+    @Published var selectedLang = ""
+
+    @Published var lang = LocalizationService.shared.language
+
+    var langs = ["English", "French"]
+
     var userSession: UserSession = UserSession.shared
     
 //    let firstname : String = UserDefaults.standard.string(forKey: "firstname")!
@@ -23,6 +30,12 @@ import NavigationStack
     let lastname : String = (UserSession.shared.currentUser?.lastname)!
     
     init() {
+        if(LocalizationService.shared.language == .english_us){
+            selectedLang = langs[0]
+        }else{
+            selectedLang = langs[1]
+
+        }
         fetchUserSongs()
         fetchTotalLikes()
     }
@@ -52,6 +65,15 @@ import NavigationStack
                 self.userSongs.remove(at: index)
             }
         })
+    }
+    func applyChangeLang(){
+        if(selectedLang == "French")
+            {
+                LocalizationService.shared.language = .french
+        }else {
+            LocalizationService.shared.language = .english_us
+        }
+        print("changed language to " + selectedLang)
     }
     
     func Logout(){

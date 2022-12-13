@@ -10,6 +10,8 @@ import NavigationStack
 struct MusicHomeView: View {
     @StateObject var viewModel : MusicHomeViewModel
     @EnvironmentObject private var navigationStack: NavigationStackCompat
+    @StateObject private var languageService = LocalizationService.shared
+
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom)
@@ -20,7 +22,6 @@ struct MusicHomeView: View {
                     HStack{
                         HStack {
                             Button(action: {
-                                print("search pressed")
                                 self.navigationStack.push(MusicSearchView(viewModel: MusicSearchViewModel(criteria: viewModel.criteria, searchText: viewModel.searchText)))
                                 
                             }) {
@@ -28,11 +29,11 @@ struct MusicHomeView: View {
                                     .foregroundColor(.purple)
                             }
                             .disabled(viewModel.searchText.isEmpty)
-                            TextField($viewModel.criteria.wrappedValue == "title" ? "Search by Title.." : "Search by Genre..", text: $viewModel.searchText)
+                            TextField($viewModel.criteria.wrappedValue == "title" ? "homeViewTxt1.1".localized(languageService.language)
+                                      : "homeViewTxt1.2".localized(languageService.language), text: $viewModel.searchText)
                                 .foregroundColor(.main_color.opacity(0.8))
                             if(!viewModel.searchText.isEmpty){
                                 Button(action: {
-                                    print("clear pressed")
                                     viewModel.searchText = ""
                                 }) {
                                     Text("Clear")
@@ -50,12 +51,12 @@ struct MusicHomeView: View {
                             Button(action: {
                                 viewModel.criteria = "title"
                             }) {
-                                Label("Search by Title", systemImage: "music.note")
+                                Label("homeViewTxt1.1".localized(languageService.language), systemImage: "music.note")
                             }
                             Button(action: {
                                 viewModel.criteria = "genre"
                             }) {
-                                Label("Search By Genre", systemImage: "music.note.list")
+                                Label("homeViewTxt1.2".localized(languageService.language), systemImage: "music.note.list")
                             }
                         } label: {
                             ZStack{
@@ -75,7 +76,7 @@ struct MusicHomeView: View {
             .padding()
             
             VStack(alignment: .leading){
-                Text("Most Popular")
+                Text("homeViewTxt2".localized(languageService.language))
                     .font(.title)
                     .foregroundColor(.white)
                 ScrollView(.horizontal){
@@ -92,7 +93,7 @@ struct MusicHomeView: View {
                 }
             }
             VStack(alignment: .leading){
-                Text("Newest")
+                Text("homeViewTxt3".localized(languageService.language))
                     .font(.title)
                     .foregroundColor(.white)
                 ScrollView(.horizontal){
@@ -109,7 +110,7 @@ struct MusicHomeView: View {
                 }
             }
             VStack(alignment: .leading){
-                Text("Your Playlists")
+                Text("homeViewTxt4".localized(languageService.language))
                     .font(.title)
                     .foregroundColor(.white)
                 if(!$viewModel.userPlaylists.isEmpty){
@@ -126,7 +127,7 @@ struct MusicHomeView: View {
                     }
                 }else{
                     HStack{
-                        Text("You don't have any playlists yet")
+                        Text("homeViewTxt5".localized(languageService.language))
                             .foregroundColor(.main_color)
                             .padding(.all, 50)
                     }

@@ -11,6 +11,7 @@ import NavigationStack
 struct SendOtpView: View {
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     @StateObject var viewModel = SendOtpViewModel()
+    private var language = LocalizationService.shared.language
 
     var body: some View {
         NavigationStack{
@@ -21,12 +22,12 @@ struct SendOtpView: View {
                         .resizable()
                         .frame(width: 250, height: 250)
                         .cornerRadius(40)
-                    Text("Forgot password ?")
+                    Text("ForgotPassTxt1".localized(language))
                         .foregroundColor(.white)
                         .bold()
                         .font(.title)
                         .padding(.vertical, 30)
-                    Text("Please enter your email address to receive a verification code")
+                    Text("ForgotPassTxt2")
                         .foregroundColor(.white)
                         .bold()
                         .font(.subheadline)
@@ -43,7 +44,7 @@ struct SendOtpView: View {
                         viewModel.sendOtp()
                         viewModel.navigator = "OtpVerification"
                     }) {
-                        Text("Send Email")
+                        Text("ForgotPassTxt4".localized(language))
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(width: 300, height: 50)
@@ -64,7 +65,8 @@ struct SendOtpView: View {
                 
             }
             .navigationBarItems(
-                leading: BackButton(action: {navigationStack.pop(to: .root)})
+                leading: BackButton(action: {
+                    navigationStack.pop(to: .root)})
                 )
         }
         

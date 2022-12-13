@@ -8,23 +8,21 @@
 import Foundation
 import SocketIO
 
-class SocketChatManager {
-    let manager = SocketManager(socketURL: URL(string: "ws://172.17.4.48:3000")! ,config: [.log(false), .compress])
+class SocketChatManager : ObservableObject {
+    let manager = SocketManager(socketURL: URL(string: "http://172.17.12.84:9090")! ,config: [.log(false), .reconnects(true)])
     var socket: SocketIOClient?
     
     init() {
-        manager.connect()
-        self.socket = manager.defaultSocket
-        setupSocketEvents()
-        socket?.connect()
-        
-        print(manager.socketURL)
-        
+        let socket = manager.defaultSocket
+        socket.connect()
+        socket.on(clientEvent: .connect) {[self]data, ack in
+            print("socket connected")
+        }
     }
     
-    func stop() {
-        socket?.removeAllHandlers()
-    }
+//    func stop() {
+//        socket?.removeAllHandlers()
+//    }
     
     func setupSocketEvents() {
         socket?.on(clientEvent: .connect) {data, ack in

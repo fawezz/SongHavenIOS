@@ -10,7 +10,7 @@ import NavigationStack
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
-
+    @StateObject private var languageService = LocalizationService.shared
     
     var body: some View {
         NavigationStack {
@@ -24,7 +24,7 @@ struct LoginView: View {
                         .frame(width: 200, height: 200)
                         .padding(.bottom, 50)
                     
-                    Text("Welcome To SongHaven")
+                    Text("loginTxt1".localized(languageService.language))
                         .foregroundColor(Color.white)
                         .fontWeight(Font.Weight.bold)
                         .font(.title3)
@@ -39,7 +39,7 @@ struct LoginView: View {
                             .autocorrectionDisabled(true)
                         if(!viewModel.hiddenPass){
                             ZStack(alignment: .trailing){
-                                SecureField("Password", text: $viewModel.password)
+                                SecureField("loginTxt3".localized(languageService.language), text: $viewModel.password)
                                     .padding()
                                     .background(Color.white)
                                     .foregroundColor(.black)
@@ -55,7 +55,7 @@ struct LoginView: View {
                             }
                         }else{
                             ZStack(alignment: .trailing){
-                                TextField("Password", text: $viewModel.password)
+                                TextField("loginTxt3".localized(languageService.language), text: $viewModel.password)
                                     .padding()
                                     .background(Color.white)
                                     .cornerRadius(20.0)
@@ -78,7 +78,7 @@ struct LoginView: View {
                         Button(action: {
                             viewModel.navigator = "ForgotPass"
                         }) {
-                            Text("Forgot Password?")
+                            Text("loginTxt2".localized(languageService.language))
                                 .font(.headline)
                                 .foregroundColor(.purple)
                                 .frame(height: 50)
@@ -93,7 +93,7 @@ struct LoginView: View {
                             viewModel.Login()
                             //self.selection = "home"
                         }) {
-                            Text("Sign In")
+                            Text("loginTxt4".localized(languageService.language))
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .frame(width: 300, height: 50)
@@ -120,7 +120,7 @@ struct LoginView: View {
                         Button(action: {
                             viewModel.navigator = "SignUp"
                         }) {
-                            Text("Sign Up")
+                            Text("loginTxt5".localized(languageService.language))
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .frame(width: 300, height: 50)

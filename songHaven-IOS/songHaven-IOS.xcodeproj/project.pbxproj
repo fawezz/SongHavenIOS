@@ -70,6 +70,8 @@
 		B06AF25D293F657900C8EE20 /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AF25C293F657900C8EE20 /* MusicSearchView.swift */; };
 		B06AF25F293F658900C8EE20 /* MusicSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AF25E293F658900C8EE20 /* MusicSearchViewModel.swift */; };
 		B06AF261293FAB7900C8EE20 /* ProfileSongRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AF260293FAB7900C8EE20 /* ProfileSongRow.swift */; };
+		B07A34072948A48E005A4933 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B07A34092948A48E005A4933 /* Localizable.strings */; };
+		B07A340C2948AB0B005A4933 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07A340B2948AB0B005A4933 /* LocalizationService.swift */; };
 		B08494B3293D09DC0071320F /* EditPlaylistSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08494B2293D09DC0071320F /* EditPlaylistSheet.swift */; };
 		B08494B5293D0ADF0071320F /* EditPlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08494B4293D0ADF0071320F /* EditPlaylistViewModel.swift */; };
 		B0876E3729438BF000A8BFA5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0876E3629438BF000A8BFA5 /* GoogleService-Info.plist */; };
@@ -174,6 +176,9 @@
 		B06AF25C293F657900C8EE20 /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
 		B06AF25E293F658900C8EE20 /* MusicSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewModel.swift; sourceTree = "<group>"; };
 		B06AF260293FAB7900C8EE20 /* ProfileSongRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSongRow.swift; sourceTree = "<group>"; };
+		B07A34082948A48E005A4933 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B07A340A2948A9C9005A4933 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B07A340B2948AB0B005A4933 /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
 		B08494B2293D09DC0071320F /* EditPlaylistSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaylistSheet.swift; sourceTree = "<group>"; };
 		B08494B4293D0ADF0071320F /* EditPlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaylistViewModel.swift; sourceTree = "<group>"; };
 		B0876E3629438BF000A8BFA5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -266,6 +271,7 @@
 				081B29272919209900981671 /* Persistence.swift */,
 				081B29242919209900981671 /* Preview Content */,
 				B038879B293BC95400DE78BD /* MyAppDelegate.swift */,
+				B07A34092948A48E005A4933 /* Localizable.strings */,
 			);
 			path = "songHaven-IOS";
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 				B0876E472943B24400A8BFA5 /* UserSession.swift */,
 				B0E7A45D29478BD50094E7A0 /* SocketChatManager.swift */,
 				B0E7A45F294792840094E7A0 /* SocketParser.swift */,
+				B07A340B2948AB0B005A4933 /* LocalizationService.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -563,6 +570,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 081B29122919209700981671;
 			packageReferences = (
@@ -590,6 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				081B29262919209900981671 /* Preview Assets.xcassets in Resources */,
+				B07A34072948A48E005A4933 /* Localizable.strings in Resources */,
 				081B29232919209900981671 /* Assets.xcassets in Resources */,
 				B0876E3729438BF000A8BFA5 /* GoogleService-Info.plist in Resources */,
 			);
@@ -669,6 +678,7 @@
 				B024ADB12923E71000C9E601 /* LoginView.swift in Sources */,
 				94AFFC0E292E22EF00824EF6 /* ColorExtension.swift in Sources */,
 				B06AF25F293F658900C8EE20 /* MusicSearchViewModel.swift in Sources */,
+				B07A340C2948AB0B005A4933 /* LocalizationService.swift in Sources */,
 				B0C51152291FFFF600A3A0D0 /* UserService.swift in Sources */,
 				B0587ACF294367D200A91193 /* BandCard.swift in Sources */,
 				9BE5D2C02933A25C0046041A /* PlaylistService.swift in Sources */,
@@ -722,6 +732,18 @@
 			targetProxy = 081B293B2919209900981671 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B07A34092948A48E005A4933 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B07A34082948A48E005A4933 /* en */,
+				B07A340A2948A9C9005A4933 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		081B29422919209900981671 /* Debug */ = {

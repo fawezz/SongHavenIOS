@@ -13,6 +13,8 @@ struct RegisterView: View {
     
     @StateObject var viewModel = RegisterViewModel()
     @EnvironmentObject private var navigationStack: NavigationStackCompat
+    private var language = LocalizationService.shared.language
+
     var body: some View {
         NavigationView{
             ZStack{
@@ -22,26 +24,26 @@ struct RegisterView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 200, height: 200)
-                    Text("Join Us Now")
+                    Text("SignUpTxt1".localized(language))
                         .font(.largeTitle)
                         .bold()
                         .foregroundColor(.white)
-                    TextField("Enter your name",text:$viewModel.firstname)
+                    TextField("SignUpTxt2".localized(language),text:$viewModel.firstname)
                         .textFieldStyle(RegisterTextFieldStyle())
                     
-                    TextField("Enter your lastname",text:$viewModel.lastname)
+                    TextField("SignUpTxt3".localized(language),text:$viewModel.lastname)
                         .textFieldStyle(RegisterTextFieldStyle())
                     
-                    TextField("Enter your Email",text:$viewModel.email)
+                    TextField("SignUpTxt4".localized(language),text:$viewModel.email)
                         .textFieldStyle(RegisterTextFieldStyle())
                     
-                    SecureField("Password",text:$viewModel.password)
+                    SecureField("SignUpTxt5".localized(language),text:$viewModel.password)
                         .textFieldStyle(RegisterTextFieldStyle())
                     
-                    SecureField("Confirm your password",text:$viewModel.confirmPassword)
+                    SecureField("SignUpTxt6".localized(language),text:$viewModel.confirmPassword)
                         .textFieldStyle(RegisterTextFieldStyle())
                     
-                    Button("Submit"){
+                    Button("SignUpTxt7".localized(language)){
                         viewModel.register()
                     }
                     .foregroundColor(.white)
