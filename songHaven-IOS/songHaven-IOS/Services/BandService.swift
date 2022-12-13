@@ -192,6 +192,7 @@ class BandService{
             AF.upload(
                 multipartFormData: { multipartFormData in
                     multipartFormData.append(image.jpegData(compressionQuality: 0.5)!, withName: "image",fileName: "band.jpg",mimeType: "image/jpg")
+                    multipartFormData.append((UserSession.shared.currentUser?._id!.data(using: String.Encoding.utf8)!)!, withName: "creatorId")
                     multipartFormData.append(band.name!.data(using: String.Encoding.utf8)!, withName: "name")
                     multipartFormData.append(band.discription!.data(using: String.Encoding.utf8)!, withName: "discription")
                

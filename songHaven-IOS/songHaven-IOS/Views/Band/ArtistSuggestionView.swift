@@ -66,18 +66,7 @@ struct ArtistSuggestionView : View {
                                     ForEach($viewModel.searchedUsers, id: \._id) { user in
                                         UserCard(user: user.wrappedValue)
                                             .padding(.horizontal, 3)
-                                        PushView(destination: ArtistSuggestionView(viewModel: ArtistSuggetionViewModel(band: viewModel.selectedBand
-                                        )), tag: "artistSuggestion", selection: $viewModel.navigator){}
-                                            Button(action:{
-                                                viewModel.navigator = "artistSuggestion"  })
-                                            {
-                                                Text("Add Member")
-                                                    .font(.headline)
-                                                    .foregroundColor(.white)
-                                                    .frame(width: 300, height: 50)
-                                                    .background(.clear )
-                                                    .cornerRadius(15.0)
-                                            }
+                                       
                             }
                                 }
                             }

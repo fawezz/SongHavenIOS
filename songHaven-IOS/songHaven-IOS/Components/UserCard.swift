@@ -13,33 +13,44 @@ struct  UserCard: View {
     var body: some View {
         
         VStack(alignment: .center, spacing: 0){
-           
-            HStack{
-                AsyncImage(url: URL(string: UserService.UserImageUrl + user.imageId!)){image in
-                    image.image?
+            HStack(spacing : 90){
+                HStack{
+                    AsyncImage(url: URL(string: UserService.UserImageUrl + user.imageId!)){image in
+                        image.image?
+                        
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                    }
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                    .shadow(radius: 10)
+                    .frame(width: 20,height: 30)
+                    .shadow(radius: 10)
+                    Text(user.firstname!)
+                        .bold()
+                        .foregroundColor(.purple)
+                        .font(.subheadline)
+                        .fixedSize(horizontal: true, vertical: false)
                     
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                }
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color.white, lineWidth: 2))
-                .shadow(radius: 10)
-                .frame(width: 20,height: 30)
-                .shadow(radius: 10)
-                Text(user.firstname!)
-                    .bold()
-                    .foregroundColor(.purple)
-                    .font(.subheadline)
-                    .fixedSize(horizontal: true, vertical: false)
-                
-                Text(user.lastname!)
-                    .bold()
-                    .foregroundColor(.purple)
-                    .font(.subheadline)
-                    .fixedSize(horizontal: true, vertical: false)
-                
-                
+                    Text(user.lastname!)
+                        .bold()
+                        .foregroundColor(.purple)
+                        .font(.subheadline)
+                    .fixedSize(horizontal: true, vertical: false)}
+                    HStack{
+                        Button (
+                            action: {
+                                        },
+                            label: {
+                                Label("Add", systemImage: "person.crop.circle.badge.plus")
+                            })
+                    }
             }
+      
+                
+                
+                
+            
            
         }
         .frame(width: 300, height: 20)

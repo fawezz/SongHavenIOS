@@ -21,15 +21,18 @@ struct Invitation :  Equatable{
     var status : Status
     
     
-//    static func fromJson(jsonData: JSON) -> Invitation {
-//        return Invitation(
-//            _id: jsonData["_id"].stringValue,
-//            //status: Status(rawValue: jsonData ["status"].intValue,
-//            recipient : User.fromJson(jsonData: jsonData["recipient"]),
-//            requester : Band.fromJson(jsonData: jsonData["requester"])
-//        )
-//         )   }
-//
+    static func fromJson(jsonData: JSON) -> Invitation {
+        return Invitation(
+            _id: jsonData["_id"].stringValue,
+      
+            requester : jsonData["requester"].stringValue,
+            recipient : jsonData["recipient"].stringValue,
+            status: Status(rawValue: jsonData[ "status"].intValue)!
+    
+        
+        )
+           }
+
     
 }
 

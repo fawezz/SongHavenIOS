@@ -8,14 +8,14 @@
 import Foundation
 @MainActor class InvitationViewModel: ObservableObject {
     @Published var navigator : String? = nil
-    @Published var invitation = [Band]()
+    @Published var invitation = [Invitation]()
     
     init() {
         fetchInvitations()
     }
     
     private func fetchInvitations() {
-        BandService.getByUser( completed: { (success, bandArray) in
+        InvitationService.getByUser( completed: { (success, bandArray) in
             if(success){
                 self.invitation = bandArray ?? []
             }

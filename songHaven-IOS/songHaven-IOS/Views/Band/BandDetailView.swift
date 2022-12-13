@@ -46,7 +46,7 @@ struct BandDetailView: View {
                         
                     }.padding()
                     
-                    
+                    Spacer()
                     
                 } .navigationBarItems(leading: HStack(spacing: 140){
                     BackButton(action: {navigationStack.push(UserBandsView())})
