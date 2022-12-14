@@ -15,11 +15,28 @@ import Foundation
     }
     
     private func fetchInvitations() {
-        InvitationService.getByUser( completed: { (success, bandArray) in
+        InvitationService.getByUser( completed: {
+            (success, invitationArray) in
             if(success){
-                self.invitation = bandArray ?? []
+                self.invitation = invitationArray ?? []
             }
         })
     }
+    
+    private func sendInitation() {
+    //    InvitationService.SendInvitation(userId: <#T##String#>, bandId: <#T##String#>, completed: <#T##(Bool, Any?) -> Void#>)
+        
+            }
+    
+    private func acceptInvitation() {
+      //  InvitationService.acceptInvitation(userId: <#T##String#>, bandId: <#T##String#>, completed: <#T##(Bool, Invitation?) -> Void#>)
+   
+            }
+    private func declineInitation() {
+      //  InvitationService.declineInvitation(userId: <#T##String#>, bandId: <#T##String#>, completed: <#T##(Bool, Invitation?) -> Void#>)
+        
+            }
+    
+    
 }
 

@@ -7,6 +7,7 @@
 import Foundation
 @MainActor class BandDetailViewModel : ObservableObject {
     @Published var selectedBand : Band
+    @Published var BandMember : [User] = []
 
     @Published var navigator : String? = nil
     @Published var showAlert = false
@@ -22,6 +23,15 @@ import Foundation
             if(success){
                 action
             }
+        })
+    }
+    
+    func fetchBandMembers(){
+        SongService.GetByCurrentUser( completed: {
+            (success, reponse) in
+            //self.userSongs = reponse
+            print("received user songs")
+            
         })
     }
     

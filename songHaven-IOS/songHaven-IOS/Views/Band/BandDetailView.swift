@@ -11,6 +11,8 @@ import NavigationStack
 struct BandDetailView: View {
     
     @StateObject var viewModel : BandDetailViewModel
+   // @Published var showDeleteAlert : Bool = false
+    
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     var body: some View {
         NavigationView{
@@ -45,6 +47,51 @@ struct BandDetailView: View {
                             .foregroundColor(.white)
                         
                     }.padding()
+
+                    Text( "Membres")
+                        .bold()
+                        .foregroundColor(.white)
+                    ScrollView{
+                        if(viewModel.BandMember.isEmpty){
+                            Spacer()
+                            Text("You don't have any members yet")
+                                .font(.title3)
+                                .foregroundColor(.main_color)
+                            Spacer()
+                        }else{
+                            List{
+                                ForEach(viewModel.BandMember, id: \._id){ user in
+                                  //  ProfileSongRow(user: user )
+                                       // .listRowSeparator(.visible)
+                                     //   .listRowBackground(
+                                            Color.main_color
+                                                .clipped()
+                                                .cornerRadius(20)
+                                                .padding(EdgeInsets(top: 15, leading: 25, bottom: 10, trailing: 25))
+                                        
+                                        .swipeActions(allowsFullSwipe: false) {
+                                            Button {
+                                                viewModel.showAlert = true
+                                                print("remove member")
+                                            } label: {
+                                                Label("remove", systemImage: "trash.fill")
+                                            }
+                                            .tint(.red.opacity(0.8))
+                                        }
+                                        .alert("Are You sure You want to delete this member?", isPresented: $viewModel.showAlert) {
+                                            Button("Delete", role: .destructive) {
+                                                //viewModel.removeSong(swipedSong: song)
+                                            }
+                                            Button("cancel", role: .cancel) { }
+                                        }
+                                }
+                            }
+                            .scrollContentBackground(.hidden)
+                    }
+               
+                    }
+                }
+            }
                     
                     Spacer()
                     
@@ -110,6 +157,3 @@ struct BandDetailView: View {
                 })
             }
         }
-    }
-    
-}

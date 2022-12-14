@@ -19,6 +19,7 @@
 		2B0A4800291981D200AF179A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A47FF291981D200AF179A /* ProfileView.swift */; };
 		2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* ResetPasswordView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
+		945BF9F7294A35A200D2DCFE /* InvitationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945BF9F6294A35A200D2DCFE /* InvitationCard.swift */; };
 		9479B0102948F3140058096A /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B00D2948F3130058096A /* MemberView.swift */; };
 		9479B0112948F3140058096A /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B00E2948F3140058096A /* InvitationView.swift */; };
 		9479B0122948F3140058096A /* EditBandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B00F2948F3140058096A /* EditBandView.swift */; };
@@ -138,6 +139,7 @@
 		2B0A47FF291981D200AF179A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2B0A48052919910B00AF179A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		945BF9F6294A35A200D2DCFE /* InvitationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCard.swift; sourceTree = "<group>"; };
 		9479B00D2948F3130058096A /* MemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberView.swift; path = Band/MemberView.swift; sourceTree = "<group>"; };
 		9479B00E2948F3140058096A /* InvitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationView.swift; path = Band/InvitationView.swift; sourceTree = "<group>"; };
 		9479B00F2948F3140058096A /* EditBandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditBandView.swift; path = Band/EditBandView.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				B08494B2293D09DC0071320F /* EditPlaylistSheet.swift */,
 				B06AF260293FAB7900C8EE20 /* ProfileSongRow.swift */,
 				B0876E432943997800A8BFA5 /* MessageBubble.swift */,
+				945BF9F6294A35A200D2DCFE /* InvitationCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				B0AAC0E92935376400C3EFE4 /* PlaylistCard.swift in Sources */,
 				B08494B5293D0ADF0071320F /* EditPlaylistViewModel.swift in Sources */,
 				B066E04E2923F446002A27D8 /* songHaven_IOS.xcdatamodeld in Sources */,
+				945BF9F7294A35A200D2DCFE /* InvitationCard.swift in Sources */,
 				9479B0162948F33C0058096A /* EditBandViewModel.swift in Sources */,
 				B0876E422943958E00A8BFA5 /* ChatViewModel.swift in Sources */,
 				B0AAC0EC29354ADE00C3EFE4 /* PlaylistDetailsView.swift in Sources */,
