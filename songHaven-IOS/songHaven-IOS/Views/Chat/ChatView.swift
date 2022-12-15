@@ -34,18 +34,18 @@ struct ChatView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Image(systemName: "phone.fill")
-                        .foregroundColor(.gray)
-                        .padding(10)
-                        .background(.white)
-                        .cornerRadius(50)
+//                    Image(systemName: "phone.fill")
+//                        .foregroundColor(.gray)
+//                        .padding(10)
+//                        .background(.white)
+//                        .cornerRadius(50)
                 }
                 .padding()
             }
             //end title row
             ScrollViewReader { proxy in
                 ScrollView {
-                    ForEach(viewModel.messages, id: \.id) { message in
+                    ForEach(viewModel.conversation.messages, id: \.id) { message in
                         MessageBubble(message: message)
                     }
                 }
@@ -59,31 +59,31 @@ struct ChatView: View {
                     }
                 }
             }
-        }
-        .background(Color("Peach"))
-        
-        HStack {
-            // Custom text field created below
-            CustomTextField(placeholder: Text("Enter your message here"), text: $viewModel.message)
-                .frame(height: 52)
-                .disableAutocorrection(true)
-            
-            Button {
-                viewModel.sendMessage()
-                viewModel.message = ""
-            } label: {
-                Image(systemName: "paperplane.fill")
-                    .foregroundColor(.white)
-                    .padding(10)
-                    .background(Color("Peach"))
-                    .cornerRadius(50)
+            HStack {
+                // Custom text field created below
+                CustomTextField(placeholder: Text("Enter your message here"), text: $viewModel.messageField)
+                    .frame(height: 52)
+                    .disableAutocorrection(true)
+                
+                Button {
+                    viewModel.sendMessage()
+                } label: {
+                    Image(systemName: "paperplane.fill")
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .background(Color.main_color)
+                        .cornerRadius(50)
+                }
             }
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+            .background(Color.gray)
+            .cornerRadius(50)
+            .padding()
         }
-        .padding(.horizontal)
-        .padding(.vertical, 10)
-        .background(Color("Gray"))
-        .cornerRadius(50)
-        .padding()
+        .background(.thinMaterial)
+        
+        
     }
 }
 

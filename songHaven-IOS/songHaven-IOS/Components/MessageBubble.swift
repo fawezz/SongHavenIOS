@@ -17,7 +17,7 @@ struct MessageBubble: View {
             HStack {
                 Text(message.text)
                     .padding()
-                    .background(message.sender._id != UserSession.shared.currentUser?._id ? Color("Gray") : Color("Peach"))
+                    .background(message.sender._id != UserSession.shared.currentUser?._id ? Color(.gray) : Color.main_color)
                     .cornerRadius(30)
             }
             .frame(maxWidth: 300, alignment: message.sender._id != UserSession.shared.currentUser?._id ? .leading : .trailing)

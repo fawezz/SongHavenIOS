@@ -19,12 +19,15 @@ struct BandDetailView: View {
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack{
-                    
                     Text("About The Band")
                         .bold()
                         .foregroundColor(.purple)
                         .font(.system(size: 34,weight: .light,design: .serif))
-                    
+                    Button("chat", action:
+                            {
+                                navigationStack.push(ChatView(viewModel: ChatViewModel(band: viewModel.selectedBand)))
+                            }
+                    )
                     AsyncImage(url: URL(string: BandService.BandImageUrl + viewModel.selectedBand.image!))
                     {image in image.image?
                             .resizable()

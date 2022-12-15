@@ -79,6 +79,7 @@
 		B06AF25D293F657900C8EE20 /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AF25C293F657900C8EE20 /* MusicSearchView.swift */; };
 		B06AF25F293F658900C8EE20 /* MusicSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AF25E293F658900C8EE20 /* MusicSearchViewModel.swift */; };
 		B06AF261293FAB7900C8EE20 /* ProfileSongRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06AF260293FAB7900C8EE20 /* ProfileSongRow.swift */; };
+		B06D95F0294BA4F20042781C /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06D95EF294BA4F20042781C /* ConversationService.swift */; };
 		B07A34072948A48E005A4933 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B07A34092948A48E005A4933 /* Localizable.strings */; };
 		B07A340C2948AB0B005A4933 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07A340B2948AB0B005A4933 /* LocalizationService.swift */; };
 		B08494B3293D09DC0071320F /* EditPlaylistSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08494B2293D09DC0071320F /* EditPlaylistSheet.swift */; };
@@ -195,6 +196,7 @@
 		B06AF25C293F657900C8EE20 /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
 		B06AF25E293F658900C8EE20 /* MusicSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewModel.swift; sourceTree = "<group>"; };
 		B06AF260293FAB7900C8EE20 /* ProfileSongRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSongRow.swift; sourceTree = "<group>"; };
+		B06D95EF294BA4F20042781C /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
 		B07A34082948A48E005A4933 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B07A340A2948A9C9005A4933 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B07A340B2948AB0B005A4933 /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 				9BE5D2BD29332D660046041A /* SongService.swift */,
 				9BE5D2BF2933A25C0046041A /* PlaylistService.swift */,
 				B0388797293BACF000DE78BD /* LikeService.swift */,
+				B06D95EF294BA4F20042781C /* ConversationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -695,6 +698,7 @@
 				94AFFC02292E197800824EF6 /* Constants.swift in Sources */,
 				B0876E442943997800A8BFA5 /* MessageBubble.swift in Sources */,
 				9479B01F2948F64A0058096A /* InvitationService.swift in Sources */,
+				B06D95F0294BA4F20042781C /* ConversationService.swift in Sources */,
 				9BE5D2B8293220790046041A /* MusicHomeView.swift in Sources */,
 				9BE5D2C22933A2B30046041A /* Playlist.swift in Sources */,
 				B0C1CDFC293666BD00BFC534 /* CreateSongView.swift in Sources */,

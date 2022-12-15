@@ -12,14 +12,14 @@ import Foundation
     @Published var searchText : String = ""
     
     init() {
-          fetchUserBands()
-         }
+        fetchUserBands()
+    }
     
     private func fetchUserBands() {
         BandService.getByUser( completed: { (success, bandArray) in
-                if(success){
-                    self.userBands = bandArray ?? []
-                }
-            })
-        }
+            if(success){
+                self.userBands = bandArray ?? []
+            }
+        })
+    }
 }
