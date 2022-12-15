@@ -46,6 +46,7 @@ import Combine
         ConversationService.GetConversationByBandId(bandId: self.band._id!, completed: { (success, conversation) in
             if(success){
                 self.conversation = conversation!
+                self.lastMessageId = (conversation?.messages.last!.id)!
                 //self.messages = conversation?.messages ?? [TextMessage]()
             }else{
                 print("error getting conversation")

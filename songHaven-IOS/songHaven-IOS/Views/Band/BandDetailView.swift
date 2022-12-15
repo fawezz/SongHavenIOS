@@ -80,7 +80,10 @@ struct BandDetailView: View {
                         .bold()
                         .foregroundColor(.purple)
                         .font(.system(size: 34,weight: .light,design: .serif))
-                    
+                    Button("chat", action:
+                            {
+                        navigationStack.push(ChatView(viewModel: ChatViewModel(band: viewModel.selectedBand)))
+                    })
                     AsyncImage(url: URL(string: BandService.BandImageUrl + viewModel.selectedBand.image!))
                     {image in image.image?
                             .resizable()
