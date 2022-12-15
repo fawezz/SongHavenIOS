@@ -45,7 +45,7 @@ import Foundation
     
     func deletePlaylist(action: ()){
         PlaylistService.DeletePlaylist(playlistId: selectedPlaylist._id!, completed:
-                                                    { (success, reponse) in
+      { (success, reponse) in
             if(success){
                 action
             }

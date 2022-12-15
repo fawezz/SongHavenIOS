@@ -6,9 +6,11 @@
 //
 
 import SwiftyJSON
-struct Invitation :  Equatable{
+struct Invitation : Equatable{
+ 
     
-    internal init(_id: String? = nil, requester: String? = nil ,recipient: String? = nil, status : Status) {
+    
+    internal init(_id: String? = nil, requester: Band? = nil ,recipient: User? = nil, status : Status) {
         self._id = _id
         self.requester = requester
         self.recipient = recipient
@@ -16,23 +18,24 @@ struct Invitation :  Equatable{
     }
     
     var _id : String?
-    var requester : String?
-    var recipient : String?
+    var requester : Band?
+    var recipient : User?
     var status : Status
     
     
     static func fromJson(jsonData: JSON) -> Invitation {
         return Invitation(
             _id: jsonData["_id"].stringValue,
-      
-            requester : jsonData["requester"].stringValue,
-            recipient : jsonData["recipient"].stringValue,
+            requester : Band.fromJson(jsonData: jsonData["requester"]),
+            recipient : User.fromJson(jsonData: jsonData["recipient"]),
             status: Status(rawValue: jsonData[ "status"].intValue)!
     
         
         )
            }
 
-    
+    static func == (lhs: Invitation, rhs: Invitation) -> Bool {
+        return lhs._id == rhs._id
+    }
 }
 

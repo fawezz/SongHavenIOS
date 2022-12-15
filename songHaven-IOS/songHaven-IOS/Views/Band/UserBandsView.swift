@@ -22,25 +22,44 @@ struct UserBandsView: View {
             ZStack{
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack{
-                    HStack(spacing: 60){
+                    VStack{
                         Text("Your Bands")
                             .font(.largeTitle)
                             .foregroundColor(.white)
                             .bold()
                             .padding()
-                        
-                        PushView(destination: AddBandView(), tag: "addBand", selection: $viewModel.navigator){}
-                        
-                        Button(action:{
-                            self.navigationStack.push(AddBandView())})
-                        {
-                            Image(systemName: "cross.circle.fill").foregroundColor(.white)
-                                .frame(width: 20, height: 20)
-                                .padding(8).background(Color.green)
-                                .cornerRadius(20)
-                                .frame(width: 36,height: 36 , alignment: .trailing)
-                                .shadow(color: Color.black,radius: 8, x: 0, y: 5)
-                        }
+                        HStack(spacing: 180 ){
+                            
+                            PushView(destination: AddBandView(), tag: "addBand", selection: $viewModel.navigator){}
+                            
+                            Button(action:{
+                                self.navigationStack.push(AddBandView())})
+                            {
+                                Text("New band")
+                                    .foregroundColor(.white)
+                                    .frame(width: 100, height: 30)
+                                    .padding(8).background(Color.purple)
+                                    .cornerRadius(20)
+                                    .frame(width: 15,height: 15 )
+                                    .shadow(color: Color.black,radius: 8, x: 0, y: 5)
+                            }
+                            
+                            PushView(destination: InvitationView(), tag: "Invit", selection: $viewModel.navigator){}
+                            
+                            Button(action:{
+                                self.navigationStack.push(InvitationView())})
+                            {
+                                Text("Invitations")
+                                    .foregroundColor(.white)
+                                    .frame(width: 100, height: 30)
+                                    .padding(8).background(Color.purple)
+                                    .cornerRadius(20)
+                                    .frame(width: 36,height: 36 )
+                                    .shadow(color: Color.black,radius: 8, x: 0, y: 5)
+                            }
+                            
+                        }.padding(.all)
+                  
                     }
                  
                     VStack(alignment: .leading){

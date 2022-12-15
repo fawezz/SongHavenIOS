@@ -7,11 +7,12 @@
 
 import SwiftUI
 import PhotosUI
+import AlertToast
 import NavigationStack
 struct AddBandView: View {
     @StateObject var viewModel  = AddBandViewModel()
     @EnvironmentObject private var navigationStack: NavigationStackCompat
-
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -53,37 +54,56 @@ struct AddBandView: View {
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
                         .foregroundColor(.black)
-
+                    
                     PushView(destination: UserBandsView(), tag: "addBand", selection: $viewModel.navigator) {}
-
-                        Button(action:{
-                            viewModel.addBand()
-                        })
-                        {
-                            Text("Validate")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .frame(width: 300, height: 50)
-                                .background(!viewModel.validateFields() ? .green : .gray)
-                                .cornerRadius(15.0)
-                        }.disabled(viewModel.validateFields())
+                    
+                    Button(action:{
+                        viewModel.addBand()
+                    })
+                    {
+                        Text("Validate")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 50)
+                            .background(!viewModel.validateFields() ? .green : .gray)
+                            .cornerRadius(15.0)
+                    }.disabled(viewModel.validateFields())
                     
                     
                     
                 }.padding(.all)
-            } .navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
-
-
-                if (viewModel.isLoading){
+                if(viewModel.isLoading){
                     ZStack{
                         Color(.white)
+                            .opacity(0.7)
+                            .ignoresSafeArea()
                         ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .purple))
+                            .scaleEffect(3)
+                        
                     }
                 }
-
+                
             }
-          }
+            .toast(isPresenting: $viewModel.showFailToast){
+                AlertToast(type: .error(.red), title: viewModel.toastText)
+            }
+            .toast(isPresenting: $viewModel.showSuccessToast){
+                AlertToast(type: .complete(.green), title: viewModel.toastText)
+            }
+            .navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
+            
+            
+            if (viewModel.isLoading){
+                ZStack{
+                    Color(.white)
+                    ProgressView()
+                }
+            }
+            
+        }
     }
+}
 
 
 struct addTestView_Previews: PreviewProvider {

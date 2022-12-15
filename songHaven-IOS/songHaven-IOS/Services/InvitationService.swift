@@ -101,15 +101,15 @@ class InvitationService{
             }
     }
 
-    static func declineInvitation(userId: String, bandId: String, completed: @escaping (Bool,Invitation?) -> Void){
+    static func declineInvitation(invitationId: String, completed: @escaping (Bool,Invitation?) -> Void){
 
         let headers : HTTPHeaders = [
             .contentType("application/json"),
             .accept("application/json")
         ]
         let params = [
-            "userId" : userId,
-            "bandId" : bandId
+            "invitationId" : invitationId
+          
         ]
 
         AF.request(RejectInvitation,  method: .put, parameters: params, encoder: JSONParameterEncoder.default, headers: headers  )

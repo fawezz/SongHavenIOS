@@ -20,7 +20,6 @@
 		2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* ResetPasswordView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
 		945BF9F7294A35A200D2DCFE /* InvitationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945BF9F6294A35A200D2DCFE /* InvitationCard.swift */; };
-		9479B0102948F3140058096A /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B00D2948F3130058096A /* MemberView.swift */; };
 		9479B0112948F3140058096A /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B00E2948F3140058096A /* InvitationView.swift */; };
 		9479B0122948F3140058096A /* EditBandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B00F2948F3140058096A /* EditBandView.swift */; };
 		9479B0162948F33C0058096A /* EditBandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B0132948F33C0058096A /* EditBandViewModel.swift */; };
@@ -64,13 +63,11 @@
 		B0587ACF294367D200A91193 /* BandCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587ACE294367D200A91193 /* BandCard.swift */; };
 		B0587AD8294368E400A91193 /* AddBandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587AD3294368E400A91193 /* AddBandView.swift */; };
 		B0587AD9294368E400A91193 /* UserBandsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587AD4294368E400A91193 /* UserBandsView.swift */; };
-		B0587ADA294368E400A91193 /* BandRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587AD5294368E400A91193 /* BandRequestView.swift */; };
 		B0587ADB294368E400A91193 /* ArtistSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587AD6294368E400A91193 /* ArtistSuggestionView.swift */; };
 		B0587ADC294368E400A91193 /* BandDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587AD7294368E400A91193 /* BandDetailView.swift */; };
 		B0587AE42943695700A91193 /* AddBandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587ADF2943695700A91193 /* AddBandViewModel.swift */; };
 		B0587AE52943695700A91193 /* UserBandsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587AE02943695700A91193 /* UserBandsViewModel.swift */; };
 		B0587AE62943695700A91193 /* BandDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587AE12943695700A91193 /* BandDetailViewModel.swift */; };
-		B0587AE72943695700A91193 /* BandRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587AE22943695700A91193 /* BandRequestViewModel.swift */; };
 		B0587AE9294369BB00A91193 /* BandService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587AE8294369BB00A91193 /* BandService.swift */; };
 		B0587AEB29436A8E00A91193 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587AEA29436A8E00A91193 /* ImagePicker.swift */; };
 		B066E0452923EFA6002A27D8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = B066E0442923EFA6002A27D8 /* AlertToast */; };
@@ -141,7 +138,6 @@
 		2B0A48052919910B00AF179A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		945BF9F6294A35A200D2DCFE /* InvitationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCard.swift; sourceTree = "<group>"; };
-		9479B00D2948F3130058096A /* MemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberView.swift; path = Band/MemberView.swift; sourceTree = "<group>"; };
 		9479B00E2948F3140058096A /* InvitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationView.swift; path = Band/InvitationView.swift; sourceTree = "<group>"; };
 		9479B00F2948F3140058096A /* EditBandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditBandView.swift; path = Band/EditBandView.swift; sourceTree = "<group>"; };
 		9479B0132948F33C0058096A /* EditBandViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditBandViewModel.swift; path = Band/EditBandViewModel.swift; sourceTree = "<group>"; };
@@ -183,13 +179,11 @@
 		B0587ACE294367D200A91193 /* BandCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandCard.swift; sourceTree = "<group>"; };
 		B0587AD3294368E400A91193 /* AddBandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddBandView.swift; path = Band/AddBandView.swift; sourceTree = "<group>"; };
 		B0587AD4294368E400A91193 /* UserBandsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserBandsView.swift; path = Band/UserBandsView.swift; sourceTree = "<group>"; };
-		B0587AD5294368E400A91193 /* BandRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandRequestView.swift; path = Band/BandRequestView.swift; sourceTree = "<group>"; };
 		B0587AD6294368E400A91193 /* ArtistSuggestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArtistSuggestionView.swift; path = Band/ArtistSuggestionView.swift; sourceTree = "<group>"; };
 		B0587AD7294368E400A91193 /* BandDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandDetailView.swift; path = Band/BandDetailView.swift; sourceTree = "<group>"; };
 		B0587ADF2943695700A91193 /* AddBandViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddBandViewModel.swift; path = Band/AddBandViewModel.swift; sourceTree = "<group>"; };
 		B0587AE02943695700A91193 /* UserBandsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserBandsViewModel.swift; path = Band/UserBandsViewModel.swift; sourceTree = "<group>"; };
 		B0587AE12943695700A91193 /* BandDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandDetailViewModel.swift; path = Band/BandDetailViewModel.swift; sourceTree = "<group>"; };
-		B0587AE22943695700A91193 /* BandRequestViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandRequestViewModel.swift; path = Band/BandRequestViewModel.swift; sourceTree = "<group>"; };
 		B0587AE8294369BB00A91193 /* BandService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandService.swift; sourceTree = "<group>"; };
 		B0587AEA29436A8E00A91193 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B066E04D2923F446002A27D8 /* songHaven_IOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = songHaven_IOS.xcdatamodel; sourceTree = "<group>"; };
@@ -384,11 +378,9 @@
 			children = (
 				9479B00F2948F3140058096A /* EditBandView.swift */,
 				9479B00E2948F3140058096A /* InvitationView.swift */,
-				9479B00D2948F3130058096A /* MemberView.swift */,
 				B0587AD3294368E400A91193 /* AddBandView.swift */,
 				B0587AD6294368E400A91193 /* ArtistSuggestionView.swift */,
 				B0587AD7294368E400A91193 /* BandDetailView.swift */,
-				B0587AD5294368E400A91193 /* BandRequestView.swift */,
 				B0587AD4294368E400A91193 /* UserBandsView.swift */,
 			);
 			name = Band;
@@ -402,7 +394,6 @@
 				9479B0142948F33C0058096A /* InvitationViewModel.swift */,
 				B0587ADF2943695700A91193 /* AddBandViewModel.swift */,
 				B0587AE12943695700A91193 /* BandDetailViewModel.swift */,
-				B0587AE22943695700A91193 /* BandRequestViewModel.swift */,
 				B0587AE02943695700A91193 /* UserBandsViewModel.swift */,
 			);
 			name = Band;
@@ -668,7 +659,6 @@
 			files = (
 				2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */,
 				94AFFC0C292E224100824EF6 /* MusicPlayerViewModel.swift in Sources */,
-				B0587AE72943695700A91193 /* BandRequestViewModel.swift in Sources */,
 				B0587AE52943695700A91193 /* UserBandsViewModel.swift in Sources */,
 				B0876E3F2943943A00A8BFA5 /* ChatView.swift in Sources */,
 				B0AAC0F02935506300C3EFE4 /* PlayListDetailsRow.swift in Sources */,
@@ -738,14 +728,12 @@
 				94AFFC0A292E223400824EF6 /* MusicPlayerView.swift in Sources */,
 				9479B01A2948F3720058096A /* Invitation.swift in Sources */,
 				B0388798293BACF000DE78BD /* LikeService.swift in Sources */,
-				B0587ADA294368E400A91193 /* BandRequestView.swift in Sources */,
 				9BE5D2BC29331C7F0046041A /* MusicHomeViewModel.swift in Sources */,
 				B0587ADC294368E400A91193 /* BandDetailView.swift in Sources */,
 				B0587AE62943695700A91193 /* BandDetailViewModel.swift in Sources */,
 				B0876E4629439A5D00A8BFA5 /* TextMessage.swift in Sources */,
 				B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
-				9479B0102948F3140058096A /* MemberView.swift in Sources */,
 				B08494B3293D09DC0071320F /* EditPlaylistSheet.swift in Sources */,
 				9BE5D2B62931F1FB0046041A /* BackButton.swift in Sources */,
 				B024ADC72923E7D100C9E601 /* RegisterViewModel.swift in Sources */,

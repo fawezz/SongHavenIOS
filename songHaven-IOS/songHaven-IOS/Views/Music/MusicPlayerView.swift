@@ -46,7 +46,9 @@ struct MusicPlayerView: View {
                         }
                         AsyncImage(url:MusicPlayerViewModel.config!.SongImageUrl)
                         {
-                            Image in Image.resizable().scaledToFill()
+                            Image in Image
+                                .resizable()
+                                .scaledToFill()
                         } placeholder: {
                             ProgressView()
                         }

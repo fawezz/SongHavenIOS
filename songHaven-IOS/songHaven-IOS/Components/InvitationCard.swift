@@ -10,7 +10,9 @@ import SwiftUI
 
 struct InvitationCard: View {
     
-    @StateObject var viewModel : InvitationViewModel
+//@StateObject var viewModel : InvitationViewModel
+    var actionAccept: () -> Void
+    var actionDecline: () -> Void
     let band: Band
     var body: some View {
         HStack(spacing: 20){
@@ -42,7 +44,7 @@ struct InvitationCard: View {
             HStack{
                 
                 Button(action:{
-                   // viewModel.a
+                    actionAccept()
                     
                 })
                 {
@@ -55,6 +57,7 @@ struct InvitationCard: View {
                     
                     
                     Button(action:{
+                        actionDecline()
                         
                     })
                     {

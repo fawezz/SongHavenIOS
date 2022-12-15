@@ -9,10 +9,13 @@ import Foundation
 @MainActor class ArtistSuggetionViewModel: ObservableObject {
     @Published var searchedUsers = [User]()
     @Published var searchText : String = ""
+    @Published var toastText : String = ""
     @Published var isLoading = true
     @Published var selectedUser : User? = nil
     @Published var selectedBand : Band
     @Published var navigator : String? = nil
+    @Published var showSuccessToast : Bool = false
+    @Published var showFailToast : Bool = false
     
     
     init( band : Band) {
@@ -35,29 +38,54 @@ import Foundation
         return artistList.contains(self.selectedUser!)
     }
     
-    func addArtistToBand( selectedUser: User) -> Bool {
-        if((selectedBand.users?.contains(selectedUser)).unsafelyUnwrapped){
-            
-            BandService.RemoveArtist( userId: selectedUser._id!,
-                                      completed:
-                                        { (success, reponse) in
-                if(success){
-                    print("user removed successfully")
+    
+    func sendInitation(user :User) {
+        InvitationService.SendInvitation(userId: user._id! , bandId: selectedBand._id! , completed: { (success, reponse) in
+            self.isLoading = false
+            if success {
+                self.toastText = "invitation sent  successfully"
+                self.showSuccessToast = true
+                print("success")
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
+                    self.navigator = "sendInv"
+                    print("invitation sent  successfully")
+                    self.showSuccessToast = false
                 }
-            })
-            
-            return false
-        }else{
-            BandService.AddUser( userId: selectedUser._id!, completed:
-                                    { (success, reponse) in
-                if(success){
-                    print("user added successfully")
+            } else {
+                self.toastText = reponse as! String
+                self.showFailToast = true
+                print("failure")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self.showFailToast = false
                 }
-            })
-        }
-        
-        return true
+            }
+        })
     }
+    
+//    func addArtistToBand( selectedUser: User) -> Bool {
+//        if((selectedBand.users?.contains(selectedUser)).unsafelyUnwrapped){
+//
+//            BandService.RemoveArtist( userId: selectedUser._id!, bandId: self.selectedBand._id!,
+//                                      completed:
+//                                        { (success, reponse) in
+//                if(success){
+//                    print("user removed successfully")
+//                }
+//            })
+//
+//            return false
+//        }else{
+//            BandService.AddUser( userId: selectedUser._id!, completed:
+//                                    { (success, reponse) in
+//                if(success){
+//                    print("user added successfully")
+//                }
+//            })
+//        }
+//
+//        return true
+//    }
     
 }
 

@@ -10,14 +10,18 @@ import SwiftUI
 struct  BandCard: View {
     let band: Band
     
+    
     var body: some View {
         VStack(alignment: .center, spacing: 0){
             AsyncImage(url: URL(string: BandService.BandImageUrl + band.image!)){image in
                 image.image?
+                
                     .resizable()
                     .frame(width: 100, height: 100)
-            //   UITextPlaceholder()
-            }
+//            } placeholder: {
+//                ProgressView()
+//            }
+                        }
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.clear, lineWidth: 0))
             .shadow(radius: 10)

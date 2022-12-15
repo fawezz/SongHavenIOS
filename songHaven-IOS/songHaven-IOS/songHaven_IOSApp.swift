@@ -19,8 +19,8 @@ struct songHaven_IOSApp: App {
     
     init(){
         userSession.isAlreadySignedIn()
-        let socketManager = SocketChatManager.shared
-        socketManager.setupSocketEvents()
+//        let socketManager = SocketChatManager.shared
+//        socketManager.setupSocketEvents()
     }
     
     var body: some Scene {
