@@ -25,7 +25,8 @@ struct EditProfileView: View {
                         
                         AsyncImage(url:viewModel.profileImageUrl)
                         {
-                            Image in Image.resizable()
+                            Image in Image
+                                .resizable()
                         } placeholder: {
                             ProgressView()
                         }

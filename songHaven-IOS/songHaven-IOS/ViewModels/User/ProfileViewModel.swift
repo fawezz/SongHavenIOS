@@ -24,8 +24,7 @@ import NavigationStack
 
     var userSession: UserSession = UserSession.shared
     
-//    let firstname : String = UserDefaults.standard.string(forKey: "firstname")!
-//    let lastname : String = UserDefaults.standard.string(forKey: "lastname")!
+
     let firstname : String = (UserSession.shared.currentUser?.firstname)!
     let lastname : String = (UserSession.shared.currentUser?.lastname)!
     

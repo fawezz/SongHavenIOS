@@ -64,8 +64,9 @@ struct ArtistSuggestionView : View {
                                 
                                 LazyVStack{
                                     ForEach($viewModel.searchedUsers, id: \._id) { user in
-                                        UserCard(user: user.wrappedValue)
-                                            .padding(.horizontal, 3)
+//                                        UserCard(user: user, actionInvite: {
+//                                            viewModel.sendInitation(user: user)
+//                                        }, viewModel: user)
                                        
                             }
                                 }

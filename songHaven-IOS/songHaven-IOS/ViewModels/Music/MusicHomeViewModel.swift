@@ -33,7 +33,6 @@ import Foundation
         SongService.GetAllSongs(completed: {(success, songsArray) in
             if(success){
                 self.newestSongs = songsArray ?? []
-                //
                 self.pupularSongs = songsArray ?? []
             }
         })

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct  UserCard: View {
     let user: User
+    var actionInvite: () -> Void
     @StateObject var viewModel = InvitationViewModel()
     
     var body: some View {
@@ -42,7 +43,7 @@ struct  UserCard: View {
                         Button (
                             action: {
                                 
-                                //viewModel. 
+                                actionInvite()
                                         },
                             label: {
                                 Label("Add", systemImage: "person.crop.circle.badge.plus")

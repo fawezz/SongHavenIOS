@@ -23,11 +23,15 @@ struct InvitationView: View {
 
                 VStack(alignment: .leading){
                     Spacer()
-                    if(!$viewModel.invitation.isEmpty){
+                    if(!$viewModel.invitations.isEmpty){
                         ScrollView(.vertical){
                             LazyVStack(spacing: 20){
-                                ForEach($viewModel.invitation, id: \._id) { invitation in
-                                    Text(invitation.requester.wrappedValue!)
+                                ForEach($viewModel.invitations, id: \._id) { invitation in
+                                    InvitationCard(actionAccept: {
+                                        viewModel.acceptInvitation(invitation: invitation.wrappedValue)
+                                    }, actionDecline: {
+                                        viewModel.declineInviation(invitation: invitation.wrappedValue)
+                                    }, band: invitation.requester.wrappedValue! )
                                 }
                             }
                         }
@@ -46,7 +50,9 @@ struct InvitationView: View {
 
             }
         }
+        .navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
     }
+    
 }
 
 struct InvitationView_Previews: PreviewProvider {

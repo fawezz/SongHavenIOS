@@ -7,10 +7,10 @@
 import SwiftyJSON
 struct Band : Decodable{
     
-    internal init(_id: String? = nil, name: String? = nil, nbrOfMembers: Int? = nil, discription: String? = nil, image: String? = nil,users: [User]? = nil, creator : User? = nil) {
+    internal init(_id: String? = nil, name: String? = nil, discription: String? = nil, image: String? = nil,users: [User]? = nil, creator : User? = nil) {
         self._id = _id
         self.name = name
-        self.nbrOfMembers = nbrOfMembers
+    
         self.discription  = discription
         self.image = image
         self.users = users
@@ -20,7 +20,7 @@ struct Band : Decodable{
     
     var _id : String?
     var name : String?
-    var nbrOfMembers : Int?
+
     var discription : String?
     var image : String?
     var creator : User?
@@ -35,7 +35,7 @@ struct Band : Decodable{
             return Band(
                 _id: jsonData["_id"].stringValue,
                 name: jsonData["name"].stringValue,
-                nbrOfMembers: jsonData["nbrOfMembers"].intValue,
+   
                 discription: jsonData["discription"].stringValue,
                 image: jsonData["image"].stringValue,
                 users: users,

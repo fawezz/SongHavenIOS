@@ -45,7 +45,7 @@ struct EditBandView: View {
                             .background(Color.white)
                             .cornerRadius(50)
                             .autocorrectionDisabled(true)
-                        TextField("Read Something about you...",text:$viewModel.discription)
+                        TextField("Write Something about you...",text:$viewModel.discription)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(50)

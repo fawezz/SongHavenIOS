@@ -30,7 +30,7 @@ import Foundation
         SongService.GetByCurrentUser( completed: {
             (success, reponse) in
             //self.userSongs = reponse
-            print("received user songs")
+            print("received members")
             
         })
     }
