@@ -10,7 +10,7 @@ import SwiftyJSON
 import Alamofire
 class ConversationService{
     static let getConversationByBandIdURL = Constants.HOSTNAME + "/chat/getByBand/"
-    static let removeMessageURL = Constants.HOSTNAME + "/chat/removeMessage/"
+    static let deleteMessageURL = Constants.HOSTNAME + "/chat/removeMessage/"
     
     static func GetConversationByBandId(bandId: String, completed: @escaping (Bool, Conversation?) -> Void){
         AF.request(getConversationByBandIdURL + bandId,  method: .get ) //"63749eac6781be3df2521807"
@@ -31,20 +31,21 @@ class ConversationService{
                 }
             }
     }
-    static func DeleteMessage(textMessageId: String, completed: @escaping (Bool, Bool) -> Void){
-        AF.request(getConversationByBandIdURL + textMessageId,  method: .delete )
+    static func DeleteMessage(textMessageId: String, completed: @escaping (Bool, String?) -> Void){
+        AF.request(deleteMessageURL + textMessageId,  method: .delete )
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseData { response in
                 switch response.result {
                 case .success:
                     let jsonData = JSON(response.data!)
-                    let message : String = jsonData["mesage"].string!
+                    let message : String = jsonData["message"].string!
+                    let textMessageId : String = jsonData["textMessageId"].string!
                     print(message)
-                    completed(true, true)
+                    completed(true, textMessageId)
                 case let .failure(error):
                     print(error)
-                    completed(false, false)
+                    completed(false, nil)
                     debugPrint(error)
                 }
             }

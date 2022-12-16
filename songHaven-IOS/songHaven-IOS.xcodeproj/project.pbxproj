@@ -20,7 +20,7 @@
 		2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* ResetPasswordView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
 		945BF9F7294A35A200D2DCFE /* InvitationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945BF9F6294A35A200D2DCFE /* InvitationCard.swift */; };
-		9479B0112948F3140058096A /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B00E2948F3140058096A /* InvitationView.swift */; };
+		9479B0112948F3140058096A /* InvitationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B00E2948F3140058096A /* InvitationsView.swift */; };
 		9479B0122948F3140058096A /* EditBandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B00F2948F3140058096A /* EditBandView.swift */; };
 		9479B0162948F33C0058096A /* EditBandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B0132948F33C0058096A /* EditBandViewModel.swift */; };
 		9479B0172948F33C0058096A /* InvitationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B0142948F33C0058096A /* InvitationViewModel.swift */; };
@@ -138,7 +138,7 @@
 		2B0A48052919910B00AF179A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		945BF9F6294A35A200D2DCFE /* InvitationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCard.swift; sourceTree = "<group>"; };
-		9479B00E2948F3140058096A /* InvitationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationView.swift; path = Band/InvitationView.swift; sourceTree = "<group>"; };
+		9479B00E2948F3140058096A /* InvitationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationsView.swift; path = Band/InvitationsView.swift; sourceTree = "<group>"; };
 		9479B00F2948F3140058096A /* EditBandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditBandView.swift; path = Band/EditBandView.swift; sourceTree = "<group>"; };
 		9479B0132948F33C0058096A /* EditBandViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditBandViewModel.swift; path = Band/EditBandViewModel.swift; sourceTree = "<group>"; };
 		9479B0142948F33C0058096A /* InvitationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationViewModel.swift; path = Band/InvitationViewModel.swift; sourceTree = "<group>"; };
@@ -377,7 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				9479B00F2948F3140058096A /* EditBandView.swift */,
-				9479B00E2948F3140058096A /* InvitationView.swift */,
+				9479B00E2948F3140058096A /* InvitationsView.swift */,
 				B0587AD3294368E400A91193 /* AddBandView.swift */,
 				B0587AD6294368E400A91193 /* ArtistSuggestionView.swift */,
 				B0587AD7294368E400A91193 /* BandDetailView.swift */,
@@ -722,7 +722,7 @@
 				9BE5D2C02933A25C0046041A /* PlaylistService.swift in Sources */,
 				B0587AE9294369BB00A91193 /* BandService.swift in Sources */,
 				B025A95F291EE2D2007FF6FF /* User.swift in Sources */,
-				9479B0112948F3140058096A /* InvitationView.swift in Sources */,
+				9479B0112948F3140058096A /* InvitationsView.swift in Sources */,
 				B0587AEB29436A8E00A91193 /* ImagePicker.swift in Sources */,
 				B0A2A61B29490B4C00EC2092 /* Conversation.swift in Sources */,
 				94AFFC0A292E223400824EF6 /* MusicPlayerView.swift in Sources */,

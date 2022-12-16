@@ -20,7 +20,7 @@ struct BandDetailView: View {
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack{
                     HStack(spacing: 0){
-                        BackButton(action: {navigationStack.push(UserBandsView())})
+                        BackButton(action: {navigationStack.pop()})
                         Spacer()
                         Menu {
                             Button(action: {
@@ -75,15 +75,25 @@ struct BandDetailView: View {
                         }
                         .padding(.top)
                     }.padding()
-                    
-                    Text("About The Band")
-                        .bold()
-                        .foregroundColor(.purple)
-                        .font(.system(size: 34,weight: .light,design: .serif))
-                    Button("chat", action:
-                            {
-                        navigationStack.push(ChatView(viewModel: ChatViewModel(band: viewModel.selectedBand)))
-                    })
+                    HStack(){
+                        Text("About The Band")
+                            .bold()
+                            .foregroundColor(.main_color_hard)
+                            .font(.system(size: 34,weight: .light,design: .serif))
+                        Spacer()
+                        Button(action:
+                                {
+                            navigationStack.push(ChatView(viewModel: ChatViewModel(band: viewModel.selectedBand)))
+                        }, label: {
+                            Image(systemName: "message.fill")
+                                .font(.system(size: 26))
+                                .foregroundColor(.white)
+                                .frame(width: 26, height: 26)
+                                .padding(8).background(Color.main_color)
+                                .cornerRadius(20)
+                                .shadow(color: Color.black.opacity(0.8),radius: 8, x: 0, y: 5)
+                        })
+                    }.padding()
                     AsyncImage(url: URL(string: BandService.BandImageUrl + viewModel.selectedBand.image!))
                     {image in image.image?
                             .resizable()

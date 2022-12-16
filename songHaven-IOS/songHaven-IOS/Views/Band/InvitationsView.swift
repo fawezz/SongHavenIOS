@@ -8,7 +8,7 @@
 import SwiftUI
 import NavigationStack
 
-struct InvitationView: View {
+struct InvitationsView: View {
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     @StateObject var viewModel = InvitationViewModel()
     var body: some View {
@@ -16,6 +16,11 @@ struct InvitationView: View {
             LinearGradient(gradient: Gradient(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             VStack{
+                HStack{
+                    BackButton(action: {navigationStack.pop()})
+                    Spacer()
+                }
+                .padding()
                 Text("Ivitations")
                     .bold()
                     .foregroundColor(.purple)
@@ -38,25 +43,21 @@ struct InvitationView: View {
                     }else{
                         HStack{
                             Text("You don't have any Invitations yet")
-                                .foregroundColor(.white)
+                                .foregroundColor(.white.opacity(0.8))
                                 .font(.title3)
                                 .padding(.all, 50)
                         }
                     }
                     Spacer()
                 }
-
-
-
             }
         }
-        .navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
     }
     
 }
 
 struct InvitationView_Previews: PreviewProvider {
     static var previews: some View {
-        InvitationView()
+        InvitationsView()
     }
 }

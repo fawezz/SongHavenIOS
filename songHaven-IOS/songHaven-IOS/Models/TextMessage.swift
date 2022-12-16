@@ -25,13 +25,15 @@ struct TextMessage : Identifiable,Decodable{
     
     static func fromJson(jsonData: JSON) -> TextMessage {
          let sender = User.fromJson(jsonData: jsonData["sender"])
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        let timestamp = dateFormatter.date(from: jsonData["createdAt"].stringValue)
         return TextMessage(
             id: jsonData["_id"].stringValue,
             text: jsonData["text"].stringValue,
             sender: sender,
-            timestamp: nil,
+            timestamp: timestamp,
             conversationId: jsonData["conversation"].stringValue
-            //timestamp : jsonData["timestamp"]
         )
     }
     

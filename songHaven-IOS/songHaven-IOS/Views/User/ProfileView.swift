@@ -155,6 +155,7 @@ struct ProfileView: View {
                     }
                     .presentationDetents([.medium])
                 }
+                
         }.accentColor(.white)
     }
     
@@ -178,6 +179,7 @@ struct ProfileView: View {
                     Image in Image.resizable()
                 } placeholder: {
                     ProgressView()
+                        .padding(.all, 50)
                 }
                 .clipShape(Circle())
                 .overlay(Circle().stroke(Color.white, lineWidth: 4))

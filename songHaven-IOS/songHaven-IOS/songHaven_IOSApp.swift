@@ -19,21 +19,20 @@ struct songHaven_IOSApp: App {
     
     init(){
         userSession.isAlreadySignedIn()
-        //let socketManager = SocketChatManager.shared
-        //socketManager.setupSocketEvents()
+
     }
     
     var body: some Scene {
         WindowGroup {
             NavigationStackView{
-                if(!userSession.isSignedIn){
-                    LoginView().environment(\.managedObjectContext, persistenceController.container.viewContext)
-//                    ChatView(viewModel: ChatViewModel(band: nil)).environment(\.managedObjectContext, persistenceController.container.viewContext)
-                }else{
-                    HomeView().environment(\.managedObjectContext, persistenceController.container.viewContext)
-                }
-                //CreateSongView(viewModel: CreateSongViewModel()).environment(\.managedObjectContext, persistenceController.container.viewContext)
+                SplashScreen().environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                if(!userSession.isSignedIn){
+//                    LoginView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                }else{
+//                    HomeView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                }
             }.environmentObject(userSession)
+            //CreateSongView(viewModel: CreateSongViewModel()).environment(\.managedObjectContext, persistenceController.container.viewContext)
             /*.onAppear(
               perform: {
               //                    PlaylistService.ModifyPlaylist(playlistId: "637d013fd35081e7c6c90d7a", title: "playlist7", completed:

@@ -44,10 +44,10 @@ struct UserBandsView: View {
                                     .shadow(color: Color.black,radius: 8, x: 0, y: 5)
                             }
                             
-                            PushView(destination: InvitationView(), tag: "Invit", selection: $viewModel.navigator){}
+                            PushView(destination: InvitationsView(), tag: "Invit", selection: $viewModel.navigator){}
                             
                             Button(action:{
-                                self.navigationStack.push(InvitationView())})
+                                self.navigationStack.push(InvitationsView())})
                             {
                                 Text("Invitations")
                                     .foregroundColor(.white)

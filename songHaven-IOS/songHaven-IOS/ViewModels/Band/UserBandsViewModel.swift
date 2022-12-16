@@ -15,7 +15,7 @@ import Foundation
         fetchUserBands()
     }
     
-    private func fetchUserBands() {
+    func fetchUserBands() {
         BandService.getByUser( completed: { (success, bandArray) in
             if(success){
                 self.userBands = bandArray ?? []

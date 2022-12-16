@@ -7,7 +7,7 @@
 import SwiftUI
 import AlertToast
 import NavigationStack
-
+import GoogleSignIn
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
     @StateObject private var languageService = LocalizationService.shared

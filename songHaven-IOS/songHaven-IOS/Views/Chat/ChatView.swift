@@ -12,9 +12,12 @@ struct ChatView: View {
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     @StateObject var viewModel : ChatViewModel
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             VStack {
                 HStack(spacing: 20) {
+                    BackButton(action: {
+                        navigationStack.pop()
+                    })
                     AsyncImage(url: viewModel.bandImageUrl) { image in
                         image.resizable()
                             .aspectRatio(contentMode: .fill)
@@ -23,35 +26,37 @@ struct ChatView: View {
                     } placeholder: {
                         ProgressView()
                     }
-                    
                     VStack(alignment: .leading) {
                         Text(viewModel.band.name!)
                             .font(.title).bold()
-                        
-                        Text("Online")
+                            .foregroundColor(.white)
+                        Text("Participants " + "\(viewModel.conversation.band?.users?.count.description ?? "")")
                             .font(.caption)
                             .foregroundColor(.gray)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    
-//                    Image(systemName: "phone.fill")
-//                        .foregroundColor(.gray)
-//                        .padding(10)
-//                        .background(.white)
-//                        .cornerRadius(50)
                 }
-                .padding()
+                .padding(.leading, 10)
+                MyDivider()
             }
+            .background(Color.main_color_hard)
             //end title row
+            
+            if(viewModel.conversation.messages.isEmpty){
+                Text("No messages yet")
+                    .foregroundColor(.white.opacity(0.5))
+                    .padding(.vertical, 250)
+            }
             ScrollViewReader { proxy in
                 ScrollView {
                     ForEach(viewModel.conversation.messages, id: \.id) { message in
-                        MessageBubble(message: message)
+                        MessageBubble(message: message, deleteAction: {
+                            viewModel.deleteMessage(tappedMessageId: message.id)
+                        })
                     }
                 }
-                .padding(.top, 10)
-                .background(.white)
-                .cornerRadius(30) // Custom cornerRadius modifier added in Extensions file
+                .padding(.vertical, 10)
+                .background(Color.black.opacity(0.8))
                 .onChange(of: viewModel.lastMessageId) { id in
                     // When the lastMessageId changes, scroll to the bottom of the conversation
                     withAnimation {
@@ -59,6 +64,7 @@ struct ChatView: View {
                     }
                 }
             }
+            MyDivider()
             HStack {
                 // Custom text field created below
                 CustomTextField(placeholder: Text("Enter your message here"), text: $viewModel.messageField)
@@ -66,7 +72,10 @@ struct ChatView: View {
                     .disableAutocorrection(true)
                 
                 Button {
-                    viewModel.sendMessage()
+                    if(!viewModel.messageField.isEmpty)
+                    {
+                        viewModel.sendMessage()
+                    }
                 } label: {
                     Image(systemName: "paperplane.fill")
                         .foregroundColor(.white)
@@ -76,17 +85,18 @@ struct ChatView: View {
                 }
             }
             .padding(.horizontal)
-            .padding(.vertical, 10)
-            .background(Color.gray)
+            .padding(.vertical, 5)
+            .background(Color.black.opacity(0.7))
             .cornerRadius(50)
-            .padding()
+            .padding(.horizontal)
+            .padding(.vertical, 10)
         }
-        .background(.thinMaterial)
-        
-        
+        .background(Color.main_color_hard)
     }
-}
+        
 
+
+}
 
 struct CustomTextField: View {
     var placeholder: Text
@@ -100,8 +110,27 @@ struct CustomTextField: View {
             if text.isEmpty {
                 placeholder
                     .opacity(0.5)
+                    .foregroundColor(.white)
             }
             TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+                .foregroundColor(.white)
         }
     }
 }
+
+struct MyDivider: View {
+    let color: Material = Material.thick
+    let width: CGFloat = 0.5
+    var body: some View {
+        Rectangle()
+            .fill(color.opacity(0.7))
+            .frame(height: width)
+            .edgesIgnoringSafeArea(.horizontal)
+    }
+}
+
+//                    Image(systemName: "phone.fill")
+//                        .foregroundColor(.gray)
+//                        .padding(10)
+//                        .background(.white)
+//                        .cornerRadius(50)

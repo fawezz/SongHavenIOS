@@ -46,8 +46,22 @@ import Combine
         ConversationService.GetConversationByBandId(bandId: self.band._id!, completed: { (success, conversation) in
             if(success){
                 self.conversation = conversation!
-                self.lastMessageId = (conversation?.messages.last!.id)!
-                //self.messages = conversation?.messages ?? [TextMessage]()
+                if(!(conversation?.messages.isEmpty)!){
+                    self.lastMessageId = (conversation?.messages.last!.id)!
+                }
+            }else{
+                print("error getting conversation")
+            }
+        })
+        isLoading = false
+    }
+    func deleteMessage(tappedMessageId: String){
+        ConversationService.DeleteMessage(textMessageId: tappedMessageId, completed: { (success, deletedTextMessageId) in
+            if(success){
+                self.conversation.messages.removeAll(where: {$0.id == deletedTextMessageId})
+                if(self.lastMessageId == deletedTextMessageId && !self.conversation.messages.isEmpty){
+                    self.lastMessageId = self.conversation.messages.last!.id
+                }
             }else{
                 print("error getting conversation")
             }
