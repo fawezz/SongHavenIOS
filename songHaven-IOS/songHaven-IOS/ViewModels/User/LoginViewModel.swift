@@ -26,7 +26,6 @@ import SwiftUI
     func Login(){
         isLoading = true
         UserService.SignIn(email: email, password: password, completed: { (success, reponse) in
-            
             self.isLoading = false
             if success {
                 print("success")

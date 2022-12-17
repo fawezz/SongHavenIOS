@@ -9,25 +9,30 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var userSession: UserSession
+    @State private var selectedTab : Int = 0
     
     var body: some View {
-        TabView{
+        TabView(selection: $selectedTab){
             MusicHomeView(viewModel: MusicHomeViewModel())
                 .tabItem( {
                     Label("Music", systemImage: "music.note.list")
                 })
+                .tag(0)
             Text("notifications")
                 .tabItem({
                     Label("Notifications", systemImage: "bell")
                 })
+                .tag(1)
             UserBandsView()
                 .tabItem({
                     Label("Band", systemImage: "person.3.fill")
                 })
+                .tag(2)
             ProfileView()
                 .tabItem( {
                     Label("Profile", systemImage: "person")
                 })
+                .tag(3)
         }.onAppear(){
             UITabBar.appearance().backgroundColor = .black
         }
