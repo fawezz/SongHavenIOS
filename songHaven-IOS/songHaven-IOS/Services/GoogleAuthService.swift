@@ -8,7 +8,7 @@
 import Foundation
 import GoogleSignIn
 
-class UserAuthModel: ObservableObject {
+class GoogleAuthService: ObservableObject {
     
     @Published var firstname: String = ""
     @Published var lastname: String = ""
@@ -17,11 +17,18 @@ class UserAuthModel: ObservableObject {
     @Published var isLoggedIn: Bool = false
     @Published var errorMessage: String = ""
     
+    static let shared: GoogleAuthService = {
+        let instance = GoogleAuthService()
+        return instance
+    }()
+    
     init(){
         check()
     }
     
     func checkStatus(){
+        print("inside check status")
+
         if(GIDSignIn.sharedInstance.currentUser != nil){
             let user = GIDSignIn.sharedInstance.currentUser
             guard let user = user else { return }
@@ -40,7 +47,6 @@ class UserAuthModel: ObservableObject {
             self.lastname = ""
             self.profilePicUrl =  ""
             self.email = ""
-
         }
     }
     
@@ -49,8 +55,8 @@ class UserAuthModel: ObservableObject {
             if let error = error {
                 self.errorMessage = "error: \(error.localizedDescription)"
             }
-            
             self.checkStatus()
+
         }
     }
     
@@ -58,7 +64,7 @@ class UserAuthModel: ObservableObject {
         
        guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else {return}
 
-        let signInConfig = GIDConfiguration.init(clientID: "181555315393-46gdqmd4bcffdq2tg9ge184s5qhgmlev.apps.googleusercontent.com")
+        let signInConfig = GIDConfiguration.init(clientID: "717300153408-gealid8op270o73bf51u2kvi7gg2kiq2.apps.googleusercontent.com")
         GIDSignIn.sharedInstance.signIn(
             with: signInConfig,
             presenting: presentingViewController,
@@ -66,10 +72,11 @@ class UserAuthModel: ObservableObject {
                 if let error = error {
                     self.errorMessage = "error: \(error.localizedDescription)"
                     completed(false)
+                    print("inside signin error")
 
                 }
-                completed(true)
                 self.checkStatus()
+                completed(true)
             }
         )
     }

@@ -13,7 +13,9 @@ import NavigationStack
     @Published var showDeleteAlert : Bool = false
     @Published var userSongs : [Song] = []
     @Published var totalLikes : Int = 0
-    @Published var profileImageUrl: URL = URL(string: UserService.UserImageUrl + UserDefaults.standard.string(forKey: "imageId")!)!
+    let firstname : String = (UserSession.shared.currentUser?.firstname)!
+    let lastname : String = (UserSession.shared.currentUser?.lastname)!
+    @Published var profileImageUrl: URL = URL(string: UserService.UserImageUrl + (UserSession.shared.currentUser?.imageId)!)!
     @Published var isLoading = true
     @Published var showLanguageSheet = false
     @Published var selectedLang = ""
@@ -22,11 +24,7 @@ import NavigationStack
 
     var langs = ["English", "French"]
 
-    var userSession: UserSession = UserSession.shared
-    
 
-    let firstname : String = (UserSession.shared.currentUser?.firstname)!
-    let lastname : String = (UserSession.shared.currentUser?.lastname)!
     
     init() {
         if(LocalizationService.shared.language == .english_us){

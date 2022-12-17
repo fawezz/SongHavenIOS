@@ -127,6 +127,16 @@ struct LoginView: View {
                                 .background(Color.green)
                                 .cornerRadius(15.0)
                         }
+                        Button(action: {
+                            viewModel.GoogleAuth()
+                        }) {
+                            Text("Google".localized(languageService.language))
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame(width: 300, height: 50)
+                                .background(Color.orange)
+                                .cornerRadius(15.0)
+                        }
                     }
                 }
                 //LOADER

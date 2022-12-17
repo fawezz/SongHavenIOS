@@ -23,8 +23,7 @@ import SwiftUI
     
     func register(){
         isLoading = true
-        UserService.SignUp(email: email, password: password, firstName: firstname, lastName: lastname, completed: { (success, reponse) in
-            
+        UserService.SignUp(email: email, password: password, firstName: firstname, lastName: lastname, completed: { (success, reponse, token) in
             self.isLoading = false
             if success {
                 self.toastText = "Check Your Email"

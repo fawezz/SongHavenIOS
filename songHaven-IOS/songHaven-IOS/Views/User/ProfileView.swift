@@ -9,10 +9,10 @@ import NavigationStack
 
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
-    @EnvironmentObject private var navigationStack: NavigationStackCompat
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var languageService = LocalizationService.shared
-    
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
+
     var body: some View {
         NavigationStack{
             VStack {
@@ -79,49 +79,6 @@ struct ProfileView: View {
                     })
                 .padding()
                 PushView(destination: EditProfileView(), tag: "EditProfile", selection: $viewModel.navigator) {}
-                
-                    .navigationBarItems(trailing:
-                    Menu {
-                        Button(action: {
-                            print("language Button")
-                            viewModel.showLanguageSheet = true
-                            
-                        }) {
-                            Label("ProfileOptions1".localized(languageService.language), systemImage: "character.book.closed.fill" )
-                        }
-                        Button(action: {
-                            //logout
-                            viewModel.showLogoutAlert = true
-                        }) {
-                            Label("ProfileOptions2".localized(languageService.language), systemImage: "xmark")
-                        }
-                    } label: {
-                        ZStack{
-                            Image(systemName: "ellipsis.circle")
-                                .foregroundColor(.white)
-                                .frame(width: 65, height: 65)
-                        }
-                    }
-                        .alert("Are You sure You want Log out ?", isPresented: $viewModel.showLogoutAlert) {
-                            Button("Log out", role: .destructive) {
-                                navigationStack.push(LoginView())
-                                viewModel.Logout()
-                            }
-                            Button("cancel", role: .cancel) { }
-                        }
-                                        /*Button(
-                                         "Log out", action: {
-                                         viewModel.showLogoutAlert = true
-                                         }
-                                         ).alert("Are You sure You want Log out ?", isPresented: $viewModel.showLogoutAlert) {
-                                         Button("Log out", role: .destructive) {
-                                         navigationStack.push(LoginView())
-                                         viewModel.Logout()
-                                         }
-                                         Button("cancel", role: .cancel) { }
-                                         }*/
-                                        
-                    )
             }.background(LinearGradient(gradient: .init(colors: [.black , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
                 .sheet(isPresented: $viewModel.showLanguageSheet, onDismiss: {presentationMode.wrappedValue.dismiss()}){
                     ZStack{
@@ -163,6 +120,8 @@ struct ProfileView: View {
         static let gradientStart = Color(red: 0 / 255, green: 0 / 255, blue: 0 / 255)
         static let gradientEnd = Color(red: 101 / 255, green: 104 / 255, blue: 203 / 255)
         @ObservedObject var viewModel = ProfileViewModel()
+        @StateObject private var languageService = LocalizationService.shared
+        @EnvironmentObject private var navigationStack: NavigationStackCompat
         
         var body: some View {
             ZStack(alignment: .center) {
@@ -174,6 +133,34 @@ struct ProfileView: View {
                     ))
                     .edgesIgnoringSafeArea(.top)
                     .frame(height: 200)
+                Menu {
+                    Button(action: {
+                        print("language Button")
+                        viewModel.showLanguageSheet = true
+                        
+                    }) {
+                        Label("ProfileOptions1".localized(languageService.language), systemImage: "character.book.closed.fill" )
+                    }
+                    Button(action: {
+                        //logout
+                        viewModel.showLogoutAlert = true
+                    }) {
+                        Label("ProfileOptions2".localized(languageService.language), systemImage: "xmark")
+                    }
+                } label: {
+                    ZStack{
+                        Image(systemName: "ellipsis.circle")
+                            .foregroundColor(.white)
+                            .frame(width: 65, height: 65)
+                    }
+                }.offset(x: 150, y: -120)
+                    .alert("Are You sure You want Log out ?", isPresented: $viewModel.showLogoutAlert) {
+                        Button("Log out", role: .destructive) {
+                            navigationStack.push(LoginView())
+                            viewModel.Logout()
+                        }
+                        Button("cancel", role: .cancel) { }
+                    }
                 AsyncImage(url:viewModel.profileImageUrl)
                 {
                     Image in Image.resizable()
@@ -220,3 +207,21 @@ struct ProfileSectionItem: View {
         }
     }
 }
+
+
+
+//    .navigationBarItems(trailing:
+//
+//                        /*Button(
+//                         "Log out", action: {
+//                         viewModel.showLogoutAlert = true
+//                         }
+//                         ).alert("Are You sure You want Log out ?", isPresented: $viewModel.showLogoutAlert) {
+//                         Button("Log out", role: .destructive) {
+//                         navigationStack.push(LoginView())
+//                         viewModel.Logout()
+//                         }
+//                         Button("cancel", role: .cancel) { }
+//                         }*/
+//
+//    )

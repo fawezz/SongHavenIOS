@@ -21,7 +21,7 @@ final class UserSession: ObservableObject {
     }
     
     func isAlreadySignedIn() {
-        if(UserSession.shared.isSignedIn){
+        if(self.isSignedIn){
             let userId = UserDefaults.standard.string(forKey: "userId")
             UserService.GetById(userId: userId!, completed: { (success, reponse) in
                 if success {

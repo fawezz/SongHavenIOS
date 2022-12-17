@@ -10,8 +10,8 @@ import _PhotosUI_SwiftUI
 
 @MainActor class EditProfileViewModel: ObservableObject {
     
-    @Published var firstname = UserDefaults.standard.string(forKey: "firstname")!
-    @Published var lastname = UserDefaults.standard.string(forKey: "lastname")!
+    @Published var firstname : String = (UserSession.shared.currentUser?.firstname)!
+    @Published var lastname : String = (UserSession.shared.currentUser?.lastname)!
     //@Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""

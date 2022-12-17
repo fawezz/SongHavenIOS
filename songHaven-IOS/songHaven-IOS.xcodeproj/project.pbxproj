@@ -87,7 +87,7 @@
 		B0876E442943997800A8BFA5 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E432943997800A8BFA5 /* MessageBubble.swift */; };
 		B0876E4629439A5D00A8BFA5 /* TextMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E4529439A5D00A8BFA5 /* TextMessage.swift */; };
 		B0876E482943B24400A8BFA5 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E472943B24400A8BFA5 /* UserSession.swift */; };
-		B0876E4A2943D06900A8BFA5 /* UserAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E492943D06900A8BFA5 /* UserAuthModel.swift */; };
+		B0876E4A2943D06900A8BFA5 /* GoogleAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0876E492943D06900A8BFA5 /* GoogleAuthService.swift */; };
 		B0876E4D2943D0C700A8BFA5 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B0876E4C2943D0C700A8BFA5 /* GoogleSignIn */; };
 		B0876E4F2943D0C700A8BFA5 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B0876E4E2943D0C700A8BFA5 /* GoogleSignInSwift */; };
 		B091A019293A621A00E201F8 /* PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B091A018293A621A00E201F8 /* PlayMusic.swift */; };
@@ -202,7 +202,7 @@
 		B0876E432943997800A8BFA5 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		B0876E4529439A5D00A8BFA5 /* TextMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMessage.swift; sourceTree = "<group>"; };
 		B0876E472943B24400A8BFA5 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
-		B0876E492943D06900A8BFA5 /* UserAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthModel.swift; sourceTree = "<group>"; };
+		B0876E492943D06900A8BFA5 /* GoogleAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthService.swift; sourceTree = "<group>"; };
 		B091A017293A5F2D00E201F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B091A018293A621A00E201F8 /* PlayMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
 		B0A2A61A29490B4C00EC2092 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
@@ -367,7 +367,6 @@
 				9BE5D2B9293224BB0046041A /* Song.swift */,
 				9BE5D2C12933A2B30046041A /* Playlist.swift */,
 				B0876E4529439A5D00A8BFA5 /* TextMessage.swift */,
-				B0876E492943D06900A8BFA5 /* UserAuthModel.swift */,
 				B0A2A61A29490B4C00EC2092 /* Conversation.swift */,
 			);
 			path = Models;
@@ -496,6 +495,7 @@
 		B0C51150291FFFDE00A3A0D0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B0876E492943D06900A8BFA5 /* GoogleAuthService.swift */,
 				9479B01E2948F64A0058096A /* InvitationService.swift */,
 				B0587AE8294369BB00A91193 /* BandService.swift */,
 				B0C51151291FFFF600A3A0D0 /* UserService.swift */,
@@ -712,7 +712,7 @@
 				B0876E422943958E00A8BFA5 /* ChatViewModel.swift in Sources */,
 				B0AAC0EC29354ADE00C3EFE4 /* PlaylistDetailsView.swift in Sources */,
 				B024ADBB2923E7A700C9E601 /* LoginViewModel.swift in Sources */,
-				B0876E4A2943D06900A8BFA5 /* UserAuthModel.swift in Sources */,
+				B0876E4A2943D06900A8BFA5 /* GoogleAuthService.swift in Sources */,
 				B024ADB12923E71000C9E601 /* LoginView.swift in Sources */,
 				94AFFC0E292E22EF00824EF6 /* ColorExtension.swift in Sources */,
 				B06AF25F293F658900C8EE20 /* MusicSearchViewModel.swift in Sources */,

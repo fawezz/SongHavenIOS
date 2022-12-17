@@ -37,7 +37,8 @@ struct ChatView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.leading, 10)
-                MyDivider()
+                .padding(.bottom, 5)
+                //MyDivider()
             }
             .background(Color.main_color_hard)
             //end title row
@@ -64,7 +65,7 @@ struct ChatView: View {
                     }
                 }
             }
-            MyDivider()
+            //MyDivider()
             HStack {
                 // Custom text field created below
                 CustomTextField(placeholder: Text("Enter your message here"), text: $viewModel.messageField)

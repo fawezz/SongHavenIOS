@@ -10,44 +10,32 @@ import LocalAuthentication
 
 struct SplashScreen: View {
     @State var isActive: Bool = false
-    @State var faceIdSuccess: Bool = false
-    @State var faceIdAvailable: Bool = false
-    @State var showNextScreen: Bool = false
     @State var userSession = UserSession.shared
+    @EnvironmentObject private var navigationStack: NavigationStackCompat
     
     var body: some View {
-        if(self.isActive && self.showNextScreen){
-            if(!userSession.isSignedIn){
-                NavigationStackView{
-                    LoginView()
-                }.environmentObject(userSession)
-            }else{
-                NavigationStack{
-                    HomeView()
-                }.environmentObject(userSession)
-            }
-        }else{
-            ZStack{
-                LinearGradient(gradient: .init(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
-                Image("logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 400, height: 400)
-            }.onAppear{
+        ZStack{
+            LinearGradient(gradient: .init(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+            Image("logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 400, height: 400)
+        }.onAppear{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+                withAnimation{self.isActive = true}
                 if(userSession.isSignedIn){
-                    authenticateWithId()
-                    let socketManager = SocketChatManager.shared
-                    socketManager.setupSocketEvents()
+                    userSession.isAlreadySignedIn()
+                    //authenticateWithFaceId()
+                    //let socketManager = SocketChatManager.shared
+                    //socketManager.setupSocketEvents()
+                    navigationStack.push(HomeView()) //// remove this line if faceId is active
                 }else{
-                    self.showNextScreen = true  //allows showing login page if user not logged in
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){
-                    withAnimation{self.isActive = true}
+                    navigationStack.push(LoginView())
                 }
             }
         }
     }
-    func authenticateWithId(){
+    func authenticateWithFaceId(){
         let context = LAContext()
         var error : NSError?
         
@@ -57,23 +45,18 @@ struct SplashScreen: View {
                 DispatchQueue.main.async {
                     if success {
                         print("success")
-                        self.faceIdSuccess = true
-                        self.faceIdAvailable = true
-                        self.showNextScreen = true
+                        navigationStack.pop()
+                        navigationStack.push(HomeView())
                     }else{
                         print("fail")
-                        self.faceIdSuccess =  false
-                        self.faceIdAvailable = true
                         exit(0)
                     }
                 }
             }
         }else{
             //face if not available
-            self.faceIdAvailable = false
-            self.showNextScreen = true
-            
             print("not available")
+            navigationStack.push(HomeView())
         }
     }
 }
@@ -84,4 +67,16 @@ struct SplashScreen_Previews: PreviewProvider {
     }
 }
 
-
+//
+//if(self.isActive && self.showNextScreen){
+//    if(!userSession.isSignedIn){
+//        navigationStack.push(LoginView())
+////                NavigationStackView{
+////                    LoginView()
+////                }.environmentObject(userSession)
+//    }else{
+//        NavigationStack{
+//            HomeView()
+//        }.environmentObject(userSession)
+//    }
+//}

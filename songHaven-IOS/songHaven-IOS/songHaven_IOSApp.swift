@@ -19,7 +19,6 @@ struct songHaven_IOSApp: App {
     
     init(){
         userSession.isAlreadySignedIn()
-
     }
     
     var body: some Scene {

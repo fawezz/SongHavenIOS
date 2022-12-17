@@ -20,7 +20,7 @@ import SwiftUI
     @Published var isLoading: Bool = false
     @Published var showAlert: Bool = false
     @Published var navigator: String? = nil
-    @StateObject var userAuth: UserAuthModel =  UserAuthModel()
+    @StateObject var userAuth: GoogleAuthService =  GoogleAuthService.shared
     
     
     func Login(){
@@ -79,44 +79,45 @@ import SwiftUI
         userAuth.signIn(completed: {success in
             if(success){
                 self.userAuth.checkStatus()
-                //                UserService.userExists(email: userAuth.email.lowercased(),
-                //                                           completed: { success in
-                //                    if(success){
-                //                        print("login without creating user in db")
-                //                        UserService().loginWithGoogle(email: userAuth.email, completed: { success,response in
-                //                            if success {
-                //                                self.navigator = "HomeView"
-                //                            } else {
-                //                                print("couldn't login user")
-                //                            }
-                //
-                //                        })
-                //                    }
-                //                    else{
-                ////                        user.firstname=userAuth.firstname
-                ////                        user.lastname=userAuth.lastname
-                ////                        user.email=userAuth.email
-                ////                        user.address=""
-                ////                        user.hash=""
-                ////                        user.pic=""
-                ////                        user.speciality=""
-                ////                        user.workDays=[]
-                ////                        user.tos=[]
-                ////                        //user.pic=userAuth.profilePicUrl
-                ////                        UserViewModel().registerUserFormData(user: user,image:nil, completedAction: { (success) in
-                ////                            if success {
-                ////                                showHomePage=true
-                ////                            } else {
-                ////                                print("couldn't create user")
-                ////
-                ////                            }
-                ////
-                ////                        })
-                //                    }
-                //                })
-                
+                print("success google auth")
+                UserService.loginByEmail(email: self.userAuth.email,
+                                         completed: { success, currentUser in
+                    if(success){
+                        print("login without creating user in db")
+                        UserSession.shared.isSignedIn = true
+                        UserSession.shared.currentUser = currentUser
+                        UserDefaults.standard.setValue(
+                            UserSession.shared.currentUser?._id, forKey: "userId"
+                        )
+                        self.navigator = "HomeView"
+                    }
+                    else{
+                        print("sign up with google")
+                        //                                        user.address=""
+                        //                                        user.hash=""
+                        //                                        user.pic=""
+                        //user.pic=userAuth.profilePicUrl
+                        UserService.SignUp(email: self.userAuth.email, password: "", firstName: self.userAuth.firstname, lastName: self.userAuth.lastname, completed: { (success, currentUser, token) in
+                            if success {
+                                UserSession.shared.isSignedIn = true
+                                UserSession.shared.currentUser = currentUser as? User
+                                UserDefaults.standard.setValue(
+                                    token,forKey: "token"
+                                )
+                                UserDefaults.standard.setValue(
+                                    UserSession.shared.currentUser?._id, forKey: "userId"
+                                )
+                                self.navigator = "HomeView"
+                            } else {
+                                print("couldn't create user")
+                            }
+                        })
+                    }
+                })
             }
             else{
+                //failed login
+                print("failed google auth")
             }
         })
     }

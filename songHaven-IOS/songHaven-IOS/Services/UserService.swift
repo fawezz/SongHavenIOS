@@ -23,7 +23,7 @@ class UserService{
     static let UserImageUrl = Constants.HOSTNAME + "/img/user/"
     static let searchUsersURL = Constants.HOSTNAME + "/user/searchByName"
     static let GetByIdURL = Constants.HOSTNAME + "/user/getById"
-    static let GoogleLoginURL = Constants.HOSTNAME + "/user/googleLogin"
+    static let LoginByEmailURL = Constants.HOSTNAME + "/user/loginByEmail"
     
     static func SignIn(email: String, password: String, completed: @escaping (Bool, Any?) -> Void){
         
@@ -80,7 +80,7 @@ class UserService{
             }
     }
     
-    static func SignUp(email: String, password: String, firstName: String, lastName: String, completed: @escaping (Bool, Any?) -> Void){
+    static func SignUp(email: String, password: String, firstName: String, lastName: String, completed: @escaping (Bool, Any?, String?) -> Void){
         
         let headers : HTTPHeaders = [
             .contentType("application/json"),
@@ -100,16 +100,18 @@ class UserService{
                 case .success:
                     let jsonData = JSON(response.data!)
                     let currentUser = User.fromJson(jsonData: jsonData["currentUser"])
+                    let token = jsonData["token"].stringValue
+
                     print(currentUser)
-                    completed(true, currentUser)
+                    completed(true, currentUser, token)
                 case let .failure(error):
                     if(response.response?.statusCode == 409){
                         let jsonData = JSON(response.data!)
                         let message = jsonData["message"].stringValue
                         print( message)
-                        completed(false, message)
+                        completed(false, message, nil)
                     }else{
-                        print("qqqqqqqqqq" + error.errorDescription!)
+                        print("sign up service error" + error.errorDescription!)
                     }
                     
                     
@@ -398,8 +400,8 @@ class UserService{
             }
     }
     
-    func loginWithGoogle(email: String, completed: @escaping (Bool, Any?) -> Void) {
-        AF.request(UserService.GoogleLoginURL,
+   static func loginByEmail(email: String, completed: @escaping (Bool, User?) -> Void) {
+        AF.request(UserService.LoginByEmailURL,
                           method: .post,
                           parameters: ["email": email])
                    .validate(statusCode: 200..<300)
@@ -411,7 +413,8 @@ class UserService{
                            
                            UserDefaults.standard.setValue(jsonData["token"].stringValue, forKey: "token")
                            UserDefaults.standard.setValue(jsonData["userId"].stringValue, forKey: "userId")
-                           completed(true, jsonData["token"].stringValue)
+                           let currentUser : User = User.fromJson(jsonData: jsonData["currentUser"])
+                           completed(true, currentUser)
                        case let .failure(error):
                            debugPrint(error)
                            completed(false, nil)
