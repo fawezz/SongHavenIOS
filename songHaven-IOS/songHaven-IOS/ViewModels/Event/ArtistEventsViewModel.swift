@@ -6,3 +6,20 @@
 //
 
 import Foundation
+@MainActor class ArtistEventsViewModel: ObservableObject {
+    @Published var navigator : String? = nil
+    @Published var ArtistEvents = [Event]()
+    @Published var searchText : String = ""
+    
+    init() {
+        fetchArtistEvents()
+    }
+    
+    func  fetchArtistEvents() {
+        EventService.getEventByOwner (completed: { (success, eventArray) in
+            if(success){
+                self.ArtistEvents = eventArray ?? []
+            }
+        })
+    }
+}

@@ -28,6 +28,8 @@
 		9479B01A2948F3720058096A /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B0192948F3720058096A /* Invitation.swift */; };
 		9479B01C2948F39A0058096A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B01B2948F39A0058096A /* Status.swift */; };
 		9479B01F2948F64A0058096A /* InvitationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B01E2948F64A0058096A /* InvitationService.swift */; };
+		94A5961B295318210096707E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5961A295318210096707E /* MapView.swift */; };
+		94A5961F2953308A0096707E /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5961E2953308A0096707E /* EventService.swift */; };
 		94AFFC02292E197800824EF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC01292E197800824EF6 /* Constants.swift */; };
 		94AFFC0A292E223400824EF6 /* MusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC09292E223400824EF6 /* MusicPlayerView.swift */; };
 		94AFFC0C292E224100824EF6 /* MusicPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC0B292E224100824EF6 /* MusicPlayerViewModel.swift */; };
@@ -156,6 +158,8 @@
 		9479B0192948F3720058096A /* Invitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
 		9479B01B2948F39A0058096A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		9479B01E2948F64A0058096A /* InvitationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationService.swift; sourceTree = "<group>"; };
+		94A5961A295318210096707E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		94A5961E2953308A0096707E /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		94AFFC01292E197800824EF6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		94AFFC09292E223400824EF6 /* MusicPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerView.swift; sourceTree = "<group>"; };
 		94AFFC0B292E224100824EF6 /* MusicPlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewModel.swift; sourceTree = "<group>"; };
@@ -378,6 +382,7 @@
 				94C291CD2951D7FD006F18F9 /* EditEvent.swift */,
 				94C291CF2951D81D006F18F9 /* DetailsEvent.swift */,
 				94C291D12951D870006F18F9 /* ArtistEvents.swift */,
+				94A5961A295318210096707E /* MapView.swift */,
 			);
 			path = Even;
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 		B025A958291EE26E007FF6FF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				94C291D92951F4E6006F18F9 /* Event.swift */,
 				9479B0192948F3720058096A /* Invitation.swift */,
 				B0587AC62943675800A91193 /* Band.swift */,
 				B025A95E291EE2D2007FF6FF /* User.swift */,
@@ -410,7 +416,6 @@
 				9BE5D2C12933A2B30046041A /* Playlist.swift */,
 				B0876E4529439A5D00A8BFA5 /* TextMessage.swift */,
 				B0A2A61A29490B4C00EC2092 /* Conversation.swift */,
-				94C291D92951F4E6006F18F9 /* Event.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -549,6 +554,7 @@
 				9BE5D2BF2933A25C0046041A /* PlaylistService.swift */,
 				B0388797293BACF000DE78BD /* LikeService.swift */,
 				B06D95EF294BA4F20042781C /* ConversationService.swift */,
+				94A5961E2953308A0096707E /* EventService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -712,6 +718,7 @@
 				B0E7A45E29478BD50094E7A0 /* SocketChatManager.swift in Sources */,
 				B024ADC52923E7CB00C9E601 /* SendOtpViewModel.swift in Sources */,
 				B0587AD9294368E400A91193 /* UserBandsView.swift in Sources */,
+				94A5961B295318210096707E /* MapView.swift in Sources */,
 				B06AF25D293F657900C8EE20 /* MusicSearchView.swift in Sources */,
 				94C291CC2951D7D3006F18F9 /* CreateEvent.swift in Sources */,
 				9479B01C2948F39A0058096A /* Status.swift in Sources */,
@@ -789,6 +796,7 @@
 				B0876E4629439A5D00A8BFA5 /* TextMessage.swift in Sources */,
 				B024ADAF2923E70900C9E601 /* EditProfileView.swift in Sources */,
 				94C291C12951D019006F18F9 /* DetailsEventViewModel.swift in Sources */,
+				94A5961F2953308A0096707E /* EventService.swift in Sources */,
 				081B291F2919209700981671 /* songHaven_IOSApp.swift in Sources */,
 				B08494B3293D09DC0071320F /* EditPlaylistSheet.swift in Sources */,
 				9BE5D2B62931F1FB0046041A /* BackButton.swift in Sources */,

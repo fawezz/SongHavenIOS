@@ -6,5 +6,53 @@
 //
 
 import SwiftyJSON
-struct Event : Equatable{
+import Foundation
+
+struct Event :Decodable{
+
+    
+    
+    
+    internal init(_id: String? = nil, title: String? = nil, description: String? = nil, dateEvent: Date? = nil,  eventCreator: Band? = nil, latitud: String? = nil  ,longitud: String? = nil ) {
+        
+        self._id = _id
+        self.title = title
+        self.description  = description
+        self.eventCreator = eventCreator
+        self.dateEvent = dateEvent
+        self.latitud = latitud
+        self.longitud = longitud
+        
+        
+    }
+    var _id : String?
+    var title : String?
+    var description : String?
+    var eventCreator : Band?
+    var latitud : String?
+    var longitud : String?
+    var dateEvent : Date?
+    
+    
+    static func fromJson(jsonData: JSON) -> Event {
+        
+            return Event(
+                
+                _id: jsonData["_id"].stringValue,
+                title: jsonData["title"].stringValue,
+                description: jsonData["description"].stringValue,
+                dateEvent: jsonData["dateEvent"].rawValue as? Date,
+                eventCreator : Band.fromJson(jsonData: jsonData["eventCreator"]),
+          
+                latitud: jsonData["latitud"].stringValue,
+                longitud: jsonData["longitud"].stringValue
+   
+             
+                
+            )  }
+    
+    
+    
+    
+    
 }

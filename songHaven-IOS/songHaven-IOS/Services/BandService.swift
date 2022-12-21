@@ -18,42 +18,7 @@ class BandService{
     static let  addUserURL = Constants.HOSTNAME + "/band/addArtiste"
     static let BandImageUrl = Constants.HOSTNAME + "/img/band/"
     static let removeAertistURL = Constants.HOSTNAME + ""
-    
-    static func create(/*creator: User,*/name: String, discription: String,imageId: String, completed: @escaping (Bool, Any?) ->Void){
-        
-        let headers :HTTPHeaders = [
-            .contentType("application/json"),
-            .accept("application/json")
-        ]
-        let params = [
-           // "creatorId": creator._id!,
-            "name" : name ,
-            "discription" : discription,
-            "imageId" : imageId
-        ]
-        AF.request(CreateBandURL, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers )
-            .validate(statusCode : 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseData { response in
-                switch response.result {
-                case .success:
-                let jsonData = JSON(response.data!)
-                case let .failure(error):
-                    if(response.response?.statusCode == 409){
-                        let jsonData = JSON(response.data!)
-                        let message = jsonData["message"].stringValue
-                        print( message)
-                        completed(false, message)
-                    }else{
-                        print("Error" + error.errorDescription!)
-                    }
-                    
-                    
-                }
 
-            }
- }
-    
     
     static func add(band : Band , image :UIImage , completed:@escaping(Bool,Int)->Void){
             let token = UserDefaults.standard.string(forKey: "token")

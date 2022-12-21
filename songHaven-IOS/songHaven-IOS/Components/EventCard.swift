@@ -14,7 +14,7 @@ struct EventCard: View {
             HStack(alignment: .center, spacing: 0){
               
                 
-                Text("//event.title!")
+                Text(event.title!)
                     .bold()
                     .foregroundColor(.purple)
                     .font(.subheadline)
