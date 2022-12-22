@@ -28,11 +28,20 @@ struct HomeView: View {
                     Label("Band", systemImage: "person.3.fill")
                 })
                 .tag(2)
+            
+            ArtistEvents()
+                  .tabItem( {
+                      Label("Events", systemImage: "calendar")
+                  })
+                  .tag(3)
             ProfileView()
                 .tabItem( {
                     Label("Profile", systemImage: "person")
                 })
-                .tag(3)
+                .tag(4)
+            
+          
+            
         }.onAppear(){
             UITabBar.appearance().backgroundColor = .black
         }

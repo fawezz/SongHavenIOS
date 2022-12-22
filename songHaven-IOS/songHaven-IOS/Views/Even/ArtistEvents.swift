@@ -31,7 +31,7 @@ struct ArtistEvents: View {
                                 Button(action:{
                                     self.navigationStack.push(CreateEvent())})
                                 {
-                                    Text("Events")
+                                    Text("New Event")
                                         .foregroundColor(.white)
                                         .frame(width: 100, height: 30)
                                         .padding(8).background(Color.purple)

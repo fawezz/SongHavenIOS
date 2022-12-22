@@ -28,7 +28,7 @@ struct UserBandsView: View {
                             .foregroundColor(.white)
                             .bold()
                             .padding()
-                        HStack(spacing: 100 ){
+                        HStack(spacing: 180 ){
                             
                             PushView(destination: AddBandView(), tag: "addBand", selection: $viewModel.navigator){}
                             
@@ -58,19 +58,6 @@ struct UserBandsView: View {
                                     .shadow(color: Color.black,radius: 8, x: 0, y: 5)
                             }
                             
-                            PushView(destination: CreateEvent(), tag: "event", selection: $viewModel.navigator){}
-                            
-                            Button(action:{
-                                self.navigationStack.push(CreateEvent())})
-                            {
-                                Text("Events")
-                                    .foregroundColor(.white)
-                                    .frame(width: 100, height: 30)
-                                    .padding(8).background(Color.purple)
-                                    .cornerRadius(20)
-                                    .frame(width: 36,height: 36 )
-                                    .shadow(color: Color.black,radius: 8, x: 0, y: 5)
-                            }
                             
                         }.padding(.all)
                   

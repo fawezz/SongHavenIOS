@@ -55,10 +55,10 @@ struct CreateEvent: View {
                     }
                   
                     
-                    PushView(destination: MapView(), tag: "mapView", selection: $viewModel.navigator){}
+                    PushView(destination: MapEventView(), tag: "mapView", selection: $viewModel.navigator){}
                     
                     Button(action:{
-                        self.navigationStack.push(MapView())})
+                        self.navigationStack.push(MapEventView())})
                     {
                         Text("Choose Location")
                             .foregroundColor(.white)

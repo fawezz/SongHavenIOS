@@ -19,6 +19,7 @@
 		2B0A4800291981D200AF179A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A47FF291981D200AF179A /* ProfileView.swift */; };
 		2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A48052919910B00AF179A /* ResetPasswordView.swift */; };
 		2B0A480E2919ADD700AF179A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A480D2919ADD700AF179A /* SplashScreen.swift */; };
+		9458DDE729549B1200276182 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458DDE629549B1200276182 /* Location.swift */; };
 		945BF9F7294A35A200D2DCFE /* InvitationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945BF9F6294A35A200D2DCFE /* InvitationCard.swift */; };
 		9479B0112948F3140058096A /* InvitationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B00E2948F3140058096A /* InvitationsView.swift */; };
 		9479B0122948F3140058096A /* EditBandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B00F2948F3140058096A /* EditBandView.swift */; };
@@ -28,7 +29,7 @@
 		9479B01A2948F3720058096A /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B0192948F3720058096A /* Invitation.swift */; };
 		9479B01C2948F39A0058096A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B01B2948F39A0058096A /* Status.swift */; };
 		9479B01F2948F64A0058096A /* InvitationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B01E2948F64A0058096A /* InvitationService.swift */; };
-		94A5961B295318210096707E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5961A295318210096707E /* MapView.swift */; };
+		94A5961B295318210096707E /* MapEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5961A295318210096707E /* MapEventView.swift */; };
 		94A5961F2953308A0096707E /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5961E2953308A0096707E /* EventService.swift */; };
 		94AFFC02292E197800824EF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC01292E197800824EF6 /* Constants.swift */; };
 		94AFFC0A292E223400824EF6 /* MusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC09292E223400824EF6 /* MusicPlayerView.swift */; };
@@ -149,6 +150,7 @@
 		2B0A47FF291981D200AF179A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2B0A48052919910B00AF179A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2B0A480D2919ADD700AF179A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		9458DDE629549B1200276182 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		945BF9F6294A35A200D2DCFE /* InvitationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCard.swift; sourceTree = "<group>"; };
 		9479B00E2948F3140058096A /* InvitationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationsView.swift; path = Band/InvitationsView.swift; sourceTree = "<group>"; };
 		9479B00F2948F3140058096A /* EditBandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditBandView.swift; path = Band/EditBandView.swift; sourceTree = "<group>"; };
@@ -158,7 +160,7 @@
 		9479B0192948F3720058096A /* Invitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
 		9479B01B2948F39A0058096A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		9479B01E2948F64A0058096A /* InvitationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationService.swift; sourceTree = "<group>"; };
-		94A5961A295318210096707E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		94A5961A295318210096707E /* MapEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEventView.swift; sourceTree = "<group>"; };
 		94A5961E2953308A0096707E /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		94AFFC01292E197800824EF6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		94AFFC09292E223400824EF6 /* MusicPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerView.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				94C291BC2951CF8C006F18F9 /* EditEventViewModel.swift */,
 				94C291BE2951CFF8006F18F9 /* ArtistEventsViewModel.swift */,
 				94C291C02951D019006F18F9 /* DetailsEventViewModel.swift */,
+				9458DDE629549B1200276182 /* Location.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -382,7 +385,7 @@
 				94C291CD2951D7FD006F18F9 /* EditEvent.swift */,
 				94C291CF2951D81D006F18F9 /* DetailsEvent.swift */,
 				94C291D12951D870006F18F9 /* ArtistEvents.swift */,
-				94A5961A295318210096707E /* MapView.swift */,
+				94A5961A295318210096707E /* MapEventView.swift */,
 			);
 			path = Even;
 			sourceTree = "<group>";
@@ -718,7 +721,7 @@
 				B0E7A45E29478BD50094E7A0 /* SocketChatManager.swift in Sources */,
 				B024ADC52923E7CB00C9E601 /* SendOtpViewModel.swift in Sources */,
 				B0587AD9294368E400A91193 /* UserBandsView.swift in Sources */,
-				94A5961B295318210096707E /* MapView.swift in Sources */,
+				94A5961B295318210096707E /* MapEventView.swift in Sources */,
 				B06AF25D293F657900C8EE20 /* MusicSearchView.swift in Sources */,
 				94C291CC2951D7D3006F18F9 /* CreateEvent.swift in Sources */,
 				9479B01C2948F39A0058096A /* Status.swift in Sources */,
@@ -761,6 +764,7 @@
 				94C291BB2951CF2C006F18F9 /* CreateEventViewModel.swift in Sources */,
 				2B0A48062919910B00AF179A /* ResetPasswordView.swift in Sources */,
 				B038879C293BC95400DE78BD /* MyAppDelegate.swift in Sources */,
+				9458DDE729549B1200276182 /* Location.swift in Sources */,
 				B0587AD8294368E400A91193 /* AddBandView.swift in Sources */,
 				B0587AC72943675800A91193 /* Band.swift in Sources */,
 				B0AAC0E92935376400C3EFE4 /* PlaylistCard.swift in Sources */,
