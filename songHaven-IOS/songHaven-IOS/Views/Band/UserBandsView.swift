@@ -14,6 +14,7 @@ import NavigationStack
 struct UserBandsView: View {
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     @StateObject var viewModel = UserBandsViewModel()
+    @StateObject private var languageService = LocalizationService.shared
     private let  adaptiveColums = [ GridItem( .adaptive(minimum: 170))]
     
     
@@ -23,7 +24,7 @@ struct UserBandsView: View {
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack{
                     VStack{
-                        Text("Your Bands")
+                        Text("Your Bands".localized(languageService.language))
                             .font(.largeTitle)
                             .foregroundColor(.white)
                             .bold()
@@ -35,7 +36,7 @@ struct UserBandsView: View {
                             Button(action:{
                                 self.navigationStack.push(AddBandView())})
                             {
-                                Text("New band")
+                                Text("New band".localized(languageService.language))
                                     .foregroundColor(.white)
                                     .frame(width: 100, height: 30)
                                     .padding(8).background(Color.purple)
@@ -49,7 +50,7 @@ struct UserBandsView: View {
                             Button(action:{
                                 self.navigationStack.push(InvitationsView())})
                             {
-                                Text("Invitations")
+                                Text("Invitations".localized(languageService.language))
                                     .foregroundColor(.white)
                                     .frame(width: 100, height: 30)
                                     .padding(8).background(Color.purple)
@@ -79,7 +80,7 @@ struct UserBandsView: View {
                             }
                         }else{
                             HStack{
-                                Text("You don't have any bands yet")
+                                Text("You don't have any bands yet".localized(languageService.language))
                                     .foregroundColor(.white)
                                     .font(.title3)
                                     .padding(.all, 50)

@@ -14,8 +14,8 @@ class EventService {
     
     static let AddEventURL = Constants.HOSTNAME + "/event/addEvent"
     static let EditEventURL = Constants.HOSTNAME + "/event/modify/"
-    static let RemoveEventURL = Constants.HOSTNAME + "/event/delete/"
-    static let getBandEventURL = Constants.HOSTNAME + "/event/getByBand/"
+    static let RemoveEventURL = Constants.HOSTNAME + "/event/deleteEvent/"
+    static let getBandEventURL = Constants.HOSTNAME + "/event/getAll/"
 
     static func AddEvent(event : Event , completed:@escaping(Bool,Int)->Void){
             let token = UserDefaults.standard.string(forKey: "token")
@@ -26,7 +26,8 @@ class EventService {
                     multipartFormData.append(event.title!.data(using: String.Encoding.utf8)!, withName: "title")
                     multipartFormData.append(event.description!.data(using: String.Encoding.utf8)!, withName: "description")
                     
-//                    multipartFormData.append(event.dateEvent!.data(using:                  String.Encoding.utf8)!, withName: "dateEvent")
+//                    multipartFormData.append(event.dateEvent!.data(using:
+                    //String.Encoding.utf8)!, withName: "dateEvent")
 //                    
                     
                     multipartFormData.append(event.longitud!.data(using: String.Encoding.utf8)!, withName: "longitud")

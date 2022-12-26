@@ -11,6 +11,7 @@ import NavigationStack
 struct ArtistSuggestionView : View {
     @StateObject var viewModel : ArtistSuggetionViewModel
     @EnvironmentObject private var navigationStack: NavigationStackCompat
+    @StateObject private var languageService = LocalizationService.shared
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom)
@@ -29,7 +30,7 @@ struct ArtistSuggestionView : View {
                                     .foregroundColor(.purple)
                             }
                             .disabled(viewModel.searchText.isEmpty)
-                            TextField($viewModel.searchText.wrappedValue == "title" ? "Search by Name.." : "Search by Name", text: $viewModel.searchText)
+                            TextField($viewModel.searchText.wrappedValue == "title" ? "Search by Name.." : "Search by Name".localized(languageService.language), text: $viewModel.searchText)
 
                                 .foregroundColor(.main_color.opacity(0.8))
                             if(!viewModel.searchText.isEmpty){
@@ -37,7 +38,7 @@ struct ArtistSuggestionView : View {
                                     print("clear pressed")
                                     viewModel.searchText = ""
                                 }) {
-                                    Text("Clear")
+                                    Text("Clear".localized(languageService.language))
                                         .foregroundColor(.main_color.opacity(0.5))
                                 }
                             }
@@ -56,7 +57,7 @@ struct ArtistSuggestionView : View {
                 .padding()
                 if(!viewModel.searchedUsers.isEmpty){
                     VStack(alignment: .leading){
-                        Text("Search Results")
+                        Text("Search Results".localized(languageService.language))
                             .font(.title)
                             .foregroundColor(.white)
                         ScrollView(.vertical){
@@ -76,7 +77,7 @@ struct ArtistSuggestionView : View {
                     .padding()
                 }else{
                     Spacer()
-                    Text("No matching user found")
+                    Text("No matching user found".localized(languageService.language))
                         .font(.title3)
                         .foregroundColor(.white)
                         .padding(.all, 20)

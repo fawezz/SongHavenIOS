@@ -11,6 +11,7 @@ import NavigationStack
 struct ArtistEvents: View {
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     @StateObject var viewModel = ArtistEventsViewModel()
+    @StateObject private var languageService = LocalizationService.shared
     private let  adaptiveColums = [ GridItem( .adaptive(minimum: 170))]
         var body: some View {
             NavigationStackView{
@@ -18,7 +19,7 @@ struct ArtistEvents: View {
                     LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                     VStack{
                         VStack{
-                            Text("Your Events")
+                            Text("Your Events".localized(languageService.language))
                                 .font(.largeTitle)
                                 .foregroundColor(.white)
                                 .bold()
@@ -31,7 +32,7 @@ struct ArtistEvents: View {
                                 Button(action:{
                                     self.navigationStack.push(CreateEvent())})
                                 {
-                                    Text("New Event")
+                                    Text("New Event".localized(languageService.language))
                                         .foregroundColor(.white)
                                         .frame(width: 100, height: 30)
                                         .padding(8).background(Color.purple)
@@ -59,7 +60,7 @@ struct ArtistEvents: View {
                                 }
                             }else{
                                 HStack{
-                                    Text("You don't have any event yet")
+                                    Text("You don't have any event yet".localized(languageService.language))
                                         .foregroundColor(.white)
                                         .font(.title3)
                                         .padding(.all, 50)

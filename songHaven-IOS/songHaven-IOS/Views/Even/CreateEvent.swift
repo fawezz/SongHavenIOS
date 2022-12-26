@@ -11,6 +11,7 @@ import NavigationStack
 
 struct CreateEvent: View {
     @StateObject var viewModel  = CreateEventViewModel()
+    @StateObject private var languageService = LocalizationService.shared
     @EnvironmentObject private var navigationStack: NavigationStackCompat
    
     var body: some View {
@@ -25,20 +26,20 @@ struct CreateEvent: View {
                         .frame(width: 150, height: 150)
                         .cornerRadius(40)
                     
-                    Text(" New Event ")
+                    Text("New Event".localized(languageService.language))
                         .bold()
                         .foregroundColor(.purple)
                         .font(.system(size: 34,weight: .light,design:.serif))
                     
                     
                     
-                    TextField("Choose title for your Event",text:$viewModel.title)
+                    TextField("Choose title for your Event".localized(languageService.language),text:$viewModel.title)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
                     
-                    TextField("Write something about your Event....",text:$viewModel.description)
+                    TextField("Write something about your Event....".localized(languageService.language),text:$viewModel.description)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
@@ -46,11 +47,13 @@ struct CreateEvent: View {
                     Group {
                         
                         
-                        DatePicker("Date Event",
+                        DatePicker("Date Event".localized(languageService.language),
                                    selection: $viewModel.dateEvent)
-                        
+                        .foregroundColor(.white)
                         .accentColor(.purple)
                         .background(Color.purple)
+                        .cornerRadius(15)
+                        .datePickerStyle(.automatic)
                         
                     }
                   
@@ -60,13 +63,12 @@ struct CreateEvent: View {
                     Button(action:{
                         self.navigationStack.push(MapEventView())})
                     {
-                        Text("Choose Location")
+                        Text("Choose Location".localized(languageService.language))
+                            .font(.headline)
                             .foregroundColor(.white)
-                            .frame(width: 250, height: 30)
-                            .padding(8).background(Color.purple)
-                            .cornerRadius(20)
-                            .frame(width: 36,height: 36 )
-                            .shadow(color: Color.black,radius: 8, x: 0, y: 5)
+                            .frame(width: 300, height: 50)
+                            .background(.purple)
+                            .cornerRadius(15.0)
                     }
                   
 
@@ -76,16 +78,13 @@ struct CreateEvent: View {
                         viewModel.AddEvent()
                     })
                     {
-                        Text("Validate")
+                        Text("Validate".localized(languageService.language))
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(width: 300, height: 50)
                             .background(!viewModel.validateFields() ? .green : .gray)
                             .cornerRadius(15.0)
                     }.disabled(viewModel.validateFields())
-                    
-                    
-                    
                 }.padding(.all)
                 if(viewModel.isLoading){
                     ZStack{
@@ -120,6 +119,10 @@ struct CreateEvent: View {
     }
 }
 
-
-
+struct CreateEvent_Previews: PreviewProvider {
+    static var previews: some View {
+        CreateEvent()
+    }
+    
+}
 

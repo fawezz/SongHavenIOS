@@ -12,6 +12,7 @@ import NavigationStack
 struct AddBandView: View {
     @StateObject var viewModel  = AddBandViewModel()
     @EnvironmentObject private var navigationStack: NavigationStackCompat
+    @StateObject private var languageService = LocalizationService.shared
     
     var body: some View {
         NavigationStack{
@@ -20,7 +21,7 @@ struct AddBandView: View {
                 
                 VStack(spacing:20) {
                     
-                    Text(" Do you want to create Your Band? ")
+                    Text(" Do you want to create Your Band? ".localized(languageService.language))
                         .foregroundColor(.white)
                         .font(.title2)
                     ZStack(alignment: .bottomTrailing){
@@ -42,13 +43,13 @@ struct AddBandView: View {
                         
                     }
                     
-                    TextField("Choose name for your Band",text:$viewModel.name)
+                    TextField("Choose name for your Band".localized(languageService.language),text:$viewModel.name)
                         .foregroundColor(.black)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
-                    TextField("Band description..",text:$viewModel.discription)
+                    TextField("Band description..".localized(languageService.language),text:$viewModel.discription)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
@@ -61,7 +62,7 @@ struct AddBandView: View {
                         viewModel.addBand()
                     })
                     {
-                        Text("Validate")
+                        Text("Validate".localized(languageService.language))
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(width: 300, height: 50)

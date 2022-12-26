@@ -25,7 +25,7 @@ struct EventCard: View {
                     .cornerRadius(20)
                     .shadow(color: .purple, radius: 5, x: 0, y: 0)
 
-//                Text(event.title!)
+//                Text(event.!)
 //                    .bold()
 //                    .foregroundColor(.purple)
 //                    .font(.subheadline)

@@ -12,6 +12,7 @@ struct BandDetailView: View {
     
     @StateObject var viewModel : BandDetailViewModel
     // @Published var showDeleteAlert : Bool = false
+    @StateObject private var languageService = LocalizationService.shared
     
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     var body: some View {
@@ -27,12 +28,12 @@ struct BandDetailView: View {
                                 navigationStack.push( EditBandView())
                                 
                             }) {
-                                Label("Edit Band", systemImage: "pencil")
+                                Label("Edit Band".localized(languageService.language), systemImage: "pencil")
                             }
                             Button(action: {
                                 // viewModel.criteria = "genre"
                             }) {
-                                Label("Members", systemImage: "person.2.fill")
+                                Label("Members".localized(languageService.language), systemImage: "person.2.fill")
                             }
                             
                             Button(action: {
@@ -41,7 +42,7 @@ struct BandDetailView: View {
                                 viewModel.navigator = "artistSuggestion"
                                 
                             }) {
-                                Label("Add Artist", systemImage: "person.fill.badge.plus")
+                                Label("Add Artist".localized(languageService.language), systemImage: "person.fill.badge.plus")
                             }
                             
                             Button(
@@ -50,7 +51,7 @@ struct BandDetailView: View {
                                     viewModel.showAlert = true
                                     
                                 }, label:{
-                                    Label("Remove Band", systemImage: "trash")
+                                    Label("Remove Band".localized(languageService.language), systemImage: "trash")
                                         .frame(width: 20, height: 20)
                                         .padding(8).background(Color.red.opacity(0.7))
                                         .cornerRadius(20)
@@ -66,17 +67,17 @@ struct BandDetailView: View {
                                     .frame(height: 35)
                             }
                         }
-                        .alert("Are You sure You want to delete this band ?", isPresented: $viewModel.showAlert) {
-                            Button("Delete", role: .destructive) {
+                        .alert("Are You sure You want to delete this band ?".localized(languageService.language), isPresented: $viewModel.showAlert) {
+                            Button("Delete".localized(languageService.language), role: .destructive) {
                                 
                                 viewModel.deleteBand(action: {navigationStack.pop()}())
                             }
-                            Button("cancel", role: .cancel) { }
+                            Button("cancel".localized(languageService.language), role: .cancel) { }
                         }
                         .padding(.top)
                     }.padding()
                     HStack(){
-                        Text("About The Band")
+                        Text("About The Band".localized(languageService.language))
                             .bold()
                             .foregroundColor(.main_color_hard)
                             .font(.system(size: 34,weight: .light,design: .serif))
@@ -117,14 +118,14 @@ struct BandDetailView: View {
                         
                     }.padding()
                     
-                    Text( "Membres")
+                    Text( "Membres".localized(languageService.language))
                         .bold()
                         .foregroundColor(.white)
                         .multilineTextAlignment(.leading)
                     ScrollView{
                         if(viewModel.BandMember.isEmpty){
                             Spacer()
-                            Text("You don't have any members yet")
+                            Text("You don't have any members yet".localized(languageService.language))
                                 .font(.title3)
                                 .foregroundColor(.main_color)
                             Spacer()
@@ -144,15 +145,15 @@ struct BandDetailView: View {
                                                 viewModel.showAlert = true
                                                 print("remove member")
                                             } label: {
-                                                Label("remove", systemImage: "trash.fill")
+                                                Label("remove".localized(languageService.language), systemImage: "trash.fill")
                                             }
                                             .tint(.red.opacity(0.8))
                                         }
-                                        .alert("Are You sure You want to delete this member?", isPresented: $viewModel.showAlert) {
-                                            Button("Delete", role: .destructive) {
+                                        .alert("Are You sure You want to delete this member?".localized(languageService.language), isPresented: $viewModel.showAlert) {
+                                            Button("Delete".localized(languageService.language), role: .destructive) {
                                                 //viewModel.removeSong(swipedSong: song)
                                             }
-                                            Button("cancel", role: .cancel) { }
+                                            Button("cancel".localized(languageService.language), role: .cancel) { }
                                         }
                                 }
                             }

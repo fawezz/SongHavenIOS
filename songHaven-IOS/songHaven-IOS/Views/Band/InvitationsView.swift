@@ -11,6 +11,7 @@ import NavigationStack
 struct InvitationsView: View {
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     @StateObject var viewModel = InvitationViewModel()
+    @StateObject private var languageService = LocalizationService.shared
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom)
@@ -21,7 +22,7 @@ struct InvitationsView: View {
                     Spacer()
                 }
                 .padding()
-                Text("Ivitations")
+                Text("Ivitations".localized(languageService.language))
                     .bold()
                     .foregroundColor(.purple)
                     .font(.system(size: 34,weight: .light,design:.serif))
@@ -42,7 +43,7 @@ struct InvitationsView: View {
                         }
                     }else{
                         HStack{
-                            Text("You don't have any Invitations yet")
+                            Text("You don't have any Invitations yet".localized(languageService.language))
                                 .foregroundColor(.white.opacity(0.8))
                                 .font(.title3)
                                 .padding(.all, 50)

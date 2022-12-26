@@ -127,16 +127,24 @@ struct LoginView: View {
                                 .background(Color.green)
                                 .cornerRadius(15.0)
                         }
-                        Button(action: {
-                            viewModel.GoogleAuth()
-                        }) {
-                            Text("Google".localized(languageService.language))
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .frame(width: 300, height: 50)
-                                .background(Color.orange)
-                                .cornerRadius(15.0)
+                        HStack(spacing: -40){
+                            Image("google")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .cornerRadius(40)
+                                .padding(.vertical, 10)
+                            Button(action: {
+                                viewModel.GoogleAuth()
+                            }) {
+                                Text("Continue with Google".localized(languageService.language))
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame(width: 300, height: 50)
+                                    .background(Color.clear)
+                                    .cornerRadius(15.0)
+                            }
                         }
+               
                     }
                 }
                 //LOADER
