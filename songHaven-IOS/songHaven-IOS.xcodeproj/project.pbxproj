@@ -29,7 +29,7 @@
 		9479B01A2948F3720058096A /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B0192948F3720058096A /* Invitation.swift */; };
 		9479B01C2948F39A0058096A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B01B2948F39A0058096A /* Status.swift */; };
 		9479B01F2948F64A0058096A /* InvitationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9479B01E2948F64A0058096A /* InvitationService.swift */; };
-		94A5961B295318210096707E /* MapEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5961A295318210096707E /* MapEventView.swift */; };
+		94A5961B295318210096707E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5961A295318210096707E /* MapView.swift */; };
 		94A5961F2953308A0096707E /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5961E2953308A0096707E /* EventService.swift */; };
 		94AFFC02292E197800824EF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC01292E197800824EF6 /* Constants.swift */; };
 		94AFFC0A292E223400824EF6 /* MusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFFC09292E223400824EF6 /* MusicPlayerView.swift */; };
@@ -45,6 +45,7 @@
 		94C291D22951D870006F18F9 /* ArtistEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C291D12951D870006F18F9 /* ArtistEvents.swift */; };
 		94C291D82951F456006F18F9 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C291D72951F456006F18F9 /* EventCard.swift */; };
 		94C291DA2951F4E6006F18F9 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C291D92951F4E6006F18F9 /* Event.swift */; };
+		94C58B0A295B322300C2D854 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C58B09295B322300C2D854 /* MapViewModel.swift */; };
 		9BE5D2B0293080290046041A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D2AF293080290046041A /* HomeView.swift */; };
 		9BE5D2B32931ED670046041A /* NavigationStack in Frameworks */ = {isa = PBXBuildFile; productRef = 9BE5D2B22931ED670046041A /* NavigationStack */; };
 		9BE5D2B62931F1FB0046041A /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5D2B52931F1FB0046041A /* BackButton.swift */; };
@@ -160,7 +161,7 @@
 		9479B0192948F3720058096A /* Invitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
 		9479B01B2948F39A0058096A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		9479B01E2948F64A0058096A /* InvitationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationService.swift; sourceTree = "<group>"; };
-		94A5961A295318210096707E /* MapEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEventView.swift; sourceTree = "<group>"; };
+		94A5961A295318210096707E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		94A5961E2953308A0096707E /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		94AFFC01292E197800824EF6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		94AFFC09292E223400824EF6 /* MusicPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerView.swift; sourceTree = "<group>"; };
@@ -176,6 +177,7 @@
 		94C291D12951D870006F18F9 /* ArtistEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistEvents.swift; sourceTree = "<group>"; };
 		94C291D72951F456006F18F9 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		94C291D92951F4E6006F18F9 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		94C58B09295B322300C2D854 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		9BE5D2AF293080290046041A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9BE5D2B52931F1FB0046041A /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		9BE5D2B7293220790046041A /* MusicHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHomeView.swift; sourceTree = "<group>"; };
@@ -373,7 +375,7 @@
 				94C291BC2951CF8C006F18F9 /* EditEventViewModel.swift */,
 				94C291BE2951CFF8006F18F9 /* ArtistEventsViewModel.swift */,
 				94C291C02951D019006F18F9 /* DetailsEventViewModel.swift */,
-				9458DDE629549B1200276182 /* Location.swift */,
+				94C58B09295B322300C2D854 /* MapViewModel.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -385,7 +387,7 @@
 				94C291CD2951D7FD006F18F9 /* EditEvent.swift */,
 				94C291CF2951D81D006F18F9 /* DetailsEvent.swift */,
 				94C291D12951D870006F18F9 /* ArtistEvents.swift */,
-				94A5961A295318210096707E /* MapEventView.swift */,
+				94A5961A295318210096707E /* MapView.swift */,
 			);
 			path = Even;
 			sourceTree = "<group>";
@@ -411,6 +413,7 @@
 		B025A958291EE26E007FF6FF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9458DDE629549B1200276182 /* Location.swift */,
 				94C291D92951F4E6006F18F9 /* Event.swift */,
 				9479B0192948F3720058096A /* Invitation.swift */,
 				B0587AC62943675800A91193 /* Band.swift */,
@@ -721,8 +724,9 @@
 				B0E7A45E29478BD50094E7A0 /* SocketChatManager.swift in Sources */,
 				B024ADC52923E7CB00C9E601 /* SendOtpViewModel.swift in Sources */,
 				B0587AD9294368E400A91193 /* UserBandsView.swift in Sources */,
-				94A5961B295318210096707E /* MapEventView.swift in Sources */,
+				94A5961B295318210096707E /* MapView.swift in Sources */,
 				B06AF25D293F657900C8EE20 /* MusicSearchView.swift in Sources */,
+				94C58B0A295B322300C2D854 /* MapViewModel.swift in Sources */,
 				94C291CC2951D7D3006F18F9 /* CreateEvent.swift in Sources */,
 				9479B01C2948F39A0058096A /* Status.swift in Sources */,
 				94C291DA2951F4E6006F18F9 /* Event.swift in Sources */,

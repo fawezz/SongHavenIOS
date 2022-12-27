@@ -8,6 +8,7 @@ import Alamofire
 import SwiftyJSON
 import Foundation
 import UIKit
+
 class BandService{
     static let UploadImageURL = ""
     static let CreateBandURL = Constants.HOSTNAME + "/band/CreateBand"
@@ -105,78 +106,78 @@ class BandService{
     }
     
     
-    static func uploadImage(name: String, image : UIImage?, completed: @escaping (Bool, String) -> Void){
-        
-        let headers: HTTPHeaders = [
-            "Content-type": "multipart/form-data"
-        ]
-        let params = [
-            "name" : name,
-        ]
-        
-        AF.upload(
-            multipartFormData: { multipartFormData in
-                for(key, keyValue) in params{
-                    if let keyData = keyValue.data(using: .utf8){
-                        multipartFormData.append(keyData, withName: key)
-                    }
-                }
-                multipartFormData.append(image!.jpegData(compressionQuality: 0)!, withName: "image" , fileName: "file.jpeg", mimeType: "image/jpeg")
-            },
-            to: BandService.UploadImageURL, method: .post, headers: headers)
-        .response { response in
-            switch response.result {
-            case .success:
-                let jsonData = JSON(response.data!)
-                let imageId = jsonData["imageId"].stringValue
-                let message = jsonData["message"].stringValue
-                
-                UserDefaults.standard.setValue(
-                    imageId,forKey: "imageId"
-                )
-                print("success")
-                completed(true, message)
-                
-            case let .failure(error):
-                debugPrint(error)
-                let jsonData = JSON(response.data ?? "data")
-                let message = jsonData["message"].stringValue
-                print(message)
-                completed(false, message)
-            }
-            
-        }
-    }
-    
-//    static func GetAllBands( completed:@escaping (Bool, [ Band]?) ->Void){
-//        AF.request(getAllURL,method: .get)
-//            .validate(statusCode : 200..<300)
-//            .validate(contentType: ["application/json"])
-//            .responseData { response in
-//                switch response.result {
-//                case .success:
-//                    let jsonData = JSON(response.data!)
-//                    var bands : [ Band]? = []
-//                    for singleJsonItem in jsonData [ "bands "]{
-//                            bands!.append( Band.fromJson(jsonData: singleJsonItem.1))}
-//                        print("success get All Bands")
-//                        completed ( true, bands)
+//    static func uploadImage(name: String, image : UIImage?, completed: @escaping (Bool, String) -> Void){
 //
-//                case let .failure(error):
-//                    if(response.response?.statusCode == 409){
-//                        let jsonData = JSON(response.data!)
-//                        let message = jsonData["message"].stringValue
-//                        print( message)
-//                        completed(false, [ ])
-//                    }else{
-//                        print("Error" + error.errorDescription!)
+//        let headers: HTTPHeaders = [
+//            "Content-type": "multipart/form-data"
+//        ]
+//        let params = [
+//            "name" : name,
+//        ]
+//
+//        AF.upload(
+//            multipartFormData: { multipartFormData in
+//                for(key, keyValue) in params{
+//                    if let keyData = keyValue.data(using: .utf8){
+//                        multipartFormData.append(keyData, withName: key)
 //                    }
-//
-//
 //                }
+//                multipartFormData.append(image!.jpegData(compressionQuality: 0)!, withName: "image" , fileName: "file.jpeg", mimeType: "image/jpeg")
+//            },
+//            to: BandService.UploadImageURL, method: .post, headers: headers)
+//        .response { response in
+//            switch response.result {
+//            case .success:
+//                let jsonData = JSON(response.data!)
+//                let imageId = jsonData["imageId"].stringValue
+//                let message = jsonData["message"].stringValue
+//
+//                UserDefaults.standard.setValue(
+//                    imageId,forKey: "imageId"
+//                )
+//                print("success")
+//                completed(true, message)
+//
+//            case let .failure(error):
+//                debugPrint(error)
+//                let jsonData = JSON(response.data ?? "data")
+//                let message = jsonData["message"].stringValue
+//                print(message)
+//                completed(false, message)
 //            }
 //
+//        }
 //    }
+//
+    static func GetAllBands( completed:@escaping (Bool, [ Band]?) ->Void){
+        AF.request(getAllURL,method: .get)
+            .validate(statusCode : 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    let jsonData = JSON(response.data!)
+                    var bands : [ Band]? = []
+                    for singleJsonItem in jsonData [ "bands "]{
+                            bands!.append( Band.fromJson(jsonData: singleJsonItem.1))}
+                        print("success get All Bands")
+                        completed ( true, bands)
+
+                case let .failure(error):
+                    if(response.response?.statusCode == 409){
+                        let jsonData = JSON(response.data!)
+                        let message = jsonData["message"].stringValue
+                        print( message)
+                        completed(false, [ ])
+                    }else{
+                        print("Error" + error.errorDescription!)
+                    }
+
+
+                }
+            }
+
+    }
     
     
    

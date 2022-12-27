@@ -26,9 +26,8 @@ class EventService {
                     multipartFormData.append(event.title!.data(using: String.Encoding.utf8)!, withName: "title")
                     multipartFormData.append(event.description!.data(using: String.Encoding.utf8)!, withName: "description")
                     
-//                    multipartFormData.append(event.dateEvent!.data(using:
-                    //String.Encoding.utf8)!, withName: "dateEvent")
-//                    
+//                    multipartFormData.append(event.dateEvent!.data(using:String.Encoding.utf8)!, withName: "dateEvent")
+                    
                     
                     multipartFormData.append(event.longitud!.data(using: String.Encoding.utf8)!, withName: "longitud")
                     multipartFormData.append(event.latitud!.data(using: String.Encoding.utf8)!, withName: "latitud")
@@ -48,6 +47,7 @@ class EventService {
           
             }
     }
+    
     
     static func DeleteEvent(eventId: String, completed: @escaping (Bool, String?) -> Void){
         AF.request(RemoveEventURL + eventId,  method: .delete )

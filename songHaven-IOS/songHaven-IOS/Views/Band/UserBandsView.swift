@@ -74,6 +74,8 @@ struct UserBandsView: View {
                                             .padding(.horizontal, 3)
                                             .onTapGesture {
                                                 self.navigationStack.push(BandDetailView(viewModel: BandDetailViewModel(selectedBand: band.wrappedValue)))
+                                                
+                                              
                                             }
                                     }
                                 }
@@ -84,6 +86,8 @@ struct UserBandsView: View {
                                     .foregroundColor(.white)
                                     .font(.title3)
                                     .padding(.all, 50)
+                                
+                                
                             }
                         }
                         Spacer()

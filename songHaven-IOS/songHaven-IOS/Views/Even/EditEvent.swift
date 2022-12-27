@@ -13,10 +13,20 @@ struct EditEvent: View {
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     var body: some View {
         NavigationStack{
+            
             ZStack{
+                
                 LinearGradient(gradient: .init(colors: [.purple, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 
                 VStack(spacing:20) {
+                    
+                  
+                    Image("edit")
+                        .resizable()
+                        .frame(width: 150, height: 150)
+                        .cornerRadius(40)
+                    
+                    
                     Text(" Do you want to Edit Your Event? ".localized(languageService.language))
                         .foregroundColor(.white)
                         .font(.title2)
@@ -32,6 +42,7 @@ struct EditEvent: View {
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
+                    
                     PushView(destination:ArtistEvents(), tag: "enditBand", selection: $viewModel.navigator) {}
                     
                     Button(action:{
@@ -44,16 +55,18 @@ struct EditEvent: View {
                             .frame(width: 300, height: 50)
                             .background(.green )
                             .cornerRadius(15.0)
+                        
+                        
                     }.padding(.all)
                 } .navigationBarItems(leading: BackButton(action: {navigationStack.push(ArtistEvents())}))
-                
+             
                 
                 if (viewModel.isLoading){
                     ZStack{
                         Color(.white)
                         ProgressView()
                     }
-                } 
+                }
             }
         }
     }

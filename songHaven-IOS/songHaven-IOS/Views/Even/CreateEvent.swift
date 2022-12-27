@@ -13,7 +13,7 @@ struct CreateEvent: View {
     @StateObject var viewModel  = CreateEventViewModel()
     @StateObject private var languageService = LocalizationService.shared
     @EnvironmentObject private var navigationStack: NavigationStackCompat
-   
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -31,8 +31,6 @@ struct CreateEvent: View {
                         .foregroundColor(.purple)
                         .font(.system(size: 34,weight: .light,design:.serif))
                     
-                    
-                    
                     TextField("Choose title for your Event".localized(languageService.language),text:$viewModel.title)
                         .padding()
                         .background(Color.white)
@@ -44,6 +42,30 @@ struct CreateEvent: View {
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
+                    HStack{
+                        
+                        TextField("Choose your location....".localized(languageService.language),text:$viewModel.longitud)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(50)
+                            .autocorrectionDisabled(true)
+                        
+                        PushView(destination: MapView(), tag: "mapView", selection: $viewModel.navigator){}
+                        Button (
+                            action: {
+                                self.navigationStack.push(MapView())
+                    
+                            },
+                            label: {
+                                Label("", systemImage: "location.fill")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame(width: 50, height: 50)
+                                    .background(.purple)
+                                    .cornerRadius(50)
+                            })
+                        
+                    }
                     Group {
                         
                         
@@ -58,18 +80,7 @@ struct CreateEvent: View {
                     }
                   
                     
-                    PushView(destination: MapEventView(), tag: "mapView", selection: $viewModel.navigator){}
-                    
-                    Button(action:{
-                        self.navigationStack.push(MapEventView())})
-                    {
-                        Text("Choose Location".localized(languageService.language))
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(width: 300, height: 50)
-                            .background(.purple)
-                            .cornerRadius(15.0)
-                    }
+               
                   
 
                     PushView(destination: ArtistEvents(), tag: "addEvent", selection: $viewModel.navigator) {}

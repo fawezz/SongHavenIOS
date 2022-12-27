@@ -10,12 +10,11 @@ struct Band : Decodable{
     internal init(_id: String? = nil, name: String? = nil, discription: String? = nil, image: String? = nil,users: [User]? = nil, creator : User? = nil) {
         self._id = _id
         self.name = name
-    
         self.discription  = discription
         self.image = image
         self.users = users
         self.creator = creator
-        
+
     }
     
     var _id : String?

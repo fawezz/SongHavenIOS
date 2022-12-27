@@ -36,13 +36,16 @@ struct Event :Decodable{
     
     static func fromJson(jsonData: JSON) -> Event {
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        let dateEvent = dateFormatter.date(from: jsonData["createdAt"].stringValue)
+        
             return Event(
-                
                 _id: jsonData["_id"].stringValue,
                 title: jsonData["title"].stringValue,
                 description: jsonData["description"].stringValue,
-                dateEvent: jsonData["dateEvent"].rawValue as? Date,
-                eventCreator : Band.fromJson(jsonData: jsonData["eventCreator"]),
+                dateEvent: dateEvent,
+                eventCreator: Band.fromJson(jsonData:jsonData["eventCreator"]),
           
                 latitud: jsonData["latitud"].stringValue,
                 longitud: jsonData["longitud"].stringValue

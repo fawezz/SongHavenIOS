@@ -24,17 +24,19 @@ struct EventCard: View {
                     .background(Color(.black))
                     .cornerRadius(20)
                     .shadow(color: .purple, radius: 5, x: 0, y: 0)
-
-//                Text(event.!)
-//                    .bold()
-//                    .foregroundColor(.purple)
-//                    .font(.subheadline)
-//                    .fixedSize(horizontal: true, vertical: false)
-//                    .frame(width: 20, height: 20)
-//                    .padding(20)
-//                    .background(Color(.black))
-//                    .cornerRadius(20)
-//                    .shadow(color: .purple, radius: 5, x: 0, y: 0)
+                
+                
+                
+                Text("\(event.dateEvent!.formatted(.dateTime.hour().minute()))")
+                    .bold()
+                    .foregroundColor(.purple)
+                    .font(.subheadline)
+                    .fixedSize(horizontal: true, vertical: false)
+                    .frame(width: 20, height: 20)
+                    .padding(20)
+                    .background(Color(.black))
+                    .cornerRadius(20)
+                    .shadow(color: .purple, radius: 5, x: 0, y: 0)
             }
             
         
