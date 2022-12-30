@@ -16,36 +16,34 @@ class EventService {
     static let EditEventURL = Constants.HOSTNAME + "/event/modify/"
     static let RemoveEventURL = Constants.HOSTNAME + "/event/deleteEvent/"
     static let getBandEventURL = Constants.HOSTNAME + "/event/getAll/"
-
+    
     static func AddEvent(event : Event , completed:@escaping(Bool,Int)->Void){
-            let token = UserDefaults.standard.string(forKey: "token")
+        let token = UserDefaults.standard.string(forKey: "token")
         let headers : HTTPHeaders = [.authorization(bearerToken: token ?? "cyrine"),.contentType("multipart/form-data")]
-            AF.upload(
-                multipartFormData: { multipartFormData in
-                    multipartFormData.append((UserSession.shared.currentUser?._id!.data(using: String.Encoding.utf8)!)!, withName: "creatorId")
-                    multipartFormData.append(event.title!.data(using: String.Encoding.utf8)!, withName: "title")
-                    multipartFormData.append(event.description!.data(using: String.Encoding.utf8)!, withName: "description")
-                    
-//                    multipartFormData.append(event.dateEvent!.data(using:String.Encoding.utf8)!, withName: "dateEvent")
-                    
-                    
-                    multipartFormData.append(event.longitud!.data(using: String.Encoding.utf8)!, withName: "longitud")
-                    multipartFormData.append(event.latitud!.data(using: String.Encoding.utf8)!, withName: "latitud")
-               
-                },to: AddEventURL,method: .post, headers: headers)
-            .validate(statusCode: 200..<300)
-            .responseData { response in
-                switch(response.result){
-                    
-                case .success(let data):
-                    print(data)
-                    completed(true,200)
-                case .failure(let error):
-                    print(error)
-                    completed(false,error.responseCode!)
-                }
-          
+        AF.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append((UserSession.shared.currentUser?._id!.data(using: String.Encoding.utf8)!)!, withName: "creatorId")
+                multipartFormData.append(event.title!.data(using: String.Encoding.utf8)!, withName: "title")
+                multipartFormData.append(event.description!.data(using: String.Encoding.utf8)!, withName: "description")
+                
+                // multipartFormData.append(event.dateEvent!.data(using:String.Encoding.utf8)!, withName: "dateEvent")
+                multipartFormData.append(event.longitud!.data(using: String.Encoding.utf8)!, withName: "longitud")
+                multipartFormData.append(event.latitud!.data(using: String.Encoding.utf8)!, withName: "latitud")
+                
+            },to: AddEventURL,method: .post, headers: headers)
+        .validate(statusCode: 200..<300)
+        .responseData { response in
+            switch(response.result){
+                
+            case .success(let data):
+                print(data)
+                completed(true,200)
+            case .failure(let error):
+                print(error)
+                completed(false,error.responseCode!)
             }
+            
+        }
     }
     
     
@@ -68,7 +66,7 @@ class EventService {
     
     
     static func EditEvent(id: String,title: String, description: String,longitud: String,  latitud:String ,completed:
-        @escaping (Bool, Any?) ->Void){
+                          @escaping (Bool, Any?) ->Void){
         
         let headers :HTTPHeaders = [
             .contentType("application/json"),

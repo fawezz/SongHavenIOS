@@ -12,8 +12,6 @@ struct EventCard: View {
     var body: some View {
         HStack(spacing: 20){
             HStack(alignment: .center, spacing: 0){
-              
-                
                 Text(event.title!)
                     .bold()
                     .foregroundColor(.purple)
@@ -24,7 +22,6 @@ struct EventCard: View {
                     .background(Color(.black))
                     .cornerRadius(20)
                     .shadow(color: .purple, radius: 5, x: 0, y: 0)
-                
                 
                 
                 Text("\(event.dateEvent!.formatted(.dateTime.hour().minute()))")
@@ -38,12 +35,10 @@ struct EventCard: View {
                     .cornerRadius(20)
                     .shadow(color: .purple, radius: 5, x: 0, y: 0)
             }
-            
-        
         }
         
     }
-    }
+}
 
 
 

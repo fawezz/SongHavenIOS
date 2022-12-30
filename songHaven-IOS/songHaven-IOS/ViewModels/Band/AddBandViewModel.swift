@@ -38,7 +38,7 @@ import _PhotosUI_SwiftUI
                 print("success")
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
-                    self.navigator = "addBand"
+                    self.navigator = "userBands"
                     print("Band created successfully")
                     self.showSuccessToast = false
                 }

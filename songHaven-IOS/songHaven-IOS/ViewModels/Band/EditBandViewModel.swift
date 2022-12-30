@@ -10,10 +10,10 @@ import Foundation
     @Published var name = ""
     @Published var discription = ""
     @Published var image = ""
-
+    
     @Published var selectedImageData: Data? = nil
-   // @Published var bandImageUrl: URL = (URL(string: BandService.BandImageUrl + UserDefaults.standard.string(forKey: "image")!) ?? "image")
-        
+    // @Published var bandImageUrl: URL = (URL(string: BandService.BandImageUrl + UserDefaults.standard.string(forKey: "image")!) ?? "image")
+    
     @Published var navigator: String? = nil
     @Published var isLoading: Bool = false
     @Published var isUploading: Bool = false
@@ -42,10 +42,10 @@ import Foundation
                 )
                 self.toastMessage = "Success"
                 self.showSuccessToast = true
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
-//                    action//self.navigator = "Profile"
-//                    self.showSuccessToast = false
-//                }
+                //                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
+                //                    action//self.navigator = "Profile"
+                //                    self.showSuccessToast = false
+                //                }
             }
             else {
                 self.toastMessage = reponse as! String

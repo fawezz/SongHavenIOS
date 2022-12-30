@@ -56,7 +56,7 @@ struct AddBandView: View {
                         .autocorrectionDisabled(true)
                         .foregroundColor(.black)
                     
-                    PushView(destination: UserBandsView(), tag: "addBand", selection: $viewModel.navigator) {}
+                    PushView(destination: UserBandsView(), tag: "userBands", selection: $viewModel.navigator) {}
                     
                     Button(action:{
                         viewModel.addBand()

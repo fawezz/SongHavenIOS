@@ -380,7 +380,7 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
-		94C291CA2951D78A006F18F9 /* Even */ = {
+		94C291CA2951D78A006F18F9 /* Event */ = {
 			isa = PBXGroup;
 			children = (
 				94C291CB2951D7D3006F18F9 /* CreateEvent.swift */,
@@ -389,7 +389,7 @@
 				94C291D12951D870006F18F9 /* ArtistEvents.swift */,
 				94A5961A295318210096707E /* MapView.swift */,
 			);
-			path = Even;
+			path = Event;
 			sourceTree = "<group>";
 		};
 		9BE5D2B42931F1DD0046041A /* Components */ = {
@@ -525,7 +525,7 @@
 		B0B9962E291D985300F75997 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				94C291CA2951D78A006F18F9 /* Even */,
+				94C291CA2951D78A006F18F9 /* Event */,
 				B0876E502943D4B900A8BFA5 /* User */,
 				B0876E3D294393A600A8BFA5 /* Chat */,
 				B0587AD2294368D600A91193 /* Band */,
@@ -986,8 +986,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "songHaven-IOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Authentication with FaceID";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1019,8 +1021,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "songHaven-IOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Authentication with FaceID";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

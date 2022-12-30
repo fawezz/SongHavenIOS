@@ -54,8 +54,7 @@ struct CreateEvent: View {
                         Button (
                             action: {
                                 self.navigationStack.push(MapView())
-                    
-                            },
+                                },
                             label: {
                                 Label("", systemImage: "location.fill")
                                     .font(.headline)
