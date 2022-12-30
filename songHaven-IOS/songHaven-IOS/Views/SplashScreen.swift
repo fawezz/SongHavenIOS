@@ -25,10 +25,11 @@ struct SplashScreen: View {
                 withAnimation{self.isActive = true}
                 if(userSession.isSignedIn){
                     userSession.isAlreadySignedIn()
-                    //authenticateWithFaceId()
-                    //let socketManager = SocketChatManager.shared
-                    //socketManager.setupSocketEvents()
-                    navigationStack.push(HomeView()) //// remove this line if faceId is active
+                    authenticateWithFaceId()
+                    let socketManager = SocketChatManager.shared
+                    socketManager.setupSocketEvents()
+                    //navigationStack.push(HomeView()) //// remove this line if faceId is active
+                    NotificationService.registerForPushNotifications()
                 }else{
                     navigationStack.push(LoginView())
                 }

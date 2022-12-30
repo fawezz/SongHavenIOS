@@ -110,6 +110,10 @@
 		B0AAC0EC29354ADE00C3EFE4 /* PlaylistDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AAC0EB29354ADE00C3EFE4 /* PlaylistDetailsView.swift */; };
 		B0AAC0EE29354BB600C3EFE4 /* PlaylistDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AAC0ED29354BB600C3EFE4 /* PlaylistDetailsViewModel.swift */; };
 		B0AAC0F02935506300C3EFE4 /* PlayListDetailsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AAC0EF2935506300C3EFE4 /* PlayListDetailsRow.swift */; };
+		B0AD6680295F56EE002714C4 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = B0AD667F295F56EE002714C4 /* FacebookCore */; };
+		B0AD6682295F56EE002714C4 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = B0AD6681295F56EE002714C4 /* FacebookLogin */; };
+		B0AD6686295F6A20002714C4 /* FBLoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD6685295F6A20002714C4 /* FBLoginButtonView.swift */; };
+		B0AD6688295F70AA002714C4 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD6687295F70AA002714C4 /* NotificationService.swift */; };
 		B0C1CDFC293666BD00BFC534 /* CreateSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C1CDFB293666BD00BFC534 /* CreateSongView.swift */; };
 		B0C1CE00293668DD00BFC534 /* CreateSongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C1CDFF293668DD00BFC534 /* CreateSongViewModel.swift */; };
 		B0C51152291FFFF600A3A0D0 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C51151291FFFF600A3A0D0 /* UserService.swift */; };
@@ -238,6 +242,8 @@
 		B0AAC0EB29354ADE00C3EFE4 /* PlaylistDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailsView.swift; sourceTree = "<group>"; };
 		B0AAC0ED29354BB600C3EFE4 /* PlaylistDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailsViewModel.swift; sourceTree = "<group>"; };
 		B0AAC0EF2935506300C3EFE4 /* PlayListDetailsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListDetailsRow.swift; sourceTree = "<group>"; };
+		B0AD6685295F6A20002714C4 /* FBLoginButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLoginButtonView.swift; sourceTree = "<group>"; };
+		B0AD6687295F70AA002714C4 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		B0C1CDFB293666BD00BFC534 /* CreateSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSongView.swift; sourceTree = "<group>"; };
 		B0C1CDFF293668DD00BFC534 /* CreateSongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSongViewModel.swift; sourceTree = "<group>"; };
 		B0C51151291FFFF600A3A0D0 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -255,8 +261,10 @@
 				B0E7A45C29478B680094E7A0 /* SocketIO in Frameworks */,
 				B009E7EF291EAD8C0068A57C /* Alamofire in Frameworks */,
 				B0876E4F2943D0C700A8BFA5 /* GoogleSignInSwift in Frameworks */,
+				B0AD6682295F56EE002714C4 /* FacebookLogin in Frameworks */,
 				B066E0452923EFA6002A27D8 /* AlertToast in Frameworks */,
 				B0876E4D2943D0C700A8BFA5 /* GoogleSignIn in Frameworks */,
+				B0AD6680295F56EE002714C4 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +403,7 @@
 		9BE5D2B42931F1DD0046041A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B0AD6685295F6A20002714C4 /* FBLoginButtonView.swift */,
 				B0587ACE294367D200A91193 /* BandCard.swift */,
 				B0587ACC294367B600A91193 /* UserCard.swift */,
 				9BE5D2B52931F1FB0046041A /* BackButton.swift */,
@@ -561,6 +570,7 @@
 				B0388797293BACF000DE78BD /* LikeService.swift */,
 				B06D95EF294BA4F20042781C /* ConversationService.swift */,
 				94A5961E2953308A0096707E /* EventService.swift */,
+				B0AD6687295F70AA002714C4 /* NotificationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -589,6 +599,8 @@
 				B0876E4C2943D0C700A8BFA5 /* GoogleSignIn */,
 				B0876E4E2943D0C700A8BFA5 /* GoogleSignInSwift */,
 				B0E7A45B29478B680094E7A0 /* SocketIO */,
+				B0AD667F295F56EE002714C4 /* FacebookCore */,
+				B0AD6681295F56EE002714C4 /* FacebookLogin */,
 			);
 			productName = "songHaven-IOS";
 			productReference = 081B291B2919209700981671 /* songHaven-IOS.app */;
@@ -670,6 +682,7 @@
 				9BE5D2B12931ED670046041A /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */,
 				B0876E4B2943D0C700A8BFA5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				B0E7A45A29478B680094E7A0 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+				B0AD667E295F56EE002714C4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 081B291C2919209700981671 /* Products */;
 			projectDirPath = "";
@@ -723,8 +736,10 @@
 				B024ADB32923E71700C9E601 /* OtpVerificationView.swift in Sources */,
 				B0E7A45E29478BD50094E7A0 /* SocketChatManager.swift in Sources */,
 				B024ADC52923E7CB00C9E601 /* SendOtpViewModel.swift in Sources */,
+				B0AD6688295F70AA002714C4 /* NotificationService.swift in Sources */,
 				B0587AD9294368E400A91193 /* UserBandsView.swift in Sources */,
 				94A5961B295318210096707E /* MapView.swift in Sources */,
+				B0AD6686295F6A20002714C4 /* FBLoginButtonView.swift in Sources */,
 				B06AF25D293F657900C8EE20 /* MusicSearchView.swift in Sources */,
 				94C58B0A295B322300C2D854 /* MapViewModel.swift in Sources */,
 				94C291CC2951D7D3006F18F9 /* CreateEvent.swift in Sources */,
@@ -1218,6 +1233,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		B0AD667E295F56EE002714C4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		B0E7A45A29478B680094E7A0 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
@@ -1258,6 +1281,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B0876E4B2943D0C700A8BFA5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		B0AD667F295F56EE002714C4 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0AD667E295F56EE002714C4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		B0AD6681295F56EE002714C4 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0AD667E295F56EE002714C4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 		B0E7A45B29478B680094E7A0 /* SocketIO */ = {
 			isa = XCSwiftPackageProductDependency;

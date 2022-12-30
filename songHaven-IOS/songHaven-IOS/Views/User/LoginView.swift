@@ -127,7 +127,7 @@ struct LoginView: View {
                                 .background(Color.green)
                                 .cornerRadius(15.0)
                         }
-                        HStack(spacing: -40){
+                        HStack(){
                             Image("google")
                                 .resizable()
                                 .frame(width: 30, height: 30)
@@ -139,12 +139,12 @@ struct LoginView: View {
                                 Text("Continue with Google".localized(languageService.language))
                                     .font(.headline)
                                     .foregroundColor(.white)
-                                    .frame(width: 300, height: 50)
+                                    .frame(width: 180, height: 50)
                                     .background(Color.clear)
                                     .cornerRadius(15.0)
                             }
                         }
-               
+                        //FBLoginButtonView()
                     }
                 }
                 //LOADER

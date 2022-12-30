@@ -7,7 +7,7 @@
 
 import UIKit
 import AVFAudio
-
+import FacebookCore
 class MyAppDelegate	: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -18,6 +18,23 @@ class MyAppDelegate	: UIResponder, UIApplicationDelegate {
             print("Setting category to AVAudioSessionCategoryPlayback failed: \(error)")
         }
         // Other project setup
+        
+        //facebook setup
+        //ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         return true
     }
+    
+    func application(
+            _ app: UIApplication,
+            open url: URL,
+            options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+        ) -> Bool {
+            ApplicationDelegate.shared.application(
+                app,
+                open: url,
+                sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+            )
+        }
 }

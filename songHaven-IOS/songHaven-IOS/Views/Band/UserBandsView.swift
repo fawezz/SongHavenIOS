@@ -61,9 +61,9 @@ struct UserBandsView: View {
                             
                             
                         }.padding(.all)
-                  
+                        
                     }
-                 
+                    
                     VStack(alignment: .leading){
                         Spacer()
                         if(!$viewModel.userBands.isEmpty){
@@ -91,9 +91,12 @@ struct UserBandsView: View {
                 }
                 .padding(8)
             }
-            }
-        }
+        }.onAppear(perform: {
+            UserDefaults.standard.set(2, forKey: "currentTabIndex")
+            print(UserDefaults.standard.integer(forKey: "currentTabIndex"))
+        })
     }
+}
 
 struct TestView_Previews: PreviewProvider {
     static var previews: some View {

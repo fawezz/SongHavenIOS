@@ -20,6 +20,29 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 		</dict>
+        <dict>
+            <key>CFBundleURLTypes</key>
+            <array>
+              <dict>
+              <key>CFBundleURLSchemes</key>
+              <array>
+                <string>2664392130364853</string>
+              </array>
+              </dict>
+            </array>
+            <key>FacebookAppID</key>
+            <string>2664392130364853</string>
+            <key>FacebookClientToken</key>
+            <string>93b4a615baca2ee90c43cb2bbd055639</string>
+            <key>FacebookDisplayName</key>
+            <string>SongHaven</string>
+            
+            <key>LSApplicationQueriesSchemes</key>
+            <array>
+              <string>fbapi</string>
+              <string>fb-messenger-share-api</string>
+            </array>
+        </dict>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>

@@ -12,7 +12,7 @@ struct SendOtpView: View {
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     @StateObject var viewModel = SendOtpViewModel()
     private var language = LocalizationService.shared.language
-
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -54,7 +54,7 @@ struct SendOtpView: View {
                     }.disabled(!viewModel.validateFields())
                     
                     PushView(destination: OtpVerificationView(), tag: "OtpVerification", selection: $viewModel.navigator) {}
-
+                    
                 }
                 .toast(isPresenting: $viewModel.showSuccessToast){
                     AlertToast(type: .complete(.green), title: viewModel.toastMessage)
@@ -66,12 +66,14 @@ struct SendOtpView: View {
             }
             .navigationBarItems(
                 leading: BackButton(action: {
-                    navigationStack.pop(to: .root)})
-                )
+                    navigationStack.pop()
+                    navigationStack.pop()
+                })
+            )
         }
         
     }
-        
+    
     var buttonColor: Color{
         if(!viewModel.validateFields()){
             return Color.gray

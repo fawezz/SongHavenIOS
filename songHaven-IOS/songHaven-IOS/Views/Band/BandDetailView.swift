@@ -159,7 +159,6 @@ struct BandDetailView: View {
                             }
                             .scrollContentBackground(.hidden)
                         }
-                        
                     }
                 }
             }

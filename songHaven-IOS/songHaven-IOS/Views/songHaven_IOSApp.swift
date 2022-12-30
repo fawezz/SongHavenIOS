@@ -19,6 +19,7 @@ struct songHaven_IOSApp: App {
     
     init(){
         userSession.isAlreadySignedIn()
+        UserDefaults.standard.set(0, forKey: "currentTabIndex")
     }
     
     var body: some Scene {
@@ -32,12 +33,6 @@ struct songHaven_IOSApp: App {
 //                }
             }.environmentObject(userSession)
             //CreateSongView(viewModel: CreateSongViewModel()).environment(\.managedObjectContext, persistenceController.container.viewContext)
-            /*.onAppear(
-              perform: {
-              //                    PlaylistService.ModifyPlaylist(playlistId: "637d013fd35081e7c6c90d7a", title: "playlist7", completed:
-              //                                            { (success, reponse) in print(success) })
-              }
-              )*/
         }
         
     }
