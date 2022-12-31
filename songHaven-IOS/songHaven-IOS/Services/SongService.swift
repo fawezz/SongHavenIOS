@@ -8,6 +8,7 @@ import Alamofire
 import SwiftyJSON
 import Foundation
 import UIKit
+import AVFAudio
 
 class SongService{
     static let getAllURL = Constants.HOSTNAME + "/song/getAll"
@@ -18,6 +19,45 @@ class SongService{
     static let songImageUrl = Constants.HOSTNAME + "/img/"
     static let songMusicUrl = Constants.HOSTNAME + "/music/" //+ "music1669159393115.mp3"
     static let searchSongsURL = Constants.HOSTNAME + "/song/search"
+    
+    static func createSong(title : String, genre: String , songfileURL :URL , completed:@escaping(Bool,Int)->Void){
+        do{
+            let audioData = try Data(contentsOf: songfileURL)
+            let audioPlayer = try AVAudioPlayer(contentsOf: songfileURL)
+            let duration = Int(floor(audioPlayer.duration))
+            print(duration)
+            
+            let headers : HTTPHeaders = [
+                .contentType("multipart/form-data")
+            ]
+            AF.upload(
+                multipartFormData: { multipartFormData in
+                    multipartFormData.append(audioData, withName: "music",fileName: "audio.mp3",mimeType: "audio/mp3")
+                    multipartFormData.append((UserSession.shared.currentUser?._id!.data(using: String.Encoding.utf8)!)!, withName: "creatorId")
+                    multipartFormData.append(genre.data(using: String.Encoding.utf8)!, withName: "genre")
+                    multipartFormData.append(title.data(using: String.Encoding.utf8)!, withName: "title")
+                    multipartFormData.append("\(duration)".data(using: String.Encoding.utf8)!, withName: "duration")
+                    
+                },to: self.createURL, method: .post, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseData { response in
+                switch(response.result){
+                case .success:
+                    print("song created")
+                    let jsonData = JSON(response.data!)
+                    //let message = jsonData["band"].stringValue
+                    //print(jsonData)
+                    completed(true,200)
+                case .failure(let error):
+                    print(error)
+                    completed(false,error.responseCode!)
+                }
+                
+            }
+        }catch{
+            print(error)
+        }
+    }
     
     static func GetAllSongs(completed: @escaping (Bool, [Song]?) -> Void){
         AF.request(getAllURL,  method: .get )
