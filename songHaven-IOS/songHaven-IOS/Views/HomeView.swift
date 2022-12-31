@@ -18,8 +18,8 @@ struct HomeView: View {
                     Label("Music", systemImage: "music.note.list")
                 })
                 .tag(0)
-            Text("notifications")
-            //CreateSongView()
+            //Text("notifications")
+            CreateSongView()
                 .tabItem({
                     Label("Notifications", systemImage: "bell")
                 })

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-struct FilePicker: UIViewControllerRepresentable {
+struct CustomFilePicker: UIViewControllerRepresentable {
 
     @Binding var isShowing: Bool
     @Binding var fileURL: URL?
@@ -38,13 +38,13 @@ struct FilePicker: UIViewControllerRepresentable {
         return Coordinator(isShowing: $isShowing, fileURL: $fileURL)
     }
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<FilePicker>) -> UIDocumentPickerViewController {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<CustomFilePicker>) -> UIDocumentPickerViewController {
         let picker = UIDocumentPickerViewController(documentTypes: ["public.audio"], in: .import)
         picker.delegate = context.coordinator
         return picker
     }
 
-    func updateUIViewController(_ uiViewController: UIDocumentPickerViewController, context: UIViewControllerRepresentableContext<FilePicker>) {
+    func updateUIViewController(_ uiViewController: UIDocumentPickerViewController, context: UIViewControllerRepresentableContext<CustomFilePicker>) {
 
     }
 }
