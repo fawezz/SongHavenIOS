@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 @MainActor class CreateSongViewModel: ObservableObject {
 
-    @Published var documentPicker : UIDocumentPickerViewController? = nil
-
     @Published var navigator: String? = nil
     @Published var isLoading: Bool = false
     @Published var isUploading: Bool = false
@@ -18,16 +16,22 @@ import UIKit
     @Published var showSuccessToast : Bool = false
     @Published var showFailToast : Bool = false
     @Published var toastMessage = ""
+    
+    @Published var title = ""
+    @Published var genre = ""
+    @Published var fileURL : URL?
+
 
     init(){
-        documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.mp3])
-        let delegate = DocumentPickerDelegate()
-        documentPicker?.delegate = delegate
-        documentPicker?.modalPresentationStyle = .overFullScreen
+     
     }
 
-    func selectFile(){
-
+    func publishSong(){
+        self.isUploading = true
+        SongService.createSong(title: self.title, genre: self.genre, songfileURL: self.fileURL!, completed: { (success, reponse) in
+            self.isUploading = false
+            print("success")
+        })
     }
 
     func editImage(){
@@ -57,16 +61,10 @@ import UIKit
 
     func validateFields()-> Bool{
 //        //return true
-//        return (self.isLettersOnly(strToValidate: self.firstname) && self.isLettersOnly(strToValidate: self.lastname) && self.password.count >= 8 || self.password.count == 0 && self.password == self.confirmPassword )
-        return true
-    }
-
-    func isEmail(strToValidate : String)-> Bool{
-        let emailValidationRegex = "^[\\p{L}0-9!#$%&'*+\\/=?^_`{|}~-][\\p{L}0-9.!#$%&'*+\\/=?^_`{|}~-]{0,63}@[\\p{L}0-9-]+(?:\\.[\\p{L}0-9-]{2,7})+$"  // 1
-
-        let emailValidationPredicate = NSPredicate(format: "SELF MATCHES %@", emailValidationRegex)  // 2
-
-        return emailValidationPredicate.evaluate(with: strToValidate)  // 3
+        return (self.isLettersOnly(strToValidate: self.genre)
+                && self.title.count > 0
+                && self.fileURL != nil
+        )
     }
 
     func isLettersOnly(strToValidate : String)-> Bool{
@@ -79,9 +77,5 @@ import UIKit
 
 
 }
-class DocumentPickerDelegate: NSObject, UIDocumentPickerDelegate {
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        // Handle the selected documents
-    }
-}
+
 
