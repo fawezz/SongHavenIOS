@@ -7,10 +7,14 @@
 
 import SwiftUI
 import NavigationStack
+import MobileCoreServices
 
 struct CreateSongView: View {
-    @StateObject var viewModel : CreateSongViewModel
+    @StateObject var viewModel = CreateSongViewModel()
     @EnvironmentObject private var navigationStack: NavigationStackCompat
+    @State private var isShowingFilePicker = false
+    @State private var fileURL : URL?
+    
     var body: some View {
         NavigationStack{
             ZStack {
@@ -18,16 +22,17 @@ struct CreateSongView: View {
                     .edgesIgnoringSafeArea(.all)
                 VStack{
                     VStack(alignment: .leading){
-                        Button("", action: {
-                            //viewModel.documentPicker.delegate = self
-                            //viewModel.documentPicker.modalPresentationStyle = .overFullScreen
-                        })
-                        
+                        Button("select audio file") {
+                            self.isShowingFilePicker = true
+                        }
+                        .sheet(isPresented: $isShowingFilePicker){
+                            FilePicker(isShowing: self.$isShowingFilePicker, fileURL: self.$fileURL)
+                        }
                     }
                 }
                 .padding(8)
                 .navigationBarTitle("Add a new Song")
-                .navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
+                //.navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
                 
             }
         }

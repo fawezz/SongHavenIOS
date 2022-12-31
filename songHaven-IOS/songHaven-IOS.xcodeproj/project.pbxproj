@@ -72,6 +72,7 @@
 		B025A95F291EE2D2007FF6FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025A95E291EE2D2007FF6FF /* User.swift */; };
 		B0388798293BACF000DE78BD /* LikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0388797293BACF000DE78BD /* LikeService.swift */; };
 		B038879C293BC95400DE78BD /* MyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B038879B293BC95400DE78BD /* MyAppDelegate.swift */; };
+		B047DA78296080A2004A65F0 /* FilePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B047DA77296080A2004A65F0 /* FilePicker.swift */; };
 		B0587AC72943675800A91193 /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587AC62943675800A91193 /* Band.swift */; };
 		B0587ACD294367B600A91193 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587ACC294367B600A91193 /* UserCard.swift */; };
 		B0587ACF294367D200A91193 /* BandCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0587ACE294367D200A91193 /* BandCard.swift */; };
@@ -206,6 +207,7 @@
 		B025A95E291EE2D2007FF6FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B0388797293BACF000DE78BD /* LikeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeService.swift; sourceTree = "<group>"; };
 		B038879B293BC95400DE78BD /* MyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppDelegate.swift; sourceTree = "<group>"; };
+		B047DA77296080A2004A65F0 /* FilePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePicker.swift; sourceTree = "<group>"; };
 		B0587AC62943675800A91193 /* Band.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
 		B0587ACC294367B600A91193 /* UserCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		B0587ACE294367D200A91193 /* BandCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandCard.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				B0E7A45D29478BD50094E7A0 /* SocketChatManager.swift */,
 				B0E7A45F294792840094E7A0 /* SocketParser.swift */,
 				B07A340B2948AB0B005A4933 /* LocalizationService.swift */,
+				B047DA77296080A2004A65F0 /* FilePicker.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				B0AAC0EC29354ADE00C3EFE4 /* PlaylistDetailsView.swift in Sources */,
 				B024ADBB2923E7A700C9E601 /* LoginViewModel.swift in Sources */,
 				B0876E4A2943D06900A8BFA5 /* GoogleAuthService.swift in Sources */,
+				B047DA78296080A2004A65F0 /* FilePicker.swift in Sources */,
 				B024ADB12923E71000C9E601 /* LoginView.swift in Sources */,
 				94AFFC0E292E22EF00824EF6 /* ColorExtension.swift in Sources */,
 				B06AF25F293F658900C8EE20 /* MusicSearchViewModel.swift in Sources */,

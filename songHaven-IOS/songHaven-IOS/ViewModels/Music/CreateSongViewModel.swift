@@ -20,9 +20,10 @@ import UIKit
     @Published var toastMessage = ""
 
     init(){
-//        documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.mp3])
-//        documentPicker.delegate =
-//        documentPicker.modalPresentationStyle = .overFullScreen
+        documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.mp3])
+        let delegate = DocumentPickerDelegate()
+        documentPicker?.delegate = delegate
+        documentPicker?.modalPresentationStyle = .overFullScreen
     }
 
     func selectFile(){
@@ -78,3 +79,9 @@ import UIKit
 
 
 }
+class DocumentPickerDelegate: NSObject, UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        // Handle the selected documents
+    }
+}
+

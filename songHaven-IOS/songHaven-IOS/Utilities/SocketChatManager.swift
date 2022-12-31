@@ -51,7 +51,7 @@ class SocketChatManager : ObservableObject {
                 let newMessage : TextMessage? = TextMessage.fromJson(jsonData: json[0])
                 if (newMessage != nil) {
                     SocketChatManager.shared.messageStream.send(newMessage!)
-                    if(newMessage?.sender._id != UserSession.shared.currentUser?._id){
+                    if(newMessage?.sender._id == UserSession.shared.currentUser?._id){
                         let title = "New Message received"
                         let body = (newMessage?.sender.getFullName())! + ": " + newMessage!.text
                         NotificationService.showMessageNotification(title: title, body: body)

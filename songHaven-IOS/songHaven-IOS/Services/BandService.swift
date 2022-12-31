@@ -37,7 +37,7 @@ class BandService{
             switch(response.result){
             case .success:
                 let jsonData = JSON(response.data!)
-                let message = jsonData["band"].stringValue
+                //let message = jsonData["band"].stringValue
                 //print(jsonData)
                 completed(true,200)
             case .failure(let error):
