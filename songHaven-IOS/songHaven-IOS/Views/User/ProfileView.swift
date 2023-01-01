@@ -31,6 +31,19 @@ struct ProfileView: View {
                             Divider().frame(height: 40).foregroundColor(.main_color)
                             Spacer()
                         }
+                        Button (
+                            action: {
+                                navigationStack.push(CreateSongView())
+                            },
+                            label: {
+                                Label("Add song", systemImage: "plus.app")
+                                    .font(.subheadline)
+                                    .foregroundColor(.white)
+                                    .frame(width: 150, height: 50)
+                                    .background(Color.main_color.opacity(0.7))
+                                    .cornerRadius(15.0)
+                            })
+                        .padding(.top, 10)
                         if(viewModel.userSongs.isEmpty){
                             Spacer()
                             Text("You don't have any songs yet")
@@ -141,6 +154,11 @@ struct ProfileView: View {
                         Label("ProfileOptions1".localized(languageService.language), systemImage: "character.book.closed.fill" )
                     }
                     Button(action: {
+                        print("terms Button")
+                    }) {
+                        Label("Terms & Conditions", systemImage: "square.and.pencil" )
+                    }
+                    Button(action: {
                         //logout
                         viewModel.showLogoutAlert = true
                     }) {
@@ -173,6 +191,7 @@ struct ProfileView: View {
                 .shadow(radius: 10)
                 .frame(width: 180,height: 180)
             }
+            //ADD TERMS WEB VIEW
         }
     }
     

@@ -147,6 +147,9 @@ struct MusicHomeView: View {
                     .scaleEffect(3)
             }
         }
-    }
+        }.onAppear(perform: {
+            viewModel.fetchUserPlaylists()
+            viewModel.fetchNewestSongs()
+        })
 }
 }

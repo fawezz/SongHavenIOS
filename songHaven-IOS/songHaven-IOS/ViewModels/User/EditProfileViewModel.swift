@@ -36,7 +36,7 @@ import _PhotosUI_SwiftUI
             
             self.isLoading = false
             if success {
-                print("success")
+                //print("success")
                 let currentUser = reponse as! User
                 UserDefaults.standard.setValue(
                     currentUser.firstname,forKey: "firstname"

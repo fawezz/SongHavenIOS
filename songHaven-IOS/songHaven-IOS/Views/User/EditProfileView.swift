@@ -74,15 +74,17 @@ struct EditProfileView: View {
                     
                     TextField("Enter your name",text:$viewModel.firstname)
                         .textFieldStyle(ProfileTextFieldStyle())
+                        .foregroundColor(.black)
                     
                     TextField("Enter your lastname",text:$viewModel.lastname)
                         .textFieldStyle(ProfileTextFieldStyle())
-                    
+                        .foregroundColor(.black)
                     SecureField("Password",text:$viewModel.password)
                         .textFieldStyle(ProfileTextFieldStyle())
-                    
+                        .foregroundColor(.black)
                     SecureField("Confirm your password",text:$viewModel.confirmPassword)
                         .textFieldStyle(ProfileTextFieldStyle())
+                        .foregroundColor(.black)
                     Button (
                         action: {
                             viewModel.EditDetails(action: {navigationStack.pop()}())
