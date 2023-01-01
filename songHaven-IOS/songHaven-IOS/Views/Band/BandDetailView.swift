@@ -26,7 +26,6 @@ struct BandDetailView: View {
                         Menu {
                             Button(action: {
                                 navigationStack.push( EditBandView())
-                                
                             }) {
                                 Label("Edit Band".localized(languageService.language), systemImage: "pencil")
                             }
@@ -60,11 +59,13 @@ struct BandDetailView: View {
                         } label: {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .fill(.regularMaterial)
+                                    .fill(.clear)
                                     .frame(width: 40, height: 40)
-                                Image(systemName: "slider.horizontal.3")
-                                    .foregroundColor(.main_color)
-                                    .frame(height: 35)
+                                Image(systemName: "ellipsis.circle")
+                                    .rotationEffect(.degrees(-90))
+                                    .foregroundColor(.white)
+                                    .frame(width: 100, height: 100)
+                                
                             }
                         }
                         .alert("Are You sure You want to delete this band ?".localized(languageService.language), isPresented: $viewModel.showAlert) {
@@ -79,7 +80,7 @@ struct BandDetailView: View {
                     HStack(){
                         Text("About The Band".localized(languageService.language))
                             .bold()
-                            .foregroundColor(.main_color_hard)
+                            .foregroundColor(.white)
                             .font(.system(size: 34,weight: .light,design: .serif))
                         Spacer()
                         Button(action:
@@ -149,7 +150,7 @@ struct BandDetailView: View {
                                             }
                                             .tint(.red.opacity(0.8))
                                         }
-                                        .alert("Are You sure You want to delete this member?".localized(languageService.language), isPresented: $viewModel.showAlert) {
+                                        .alert("Are You sure You want to remove this member?".localized(languageService.language), isPresented: $viewModel.showAlert) {
                                             Button("Delete".localized(languageService.language), role: .destructive) {
                                                 //viewModel.removeSong(swipedSong: song)
                                             }

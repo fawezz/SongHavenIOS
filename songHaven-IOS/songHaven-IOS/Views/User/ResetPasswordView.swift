@@ -20,7 +20,7 @@ struct ResetPasswordView: View {
                     Text("Create new password")
                         .font(.title)
                         .bold()
-                        .foregroundColor(.white                                                )
+                        .foregroundColor(.white)
                     Image("forgotPass3")
                         .resizable()
                         .frame(width: 200, height: 200)
@@ -29,18 +29,20 @@ struct ResetPasswordView: View {
                     Text("Please enter your new password:")
                         .font(.title3)
                         .bold()
-                        .foregroundColor(.white                                                )
+                        .foregroundColor(.white)
                     SecureField("Enter new password",text:$viewModel.password)
                         .padding()
                         .frame(width: 300, height :50)
                         .background(Color.white)
                         .cornerRadius(10)
+                        .foregroundColor(.black)
                     
                     SecureField("Confirm Password",text:$viewModel.confirmPassword)
                         .padding()
                         .frame(width: 300, height :50)
                         .background(Color.white)
                         .cornerRadius(10)
+                        .foregroundColor(.black)
                     
                     Button("Reset password"){
                         viewModel.changePassword(action: {navigationStack.pop(to: .root)}() )
@@ -53,15 +55,19 @@ struct ResetPasswordView: View {
                     
                 }
                 .navigationBarItems(
-                    leading: BackButton(action: {navigationStack.pop(to: .root)})
-                    )
+                    leading: BackButton(action: {
+                        navigationStack.pop()
+                        navigationStack.pop()
+                        navigationStack.pop()
+                    })
+                )
                 .toast(isPresenting: $viewModel.showSuccessToast){
                     AlertToast(type: .complete(.green), title: viewModel.toastMessage)
                 }
                 .toast(isPresenting: $viewModel.showFailToast){
                     AlertToast(type: .error(.red), title: viewModel.toastMessage)
                 }
-               // NavigationLink(destination: LoginView(), tag: "LoginView", selection: $viewModel.navigator){}.isDetailLink(false)
+                // NavigationLink(destination: LoginView(), tag: "LoginView", selection: $viewModel.navigator){}.isDetailLink(false)
                 
             }
         }.navigationBarHidden(true)

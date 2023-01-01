@@ -30,7 +30,7 @@ import UIKit
         self.isUploading = true
         SongService.createSong(title: self.title, genre: self.genre, songfileURL: self.fileURL!, completed: { (success, reponse) in
             self.isUploading = false
-            print("success")
+            print(success.description)
         })
     }
 

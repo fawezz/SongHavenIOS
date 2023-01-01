@@ -21,7 +21,7 @@ import Foundation
         fetchPopularSongs()
     }
     
-    private func fetchUserPlaylists() {
+    func fetchUserPlaylists() {
         PlaylistService.GetByUser(completed: { (success, playlistArray) in
             if(success){
                 self.userPlaylists = playlistArray ?? []
@@ -29,7 +29,7 @@ import Foundation
         })
     }
     
-    private func fetchNewestSongs() {
+    func fetchNewestSongs() {
         SongService.GetAllSongs(completed: {(success, songsArray) in
             if(success){
                 self.newestSongs = songsArray ?? []
