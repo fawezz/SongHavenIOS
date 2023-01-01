@@ -58,25 +58,27 @@ class MusicPlayerViewModel: ObservableObject {
                     self.minutes = Int((self.slider / 60))
                     self.seconds = Int((self.slider.truncatingRemainder(dividingBy: 60).rounded()))
                     //self.isPlaying = MusicPlayerViewModel.config!.isPlaying
-                    print("seconds", self.seconds )
+                    ///print("seconds", self.seconds )
                     //print("minutes", self.minutes )
                 }
             }else{
                 if(MusicPlayerViewModel.config?.playlist == nil){
                     self.timer?.invalidate()
+                    self.isPlaying = false
+                    MusicPlayerViewModel.config?.isPlaying = false
                 }else{
                     self.playNextSong()
                 }
             }
         }
         print((MusicPlayerViewModel.config!.player.currentItem?.duration.seconds.rounded())!)
-        self.duration = MusicPlayerViewModel.config!.duration
+        self.duration = Int(MusicPlayerViewModel.config!.duration)
     }
     
     func toggleLike(){
         LikeService.toggleLike(songId: (MusicPlayerViewModel.config?.model._id)!, completed: { (success, reponse) in
             if success {
-                print("success toggled like")
+                //print("success toggled like")
                 self.liked = reponse ?? self.liked
             } else {
                 print("fail toggle like")
@@ -222,7 +224,7 @@ struct Configurations {
         self.player.volume = 10
         self.player.playImmediately(atRate: 1)
         self.isPlaying = true
-        
+        self.duration = Int(model.duration ?? 120)
 //        var observer = self.player.currentItem!.observe(\.status, options:  [.new, .old], changeHandler: { (playerItem, change) in
 //                if playerItem.status == .readyToPlay {
 //                    self.duration = Int(playerItem.duration.seconds.rounded())

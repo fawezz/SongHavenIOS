@@ -102,6 +102,18 @@ struct OtpVerificationView: View {
                     
                 }
                 PushView(destination: ResetPasswordView(), tag: "ResetPassword", selection: $viewModel.navigator) {}
+                //Loader
+                if(viewModel.isLoading){
+                    ZStack{
+                        Color(.white)
+                            .opacity(0.7)
+                            .ignoresSafeArea()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .purple))
+                            .scaleEffect(3)
+                        
+                    }
+                }
             }
             .navigationBarItems(
                 leading: BackButton(action: {navigationStack.pop(to: .previous)})
@@ -109,21 +121,7 @@ struct OtpVerificationView: View {
             .toast(isPresenting: $viewModel.showToast){
                 AlertToast(displayMode: .banner(.slide), type: .complete(.green), title: "Email Sent")
             }
-            //Loader
-            if(viewModel.isLoading){
-                ZStack{
-                    Color(.white)
-                        .opacity(0.7)
-                        .ignoresSafeArea()
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .purple))
-                        .scaleEffect(3)
-                    
-                }
-            }
-                
         }
-        
     }
     
     var buttonColor: Color{
@@ -153,7 +151,10 @@ private func otpText(text: String) -> some View {
         else{
             Text(text)
                 .background(
-                    Circle().scale(2).foregroundColor(.purple.opacity(0.45))
+                    Circle()
+                        .scale(2)
+                        .foregroundColor(.purple.opacity(0.45))
+                        .frame(width: 25, height: 25)
                 )
                 .frame(width: 35, height: 35)
                 .fixedSize(horizontal: true, vertical: false)

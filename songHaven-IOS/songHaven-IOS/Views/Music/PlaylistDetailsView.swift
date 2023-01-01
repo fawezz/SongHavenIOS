@@ -36,9 +36,8 @@ struct PlaylistDetailsView: View {
                                     .swipeActions(allowsFullSwipe: false) {
                                         Button {
                                             viewModel.removeSongFromPlaylist(swipedSong: song.wrappedValue)
-                                            print("remove song")
                                         } label: {
-                                            Label("remove", systemImage: "trash.fill")
+                                            Label("remove", systemImage: "x.square.fill")
                                         }
                                         .tint(.red.opacity(0.8))
                                     }
@@ -58,16 +57,25 @@ struct PlaylistDetailsView: View {
                 .navigationBarTitle(viewModel.selectedPlaylist.title!)
                 .navigationBarItems(
                     leading: BackButton(action: {navigationStack.pop()}),
-                    trailing: Button(
-                        action: {
-                            print("delete playlist")
-                            viewModel.showAlert = true
-                        } ) {
-                            Image(systemName: "trash.fill").foregroundColor(.white)
-                                .frame(width: 20, height: 20)
-                                .padding(8).background(Color.red.opacity(0.7))
-                                .cornerRadius(20)
-                                .shadow(color: Color.black,radius: 8, x: 0, y: 5)
+                    trailing:
+                        Menu {
+                            Button(action: {
+                                viewModel.showAlert = true
+                            }, label: {
+                                Label("Delete playlist", systemImage: "trash")
+                                    .foregroundColor(.red)
+                                    .frame(width: 20, height: 20)
+                                    .padding(8).background(Color.red.opacity(0.7))
+                                    .cornerRadius(20)
+                                    .shadow(color: Color.red,radius: 8, x: 0, y: 5)
+                            })
+                        } label: {
+                            ZStack{
+                                Image(systemName: "ellipsis.circle")
+                                    .rotationEffect(.degrees(-90))
+                                    .foregroundColor(.white)
+                                    .frame(width: 65, height: 65)
+                            }
                         }
                         .alert("Are You sure You want to delete this playlist ?", isPresented: $viewModel.showAlert) {
                             Button("Delete", role: .destructive) {
@@ -75,6 +83,8 @@ struct PlaylistDetailsView: View {
                             }
                             Button("cancel", role: .cancel) { }
                         }
+                    
+                    
                 )
                 
             }

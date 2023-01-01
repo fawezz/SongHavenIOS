@@ -33,12 +33,13 @@ struct SendOtpView: View {
                         .font(.subheadline)
                         .multilineTextAlignment(.center)
                     
-                    TextField("Email", text: $viewModel.email)
+                    TextField("Email...", text: $viewModel.email)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(20.0)
                         .padding(50)
                         .autocorrectionDisabled(true)
+                        .foregroundColor(.black)
                     
                     Button(action: {
                         viewModel.sendOtp()

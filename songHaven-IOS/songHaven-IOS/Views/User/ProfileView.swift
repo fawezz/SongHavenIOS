@@ -137,7 +137,6 @@ struct ProfileView: View {
                     Button(action: {
                         print("language Button")
                         viewModel.showLanguageSheet = true
-                        
                     }) {
                         Label("ProfileOptions1".localized(languageService.language), systemImage: "character.book.closed.fill" )
                     }
@@ -150,6 +149,7 @@ struct ProfileView: View {
                 } label: {
                     ZStack{
                         Image(systemName: "ellipsis.circle")
+                            .rotationEffect(.degrees(-90))
                             .foregroundColor(.white)
                             .frame(width: 65, height: 65)
                     }
