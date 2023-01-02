@@ -12,6 +12,7 @@ import NavigationStack
 struct OtpVerificationView: View {
     @StateObject var viewModel = OtpVerificationViewModel()
     @EnvironmentObject private var navigationStack: NavigationStackCompat
+    @StateObject private var languageService = LocalizationService.shared
 
     @State var isFocused = false
     
@@ -34,12 +35,12 @@ struct OtpVerificationView: View {
                         .frame(width: 200, height: 200)
                         .cornerRadius(40)
                     
-                    Text("Confirmation code")
+                    Text("confirmationCode".localized(languageService.language))
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .padding(.top, 30)
                     
-                    Text("Please enter the 5 digit code sent to your email:")
+                    Text("pleaseEnterThe5DigitCode".localized(languageService.language))
                         .font(.title3)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
@@ -64,14 +65,14 @@ struct OtpVerificationView: View {
                     }
                     VStack(){
                         HStack(){
-                            Text("Did not receive a code?")
+                            Text("didNotReceiveCode".localized(languageService.language))
                                 .font(.caption)
                                 .foregroundColor(.white)
                                 .multilineTextAlignment(.center)
                             Button(action: {
                                 viewModel.ResendCode()
                             }) {
-                                Text("Resend")
+                                Text("resend".localized(languageService.language))
                                     .font(.headline)
                                     .foregroundColor(.purple)
                                     .frame(height: 50)
@@ -83,7 +84,7 @@ struct OtpVerificationView: View {
                         Button(){
                             viewModel.VerifyOtp()
                         }label:{
-                            Text("verify")
+                            Text("verify".localized(languageService.language))
                                 .padding(.horizontal, 120)
                             
                         }
@@ -94,8 +95,8 @@ struct OtpVerificationView: View {
                         .disabled(viewModel.otpField.count < 5)
                         .alert(isPresented: $viewModel.showAlert) {
                             Alert(
-                                title: Text("Access Denied"),
-                                message: Text("The code entered does not match, Please Try Again.")
+                                title: Text("alertTtile".localized(languageService.language)),
+                                message: Text("alertMessage".localized(languageService.language))
                             )
                         }
                     }
@@ -119,7 +120,7 @@ struct OtpVerificationView: View {
                 leading: BackButton(action: {navigationStack.pop(to: .previous)})
                 )
             .toast(isPresenting: $viewModel.showToast){
-                AlertToast(displayMode: .banner(.slide), type: .complete(.green), title: "Email Sent")
+                AlertToast(displayMode: .banner(.slide), type: .complete(.green), title: "notificationTitle".localized(languageService.language))
             }
         }
     }

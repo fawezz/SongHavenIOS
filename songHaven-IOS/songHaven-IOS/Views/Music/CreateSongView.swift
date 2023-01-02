@@ -23,22 +23,22 @@ struct CreateSongView: View {
                     .edgesIgnoringSafeArea(.all)
                 VStack(spacing: 15){
                     HStack(){
-                        Text("Title:")
+                        Text("title".localized(languageService.language) + ":")
                             .font(.headline)
                         Spacer()
                     }
-                    TextField("title...", text: $viewModel.title)
+                    TextField("title".localized(languageService.language) + "...", text: $viewModel.title)
                         .padding()
                         .foregroundColor(.black)
                         .background(Color.white)
                         .cornerRadius(20.0)
                         .autocorrectionDisabled(true)
                     HStack{
-                        Text("Genre:")
+                        Text("genre".localized(languageService.language) + ":")
                             .font(.headline)
                         Spacer()
                     }
-                    TextField("genre...", text: $viewModel.genre)
+                    TextField("genre".localized(languageService.language) + "...", text: $viewModel.genre)
                         .padding()
                         .foregroundColor(.black)
                         .background(Color.white)
@@ -50,7 +50,7 @@ struct CreateSongView: View {
                             self.isloadingFile = true
                         },
                         label: {
-                            Label("select audio file", systemImage: "doc.circle")
+                            Label("selectAudioFile".localized(languageService.language), systemImage: "doc.circle")
                                 .cornerRadius(15.0)
                         })
                     Button(action: {
@@ -59,7 +59,7 @@ struct CreateSongView: View {
                         //navigate to tthe next view
                         //self.selection = "home"
                     }, label: {
-                        Text("Publish Song")
+                        Text("publishSong".localized(languageService.language))
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(width: 300, height: 50)
@@ -70,7 +70,7 @@ struct CreateSongView: View {
                     .padding(.vertical, 25)
                 }
                 .padding(10)
-                .navigationBarTitle("Add a new song")
+                .navigationBarTitle("addNewSong".localized(languageService.language)).foregroundColor(.white)
                 .navigationBarItems(leading: BackButton(action: {navigationStack.pop()}))
                 .fileImporter(
                     isPresented: $isloadingFile,

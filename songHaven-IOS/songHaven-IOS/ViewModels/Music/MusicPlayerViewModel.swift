@@ -37,14 +37,15 @@ class MusicPlayerViewModel: ObservableObject {
         {
             MusicPlayerViewModel.config = config
             MusicPlayerViewModel.shared.isPlaying = true
+            MusicPlayerViewModel.shared.duration = Int(config.model.duration ?? 100)
             if(firstConfig){ // to make sure update timer is called only once
                 self.shared.updateTimer()
                 //ACTIVATE AUDIO SESSION
-//                do{
-//                    try AVAudioSession.sharedInstance().setActive(true)
-//
-//                }
-//                catch {print("aaaa")}
+                do{
+                    try AVAudioSession.sharedInstance().setActive(true)
+
+                }
+                catch {print("audio session error")}
             }
             
         }
@@ -58,8 +59,8 @@ class MusicPlayerViewModel: ObservableObject {
                     self.minutes = Int((self.slider / 60))
                     self.seconds = Int((self.slider.truncatingRemainder(dividingBy: 60).rounded()))
                     //self.isPlaying = MusicPlayerViewModel.config!.isPlaying
-                    ///print("seconds", self.seconds )
-                    //print("minutes", self.minutes )
+//                    print("seconds", self.seconds )
+//                    print("minutes", self.minutes )
                 }
             }else{
                 if(MusicPlayerViewModel.config?.playlist == nil){
@@ -71,8 +72,8 @@ class MusicPlayerViewModel: ObservableObject {
                 }
             }
         }
-        print((MusicPlayerViewModel.config!.player.currentItem?.duration.seconds.rounded())!)
-        self.duration = Int(MusicPlayerViewModel.config!.duration)
+        print("aaaaaa" + MusicPlayerViewModel.config!.model.duration!.description)
+        self.duration = Int(MusicPlayerViewModel.config!.model.duration ?? 100)
     }
     
     func toggleLike(){
@@ -111,6 +112,9 @@ class MusicPlayerViewModel: ObservableObject {
             isPlaying = true
             let nextSong = (MusicPlayerViewModel.config?.playlist?.songs![index])!
             MusicPlayerViewModel.config?.model = nextSong
+            MusicPlayerViewModel.config?.duration = Int(nextSong.duration ?? 60)
+            MusicPlayerViewModel.shared.duration = Int(nextSong.duration ?? 60)
+
             //updateTimer()
         }
     
@@ -128,6 +132,9 @@ class MusicPlayerViewModel: ObservableObject {
             isPlaying = true
             let previousSong = (MusicPlayerViewModel.config?.playlist?.songs![index])!
             MusicPlayerViewModel.config?.model = previousSong
+            MusicPlayerViewModel.config?.duration = Int(previousSong.duration ?? 60)
+            MusicPlayerViewModel.shared.duration = Int(previousSong.duration ?? 60)
+
             //updateTimer()
         }
     
@@ -171,7 +178,7 @@ class MusicPlayerViewModel: ObservableObject {
             }
         }
         nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = MusicPlayerViewModel.config?.player.currentTime
-        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = MusicPlayerViewModel.config?.player.currentItem?.duration
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = MusicPlayerViewModel.config?.model.duration
         nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = MusicPlayerViewModel.config?.player.rate
 
         // Set the metadata
@@ -212,7 +219,7 @@ struct Configurations {
      var slider: Double = 0
      var isPlaying = true
      var SongImageUrl : URL = URL(string: UserService.UserImageUrl + "songDefaultImage.png")!
-     var duration: Int = 140
+     var duration: Int //= 140
      var minutes: Int = 0
      var seconds: Int = 0
      var queuedSongs: [AVPlayerItem] = []
@@ -225,11 +232,6 @@ struct Configurations {
         self.player.playImmediately(atRate: 1)
         self.isPlaying = true
         self.duration = Int(model.duration ?? 120)
-//        var observer = self.player.currentItem!.observe(\.status, options:  [.new, .old], changeHandler: { (playerItem, change) in
-//                if playerItem.status == .readyToPlay {
-//                    self.duration = Int(playerItem.duration.seconds.rounded())
-//                }
-//            })
         
         if((currentPlaylist) != nil){
             currentPlaylist!.songs?.forEach { songItem in

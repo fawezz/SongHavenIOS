@@ -6,126 +6,111 @@
 //
 import SwiftUI
 import NavigationStack
+import WebKit
+
+struct WebView : UIViewRepresentable {
+    
+    let request: URLRequest
+    
+    func makeUIView(context: Context) -> WKWebView  {
+        return WKWebView()
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        uiView.load(request)
+    }
+    
+}
 
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var languageService = LocalizationService.shared
     @EnvironmentObject private var navigationStack: NavigationStackCompat
-
+    
     var body: some View {
         NavigationStack{
-            VStack {
+            ZStack {
                 VStack {
-                    Header()
-                    ProfileText()
-                    VStack(spacing: 0){
-                        HStack{
-                            Spacer()
-                            Divider().frame(height: 40)
-                            ProfileSectionItem(title: "profileTxt1".localized(languageService.language), nbr: $viewModel.totalLikes.wrappedValue.description)
-                            //ProfileSectionItem(title: "Albums", nbr: "10")
-                            //Spacer()
-                            Divider().frame(height: 40).foregroundColor(.main_color)
-                            ProfileSectionItem(title: "profileTxt2".localized(languageService.language), nbr: $viewModel.userSongs.count.description)
-                            Divider().frame(height: 40).foregroundColor(.main_color)
-                            Spacer()
-                        }
-                        Button (
-                            action: {
-                                navigationStack.push(CreateSongView())
-                            },
-                            label: {
-                                Label("Add song", systemImage: "plus.app")
-                                    .font(.subheadline)
-                                    .foregroundColor(.white)
-                                    .frame(width: 150, height: 50)
-                                    .background(Color.main_color.opacity(0.7))
-                                    .cornerRadius(15.0)
-                            })
-                        .padding(.top, 10)
-                        if(viewModel.userSongs.isEmpty){
-                            Spacer()
-                            Text("You don't have any songs yet")
-                                .font(.title3)
-                                .foregroundColor(.main_color)
-                            Spacer()
-                        }else{
-                            List{
-                                ForEach(viewModel.userSongs, id: \._id){ song in
-                                    ProfileSongRow(song: song )
-                                        .listRowSeparator(.visible)
-                                        .listRowBackground(
-                                            Color.main_color
-                                                .clipped()
-                                                .cornerRadius(20)
-                                                .padding(EdgeInsets(top: 15, leading: 25, bottom: 10, trailing: 25))
-                                        )
-                                        .swipeActions(allowsFullSwipe: false) {
-                                            Button {
-                                                viewModel.showDeleteAlert = true
-                                                print("remove song")
-                                            } label: {
-                                                Label("remove", systemImage: "trash.fill")
-                                            }
-                                            .tint(.red.opacity(0.8))
-                                        }
-                                        .alert("Are You sure You want to delete this song?", isPresented: $viewModel.showDeleteAlert) {
-                                            Button("Delete", role: .destructive) {
-                                                viewModel.removeSong(swipedSong: song)
-                                            }
-                                            Button("cancel", role: .cancel) { }
-                                        }
-                                }
+                    VStack {
+                        Header()
+                        ProfileText()
+                        VStack(spacing: 0){
+                            HStack{
+                                Spacer()
+                                Divider().frame(height: 40)
+                                ProfileSectionItem(title: "profileTxt1".localized(languageService.language), nbr: $viewModel.totalLikes.wrappedValue.description)
+                                //ProfileSectionItem(title: "Albums", nbr: "10")
+                                //Spacer()
+                                Divider().frame(height: 40).foregroundColor(.main_color)
+                                ProfileSectionItem(title: "profileTxt2".localized(languageService.language), nbr: $viewModel.userSongs.count.description)
+                                Divider().frame(height: 40).foregroundColor(.main_color)
+                                Spacer()
                             }
-                            .scrollContentBackground(.hidden)
-                        }
-                    }
-                }
-                Spacer()
-                Button (
-                    action: {
-                        viewModel.navigator = "EditProfile"
-                    },
-                    label: {
-                        Label("profileTxt3".localized(languageService.language), systemImage: "pencil")
-                    })
-                .padding()
-                PushView(destination: EditProfileView(), tag: "EditProfile", selection: $viewModel.navigator) {}
-            }.background(LinearGradient(gradient: .init(colors: [.black , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
-                .sheet(isPresented: $viewModel.showLanguageSheet, onDismiss: {presentationMode.wrappedValue.dismiss()}){
-                    ZStack{
-                        Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)
-                        VStack{
-                            Text("languageSheetTxt1".localized(languageService.language))
-                                .font(.title3)
-                                .foregroundColor(.white)
-                                .padding(.all, 20)
-                            Picker("languageSheetTxt1", selection: $viewModel.selectedLang) {
-                                ForEach($viewModel.langs, id: \.self) {
-                                    Text($0.wrappedValue)
-                                        .foregroundColor(.white)
-                                }
-                            }.pickerStyle(.wheel)
                             Button (
                                 action: {
-                                    viewModel.applyChangeLang()
-                                    viewModel.showLanguageSheet = false
-                                    navigationStack.pop(to: .root)
+                                    navigationStack.push(CreateSongView())
                                 },
                                 label: {
-                                    Text("languageSheetTxt2".localized(languageService.language))
-                                        .font(.headline)
+                                    Label("addSong".localized(languageService.language), systemImage: "plus.app")
+                                        .font(.subheadline)
                                         .foregroundColor(.white)
-                                        .frame(width: 300, height: 50)
+                                        .frame(width: 150, height: 50)
+                                        .background(Color.main_color.opacity(0.7))
                                         .cornerRadius(15.0)
                                 })
-                            .padding(.vertical, 40)
+                            .padding(.top, 10)
+                            if(viewModel.userSongs.isEmpty){
+                                Spacer()
+                                Text("You don't have any songs yet")
+                                    .font(.title3)
+                                    .foregroundColor(.main_color)
+                                Spacer()
+                            }else{
+                                List{
+                                    ForEach(viewModel.userSongs, id: \._id){ song in
+                                        ProfileSongRow(song: song )
+                                            .listRowSeparator(.visible)
+                                            .listRowBackground(
+                                                Color.main_color
+                                                    .clipped()
+                                                    .cornerRadius(20)
+                                                    .padding(EdgeInsets(top: 15, leading: 25, bottom: 10, trailing: 25))
+                                            )
+                                            .swipeActions(allowsFullSwipe: false) {
+                                                Button {
+                                                    viewModel.showDeleteAlert = true
+                                                    print("remove song")
+                                                } label: {
+                                                    Label("remove", systemImage: "trash.fill")
+                                                }
+                                                .tint(.red.opacity(0.8))
+                                            }
+                                            .alert("areYouSureDeleteSong".localized(languageService.language), isPresented: $viewModel.showDeleteAlert) {
+                                                Button("Delete".localized(languageService.language), role: .destructive) {
+                                                    viewModel.removeSong(swipedSong: song)
+                                                }
+                                                Button("cancel".localized(languageService.language), role: .cancel) { }
+                                            }
+                                    }
+                                }
+                                .scrollContentBackground(.hidden)
+                            }
                         }
                     }
-                    .presentationDetents([.medium])
-                }
-                
+                    Spacer()
+                    Button (
+                        action: {
+                            viewModel.navigator = "EditProfile"
+                        },
+                        label: {
+                            Label("profileTxt3".localized(languageService.language), systemImage: "pencil")
+                        })
+                    .padding()
+                    PushView(destination: EditProfileView(), tag: "EditProfile", selection: $viewModel.navigator) {}
+                }.background(LinearGradient(gradient: .init(colors: [.black , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
+            }
+            
         }.accentColor(.white)
     }
     
@@ -135,7 +120,8 @@ struct ProfileView: View {
         @ObservedObject var viewModel = ProfileViewModel()
         @StateObject private var languageService = LocalizationService.shared
         @EnvironmentObject private var navigationStack: NavigationStackCompat
-        
+        @Environment(\.presentationMode) var presentationMode
+
         var body: some View {
             ZStack(alignment: .center) {
                 Rectangle()
@@ -154,9 +140,10 @@ struct ProfileView: View {
                         Label("ProfileOptions1".localized(languageService.language), systemImage: "character.book.closed.fill" )
                     }
                     Button(action: {
+                        viewModel.showWebView = true
                         print("terms Button")
                     }) {
-                        Label("Terms & Conditions", systemImage: "square.and.pencil" )
+                        Label("termsCnditions".localized(languageService.language), systemImage: "square.and.pencil" )
                     }
                     Button(action: {
                         //logout
@@ -172,12 +159,12 @@ struct ProfileView: View {
                             .frame(width: 65, height: 65)
                     }
                 }.offset(x: 150, y: -120)
-                    .alert("Are You sure You want Log out ?", isPresented: $viewModel.showLogoutAlert) {
-                        Button("Log out", role: .destructive) {
+                    .alert("areYouSureLogOut".localized(languageService.language), isPresented: $viewModel.showLogoutAlert) {
+                        Button("logOut", role: .destructive) {
                             navigationStack.push(LoginView())
                             viewModel.Logout()
                         }
-                        Button("cancel", role: .cancel) { }
+                        Button("cancel".localized(languageService.language), role: .cancel) { }
                     }
                 AsyncImage(url:viewModel.profileImageUrl)
                 {
@@ -190,6 +177,44 @@ struct ProfileView: View {
                 .overlay(Circle().stroke(Color.white, lineWidth: 4))
                 .shadow(radius: 10)
                 .frame(width: 180,height: 180)
+            }
+            .sheet(isPresented: $viewModel.showLanguageSheet){
+                ZStack{
+                    Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)
+                    VStack{
+                        Text("languageSheetTxt1".localized(languageService.language))
+                            .font(.title3)
+                            .foregroundColor(.white)
+                            .padding(.all, 20)
+                        Picker("languageSheetTxt1", selection: $viewModel.selectedLang) {
+                            ForEach($viewModel.langs, id: \.self) {
+                                Text($0.wrappedValue)
+                                    .foregroundColor(.white)
+                            }
+                        }.pickerStyle(.wheel)
+                        Button (
+                            action: {
+                                viewModel.applyChangeLang()
+                                viewModel.showLanguageSheet = false
+                                navigationStack.pop(to: .root)
+                            },
+                            label: {
+                                Text("languageSheetTxt2".localized(languageService.language))
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame(width: 300, height: 50)
+                                    .cornerRadius(15.0)
+                            })
+                        .padding(.vertical, 40)
+                    }
+                }
+                .presentationDetents([.medium])
+            }
+            .sheet(isPresented: $viewModel.showWebView){
+                ZStack{
+                    WebView(request: URLRequest(url: URL(string: "https://generator.lorem-ipsum.info/terms-and-conditions")!))
+                }
+                .presentationDetents([.large])
             }
             //ADD TERMS WEB VIEW
         }

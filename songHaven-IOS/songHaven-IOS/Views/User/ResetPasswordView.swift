@@ -12,12 +12,13 @@ import NavigationStack
 struct ResetPasswordView: View {
     @ObservedObject var viewModel = ResetPasswordViewModel()
     @EnvironmentObject private var navigationStack: NavigationStackCompat
-    
+    @StateObject private var languageService = LocalizationService.shared
+
     var body: some View {
         NavigationStack{
             ZStack{  LinearGradient(gradient: .init(colors: [.purple , .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack  (spacing: 20){
-                    Text("Create new password")
+                    Text("creatNewPassword".localized(languageService.language))
                         .font(.title)
                         .bold()
                         .foregroundColor(.white)
@@ -26,26 +27,33 @@ struct ResetPasswordView: View {
                         .frame(width: 200, height: 200)
                         .cornerRadius(40)
                         .padding(.vertical, 10)
-                    Text("Please enter your new password:")
+                    Text("pleaseEnterNewPassword".localized(languageService.language))
                         .font(.title3)
                         .bold()
                         .foregroundColor(.white)
-                    SecureField("Enter new password",text:$viewModel.password)
+                    SecureField("enterNewPassword".localized(languageService.language),text:$viewModel.password)
                         .padding()
                         .frame(width: 300, height :50)
                         .background(Color.white)
                         .cornerRadius(10)
                         .foregroundColor(.black)
                     
-                    SecureField("Confirm Password",text:$viewModel.confirmPassword)
+                    SecureField("confirmPassword".localized(languageService.language),text:$viewModel.confirmPassword)
                         .padding()
                         .frame(width: 300, height :50)
                         .background(Color.white)
                         .cornerRadius(10)
                         .foregroundColor(.black)
                     
-                    Button("Reset password"){
-                        viewModel.changePassword(action: {navigationStack.pop(to: .root)}() )
+                    Button("resetPassword".localized(languageService.language)){
+                        viewModel.changePassword(action: {
+                            navigationStack.pop()
+                            navigationStack.pop()
+                            navigationStack.pop()
+                            navigationStack.pop()
+                            navigationStack.pop()
+                            
+                        }() )
                     }
                     .disabled(!viewModel.verifyFields())
                     .foregroundColor(.white)

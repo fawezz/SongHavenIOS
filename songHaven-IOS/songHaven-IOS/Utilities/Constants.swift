@@ -7,7 +7,7 @@
 
 import Foundation
 struct Constants {
-    static let HOSTNAME = "http://172.17.0.138:9090"
+    static let HOSTNAME = "http://172.17.3.180:9090"
     
     
     static let TERMSANDCONDITIONS =

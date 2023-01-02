@@ -27,7 +27,7 @@ import SwiftUI
             self.toastMessage = reponse!
             if success {
                 self.showSuccessToast = true
-                print("success password changed")
+                //print("success password changed")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
                     action //self.navigator = "LoginView"
                     self.showSuccessToast = false
