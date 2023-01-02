@@ -59,7 +59,7 @@ struct ArtistSuggestionView : View {
                 .padding()
                 if(!viewModel.searchedUsers.isEmpty){
                     VStack(alignment: .leading){
-                        Text("Search Results".localized(languageService.language))
+                        Text("SearchTXT".localized(languageService.language))
                             .font(.title)
                             .foregroundColor(.white)
                         ScrollView(.vertical){
@@ -82,7 +82,7 @@ struct ArtistSuggestionView : View {
                     .padding()
                 }else{
                     Spacer()
-                    Text("No matching user found".localized(languageService.language))
+                    Text("noUsers".localized(languageService.language))
                         .font(.title3)
                         .foregroundColor(.white)
                         .padding(.all, 20)
