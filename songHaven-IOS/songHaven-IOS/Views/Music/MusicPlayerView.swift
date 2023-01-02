@@ -61,7 +61,7 @@ struct MusicPlayerView: View {
                     //.animation(Animation.linear(duration: 1).repeatForever(autoreverses: false).speed(viewModel.isPlaying ? 0.1 : 0))
                     .onAppear(perform: {
                         let timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true){ (_) in
-                            if(viewModel.isPlaying){
+                            if(viewModel.isPlaying && !self.viewModel.showSheet){
                                 self.rotation += 15
                             }
                         }
@@ -186,18 +186,3 @@ struct MusicPlayerView: View {
                             return formatter.string(from: DateComponents(second: self))
                         }
                     }
-                    
-                    //
-                    //struct MusicPlayerView_Previews: PreviewProvider {
-                    //    static var previews: some View {
-                    //        //MusicPlayerView()
-                    //    }
-                    //}
-                    
-                    //@State private var isRotated = false
-                    //var animation: Animation {
-                    //    Animation.linear
-                    //    .repeatForever(autoreverses: false)
-                    //}
-                    //    .animation(animation)
-                    //    .rotationEffect(Angle.degrees(isRotated ? 360 : 0))

@@ -24,7 +24,7 @@ struct MapView: View {
     var body: some View {
         NavigationStack{
             ZStack(alignment: .top) {
-                //   BackButton(action: {navigationStack.pop()})
+                   BackButton(action: {navigationStack.pop()})
                 Map(coordinateRegion : $viewModelMAP.region , showsUserLocation: true , annotationItems: locations){
                     location  in MapMarker (coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longtude))
                 }

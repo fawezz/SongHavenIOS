@@ -20,6 +20,8 @@ import NavigationStack
     @Published var isLoading = true
     @Published var showLanguageSheet = false
     @Published var selectedLang = ""
+    @Published var showWebView = false
+
 
     @Published var lang = LocalizationService.shared.language
 

@@ -103,10 +103,10 @@ struct LoginView: View {
                         .disabled(!viewModel.validateFields())
                         .alert(isPresented: $viewModel.showAlert) {
                                 Alert(
-                                    title: Text("Account not Verified"),
-                                    message: Text("This email is not confirmed, would you like to resend the confirmation email to " + UserDefaults.standard.string(forKey: "email")! + " ?"),
+                                    title: Text("alertTitle".localized(languageService.language)),
+                                    message: Text("alertMessage".localized(languageService.language) + UserDefaults.standard.string(forKey: "email")! + " ?"),
                                     primaryButton: .default(
-                                        Text("Send Email"),
+                                        Text("sendEmail".localized(languageService.language)),
                                         action: {
                                             viewModel.ResendWelcomeMail()
                                         }
@@ -136,10 +136,10 @@ struct LoginView: View {
                             Button(action: {
                                 viewModel.GoogleAuth()
                             }) {
-                                Text("Continue with Google".localized(languageService.language))
+                                Text("google".localized(languageService.language))
                                     .font(.headline)
                                     .foregroundColor(.white)
-                                    .frame(width: 180, height: 50)
+                                    .frame(width: 200, height: 50)
                                     .background(Color.clear)
                                     .cornerRadius(15.0)
                             }

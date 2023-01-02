@@ -1,9 +1,9 @@
-/*
+/* 
   Localizable.strings
   songHaven-IOS
 
   Created by Apple Esprit on 13/12/2022.
-
+  
 */
 //LOGIN VIEW
 "loginTxt1" = "Bienvenue à SongHaven";
@@ -11,6 +11,11 @@
 "loginTxt3" = "Mot de passe..";
 "loginTxt4" = "Se connecter";
 "loginTxt5" = "Créer nouveau compte";
+"google" = "Continuer avec Google";
+
+"alertTitle" = "Compte non vérifié";
+"alertMessage" = "Cet e-mail n'est pas confirmé, souhaitez-vous renvoyer l'e-mail de confirmation à ";
+"sendEmail" = "Envoyer un e-mail";
 
 //SIGN UP VIEW
 "SignUpTxt1" = "Rejoignez nous maintenant";
@@ -44,6 +49,7 @@
 
 //ProfileView
 "ProfileOptions1" = "Changer La langue";
+"termsCnditions" = "Termes et conditions";
 "ProfileOptions2" = "Deconnexion";
 
 "languageSheetTxt1" = "Selectionner une langue :";
@@ -52,5 +58,38 @@
 "profileTxt1" = "Aimes";
 "profileTxt2" = "Chansons";
 "profileTxt3" = "Modifier Profile";
+"addSong" = "Ajouter chanson";
 
+"areYouSureLogOut" = "Êtes-vous sûr de vouloir vous déconnecter ?";
+"logOut" = "se deconnecter";
+"cancel" = "Annuler";
+
+"areYouSureDeleteSong" = "Êtes-vous sûr de supprimer cette chanson ?";
+"delete" = "Supprimer";
+
+//CreateSongView
+"title" = "Titre";
+"genre" = "Genre";
+"selectAudioFile" = "selectionner un fichier Audio";
+"publishSong" = "Publier chanson";
+"addNewSong" = "Ajouter une Chanson";
+
+//ResetPasswordView
+"creatNewPassword" = "Créer un nouveau mot de passe";
+"pleaseEnterNewPassword" = "Veuillez saisir votre nouveau mot de passe :";
+"enterNewPassword" = "Entrez un nouveau mot de passe";
+"confirmPassword" = "Confirmer mot de passe";
+"resetPassword" = "réinitialiser mot de passe";
+
+//ResetPasswordView
+"confirmationCode" = "Code de Confirmation";
+"pleaseEnterThe5DigitCode" = "Veuillez entrer le code à 5 chiffres envoyé à votre adresse e-mail :";
+"didNotReceiveCode" = "Vous n'avez pas reçu de code ?";
+"resend" = "Renvoyer";
+"verify" = "Vérifier";
+
+"alertTtile" = "Accès refusé";
+"alertMessage" = "Le code saisi n'est pas correct, veuillez réessayer.";
+
+"notificationTitle" = "Email envoyé";
 

@@ -1,9 +1,9 @@
-/*
-//  Localizable.strings
-//  songHaven-IOS
-//
-//  Created by Apple Esprit on 13/12/2022.
-//
+/* 
+  Localizable.strings
+  songHaven-IOS
+
+  Created by Apple Esprit on 13/12/2022.
+  
 */
 //LOGIN VIEW
 "loginTxt1" = "Welcome to SongHaven";
@@ -11,6 +11,12 @@
 "loginTxt3" = "password..";
 "loginTxt4" = "Sign In";
 "loginTxt5" = "Sign Up";
+"google" = "Continue with Google";
+
+"alertTitle" = "Account not Verified";
+"alertMessage" = "This email is not confirmed, would you like to resend the confirmation email to ";
+"sendEmail" = "Send Email";
+
 
 //SIGN UP VIEW
 "SignUpTxt1" = "Join Us Now";
@@ -41,4 +47,50 @@
 "editPlaylistTxt3" = "Give your playlist a title";
 "editPlaylistTxt4" = "Title..";
 "editPlaylistTxt5" = "Create";
+
+//ProfileView
+"ProfileOptions1" = "Change Language";
+"termsCnditions" = "Terms & Conditions";
+"ProfileOptions2" = "Log out";
+
+"languageSheetTxt1" = "Select a Language :";
+"languageSheetTxt2" = "Apply";
+
+"profileTxt1" = "Likes";
+"profileTxt2" = "Songs";
+"profileTxt3" = "Edit Profile";
+"addSong" = "Add song";
+
+"areYouSureLogOut" = "Are You sure You want Log out ?";
+"logOut" = "Log out";
+"cancel" = "Cancel";
+
+"areYouSureDeleteSong" = "Are You sure You want to delete this song?";
+"delete" = "Delete";
+
+//CreateSongView
+"title" = "Title";
+"genre" = "Genre";
+"selectAudioFile" = "select audio file";
+"publishSong" = "Publish Song";
+"addNewSong" = "Add a new song";
+
+//ResetPasswordView
+"creatNewPassword" = "Create new password";
+"pleaseEnterNewPassword" = "Please enter your new password:";
+"enterNewPassword" = "Enter new password";
+"confirmPassword" = "Confirm Password";
+"resetPassword" = "Reset Password";
+
+//ResetPasswordView
+"confirmationCode" = "Confirmation Code";
+"pleaseEnterThe5DigitCode" = "Please enter the 5 digit code sent to your email:";
+"didNotReceiveCode" = "Did not receive a code?";
+"resend" = "Resend";
+"verify" = "Verify";
+
+"alertTtile" = "Access Denied";
+"alertMessage" = "The code entered does not match, Please Try Again.";
+
+"notificationTitle" = "Email Sent";
 
