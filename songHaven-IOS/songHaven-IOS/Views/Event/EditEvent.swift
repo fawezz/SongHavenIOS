@@ -27,17 +27,17 @@ struct EditEvent: View {
                         .cornerRadius(40)
                     
                     
-                    Text(" Do you want to Edit Your Event? ".localized(languageService.language))
+                    Text("EditTxt1 ".localized(languageService.language))
                         .foregroundColor(.white)
                         .font(.title2)
                     
                     
-                    TextField("Choose name for your Event".localized(languageService.language),text:$viewModel.title)
+                    TextField("EditTxt2".localized(languageService.language),text:$viewModel.title)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
-                    TextField("Write Something about the event ...".localized(languageService.language),text:$viewModel.description)
+                    TextField("EditTxt3".localized(languageService.language),text:$viewModel.description)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
@@ -49,7 +49,7 @@ struct EditEvent: View {
                         viewModel.EditDetails()
                     })
                     {
-                        Text("Save changes".localized(languageService.language))
+                        Text("EditTxt4".localized(languageService.language))
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(width: 300, height: 50)

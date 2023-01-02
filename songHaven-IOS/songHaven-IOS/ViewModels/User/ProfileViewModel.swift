@@ -11,6 +11,7 @@ import NavigationStack
     @Published var navigator : String? = nil
     @Published var showLogoutAlert : Bool = false
     @Published var showDeleteAlert : Bool = false
+   
     @Published var userSongs : [Song] = []
     @Published var totalLikes : Int = 0
     let firstname : String = (UserSession.shared.currentUser?.firstname)!
@@ -23,8 +24,6 @@ import NavigationStack
     @Published var lang = LocalizationService.shared.language
 
     var langs = ["English", "French"]
-
-
     
     init() {
         if(LocalizationService.shared.language == .english_us){

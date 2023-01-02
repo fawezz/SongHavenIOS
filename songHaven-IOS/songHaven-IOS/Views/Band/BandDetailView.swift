@@ -27,7 +27,7 @@ struct BandDetailView: View {
                             Button(action: {
                                 navigationStack.push( EditBandView())
                             }) {
-                                Label("Edit Band".localized(languageService.language), systemImage: "pencil")
+                                Label("EditBandtxt".localized(languageService.language), systemImage: "pencil")
                             }
                             Button(action: {
                                 // viewModel.criteria = "genre"
@@ -36,21 +36,20 @@ struct BandDetailView: View {
                             }
                             
                             Button(action: {
-                                navigationStack.push(ArtistSuggestionView(viewModel: ArtistSuggetionViewModel(band: viewModel.selectedBand
-                                                                                                             )))
+                                navigationStack.push(ArtistSuggestionView(viewModel: ArtistSuggetionViewModel(band: viewModel.selectedBand)))
                                 viewModel.navigator = "artistSuggestion"
                                 
                             }) {
-                                Label("Add Artist".localized(languageService.language), systemImage: "person.fill.badge.plus")
+                                Label("AddArtistTXT".localized(languageService.language), systemImage: "person.fill.badge.plus")
                             }
                             
                             Button(
                                 action: {
-                                    print("delete band")
+                                    print("deleteband")
                                     viewModel.showAlert = true
                                     
                                 }, label:{
-                                    Label("Remove Band".localized(languageService.language), systemImage: "trash")
+                                    Label("deletebandTXT".localized(languageService.language), systemImage: "trash")
                                         .frame(width: 20, height: 20)
                                         .padding(8).background(Color.red.opacity(0.7))
                                         .cornerRadius(20)
@@ -78,10 +77,10 @@ struct BandDetailView: View {
                         .padding(.top)
                     }.padding()
                     HStack(){
-                        Text("About The Band".localized(languageService.language))
+                        Text("AboutTheBandTXT".localized(languageService.language))
                             .bold()
                             .foregroundColor(.white)
-                            .font(.system(size: 34,weight: .light,design: .serif))
+                            .font(.system(size: 30,weight: .light,design: .serif))
                         Spacer()
                         Button(action:
                                 {
@@ -94,7 +93,7 @@ struct BandDetailView: View {
                                 .padding(8).background(Color.main_color)
                                 .cornerRadius(20)
                                 .shadow(color: Color.black.opacity(0.8),radius: 8, x: 0, y: 5)
-                        })
+                      })
                     }.padding()
                     AsyncImage(url: URL(string: BandService.BandImageUrl + viewModel.selectedBand.image!))
                     {image in image.image?
@@ -124,9 +123,9 @@ struct BandDetailView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.leading)
                     ScrollView{
-                        if(viewModel.BandMember.isEmpty){
+                        if((viewModel.selectedBand.users) != nil){
                             Spacer()
-                            Text("You don't have any members yet".localized(languageService.language))
+                            Text("TxtMembre".localized(languageService.language))
                                 .font(.title3)
                                 .foregroundColor(.main_color)
                             Spacer()
@@ -146,12 +145,12 @@ struct BandDetailView: View {
                                                 viewModel.showAlert = true
                                                 print("remove member")
                                             } label: {
-                                                Label("remove".localized(languageService.language), systemImage: "trash.fill")
+                                                Label("removeTxt".localized(languageService.language), systemImage: "trash.fill")
                                             }
                                             .tint(.red.opacity(0.8))
                                         }
                                         .alert("Are You sure You want to remove this member?".localized(languageService.language), isPresented: $viewModel.showAlert) {
-                                            Button("Delete".localized(languageService.language), role: .destructive) {
+                                            Button("DeleteTXt".localized(languageService.language), role: .destructive) {
                                                 //viewModel.removeSong(swipedSong: song)
                                             }
                                             Button("cancel".localized(languageService.language), role: .cancel) { }

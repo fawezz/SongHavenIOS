@@ -19,7 +19,7 @@ struct EditBandView: View {
                     
                     VStack(spacing:20) {
                         
-                        Text(" Do you want to Edit Your Band? ".localized(languageService.language))
+                        Text(" txtEdit ".localized(languageService.language))
                             .foregroundColor(.white)
                             .font(.title2)
 //                        ZStack(alignment: .bottomTrailing){
@@ -41,12 +41,12 @@ struct EditBandView: View {
 //
 //                        }
                         
-                        TextField("Choose name for your Band".localized(languageService.language),text:$viewModel.name)
+                        TextField("editTxt1".localized(languageService.language),text:$viewModel.name)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(50)
                             .autocorrectionDisabled(true)
-                        TextField("Write Something about you...".localized(languageService.language),text:$viewModel.discription)
+                        TextField("editTxt2".localized(languageService.language),text:$viewModel.discription)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(50)
@@ -57,7 +57,7 @@ struct EditBandView: View {
                                 viewModel.EditDetails()
                             })
                         {
-                            Text("Save".localized(languageService.language))
+                            Text("SaveTxt".localized(languageService.language))
                                 .font(.headline)
                                 .foregroundColor(.white)
                             .frame(width: 300, height: 50)

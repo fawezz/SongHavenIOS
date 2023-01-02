@@ -10,6 +10,8 @@ import NavigationStack
 
 struct ArtistSuggestionView : View {
     @StateObject var viewModel : ArtistSuggetionViewModel
+
+
     @EnvironmentObject private var navigationStack: NavigationStackCompat
     @StateObject private var languageService = LocalizationService.shared
     var body: some View {
@@ -65,9 +67,12 @@ struct ArtistSuggestionView : View {
                                 
                                 LazyVStack{
                                     ForEach($viewModel.searchedUsers, id: \._id) { user in
-//                                        UserCard(user: user, actionInvite: {
-//                                            viewModel.sendInitation(user: user)
-//                                        }, viewModel: user)
+                                        UserCard(user: user.wrappedValue, actionInvite: {
+                                            viewModel.sendInvitation(user: user.wrappedValue)
+                                        })
+//                                        .onTapGesture {
+//                                            self.navigationStack.push(ProfileView(viewModel: ProfileViewModel() (selectedUser: user.wrappedValue)))
+//                                        }
                                        
                             }
                                 }
