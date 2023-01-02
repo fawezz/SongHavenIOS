@@ -15,7 +15,7 @@ struct MapView: View {
     @StateObject var viewModelMAP  = MapViewModel()
     @StateObject private var languageService = LocalizationService.shared
     @State private var search : String = ""
-    
+    @State var action : (Location)->Void
     
     @EnvironmentObject private var navigationStack: NavigationStackCompat
    
@@ -24,7 +24,7 @@ struct MapView: View {
     var body: some View {
         NavigationStack{
             ZStack(alignment: .top) {
-                   BackButton(action: {navigationStack.pop()})
+                BackButton(action: {navigationStack.pop()})
                 Map(coordinateRegion : $viewModelMAP.region , showsUserLocation: true , annotationItems: locations){
                     location  in MapMarker (coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longtude))
                 }
@@ -36,9 +36,9 @@ struct MapView: View {
                     .fill(.blue)
                     .opacity(0.3)
                     .frame(width: 32, height: 32)
-                
+            }
                 VStack {
-                    HStack{
+                 
         
                         Button{
                             
@@ -51,7 +51,12 @@ struct MapView: View {
                             print($viewModelMAP.region.center.latitude)
                             print("longitude")
                             print($viewModelMAP.region.center.longitude)
-       
+                            
+                            
+                            action(newLocation)
+                            navigationStack.pop()
+                            
+                            
                         }label : {
                             Image( systemName: "plus")
                         }
@@ -61,19 +66,21 @@ struct MapView: View {
                         .font(.title)
                         .clipShape(Circle())
                         .padding(.trailing)
-                    }
+                    
                 }
-          
+
             }
         }
             }
             
-        }
+        
 
 
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView( action: {lap in
+            
+        })
     }
 }
