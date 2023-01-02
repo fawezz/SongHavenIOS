@@ -59,6 +59,8 @@
 "profileTxt2" = "Chansons";
 "profileTxt3" = "Modifier Profile";
 "addSong" = "Ajouter chanson";
+"noSongsYet" = "Vous n'avez aucune chanson";
+
 
 "areYouSureLogOut" = "Êtes-vous sûr de vouloir vous déconnecter ?";
 "logOut" = "se deconnecter";
@@ -93,3 +95,44 @@
 
 "notificationTitle" = "Email envoyé";
 
+
+
+//AddBandView
+"bandTxt0" = "Vous voulez créer une band";
+"bandTxt1" = "Choisir un nom";
+"bandTxt2" = "Decrire votre band";
+"bandTxt3" = "Validater";
+
+ //detailBandView
+"EditBandtxt" = " Edite Groupe";
+"AddArtistTXT" = "Ajouter Artiste";
+"deletebandTXT" = "Supprimer Groupe";
+"AboutTheBandTXT" = "A Propos du Groupe";
+"TxtMembre" = "Aucun Membre";
+"removeTxt" = "Supprimer";
+"TXTAlert" = " Vous comfirmer la suppresion de ce membre ?";
+
+"DeleteTXt" = "Supprimer";
+
+// UserBandView
+"textSupp" = "Confirmer la suppression";
+
+ //edit band View
+"txtEdit" = "Voulez vous modifier votre groupe";
+"editTxt1" = "Choisir un nom";
+"editTxt2" = "Decrire votre band";
+"SaveTxt" = "Enregistrer";
+
+//AddEvent
+"Txt1" = "Neauvau Evenment";
+"Txt2" = "choisir un titre";
+"Txt3" = "Decrire votre evenment";
+"Txt4" = "Choisir votre emplacement ";
+"Txt5" = "Date evenment";
+"Txt6" = "Valider";
+
+// editEvent
+"EditTxt1" = "Vous vouler modifier votre event";
+"EditTxt2" = "choisir un titre";
+"EditTxt3" = "Decrire votre evenment";
+"EditTxt4" = "Enregistrer";

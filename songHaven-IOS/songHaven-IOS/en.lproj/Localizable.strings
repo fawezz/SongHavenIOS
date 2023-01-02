@@ -60,6 +60,7 @@
 "profileTxt2" = "Songs";
 "profileTxt3" = "Edit Profile";
 "addSong" = "Add song";
+"noSongsYet" = "You don't have any songs yet";
 
 "areYouSureLogOut" = "Are You sure You want Log out ?";
 "logOut" = "Log out";
@@ -94,3 +95,43 @@
 
 "notificationTitle" = "Email Sent";
 
+
+//AddBandView
+"bandTxt0" = "Create new band";
+"bandTxt1" = "Choose name for your band";
+"bandTxt2" = "Describe your band";
+"bandTxt3" = "Validate";
+
+ //detailBandView
+"EditBandtxt" = " Edit Band";
+"AddArtistTXT" = "Add Artist";
+"deletebandTXT" = "Delete Band";
+"AboutTheBandTXT" = "About the band";
+"TxtMembre" = "No Membres yet";
+"removeTxt" = "Delete";
+"TXTAlert" = " Confirm Delete";
+
+"DeleteTXt" = "Delete";
+
+// UserBandView
+"textSupp" = "Confirme Delete";
+
+ //edit band View
+"txtEdit" = "Moify your band";
+"editTxt1" = "Choose name for your band";
+"editTxt2" = "Describe your band";
+"SaveTxt" = "Save";
+
+//AddEvent
+"Txt1" = "New Event";
+"Txt2" = "Choose title for your event";
+"Txt3" = "Describe your event";
+"Txt4" = "Choose location ";
+"Txt5" = "Date event";
+"Txt6" = "Save";
+
+// editEvent
+"EditTxt1" = "Modify for  your event";
+"EditTxt2" = "Choose title";
+"EditTxt3" = "Describe your event";
+"EditTxt4" = "Save";

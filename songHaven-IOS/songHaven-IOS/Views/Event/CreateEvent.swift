@@ -26,25 +26,25 @@ struct CreateEvent: View {
                         .frame(width: 150, height: 150)
                         .cornerRadius(40)
                     
-                    Text("New Event".localized(languageService.language))
+                    Text("Txt1".localized(languageService.language))
                         .bold()
                         .foregroundColor(.purple)
                         .font(.system(size: 34,weight: .light,design:.serif))
                     
-                    TextField("Choose title for your Event".localized(languageService.language),text:$viewModel.title)
+                    TextField("Txt2".localized(languageService.language),text:$viewModel.title)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
                     
-                    TextField("Write something about your Event....".localized(languageService.language),text:$viewModel.description)
+                    TextField("Txt3".localized(languageService.language),text:$viewModel.description)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
                     HStack{
                         
-                        TextField("Choose your location....".localized(languageService.language),text:$viewModel.longitud)
+                        TextField("Txt4".localized(languageService.language),text:$viewModel.longitud)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(50)
@@ -68,7 +68,7 @@ struct CreateEvent: View {
                     Group {
                         
                         
-                        DatePicker("Date Event".localized(languageService.language),
+                        DatePicker("Txt5".localized(languageService.language),
                                    selection: $viewModel.dateEvent)
                         .foregroundColor(.white)
                         .accentColor(.purple)
@@ -88,7 +88,7 @@ struct CreateEvent: View {
                         viewModel.AddEvent()
                     })
                     {
-                        Text("Validate".localized(languageService.language))
+                        Text("Txt6".localized(languageService.language))
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(width: 300, height: 50)

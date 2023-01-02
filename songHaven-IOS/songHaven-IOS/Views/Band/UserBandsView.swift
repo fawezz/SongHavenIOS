@@ -80,7 +80,7 @@ struct UserBandsView: View {
                             }
                         }else{
                             HStack{
-                                Text("You don't have any bands yet".localized(languageService.language))
+                                Text("textSupp".localized(languageService.language))
                                     .foregroundColor(.white)
                                     .font(.title3)
                                     .padding(.all, 50)

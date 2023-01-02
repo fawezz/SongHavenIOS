@@ -21,7 +21,7 @@ struct AddBandView: View {
                 
                 VStack(spacing:20) {
                     
-                    Text(" Do you want to create Your Band? ".localized(languageService.language))
+                    Text("bandTxt0".localized(languageService.language))
                         .foregroundColor(.white)
                         .font(.title2)
                     ZStack(alignment: .bottomTrailing){
@@ -43,13 +43,13 @@ struct AddBandView: View {
                         
                     }
                     
-                    TextField("Choose name for your Band".localized(languageService.language),text:$viewModel.name)
+                    TextField("bandTxt1".localized(languageService.language),text:$viewModel.name)
                         .foregroundColor(.black)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
-                    TextField("Band description..".localized(languageService.language),text:$viewModel.discription)
+                    TextField("bandTxt2".localized(languageService.language),text:$viewModel.discription)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
@@ -62,7 +62,7 @@ struct AddBandView: View {
                         viewModel.addBand()
                     })
                     {
-                        Text("Validate".localized(languageService.language))
+                        Text("bandTxt3".localized(languageService.language))
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(width: 300, height: 50)

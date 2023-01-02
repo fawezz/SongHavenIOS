@@ -16,11 +16,15 @@ import Foundation
     @Published var navigator : String? = nil
     @Published var showSuccessToast : Bool = false
     @Published var showFailToast : Bool = false
+ 
+  
     
     
-    init( band : Band) {
+    init( band : Band , selectedUser: User? = nil) {
         self.selectedBand = band
         searchUsers()
+        
+        self.selectedUser = selectedUser
     }
     func searchUsers() {
         UserService.SearchUsers( searchText: self.searchText, completed: {(success, usersArray) in
@@ -39,7 +43,7 @@ import Foundation
     }
     
     
-    func sendInitation(user :User) {
+    func sendInvitation(user :User) {
         InvitationService.SendInvitation(userId: user._id! , bandId: selectedBand._id! , completed: { (success, reponse) in
             self.isLoading = false
             if success {

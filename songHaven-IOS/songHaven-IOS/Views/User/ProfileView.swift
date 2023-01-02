@@ -62,7 +62,7 @@ struct ProfileView: View {
                             .padding(.top, 10)
                             if(viewModel.userSongs.isEmpty){
                                 Spacer()
-                                Text("You don't have any songs yet")
+                                Text("noSongsYet".localized(languageService.language))
                                     .font(.title3)
                                     .foregroundColor(.main_color)
                                 Spacer()
