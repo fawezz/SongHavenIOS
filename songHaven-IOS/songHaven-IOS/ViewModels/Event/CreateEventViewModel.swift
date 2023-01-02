@@ -24,7 +24,7 @@ import Foundation
     
     
     func AddEvent (){
-        EventService.AddEvent(event: Event(title: title, description: description,latitud: latitude,longitud: longitud ), completed: { (success, reponse) in
+        EventService.add(title: title, description: description,longitud: longitud, latitud: latitude, dateEvent: dateEvent, completed: { (success, reponse) in
             
             self.isLoading = false
             if success {
@@ -33,7 +33,7 @@ import Foundation
                 print("success")
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
-                    self.navigator = "addEvent"
+                    self.navigator = "artistEvents"
                     print("Event created successfully")
                     self.showSuccessToast = false
                 }

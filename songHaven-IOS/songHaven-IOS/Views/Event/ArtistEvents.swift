@@ -53,7 +53,7 @@ struct ArtistEvents: View {
                                             EventCard(event: event.wrappedValue)
                                                 .padding(.horizontal, 3)
                                                 .onTapGesture {
-//                                                    self.navigationStack.push(EventDetailView(viewModel: BandDetailViewModel(selectedBand: event.wrappedValue)))
+                                                   self.navigationStack.push(DetailsEvent(viewModel: DetailEventViewModel(selectedEvent: event.wrappedValue)))
                                                 }
                                         }
                                     }

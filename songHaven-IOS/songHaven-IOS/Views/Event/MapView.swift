@@ -63,41 +63,7 @@ struct MapView: View {
                         .padding(.trailing)
                     }
                 }
-                VStack{
-                    
-                    
-                    HStack {
-                        Button(action: {
-                            print("search pressed")
-                            
-                        }) {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.purple)
-                        }
-                        
-                        TextField("search",text: $search)
-                        
-                                                .foregroundColor(.main_color.opacity(0.8))
-                                            if(search.isEmpty){
-                                                Button(action: {
-                                                    print("clear pressed")
-                                                   search = ""
-                                                }) {
-                                                    Text("Clear".localized(languageService.language))
-                                                        .foregroundColor(.main_color.opacity(0.5))
-                                                }
-                                            }
-                    }
-                    .foregroundColor(.gray)
-                    .padding(.all, 13)
-                    .background(
-                        .regularMaterial,
-                        in: RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    )
-                }
-                .frame(height: 40)
-                .cornerRadius(13)
-                .padding()
+          
             }
         }
             }

@@ -77,12 +77,7 @@ struct CreateEvent: View {
                         .datePickerStyle(.automatic)
                         
                     }
-                  
-                    
-               
-                  
-
-                    PushView(destination: ArtistEvents(), tag: "addEvent", selection: $viewModel.navigator) {}
+                    PushView(destination: ArtistEvents(), tag: "artistEvents", selection: $viewModel.navigator) {}
                     
                     Button(action:{
                         viewModel.AddEvent()
