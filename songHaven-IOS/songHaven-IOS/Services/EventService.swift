@@ -15,37 +15,70 @@ class EventService {
     static let AddEventURL = Constants.HOSTNAME + "/event/addEvent"
     static let EditEventURL = Constants.HOSTNAME + "/event/modify/"
     static let RemoveEventURL = Constants.HOSTNAME + "/event/deleteEvent/"
-    static let getBandEventURL = Constants.HOSTNAME + "/event/getAll/"
+    static let getBandEventURL = Constants.HOSTNAME + "/event/getByCreator/"
     
-    static func AddEvent(event : Event , completed:@escaping(Bool,Int)->Void){
-        let token = UserDefaults.standard.string(forKey: "token")
-        let headers : HTTPHeaders = [.authorization(bearerToken: token ?? "cyrine"),.contentType("multipart/form-data")]
-        AF.upload(
-            multipartFormData: { multipartFormData in
-                multipartFormData.append((UserSession.shared.currentUser?._id!.data(using: String.Encoding.utf8)!)!, withName: "creatorId")
-                multipartFormData.append(event.title!.data(using: String.Encoding.utf8)!, withName: "title")
-                multipartFormData.append(event.description!.data(using: String.Encoding.utf8)!, withName: "description")
-                
-                // multipartFormData.append(event.dateEvent!.data(using:String.Encoding.utf8)!, withName: "dateEvent")
-                multipartFormData.append(event.longitud!.data(using: String.Encoding.utf8)!, withName: "longitud")
-                multipartFormData.append(event.latitud!.data(using: String.Encoding.utf8)!, withName: "latitud")
-                
-            },to: AddEventURL,method: .post, headers: headers)
-        .validate(statusCode: 200..<300)
-        .responseData { response in
-            switch(response.result){
-                
-            case .success(let data):
-                print(data)
-                completed(true,200)
-            case .failure(let error):
-                print(error)
-                completed(false,error.responseCode!)
-            }
+//    static func AddEvent(event : Event , completed:@escaping(Bool,Int)->Void){
+//        let token = UserDefaults.standard.string(forKey: "token")
+//        let headers : HTTPHeaders = [.authorization(bearerToken: token ?? "cyrine"),.contentType("multipart/form-data")]
+//        AF.upload(
+//            multipartFormData: { multipartFormData in
+//                multipartFormData.append((UserSession.shared.currentUser?._id!.data(using: String.Encoding.utf8)!)!, withName: "creatorId")
+//                multipartFormData.append(event.title!.data(using: String.Encoding.utf8)!, withName: "title")
+//                multipartFormData.append(event.description!.data(using: String.Encoding.utf8)!, withName: "description")
+//                
+//      
+//                 multipartFormData.append(event.dateEvent!.data(using:Date.utf8)!, withName: "dateEvent")
+//                multipartFormData.append(event.longitud!.data(using: String.Encoding.utf8)!, withName: "longitud")
+//                multipartFormData.append(event.latitud!.data(using: String.Encoding.utf8)!, withName: "latitud")
+//                
+//            },to: AddEventURL,method: .post, headers: headers)
+//        .validate(statusCode: 200..<300)
+//        .responseData { response in
+//            switch(response.result){
+//                
+//            case .success(let data):
+//                print(data)
+//                completed(true,200)
+//            case .failure(let error):
+//                print(error)
+//                completed(false,error.responseCode!)
+//            }
+//            
+//        }
+//    }
+    
+    
+    static func add(title: String, description: String,longitud: String,  latitud:String, dateEvent: Date, completed:
+         @escaping (Bool, Any?) ->Void){
+        let dateFormatter = DateFormatter();
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let headers :HTTPHeaders = [
+            .contentType("application/json"),
+            .accept("application/json")
+        ]
+        let params = [
+  
+            "title" : title,
+            "description" : description ,
+            "dateEvent" : dateFormatter.string(from : dateEvent),
+            "longitud"  : longitud,
+            "latitud"  : latitud ,
             
-        }
+            
+        ]
+        AF.request(AddEventURL, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers )
+            .validate(statusCode : 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseData { response in
+                switch response.result {
+                case .success( let JSON):
+                    print("succe\(JSON)")
+            
+                case .failure( let JSON):
+                    print("failure\(JSON)")
+                }
+            }
     }
-    
     
     static func DeleteEvent(eventId: String, completed: @escaping (Bool, String?) -> Void){
         AF.request(RemoveEventURL + eventId,  method: .delete )

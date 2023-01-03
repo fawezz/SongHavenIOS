@@ -13,6 +13,7 @@ struct CreateEvent: View {
     @StateObject var viewModel  = CreateEventViewModel()
     @StateObject private var languageService = LocalizationService.shared
     @EnvironmentObject private var navigationStack: NavigationStackCompat
+    @State var location = ""
     
     var body: some View {
         NavigationStack{
@@ -33,27 +34,38 @@ struct CreateEvent: View {
                     
                     TextField("Txt2".localized(languageService.language),text:$viewModel.title)
                         .padding()
+                        .foregroundColor(.black)
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
                     
                     TextField("Txt3".localized(languageService.language),text:$viewModel.description)
+                        .foregroundColor(.black)
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
                         .autocorrectionDisabled(true)
                     HStack{
                         
-                        TextField("Txt4".localized(languageService.language),text:$viewModel.longitud)
+                        TextField("Txt4".localized(languageService.language),text:$location)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(50)
+                            .foregroundColor(.black)
                             .autocorrectionDisabled(true)
                         
-                        PushView(destination: MapView(), tag: "mapView", selection: $viewModel.navigator){}
+                        PushView(destination: MapView(action: {
+                            loc in
+                            location = "\(loc.longtude),\(loc.latitude)"
+                        }), tag: "mapView", selection: $viewModel.navigator){}
                         Button (
                             action: {
-                                self.navigationStack.push(MapView())
+                                self.navigationStack.push(MapView(action: {
+                                    loc in
+                                    print(loc)
+                                    location = "\(loc.longtude),\(loc.latitude)"
+                                    print(location)
+                                }))
                                 },
                             label: {
                                 Label("", systemImage: "location.fill")
@@ -77,12 +89,7 @@ struct CreateEvent: View {
                         .datePickerStyle(.automatic)
                         
                     }
-                  
-                    
-               
-                  
-
-                    PushView(destination: ArtistEvents(), tag: "addEvent", selection: $viewModel.navigator) {}
+                    PushView(destination: ArtistEvents(), tag: "artistEvents", selection: $viewModel.navigator) {}
                     
                     Button(action:{
                         viewModel.AddEvent()

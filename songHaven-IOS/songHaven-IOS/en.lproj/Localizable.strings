@@ -130,8 +130,13 @@
 "Txt5" = "Date event";
 "Txt6" = "Save";
 
-// editEvent
+//editEvent
 "EditTxt1" = "Modify for  your event";
 "EditTxt2" = "Choose title";
 "EditTxt3" = "Describe your event";
 "EditTxt4" = "Save";
+
+//SuggestionView
+"SearchTXT" = "Search";
+"noUsers" = "No users found";
+

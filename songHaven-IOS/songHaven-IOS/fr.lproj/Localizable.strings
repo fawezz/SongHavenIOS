@@ -124,15 +124,19 @@
 "SaveTxt" = "Enregistrer";
 
 //AddEvent
-"Txt1" = "Neauvau Evenment";
+"Txt1" = "Neauvau événement";
 "Txt2" = "choisir un titre";
-"Txt3" = "Decrire votre evenment";
+"Txt3" = "Decrire votre événement";
 "Txt4" = "Choisir votre emplacement ";
-"Txt5" = "Date evenment";
+"Txt5" = "Date événement";
 "Txt6" = "Valider";
 
 // editEvent
-"EditTxt1" = "Vous vouler modifier votre event";
+"EditTxt1" = "Vous vouler modifier votre événement";
 "EditTxt2" = "choisir un titre";
-"EditTxt3" = "Decrire votre evenment";
+"EditTxt3" = "Decrire votre événement";
 "EditTxt4" = "Enregistrer";
+
+//SuggestionView
+"SearchTXT" = "Rechercher";
+"noUsers" = "Aucun utilisateur trouvé";

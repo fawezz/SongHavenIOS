@@ -48,12 +48,6 @@ struct  UserCard: View {
                         })
                 }
             }
-            
-            
-            
-            
-            
-            
         }
         .frame(width: 300, height: 20)
         .padding(20)
